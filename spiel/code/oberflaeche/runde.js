@@ -161,7 +161,7 @@ function zeigeAufgabe(wurzel, app, nav, a, auftrag) {
     status.textContent = '';
     los.disabled = false;
 
-    // Ab Kapitel 2 kostet jeder Test Tokens. Probieren und Beispiel sind immer gratis.
+    // Hat der Auftrag ein Token-Budget, kostet jeder Test Tokens. Probieren und Beispiel sind immer gratis.
     let budgetLeer = false;
     if (art !== 'probieren' && art !== 'beispiel') {
       const eingabe = Math.min(antwort.tokens.eingabe, aufgabe.fenster ?? Infinity);

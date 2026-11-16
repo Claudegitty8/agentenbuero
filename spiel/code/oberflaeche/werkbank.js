@@ -30,7 +30,7 @@ export function baueWerkbank({ aufgabe, t, sichtbar = null, vorgabe = [], auswah
   const vorschau = el('p', { klasse: 'prompt' });
   const hinweisZumTeil = el('p', { klasse: 'teil-hinweis', role: 'status' });
 
-  // Token-Zähler und «Echos Tisch» (Kontextfenster). Beides erscheint erst ab Kapitel 2.
+  // Token-Zähler und Echos Einsatzkoffer (Kontext). Beides erscheint nur bei Aufgaben mit Budget oder Koffer (fenster).
   const zaehler = el('p', { klasse: 'token-zeile', role: 'status' });
   const tischFuellung = el('span', { klasse: 'tisch-fuellung' });
   const tischText = el('p', { klasse: 'klein', role: 'status' });

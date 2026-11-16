@@ -16,7 +16,7 @@ export function neuerStand() {
     lexikon: ['ki'],       // freigeschaltete Lexikon-Einträge
     rundenZaehler: 0,      // Anzahl abgeschlossener Runden
     gespart: {},           // pro erledigtem Auftrag: gesparte Spiel-Tokens
-    einrichtung: [],       // gekaufte Zierde fürs Zentrale
+    einrichtung: [],       // gekaufte Zierde für die Zentrale
     umfrage: {},           // freiwillige Fragen: vorher und nachher, je Anzahl richtige
     daumen: {},            // pro Auftrag: hoch oder runter
     schnelltest: {},       // pro Auftrag: wie oft gestartet und welche Aufgaben zuletzt (E-048)
