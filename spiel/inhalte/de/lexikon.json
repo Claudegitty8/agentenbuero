@@ -240,5 +240,59 @@
     "kern": null,
     "erklaerung": "Im Profil eines Subagenten lässt sich festlegen, welches Claude-Modell er nutzt, zum Beispiel ein schnelleres für einfache Suchaufgaben.",
     "genauer": "Das Feld heisst model und ist freiwillig."
+  },
+  "hook": {
+    "begriff": "Hook",
+    "englisch": "hook",
+    "kern": "hook",
+    "erklaerung": "Ein kleiner Befehl, den Claude Code an festen Stellen automatisch ausführt, zum Beispiel vor jeder Dateiänderung. Er greift jedes Mal, statt dass Claude daran denken muss. Im Spiel heisst er Sicherheitsprotokoll.",
+    "quatsch": "Die Bitte «vor dem Senden prüfen» ging nach drei Stunden im vollen Koffer unter.",
+    "genauer": "Claude kann den Hook auf Wunsch selbst schreiben. Mit /hooks siehst du, welche aktiv sind. Ein Hook vor einer Aktion kann sie sperren."
+  },
+  "paket": {
+    "begriff": "Plugin",
+    "englisch": "plugin",
+    "kern": "paket",
+    "erklaerung": "Ein Paket aus Skills, Konnektoren, Subagenten, Hooks und Befehlen, das man als Ganzes installieren und teilen kann. Im Spiel heisst es Einsatzpaket.",
+    "quatsch": "Ein Bankpasswort reiste im Paket mit in die Filiale.",
+    "genauer": "Skills aus Plugins laufen auch im normalen Chat der Claude-App. Subagenten und Hooks brauchen eine Umgebung, in der Claude selbständig an Dateien arbeitet, etwa Claude Code."
+  },
+  "sicherheitsprotokoll": {
+    "begriff": "Sicherheitsprotokoll",
+    "englisch": "hook",
+    "kern": null,
+    "erklaerung": "Das Spielwort für einen Hook: eine Regel, die an einer festen Stelle jedes Mal automatisch geprüft wird."
+  },
+  "befehle": {
+    "begriff": "Befehl",
+    "englisch": "slash command",
+    "kern": null,
+    "erklaerung": "Ein Kurzbefehl mit Schrägstrich, zum Beispiel /hooks in Claude Code. Auch Plugins können eigene Befehle mitbringen."
+  },
+  "claudemd": {
+    "begriff": "CLAUDE.md",
+    "englisch": "CLAUDE.md",
+    "kern": null,
+    "erklaerung": "Eine Datei mit Dauerregeln für Claude Code, ähnlich der Projektanweisung in der Claude-App. Im Spiel ist sie die Fallakte.",
+    "genauer": "Regeln darin sind Bitten. Was ohne Ausnahme gelten muss, gehört in einen Hook."
+  },
+  "vierd": {
+    "begriff": "4D-Modell",
+    "englisch": "AI Fluency",
+    "kern": null,
+    "erklaerung": "Ein Modell aus dem Gratis-Kurs «AI Fluency» von Anthropic: Delegation (was gebe ich ab), Description (wie beschreibe ich es), Discernment (wie beurteile ich das Ergebnis), Diligence (wofür trage ich Verantwortung)."
+  },
+  "vorausgefuellt": {
+    "begriff": "Vorausgefüllte Antwort",
+    "englisch": "prefill",
+    "kern": null,
+    "erklaerung": "Früher konnte man den Anfang von Claudes Antwort vorgeben. Bei neueren Modellen geht das nicht mehr. Beschreib stattdessen klar, welche Form du willst."
+  },
+  "rolle": {
+    "begriff": "Rolle",
+    "englisch": "role prompting",
+    "kern": null,
+    "erklaerung": "Ein Satz am Anfang, der Claude eine Rolle gibt, zum Beispiel «Du schreibst für das Sekretariat eines Musikvereins». Das hilft bei Ton und Blickwinkel.",
+    "genauer": "Anthropic rät, die Rolle in einem Satz zu nennen."
   }
 }

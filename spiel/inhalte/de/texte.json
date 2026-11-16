@@ -466,11 +466,23 @@
     },
     "hook": {
       "name": "Sicherheitsprotokoll",
-      "analogie": "Ein Rauchmelder statt «denk dran»."
+      "analogie": "Ein Rauchmelder statt «denk dran».",
+      "aha": [
+        "Eine Bitte kann im langen Einsatz untergehen.",
+        "Ein Sicherheitsprotokoll (Hook) läuft an einer festen Stelle jedes Mal, zum Beispiel vor jeder Änderung.",
+        "Es braucht einen Zeitpunkt und eine Regel. Claude kann es für dich schreiben."
+      ],
+      "tipp": "Was ohne Ausnahme gelten muss: Hook mit passendem Zeitpunkt und enger Regel."
     },
     "paket": {
       "name": "Einsatzpaket",
-      "analogie": "Eine beschriftete Umzugskiste."
+      "analogie": "Eine beschriftete Umzugskiste.",
+      "aha": [
+        "Ein Einsatzpaket (Plugin) bündelt Dossiers, Funkleitungen, Feldagenten und Sicherheitsprotokolle.",
+        "Pack alles hinein, was zusammen gebraucht wird, und leg eine kurze Anleitung bei.",
+        "Passwörter und Privates gehören nie hinein. Teste, bevor du teilst."
+      ],
+      "tipp": "Alles, was zusammengehört, getestet, mit Anleitung, ohne Geheimnisse."
     }
   }
 }
