@@ -42,6 +42,54 @@
       "aussage": "Skill-Beschreibung: laut Hilfe-Center höchstens 200 Zeichen, laut Plattform-Doku höchstens 1024. Das Spiel nimmt 200.",
       "quelle": "https://support.claude.com/en/articles/12512198-use-custom-skills",
       "geprueft": "2026-11-16"
+    },
+    {
+      "id": "skill-laden",
+      "aussage": "Von einem Skill liegen zuerst nur Name und Beschreibung im Kontext. Die Anleitung lädt Claude bei Bedarf, Zusatzdateien erst, wenn es sie liest.",
+      "quelle": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview",
+      "geprueft": "2026-11-16"
+    },
+    {
+      "id": "skill-creator",
+      "aussage": "In der Claude-App kann man mit dem «skill-creator» im Gespräch einen Skill bauen lassen.",
+      "quelle": "https://support.claude.com/en/articles/12599426",
+      "geprueft": "2026-11-16"
+    },
+    {
+      "id": "konnektor-rechte",
+      "aussage": "Die Werkzeuge eines Konnektors lassen sich einzeln oder nach Gruppen (lesen, schreiben und löschen) auf Always allow, Needs approval oder Blocked stellen. In Team- und Enterprise-Konten legen das die Verantwortlichen fest.",
+      "quelle": "https://support.claude.com/en/articles/11176164",
+      "geprueft": "2026-11-16"
+    },
+    {
+      "id": "konnektor-vertrauen",
+      "aussage": "Nur Server von vertrauenswürdigen Anbietern verbinden, verlangte Rechte prüfen, Anfragen um Erlaubnis genau lesen und «Allow always» nur für Werkzeuge wählen, denen man ohne Aufsicht traut.",
+      "quelle": "https://support.claude.com/en/articles/11175166",
+      "geprueft": "2026-11-16"
+    },
+    {
+      "id": "prompt-injection",
+      "aussage": "Versteckte Anweisungen in Websites, Mails und Dokumenten können Claude zu ungewollten Handlungen verleiten. Verlangt Claude plötzlich heikle Angaben, den Auftrag sofort stoppen.",
+      "quelle": "https://support.claude.com/en/articles/12902428",
+      "geprueft": "2026-11-16"
+    },
+    {
+      "id": "subagent-grundlagen",
+      "aussage": "Ein Subagent hat eigenen Kontext, eigene Anleitung und eigene Werkzeuge und gibt nur eine Zusammenfassung zurück. Ohne Werkzeugliste erbt er die Werkzeuge des Hauptgesprächs. Rückfragen an dich kann er nicht stellen. Dateien liegen in .claude/agents/ oder ~/.claude/agents/.",
+      "quelle": "https://code.claude.com/docs/en/sub-agents",
+      "geprueft": "2026-11-16"
+    },
+    {
+      "id": "hooks",
+      "aussage": "Hooks laufen an festen Stellen jedes Mal, zum Beispiel vor einer Werkzeug-Nutzung, und können sie sperren. Claude kann einen Hook auf Wunsch schreiben, /hooks zeigt die aktiven.",
+      "quelle": "https://code.claude.com/docs/en/hooks-guide",
+      "geprueft": "2026-11-16"
+    },
+    {
+      "id": "plugins",
+      "aussage": "Ein Plugin bündelt Skills, Konnektoren, Befehle, Subagenten und Hooks. Skills aus Plugins laufen auch im Chat der Claude-App, Subagenten und Hooks nur dort, wo Claude selbständig an Dateien arbeitet.",
+      "quelle": "https://support.claude.com/en/articles/13837440",
+      "geprueft": "2026-11-16"
     }
   ]
 }

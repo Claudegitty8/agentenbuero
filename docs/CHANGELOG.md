@@ -1,5 +1,38 @@
 # Changelog
 
+## Version 0.9 (16.11.2026)
+
+Alle 21 Konzepte sind spielbar. Version 1.0 folgt nach der Testrunde mit Erwachsenen.
+
+### Neu
+- Auftrag 2 «Operation Notenständer» (Musikverein, Kapitel 2 «Das Archiv»): Wohin gehört es, Deckblatt, Schlankes Dossier, Probefälle.
+- Auftrag 3 «Operation Stammtisch» (Gasthof Ochsen, Kapitel 3 «Die Funkleitungen»): Freigaben mit Ampel, abgefangene Nachrichten (E-022).
+- Auftrag 4 «Operation Generalversammlung» (Gewerbeverein, Kapitel 4 «Der Einsatz»): Einsatzschleife, Plan, Kette, Haltepunkte, frischer Koffer.
+- Auftrag 5 «Operation Ferienplan» (Familie Meier, Kapitel 5 «Agenten im Feld»): Feldagent, Einsatzprofil, Lagebericht, Aufteilen, Zweiter Blick.
+- Auftrag 6 «Operation Hobelbank» (Schreinerei Odermatt, Kapitel 6): Sicherheitsprotokoll aus Zeitpunkt und Regel, Einsatzpaket.
+- Schlussmission «Operation Dorffest»: drei Mischrunden über alle Kapitel, am Ende ein ganzes kleines System als Paket.
+- Zusammen 149 Aufgaben (94 zum Zusammenstecken, 51 zum Vorhersagen, 4 zum Sortieren) und 396 Fehlbilder mit je zwei Varianten.
+- Einsatzschrank mit 7 Bauteilen: Funkspruch, Skill, Schutzregeln, Einsatzbefehl, Subagent, Bauplan für Hook und Plugin, Bauplan für ein ganzes System.
+- Gruppen einer Aufgabe können eigene Namen tragen, zum Beispiel «Was es tut» und «Wann es gebraucht wird» beim Deckblatt.
+- Lexikon mit 41 Einträgen, Faktendatei mit 15 Angaben samt Quelle, 8 freiwillige Fragen vorher und nachher.
+- Lehrplan wird aus den Inhalten erzeugt (`node werkzeuge/lehrplan-doku.mjs`).
+
+### Geändert
+- Inhaltsprüfung: Jedes Teil einer Lösung muss nötig sein (E-023). Das hat 21 Stellen in Auftrag 1 und 2 aufgedeckt, an denen eine halbe Lösung als richtig galt. Alle behoben, zum Beispiel braucht die Absage jetzt auch die Formangabe.
+- Auftrag 1: Drei Kundenfragen haben jetzt eine echte Lücke (Nussgipfel um 6 Uhr, Nussspuren, Zopf vorbestellen), damit «Lücken melden» zählt.
+- Gruppen von Textteilen sind für Vorlesehilfen benannt. Derselbe Satz kann so in zwei Gruppen stehen (E-025).
+- Abschlusstexte der Zentrale passen zum vollständigen Spiel.
+
+### Behoben
+- «Zeig mir, wo» zeigte bei zu vollem Koffer nichts an. Jetzt zeigt die Hilfe auf das schwerste Teil, das nicht zur Lösung gehört (E-024). Neuer Test prüft alle 2760 möglichen Auswahlen.
+- Browser-Durchspiel konnte Sortieraufgaben nicht lösen und Teile mit gleichem Text nicht unterscheiden. Es spielt jetzt alle 7 Aufträge stark und schwach durch und meldet, wenn das Spiel hängt.
+
+### Bekannte Grenzen
+- Bereiche als Knöpfe in der Zentrale, noch keine Leiste unten (E-019).
+- Einsatzschrank zeigt Vorlagen, noch nicht die eigenen Bauteile (E-020).
+- Nicht geprüft: echte Handys, Vorlesehilfe am Gerät, Offline-Betrieb (geht erst auf GitHub Pages).
+- Grösse des Spiels: 569 KB (Budget 800 KB).
+
 ## Version 0.1 (16.11.2026)
 
 ### Neu

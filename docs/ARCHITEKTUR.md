@@ -1,11 +1,16 @@
 # Architektur: Lernspiel «Agentenbüro»
 
-**Zusätze im Agentenbüro (Version 0.1, 16.11.2026):**
+**Zusätze im Agentenbüro (Version 0.1 bis 0.9, 16.11.2026):**
 - Die Technik ist aus dem KI-Studio (Version 0.17) übernommen. Kiwi heisst Echo, das Studio heisst Zentrale, Kiwis Tisch heisst Einsatzkoffer (Felder `fenster` und `tokensUeber` wie bisher).
 - **Einsatzschrank** (E-016): Ein Auftrag kann das Feld `schrank` mit `titel`, `vorlage` (ein echter Prompt, höchstens 200 Wörter) und `wo` (wo man ihn bei Claude einfügt) tragen. `spiel/code/logik/schrank.js` (`schrankInhalt`) liefert die freigeschalteten Bauteile, `spiel/code/oberflaeche/schrank.js` zeigt sie mit Kopierknopf. Die Inhaltsprüfung prüft Felder und Texte.
 - **Testvorlage** (E-015): `tests/vorlage/` enthält die Inhalte des KI-Studios. Die übernommenen Tests laufen damit. `tests/agentenbuero.test.js` prüft die eigenen Inhalte.
 - **Browser-Durchspiel:** `werkzeuge/durchspiel-browser.mjs`.
 - Die Inhaltsprüfung meldet zusätzlich jedes scharfe S in Aufträgen.
+- **Eigene Gruppennamen** (Version 0.9): Eine Aufgabe kann `artNamen` tragen, zum Beispiel `{ "prompt": "Was es tut" }`. Die Werkbank zeigt dann diese Namen statt der üblichen. Jede Gruppe ist eine benannte Gruppe für Vorlesehilfen, jedes Teil trägt `data-teil` (E-025).
+- **Jedes Lösungsteil nötig** (Version 0.9, E-023): Die Inhaltsprüfung entfernt jedes Teil der Lösung einmal und meldet, wenn die Aufgabe trotzdem besteht. Teile einer Gruppe `aus … hoechstens` sind ausgenommen.
+- **Hilfe bei vollem Koffer** (Version 0.9, E-024): `hilfeTeil` zeigt bei einer zutreffenden Prüfung `tokensUeber` auf das schwerste gewählte Teil ausserhalb der Lösung.
+- **Lehrplan aus den Inhalten:** `node werkzeuge/lehrplan-doku.mjs [datum]` schreibt `docs/LEHRPLAN.md`.
+- **Neuer Auftrag:** JSON in `spiel/inhalte/de/auftraege/`, Kennung in `AUFTRAEGE` in `spiel/code/inhalte/lader.js` eintragen, `npm run pruefen`, Browser-Durchspiel, Lehrplan neu erzeugen.
 
 Der folgende Text stammt aus dem KI-Studio und gilt weiter, soweit oben nichts anderes steht. Zahlen wie «24 Konzepte» betreffen dort das KI-Studio.
 

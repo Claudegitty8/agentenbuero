@@ -552,7 +552,7 @@
         { "id": "lesen", "art": "recht", "ampel": "gruen", "text": "Lesen: immer erlauben" },
         { "id": "sendenFrage", "art": "recht", "ampel": "gelb", "text": "Mails senden: erst nachfragen" },
         { "id": "sendenFrei", "art": "recht", "ampel": "gruen", "text": "Mails senden: immer erlauben" },
-        { "id": "ziel", "art": "prompt", "text": "Am Freitag, 14. November, ab 18 Uhr. Nur an die Liste «Stammgäste». Nenne, wie viele Tische noch frei sind." },
+        { "id": "ziel", "art": "prompt", "text": "Am 14. November ab 18 Uhr. Nur an die Liste «Stammgäste». Nenne, wie viele Tische noch frei sind." },
         { "id": "vage", "art": "prompt", "text": "Mach was Schönes." }
       ],
       "pruefungen": [
@@ -624,7 +624,7 @@
         }
       },
       "erfolg": [
-        "Einladung bereit: «Hoi zäme, Metzgete am Freitag, 14. November, ab 18 Uhr. Noch drei Tische frei. Herzlich, euer Ochsen-Team.» An 64 Stammgäste. Darf ich senden?",
+        "Einladung bereit: «Hoi zäme, Metzgete am 14. November ab 18 Uhr. Noch drei Tische frei. Herzlich, euer Ochsen-Team.» An 64 Stammgäste. Darf ich senden?",
         "Text, Empfängerliste und freie Tische stimmen. Ich sende erst nach deinem Okay."
       ],
       "loesung": ["akte", "buch", "mail", "lesen", "sendenFrage", "ziel"]

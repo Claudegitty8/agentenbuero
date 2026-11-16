@@ -1,6 +1,6 @@
 # Regeln der Fachlogik
 
-Stand: 16.11.2026 · Version 0.1. Die Regeln stammen aus dem KI-Studio (Wissensspeicher Teil 4.2) und sind dort erprobt. Einstellbare Zahlen stehen in `spiel/inhalte/regeln.json`.
+Stand: 16.11.2026 · Version 0.9. Die Regeln stammen aus dem KI-Studio (Wissensspeicher Teil 4.2) und sind dort erprobt. Einstellbare Zahlen stehen in `spiel/inhalte/regeln.json`.
 
 | Regel | Inhalt | Zahl | Test |
 |---|---|---|---|

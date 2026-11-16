@@ -10,10 +10,10 @@ Stand: 16.11.2026 · Entwurf 3, geprüft in 5 Runden
 | Schauplatz | Geheimzentrale hinter der Käserei von Zwirbelwil. Sie wächst von der Besenkammer über Funkraum und Archiv zum Lagezentrum. | Wachsender Ort hat beim KI-Studio motiviert |
 | Ton | Augenzwinkernd: grosse Agenten-Sprache für kleine Alltagsaufgaben («Operation Nussgipfel», «Mission Generalversammlung») | Humor ohne Gewalt, Aufgaben bleiben echt |
 | KI-Figur | Einsatzroboter «Echo»: führt jeden Funkspruch genau so aus, wie er ankommt | Ein Roboter wirkt nicht wie ein Freund. Der Name erklärt das Prinzip. |
-| Auftraggeber | Bäckerei Brunner, Musikverein, Gemeindekanzlei, Hausarztpraxis, Familie Meier, Gewerbeverein | Aufgaben, die Erwachsene wirklich haben |
+| Auftraggeber | Bäckerei Brunner, Musikverein, Gasthof Ochsen, Gewerbeverein, Familie Meier, Schreinerei Odermatt, Dorffest-Komitee (Version 0.9; Gasthof statt Hausarztpraxis, E-022) | Aufgaben, die Erwachsene wirklich haben |
 | Kernschleife | Mission annehmen, Bauteile wählen, Echo losschicken, Ergebnis sehen, verbessern, Auftraggeber reagiert, Bauteil kommt in den Einsatzschrank | Erster Erfolg in der ersten Minute, kein Text vor dem ersten Bauen |
 | Eine Ressource | **Einsatzkoffer** = was Echo gleichzeitig dabeihat (in echt: der Kontext). Lange Beispiele, ganze Dossiers, alle Suchergebnisse brauchen Platz. Ist der Koffer zu voll, findet Echo das Wichtige nicht mehr. | Lehrt selbst: Von einem Dossier liegt zuerst nur das Deckblatt im Koffer, Feldagenten haben eigene Koffer und bringen nur den Lagebericht, ein frischer Einsatz beginnt nur mit Fallakte und Notizbuch im Koffer (so lernt man nebenbei, dass auch lange Projektanweisungen Platz brauchen). Nie eine Sackgasse: Jede Mission beginnt mit frischem Koffer. |
-| Belohnung | Stimme des Auftraggebers, Agentenwand (jeder gebaute Feldagent sichtbar), Einsatzschrank, Lexikon, Zentrale wächst | Ohne Punkte und ohne Druck |
+| Belohnung | Stimme des Auftraggebers, Agentenwand (jeder gebaute Feldagent sichtbar, noch nicht gebaut, Backlog «Kann»), Einsatzschrank, Lexikon, Zentrale wächst | Ohne Punkte und ohne Druck |
 | Brücke in die Praxis | Knopf **«In Claude ausprobieren»**: kopiert den fertigen Auftrag oder zeigt das fertige Skill-, Agenten- oder Plugin-Teil mit kurzer Anleitung, wo man es einfügt | Am Schluss hast du echte, brauchbare Bauteile |
 
 **Spielbegriffe und echte Begriffe** (im Spiel immer beide sichtbar, zum Beispiel «Dossier (Skill)», damit du die echten Wörter lernst):

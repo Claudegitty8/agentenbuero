@@ -1,9 +1,12 @@
 # Was das Agentenbüro kann
 
-Stand: Version 0.1, 16.11.2026. In den Worten der Spieler.
+Stand: Version 0.9, 16.11.2026. In den Worten der Spieler.
 
 - Ich übernehme die Zentrale und spiele Aufträge, je 5 bis 10 Minuten pro Runde, jederzeit unterbrechbar.
 - Ich stelle Funksprüche (Prompts) aus Textteilen zusammen, nur durch Antippen, und sehe sofort, was Echo daraus macht.
+- In sieben Aufträgen lerne ich alle 21 Konzepte: gute Aufträge, Projekte und Gedächtnis, Skills, Konnektoren, Agenten, Subagenten, Hooks und Plugins.
+- Ich baue Deckblätter für Skills, stelle Freigaben für Konnektoren ein (immer erlauben, erst nachfragen, gesperrt), schreibe Einsatzprofile für Subagenten und lege Sicherheitsprotokolle (Hooks) aus Zeitpunkt und Regel an.
+- Ich sortiere Abläufe in die richtige Reihenfolge und sage voraus, was Echo tun wird.
 - Fehlt etwas, macht Echo genau den Fehler, den echte KI machen würde. Ein Hinweis sagt, was gefehlt hat.
 - Jedes neue Konzept kommt in fünf Schritten: Probieren, Aha, Beispiel, Lücke, Frei.
 - Ich habe drei Hilfen: Tipp, «Zeig mir, wo», «Lösung zeigen».

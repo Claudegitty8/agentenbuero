@@ -55,7 +55,8 @@ Quellen: https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overv
 - Nur Skills aus vertrauenswürdigen Quellen, wie Software behandeln.
 - **Widerspruch 1:** Beschreibung höchstens 1024 Zeichen (Plattform-Doku) oder 200 Zeichen (Hilfe-Center). Im Spiel gilt «unter 200 Zeichen», das passt zu beiden.
 - **Widerspruch 2:** Gratis-Konto dabei (Hilfe-Center) oder erst ab Pro (Plattform-Doku).
-- **Widerspruch 3:** Skills übertragen sich nicht zwischen App und Claude Code (Plattform-Doku) oder laden in Claude Code mit demselben Konto (Hilfe-Center, Claude-Doku zu Plugins). Vor Kapitel 2 neu prüfen.
+- **Widerspruch 3:** Skills übertragen sich nicht zwischen App und Claude Code (Plattform-Doku) oder laden in Claude Code mit demselben Konto (Hilfe-Center, Claude-Doku zu Plugins). Nicht neu geprüft. Das Spiel behauptet dazu nichts: Die Anleitungen im Einsatzschrank sagen für jedes Bauteil, wo man es einrichtet.
+- skill-creator (Offiziell, https://support.claude.com/en/articles/12599426): In der Claude-App kann man im Gespräch einen Skill bauen lassen.
 
 ### Konnektoren (Kapitel 3)
 Quellen: https://support.claude.com/en/articles/11176164 · https://support.claude.com/en/articles/11175166 · https://support.claude.com/en/articles/11503834 (alle Offiziell) · https://modelcontextprotocol.io/docs/learn/server-concepts (Offiziell, MCP)
@@ -63,7 +64,9 @@ Quellen: https://support.claude.com/en/articles/11176164 · https://support.clau
 - Eigene Konnektoren laufen über einen MCP-Server im Internet, Claude verbindet sich aus Anthropics Cloud.
 - Eigene Konnektoren sind nicht von Anthropic geprüft: nur vertrauenswürdige verbinden, Rechte genau ansehen, Anfragen um Erlaubnis genau lesen, bei der Funktion «Research» schreibende Werkzeuge ausschalten.
 - MCP kennt drei Arten: Werkzeuge (Claude entscheidet), Ressourcen (Daten), Vorlagen (vom Menschen gestartet). Programme können pro Werkzeug festlegen lassen, ob es verfügbar ist.
-- **Annahme:** Wie genau man in der Claude-App die Rechte pro Werkzeug einstellt (Stufen, Namen der Knöpfe): nicht geprüft. Vor Kapitel 3 prüfen.
+- **Geprüft (vorher Annahme):** Die Werkzeuge eines Konnektors lassen sich nach Gruppen (nur lesen, schreiben und löschen) oder einzeln auf «Always allow», «Needs approval» oder «Blocked» stellen. In Team- und Enterprise-Konten legen das die Verantwortlichen für alle fest (https://support.claude.com/en/articles/11176164). Mitglieder können ihre eigene Freigabe auf «Always allow» setzen, wenn die Rolle es erlaubt (https://support.claude.com/en/articles/13930458). Deutsche Knopfnamen: nicht geprüft, darum nennt das Spiel die englischen.
+- Sicherheit bei eigenen Konnektoren (Offiziell, https://support.claude.com/en/articles/11175166): Bösartige Server können versteckte Anweisungen enthalten. Nur Server von vertrauenswürdigen Anbietern, verlangte Rechte prüfen und unnötige ablehnen, Anfragen um Erlaubnis genau lesen, «Allow always» nur für Werkzeuge, denen man ohne Aufsicht traut, nicht nötige Werkzeuge ausschalten.
+- Versteckte Anweisungen (Prompt Injection), Offiziell: Anweisungen in Websites, Mails und Dokumenten können Claude zu ungewollten Handlungen verleiten. Verlangt Claude plötzlich heikle Angaben, den Auftrag sofort stoppen (https://support.claude.com/en/articles/12902428). Beispiel einer Mail mit weisser Schrift, die Weiterleiten verlangt (https://anthropic.com/research/prompt-injection-defenses). Claude ist darauf trainiert, Anweisungen in Werkzeug-Ergebnissen skeptisch zu behandeln (https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks). Darum übertreibt das Spiel bewusst, wenn Echo fremde Anweisungen befolgt, und das Lexikon sagt, dass Claude dagegen trainiert ist.
 - **Unklar:** Verbinden am Handy: Ein neuerer Artikel sagt, man kann am Handy neue Dienste verbinden. Ein älterer sagt, eigene Server lassen sich am Handy nicht hinzufügen. Beides kann stimmen. Vor Kapitel 3 prüfen.
 
 ### Agenten und Abläufe (Kapitel 4)
@@ -82,12 +85,14 @@ Quellen: https://code.claude.com/docs/en/sub-agents (Offiziell) · https://code.
 - In Claude Code: eine Textdatei in `.claude/agents/` (Projekt) oder `~/.claude/agents/` (alle Projekte). Pflicht: Name und Beschreibung. Einfachster Weg: Claude bitten, die Datei zu schreiben.
 - In der Claude-App laufen Subagenten und Hooks aus Plugins in Cowork, im normalen Chat nicht.
 - Gute Praxis: kurze klare Beschreibung, Werkzeuge beschränken, für viel Lesestoff verwenden, Hin und Her im Hauptgespräch lassen, Prüf-Subagent mit frischem Kontext.
-- «Ein Subagent kann nicht nachfragen»: nur Drittquelle (https://alexcloudstar.com/blog/claude-code-subagents-guide-2026/). Das Spiel stützt sich deshalb nur auf das Offizielle: Er arbeitet in seinem eigenen Kontext und gibt eine Zusammenfassung zurück. Die Doku erwähnt auch eine Abzweig-Art («fork»). Was diese mitnimmt: nicht geprüft. Vor Kapitel 5 prüfen.
+- Neu geprüft am 16.11.2026 (Offiziell, https://code.claude.com/docs/en/sub-agents): Pflicht sind nur Name und Beschreibung. Fehlt die Werkzeugliste, erbt der Subagent die Werkzeuge des Hauptgesprächs. Rückfragen kann ein Subagent nicht stellen (das Werkzeug dafür fehlt ihm), Anfragen um Erlaubnis kommen aber bei dir an. Ein eigener Subagent startet ohne deinen Chatverlauf. Die Abzweig-Art («fork») nimmt den Verlauf mit und ist in interaktiven Sitzungen eingeschaltet. Subagenten können selbst Subagenten starten, standardmässig bis drei Ebenen tief. Bis 20 laufen gleichzeitig. Viele ausführliche Berichte füllen den Hauptkontext. Feld `model` ist freiwillig.
+- Das Spiel stützt sich bei «Einsatzbefehl» auf den eigenen Subagenten ohne Verlauf und erwähnt die Abzweig-Art im Lexikon. Die frühere Drittquelle zu Rückfragen ist damit offiziell bestätigt.
 
 ### Hooks und Plugins (Kapitel 6) – Offiziell
 Quellen: https://code.claude.com/docs/en/hooks-guide · https://claude.com/docs/plugins/overview · https://support.claude.com/en/articles/13837440
 - Hooks sind meist kleine Befehle, die Claude Code an festen Stellen ausführt (es gibt auch Hooks, die ein Claude-Modell urteilen lassen). Sie sorgen dafür, dass etwas sicher jedes Mal passiert, statt darauf zu hoffen, dass die KI daran denkt.
 - Beispiele: nach jeder Änderung aufräumen, gefährliche Befehle sperren, melden, wenn Claude etwas braucht. Claude kann den Hook auf Wunsch selbst schreiben.
+- Neu geprüft am 16.11.2026 (https://code.claude.com/docs/en/hooks-guide): `/hooks` zeigt die eingerichteten Hooks. Zeitpunkte unter anderem `PreToolUse` (vor einer Werkzeug-Nutzung, kann sperren), `PostToolUse` (nach Erfolg), `Notification` (wenn Claude auf dich wartet), `SessionStart`. Beispiel aus der Anleitung: Änderungen an geschützten Dateien sperren. Es gibt auch Hooks, die ein Claude-Modell oder einen Agenten prüfen lassen.
 - Ein Plugin bündelt Skills, Konnektoren, Befehle und Agenten zu einem Paket. Hinzufügen unter «Customize > Plugins» in der Claude-App oder am Desktop.
 - Skills aus Plugins gehen im Chat, in Cowork und in Claude Code. Agenten und Hooks nur in Cowork und Claude Code.
 
@@ -110,3 +115,16 @@ Quellen: https://code.claude.com/docs/en/hooks-guide · https://claude.com/docs/
 | 5 | 0 formal, 0 inhaltlich | Übrige Übertreibungen sind gewollt und jetzt als Regel festgehalten (KONZEPT.md, Spielidee und Rahmen). | – |
 
 **Ehrlich gesagt:** Fünf Runden ohne neuen Fund in der letzten Runde heisst nicht, dass das Dokument sicher fehlerfrei ist. Nicht geprüft werden konnte, was nur in der echten Claude-App sichtbar ist (Knopfnamen, Abo-Grenzen, Rechte pro Werkzeug). Diese Punkte stehen in RECHERCHE.md als Widerspruch, Unklar oder Annahme und werden vor dem jeweiligen Kapitel neu geprüft.
+
+## Fehlerprüfung Version 0.9 (Inhalte aller Kapitel)
+
+**Wie geprüft:** Inhaltsprüfung (`npm run inhalte`), 100 Tests, neue Prüfung «jedes Lösungsteil nötig», Prüfung «Hilfe führt von jeder Auswahl zur Lösung» (2760 Auswahlen), Browser-Durchspiel aller 7 Aufträge mit gutem und schwachem Spieler, Bildschirmfotos aus jedem Kapitel angesehen, Durchsicht aller Texte auf scharfes S, doppelte Leerzeichen, falsche Anführungszeichen und Wörter aus dem KI-Studio, Fakten gegen die oben genannten Quellen.
+
+| Runde | Gefunden | Beispiele | Korrigiert |
+|---|---|---|---|
+| 1 | 21 | Halbe Lösungen galten als richtig (zum Beispiel Absage ohne Formangabe, Antwort ohne «Lücken melden», Einladung ohne heutigen Auftrag). | alle, neue Prüfregel |
+| 2 | 3 | Deckblatt-Text über 40 Wörter. Hausarztpraxis mit Mailzugriff passt nicht zu Gesundheitsdaten (E-022). Behauptung zur Einreise eines Hundes ohne Quelle. | alle |
+| 3 | 4 | Browser: Teile mit gleichem Text nicht unterscheidbar, auch nicht für Vorlesehilfen (E-025). Sortieraufgaben im Durchspiel nicht lösbar. Hilfe zeigte bei vollem Koffer nichts (E-024). Abschlusstext «Mehr Aufträge folgen bald». | alle, neuer Test |
+| 4 | 0 | – | – |
+
+**Ehrlich gesagt:** Eine Runde ohne neuen Fund heisst nicht, dass alles fehlerfrei ist. Nicht geprüft: echte Handys, Vorlesehilfe am Gerät, deutsche Knopfnamen in der Claude-App, ob Skills zwischen App und Claude Code wandern (Widerspruch 3).
