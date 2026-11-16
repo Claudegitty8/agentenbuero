@@ -54,5 +54,56 @@
     "englisch": "hallucination",
     "kern": null,
     "erklaerung": "Wenn KI etwas Falsches sehr überzeugt sagt. Belege und «sag, wenn es fehlt» helfen dagegen."
+  },
+  "wohin": {
+    "begriff": "Projekt",
+    "englisch": "project",
+    "kern": "wohin",
+    "erklaerung": "Ein Arbeitsbereich für ein Thema in der Claude-App. Die Projektanweisung gilt in allen Chats darin. Im Spiel heisst sie Fallakte.",
+    "quatsch": "Eine Dauerregel nur im Funkspruch war im nächsten Chat wieder weg.",
+    "genauer": "Ohne Gedächtnis teilen die Chats eines Projekts nur, was im Projektwissen steht."
+  },
+  "deckblatt": {
+    "begriff": "Skill-Beschreibung",
+    "englisch": "skill description",
+    "kern": "deckblatt",
+    "erklaerung": "Der kurze Text im Kopf eines Skills: was er tut und wann er gebraucht wird. Passt er zur Bitte, holt Claude den ganzen Skill.",
+    "quatsch": "«Hilft beim Verein» holte das Protokoll-Dossier bei der Bitte um Notenständer.",
+    "genauer": "Die erlaubte Länge ist je nach Quelle verschieden. Das Spiel nimmt die strengere Grenze von 200 Zeichen."
+  },
+  "schlank": {
+    "begriff": "Skill",
+    "englisch": "Agent Skill",
+    "kern": "schlank",
+    "erklaerung": "Ein Ordner mit einer Anleitung (SKILL.md) und Beilagen. Claude holt ihn, wenn die Beschreibung zur Bitte passt. Im Spiel heisst er Dossier.",
+    "quatsch": "Das Alles-Dossier hängte ans Protokoll eine Einkaufsliste fürs Vereinsfest.",
+    "genauer": "Laut Anthropic lädt Claude zuerst nur Name und Beschreibung, die Anleitung bei Bedarf und Beilagen erst, wenn es sie liest."
+  },
+  "probefaelle": {
+    "begriff": "Skill testen",
+    "englisch": "testing a skill",
+    "kern": "probefaelle",
+    "erklaerung": "Mit passenden Bitten prüfen, ob der Skill anspringt. Mit Gegenproben prüfen, ob er still bleibt, wo er nicht passt.",
+    "quatsch": "Ungetestet sprang das Dossier bei «Sitzungsnotizen» nie an.",
+    "genauer": "Das Hilfe-Center rät, mit Anfragen zu testen, die den Skill auslösen sollen. Gegenproben sind eine Ergänzung des Spiels."
+  },
+  "gedaechtnis": {
+    "begriff": "Gedächtnis",
+    "englisch": "memory",
+    "kern": null,
+    "erklaerung": "Claude merkt sich Themen aus früheren Chats und nimmt sie in neue mit. Du kannst ansehen und ändern, was es sich gemerkt hat. Im Spiel heisst es Notizbuch.",
+    "genauer": "Ob es eingeschaltet ist, hängt von Abo und Einstellung ab. In einem Projekt hat Claude ein eigenes Gedächtnis für dieses Projekt."
+  },
+  "fallakte": {
+    "begriff": "Fallakte",
+    "englisch": "project instructions",
+    "kern": null,
+    "erklaerung": "Das Spielwort für die Projektanweisung: Regeln, die in jedem Chat eines Projekts gelten. Sie liegt bei jedem Einsatz im Koffer, darum kurz halten."
+  },
+  "dossier": {
+    "begriff": "Dossier",
+    "englisch": "skill",
+    "kern": null,
+    "erklaerung": "Das Spielwort für einen Skill. Das Deckblatt ist seine Beschreibung, die Beilagen sind Zusatzdateien."
   }
 }

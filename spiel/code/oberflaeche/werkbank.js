@@ -66,7 +66,8 @@ export function baueWerkbank({ aufgabe, t, sichtbar = null, vorgabe = [], auswah
     const derArt = teile.filter((teil) => teil.art === art);
     if (derArt.length === 0) return null;
     return el('div', { klasse: 'teil-gruppe' },
-      el('p', { klasse: 'etikett', text: t.art[art] }),
+      // Eine Aufgabe kann ihre Gruppen selbst benennen (artNamen), zum Beispiel beim Deckblatt eines Skills.
+      el('p', { klasse: 'etikett', text: aufgabe.artNamen?.[art] ?? t.art[art] }),
       derArt.map((teil) => {
         const knoten = el('button', {
           type: 'button',

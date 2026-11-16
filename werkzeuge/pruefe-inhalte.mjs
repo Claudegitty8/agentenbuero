@@ -179,6 +179,13 @@ export function pruefeAuftrag(auftrag, name, { regeln, konzepte, texte, lexikon 
       if (!istText(texte.app?.[feld])) fehler.push(`texte.json: ${feld} fehlt (gebraucht für den Einsatzschrank)`);
     }
   }
+  // Eigene Gruppennamen einer Aufgabe (artNamen): nur bekannte Arten, kurze Texte.
+  for (const [id, aufgabe] of Object.entries(auftrag.aufgaben ?? {})) {
+    for (const [art, text] of Object.entries(aufgabe.artNamen ?? {})) {
+      if (!ARTEN.includes(art)) fehler.push(`${name} Aufgabe ${id}: artNamen nennt unbekannte Art «${art}»`);
+      if (!istText(text) || zuLang(text)) fehler.push(`${name} Aufgabe ${id}: artNamen.${art} fehlt oder ist zu lang`);
+    }
+  }
   // Schweizer Schreibweise: nirgends ein scharfes S (Wunsch des Besitzers).
   if (JSON.stringify(auftrag).includes('ß')) fehler.push(`${name}: enthält ein scharfes S, bitte «ss» schreiben`);
   const aufgaben = auftrag.aufgaben ?? {};
@@ -285,6 +292,12 @@ export function pruefeAufgabe(aufgabe, name, fehler) {
   if (aufgabe.pruefungen) {
     if (!bewerte(aufgabe, loesung).ok) fehler.push(`${name}: Die Lösung besteht die eigenen Prüfungen nicht`);
     if (bewerte(aufgabe, []).ok) fehler.push(`${name}: Ein leerer Prompt gilt als richtig`);
+    // Jedes Teil der Lösung muss nötig sein. Sonst gilt eine halbe Lösung als richtig.
+    // Ausnahme: Teile einer Gruppe «aus … höchstens» (zum Beispiel «mindestens zwei Beispiele»).
+    const inGruppe = new Set((aufgabe.pruefungen ?? []).flatMap((pruefung) => pruefung.wenn.aus ?? []));
+    for (const id of loesung.filter((teil) => !inGruppe.has(teil))) {
+      if (bewerte(aufgabe, loesung.filter((andere) => andere !== id)).ok) fehler.push(`${name}: Lösung ohne «${id}» gilt auch als richtig`);
+    }
   } else {
     fehler.push(`${name}: pruefungen fehlen`);
   }

@@ -159,7 +159,7 @@
     "gespart": "Gespart: {anzahl} Tokens",
     "nichtGespart": "Diesmal nichts gespart. Das Budget musste nachgefüllt werden.",
     "zettelEtikett": "Fallakte (liest Echo bei jedem Einsatz)",
-    "zettelLeer": "(kein Zettel)",
+    "zettelLeer": "(Fallakte leer)",
     "etappeFertigTitel": "Etappe geschafft: {titel}",
     "etappeFertigText": "Wieder ein Stück näher am Ziel.",
     "schnelltestKnopf": "Das kann ich schon",
@@ -306,19 +306,43 @@
     },
     "wohin": {
       "name": "Wohin gehört es?",
-      "analogie": "Einkaufszettel, Familienordner, Rezeptbuch."
+      "analogie": "Einkaufszettel, Familienordner, Rezeptbuch.",
+      "aha": [
+        "Was nur heute gilt, gehört in den Funkspruch.",
+        "Was in jedem Chat eines Themas gilt, gehört in die Fallakte (Projektanweisung).",
+        "Einen Ablauf, den du immer wieder brauchst, legst du als Dossier (Skill) ab."
+      ],
+      "tipp": "Frag dich: Gilt das nur heute, immer bei diesem Thema, oder ist es ein Ablauf?"
     },
     "deckblatt": {
       "name": "Das Deckblatt",
-      "analogie": "Das Etikett auf dem Ordnerrücken."
+      "analogie": "Das Etikett auf dem Ordnerrücken.",
+      "aha": [
+        "Echo sieht von jedem Dossier zuerst nur das Deckblatt.",
+        "Darauf steht, was das Dossier tut und wann es gebraucht wird.",
+        "Zu ungenau: Es bleibt liegen. Zu breit: Es springt überall an."
+      ],
+      "tipp": "Schreib aufs Deckblatt beides: was das Dossier tut und bei welchen Bitten es gebraucht wird."
     },
     "schlank": {
       "name": "Schlankes Dossier",
-      "analogie": "Ein Kochbuch mit Inhaltsverzeichnis."
+      "analogie": "Ein Kochbuch mit Inhaltsverzeichnis.",
+      "aha": [
+        "Ein Dossier, ein Ablauf.",
+        "Die Hauptanleitung bleibt kurz. Lange Listen und Beispiele kommen in Beilagen.",
+        "Beilagen liest Echo nur, wenn sie gebraucht werden."
+      ],
+      "tipp": "Kurze Hauptanleitung, Einzelheiten als Beilage, nichts Fremdes im Dossier."
     },
     "probefaelle": {
       "name": "Probefälle",
-      "analogie": "Eine Probefahrt vor der Lieferung."
+      "analogie": "Eine Probefahrt vor der Lieferung.",
+      "aha": [
+        "Teste ein Dossier, bevor andere es benutzen.",
+        "Probe: Springt es bei passenden Bitten an? Gegenprobe: Bleibt es still, wo es nicht passt?",
+        "Klappt etwas nicht: Deckblatt verbessern und nochmals testen."
+      ],
+      "tipp": "Nimm mehrere Proben mit verschiedenen Wörtern und mindestens eine Gegenprobe."
     },
     "freigabe": {
       "name": "Leitung mit passender Freigabe",

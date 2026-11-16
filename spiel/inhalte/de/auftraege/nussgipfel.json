@@ -360,6 +360,14 @@
         {
           "wenn": {
             "fehlt": [
+              "leser"
+            ]
+          },
+          "fehlbild": "keinLeser"
+        },
+        {
+          "wenn": {
+            "fehlt": [
               "frag"
             ]
           },
@@ -387,6 +395,13 @@
             "Ausgeführt! Ich habe angenommen, ihr feiert im Sommer im Garten. Stimmt das?"
           ],
           "hinweis": "Dir fehlten selbst Angaben. Bitte Echo, zuerst zu fragen, statt Lücken zu lassen oder zu raten."
+        },
+        "keinLeser": {
+          "texte": [
+            "Bevor ich schreibe, drei Fragen: An welchem Tag ist das Fest? Gibt es etwas zu essen? Und an wen geht die Einladung?",
+            "Gern. Damit ich nichts erfinde: Wann feiert ihr? Und für wen ist der Text, für Kundschaft, Presse oder Lieferanten?"
+          ],
+          "hinweis": "Dass die Einladung an die Stammkunden geht, weisst du schon. Sag es gleich, dann fragt Echo nur, was dir wirklich fehlt."
         }
       },
       "erfolg": [
@@ -448,6 +463,14 @@
             ]
           },
           "fehlbild": "keinLeser"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "grund"
+            ]
+          },
+          "fehlbild": "keinGrund"
         }
       ],
       "fehlbilder": {
@@ -471,6 +494,13 @@
             "Ausgeführt! Die Mail geht an «Liebe Turnerinnen und Turner». Lesen wird sie nur der Präsident."
           ],
           "hinweis": "Echo wusste nicht, wer die Mail liest und wie ihr euch ansprecht."
+        },
+        "keinGrund": {
+          "texte": [
+            "Ausgeführt! «Wir bestätigen die Lieferung von 80 Sandwiches.» Korrekt, aber kühl wie von einer Grossfirma.",
+            "Ausgeführt! Eine nüchterne Bestätigung. Dass euch Verlässlichkeit im Dorf wichtig ist, wusste ich nicht."
+          ],
+          "hinweis": "Sag, warum. Dann kann Echo den Text danach ausrichten."
         }
       },
       "erfolg": [
@@ -669,6 +699,14 @@
             "hoechstens": 1
           },
           "fehlbild": "einBeispiel"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "so"
+            ]
+          },
+          "fehlbild": "keineForm"
         }
       ],
       "fehlbilder": {
@@ -692,6 +730,13 @@
             "Ausgeführt! Jede Absage gleicht jetzt diesem einen Muster: {teil}"
           ],
           "hinweis": "Mit nur einem Beispiel hält Echo es für die einzige richtige Form. Verschiedene Beispiele zeigen, was gleich bleiben soll."
+        },
+        "keineForm": {
+          "texte": [
+            "Ausgeführt! Die Absage hat fünf Sätze und keinen Gegenvorschlag. Wie sie sein soll, stand nirgends.",
+            "Ausgeführt! Ich habe die drei Beispiele gemischt. Herr Meier bekommt eine Absage mit drei Anreden."
+          ],
+          "hinweis": "Beschreib zu den Beispielen auch die Form, die du willst."
         }
       },
       "erfolg": [
@@ -1014,6 +1059,14 @@
             "hoechstens": 1
           },
           "fehlbild": "einBeispiel"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "so"
+            ]
+          },
+          "fehlbild": "keineForm"
         }
       ],
       "fehlbilder": {
@@ -1037,6 +1090,13 @@
             "Ausgeführt! Ich habe das Beispiel übernommen und nur wenig geändert: {teil}"
           ],
           "hinweis": "Ein Beispiel wird kopiert. Mehrere verschiedene zeigen, was gleich bleibt."
+        },
+        "keineForm": {
+          "texte": [
+            "Ausgeführt! «Danke für Ihre Treue.» Ohne Namen. Dass der Name hineingehört, stand nirgends.",
+            "Ausgeführt! Die Antwort ist eine halbe Seite lang. Wie lang sie sein soll, stand nirgends."
+          ],
+          "hinweis": "Beschreib zu den Beispielen auch die Form, die du willst."
         }
       },
       "erfolg": [
@@ -1110,6 +1170,14 @@
             "hoechstens": 1
           },
           "fehlbild": "einBeispiel"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "so"
+            ]
+          },
+          "fehlbild": "keineForm"
         }
       ],
       "fehlbilder": {
@@ -1133,6 +1201,13 @@
             "Ausgeführt! Ich habe das eine Muster genau übernommen: {teil}"
           ],
           "hinweis": "Mit einem Beispiel übernimmt Echo zu viel davon. Gib mehrere verschiedene."
+        },
+        "keineForm": {
+          "texte": [
+            "Ausgeführt! «Dinkelbrot: ein Brot mit Geschichte, gebacken mit viel Liebe und …» Das Schild ist zu klein dafür.",
+            "Ausgeführt! Jedes Schild sieht anders aus. Die gemeinsame Form stand nirgends."
+          ],
+          "hinweis": "Beschreib zu den Beispielen auch die Form, die du willst."
         }
       },
       "erfolg": [
@@ -1148,7 +1223,7 @@
     },
     "s-a": {
       "wunsch": "Beantworte die Mail von Herrn Graf mit der richtigen Öffnungszeit.",
-      "grundprompt": "Beantworte diese Mail: «Habt ihr am Montag schon um 6 offen? Sonst bitte alles absagen. Gruss, R. Graf»",
+      "grundprompt": "Beantworte diese Mail: «Habt ihr am Montag schon um 6 offen? Gibt es dann auch Nussgipfel? Sonst bitte alles absagen. Gruss, R. Graf»",
       "teile": [
         {
           "id": "fach",
@@ -1208,6 +1283,14 @@
             ]
           },
           "fehlbild": "verwechselt"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "luecken"
+            ]
+          },
+          "fehlbild": "geraten"
         }
       ],
       "fehlbilder": {
@@ -1238,11 +1321,18 @@
             "Ausgeführt! «Im Sommer um 6, im Winter um 7.» Welche Zeit ab Montag gilt, ging unter."
           ],
           "hinweis": "Lass Echo zuerst die passende Zeile zitieren. Dann sieht man, worauf die Antwort beruht."
+        },
+        "geraten": {
+          "texte": [
+            "Ausgeführt! «Ja, um 6 Uhr, und die Nussgipfel sind dann ofenfrisch.» Zu den Nussgipfeln stand nichts in der Liste.",
+            "Ausgeführt! «Nussgipfel gibt es ab 6 Uhr, versprochen.» Das habe ich geraten."
+          ],
+          "hinweis": "Zu den Nussgipfeln stand nichts in der Liste. Bitte Echo, Lücken zu melden statt zu raten."
         }
       },
       "erfolg": [
-        "Ausgeführt! Belegstelle: «Ab Montag: das ganze Jahr 6 bis 18 Uhr.» Antwort: «Ja, Herr Graf, ab Montag öffnen wir um 6. Ihre Bestellung bleibt.»",
-        "Ausgeführt! Zuerst die Zeile aus der Liste, dann die Antwort: ab Montag um 6 offen. Abgesagt wird nichts."
+        "Ausgeführt! Belegstelle: «Ab Montag: das ganze Jahr 6 bis 18 Uhr.» Antwort: «Ja, Herr Graf, ab Montag öffnen wir um 6. Zu den Nussgipfeln frage ich Frau Brunner.»",
+        "Ausgeführt! Zuerst die Zeile aus der Liste, dann die Antwort: ab Montag um 6 offen. Zu den Nussgipfeln steht nichts da, das sage ich offen."
       ],
       "loesung": [
         "fach",
@@ -1296,6 +1386,14 @@
         {
           "wenn": {
             "fehlt": [
+              "belege"
+            ]
+          },
+          "fehlbild": "verwechselt"
+        },
+        {
+          "wenn": {
+            "fehlt": [
               "luecken"
             ]
           },
@@ -1323,6 +1421,13 @@
             "Ausgeführt! «Sonntags wie samstags.» Klingt plausibel. Belegt ist es nicht."
           ],
           "hinweis": "Zum Sonntag stand nichts in der Liste. Bitte Echo, Lücken zu melden statt zu raten."
+        },
+        "verwechselt": {
+          "texte": [
+            "Ausgeführt! «Am Sonntag sind wir von 6 bis 16 Uhr da.» Das war die Zeile für den Samstag.",
+            "Ausgeführt! Ich habe die Samstagszeile für den Sonntag gehalten. Frau Lüthi steht vor verschlossener Tür."
+          ],
+          "hinweis": "Lass Echo zuerst die passende Zeile zitieren. So fällt eine Verwechslung sofort auf."
         }
       },
       "erfolg": [
@@ -1338,7 +1443,7 @@
     },
     "s-c": {
       "wunsch": "Sag Frau Weber, ob es den Nussgipfel auch ohne Nüsse gibt. Sie hat eine Allergie.",
-      "grundprompt": "Beantworte die Frage von Frau Weber: Gibt es den Nussgipfel ohne Nüsse?",
+      "grundprompt": "Beantworte die Frage von Frau Weber: Gibt es den Nussgipfel ohne Nüsse? Und ist der Schoggigipfel sicher ohne Nussspuren?",
       "fenster": 1000,
       "teile": [
         {
@@ -1385,6 +1490,14 @@
             ]
           },
           "fehlbild": "ohneBeleg"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "luecken"
+            ]
+          },
+          "fehlbild": "geraten"
         }
       ],
       "fehlbilder": {
@@ -1408,11 +1521,18 @@
             "Ausgeführt! «Ja, auf Wunsch ohne Füllung.» Klingt nett, steht aber nirgends im Rezept."
           ],
           "hinweis": "Bei wichtigen Fragen zuerst die Stelle zitieren lassen. So prüfst du die Antwort mit einem Blick."
+        },
+        "geraten": {
+          "texte": [
+            "Ausgeführt! «Der Schoggigipfel ist sicher ohne Nussspuren.» Das stand nirgends. Bei einer Allergie ist das gefährlich.",
+            "Ausgeführt! «Keine Sorge, alles andere ist nussfrei.» Das habe ich geraten."
+          ],
+          "hinweis": "Zu Nussspuren stand nichts im Rezept. Bitte Echo, Lücken zu melden statt zu raten."
         }
       },
       "erfolg": [
-        "Ausgeführt! Belegstelle: «Ohne Nüsse nicht möglich.» Antwort: «Liebe Frau Weber, den Nussgipfel gibt es nicht ohne Nüsse. Ohne Nüsse ist unser Schoggigipfel.»",
-        "Ausgeführt! Zuerst die Zeile aus dem Rezept, dann die Antwort: kein Nussgipfel ohne Nüsse, aber der Schoggigipfel."
+        "Ausgeführt! Belegstelle: «Ohne Nüsse nicht möglich.» Antwort: «Liebe Frau Weber, den Nussgipfel gibt es nicht ohne Nüsse. Ob der Schoggigipfel Spuren enthält, steht nicht im Rezept. Ich frage nach.»",
+        "Ausgeführt! Zuerst die Zeile aus dem Rezept, dann die Antwort. Zu Nussspuren steht nichts da, darum verspreche ich nichts."
       ],
       "loesung": [
         "rezept",
@@ -1496,6 +1616,14 @@
             ]
           },
           "fehlbild": "zuLang"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "luecken"
+            ]
+          },
+          "fehlbild": "geraten"
         }
       ],
       "fehlbilder": {
@@ -1519,6 +1647,13 @@
             "Ausgeführt! Die Zusammenfassung ist länger als die Mail."
           ],
           "hinweis": "Sag, wie kurz die Zusammenfassung sein soll."
+        },
+        "geraten": {
+          "texte": [
+            "Ausgeführt! «Ab März 3 Franken mehr pro Sack, aber nur bis Ende Jahr.» Bis wann, stand nicht in der Mail.",
+            "Ausgeführt! «Der Aufschlag gilt nur für Weissmehl.» Welches Mehl, stand nirgends. Ich habe es ergänzt."
+          ],
+          "hinweis": "Bitte Echo, nur zu sagen, was in der Mail steht, und Lücken zu melden."
         }
       },
       "erfolg": [
@@ -1533,7 +1668,7 @@
     },
     "s-f": {
       "wunsch": "Sag Herrn Suter, wann wir am 24. Dezember offen haben.",
-      "grundprompt": "Beantworte die Frage von Herrn Suter: Wann habt ihr am 24. Dezember offen?",
+      "grundprompt": "Beantworte die Frage von Herrn Suter: Wann habt ihr am 24. Dezember offen? Kann ich einen Zopf vorbestellen?",
       "teile": [
         {
           "id": "liste",
@@ -1580,6 +1715,14 @@
             ]
           },
           "fehlbild": "verwechselt"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "luecken"
+            ]
+          },
+          "fehlbild": "geraten"
         }
       ],
       "fehlbilder": {
@@ -1603,11 +1746,18 @@
             "Ausgeführt! «Am 24. bis 16 Uhr.» Das ist die Samstagszeit."
           ],
           "hinweis": "Lass Echo zuerst die passende Zeile zitieren. So fällt eine Verwechslung sofort auf."
+        },
+        "geraten": {
+          "texte": [
+            "Ausgeführt! «Vorbestellen geht bis am 23. um Mittag.» Das habe ich erfunden.",
+            "Ausgeführt! «Ein Zopf ist für Sie reserviert.» Zum Vorbestellen stand nichts in der Liste."
+          ],
+          "hinweis": "Zum Vorbestellen stand nichts in der Liste. Bitte Echo, Lücken zu melden statt zu raten."
         }
       },
       "erfolg": [
-        "Ausgeführt! Belegstelle: «24. Dezember 6 bis 14 Uhr.» Antwort: «Lieber Herr Suter, am 24. Dezember sind wir von 6 bis 14 Uhr da.»",
-        "Ausgeführt! Zuerst die Feiertagszeile, dann die Antwort: am 24. Dezember von 6 bis 14 Uhr."
+        "Ausgeführt! Belegstelle: «24. Dezember 6 bis 14 Uhr.» Antwort: «Lieber Herr Suter, am 24. Dezember sind wir von 6 bis 14 Uhr da. Zum Vorbestellen frage ich Frau Brunner.»",
+        "Ausgeführt! Zuerst die Feiertagszeile, dann die Antwort: am 24. Dezember von 6 bis 14 Uhr. Zum Vorbestellen steht nichts in der Liste."
       ],
       "loesung": [
         "liste",
@@ -1821,6 +1971,14 @@
         {
           "wenn": {
             "fehlt": [
+              "leser"
+            ]
+          },
+          "fehlbild": "keinLeser"
+        },
+        {
+          "wenn": {
+            "fehlt": [
               "frag"
             ]
           },
@@ -1855,6 +2013,13 @@
             "Ausgeführt! «Liebe Frau Kunz, die Sandwiches sind notiert. Den Preis melden wir noch.» Gefragt habe ich niemanden."
           ],
           "hinweis": "Dir fehlten selbst Angaben. Lass Echo zuerst fragen."
+        },
+        "keinLeser": {
+          "texte": [
+            "Bevor ich antworte: Hat die Bäckerei am 3. Mai Zeit? Was kostet ein Sandwich? Und an wen im Musikverein schreibe ich?",
+            "Gern. Drei Fragen zuerst: Können wir am 3. Mai liefern? Welcher Preis? Und wer liest die Antwort?"
+          ],
+          "hinweis": "Wer die Antwort liest, weisst du schon. Sag es gleich, dann fragt Echo nur, was dir fehlt."
         }
       },
       "erfolg": [

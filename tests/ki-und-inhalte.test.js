@@ -75,7 +75,30 @@ test('Die Lerninhalte des Agentenbüros sind vollständig', async () => {
 
 test('Die Testvorlage aus dem KI-Studio besteht die Inhaltsprüfung weiterhin', async () => {
   const vorlage = new URL('./vorlage/inhalte/', import.meta.url).pathname;
-  assert.deepEqual(await pruefeInhalte(vorlage), []);
+  // Die Regel «jedes Teil der Lösung ist nötig» ist neu im Agentenbüro. Die Vorlage bleibt eine
+  // unveränderte Kopie aus dem KI-Studio, darum sind genau diese vier bekannten Funde erlaubt.
+  const bekannt = [
+    'de/auftraege/gemeinde.json Aufgabe pi-e: Lösung ohne «lesen» gilt auch als richtig',
+    'de/auftraege/gemeinde.json Aufgabe m11-a: Lösung ohne «weiss» gilt auch als richtig',
+    'de/auftraege/schuelerband.json Aufgabe be-a: Lösung ohne «lesen» gilt auch als richtig',
+    'de/auftraege/veloladen.json Aufgabe sc-f: Lösung ohne «fehler» gilt auch als richtig',
+  ];
+  assert.deepEqual(await pruefeInhalte(vorlage), bekannt);
+});
+
+test('Die Inhaltsprüfung merkt, wenn eine halbe Lösung als richtig gilt', () => {
+  const fehler = [];
+  pruefeAufgabe({
+    wunsch: 'w',
+    grundprompt: 'x',
+    erfolg: ['y', 'z'],
+    teile: [{ id: 'ziel', art: 'prompt', text: 't' }, { id: 'leser', art: 'kontext', text: 'u' }],
+    pruefungen: [{ wenn: { fehlt: ['ziel'] }, fehlbild: 'keinZiel' }],
+    fehlbilder: { keinZiel: { texte: ['a', 'b'], hinweis: 'h' } },
+    loesung: ['ziel', 'leser'],
+  }, 'Probe', fehler);
+  assert.ok(fehler.includes('Probe: Lösung ohne «leser» gilt auch als richtig'));
+  assert.ok(!fehler.some((f) => f.includes('ohne «ziel»')));
 });
 
 test('Die Inhaltsprüfung findet typische Fehler in einer Aufgabe', () => {
