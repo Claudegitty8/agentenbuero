@@ -59,6 +59,14 @@ export function hilfeTeil(aufgabe, auswahl = []) {
   const schaedlich = new Set(aufgabe.pruefungen.flatMap((pruefung) => pruefung.wenn.gewaehlt ?? []));
   const zuviel = auswahl.find((id) => schaedlich.has(id));
   if (zuviel) return { id: zuviel, grund: 'zuviel' };
+  // Ist der Koffer zu voll, zeigt die Hilfe auf das schwerste Teil, das nicht zur Lösung gehört.
+  // Ohne diese Regel zeigte «Zeig mir, wo» bei einem vollen Koffer gar nichts an.
+  if (Number.isInteger(bewerte(aufgabe, auswahl).pruefung?.wenn.tokensUeber)) {
+    const schwer = aufgabe.teile
+      .filter((teil) => gewaehlt.has(teil.id) && !aufgabe.loesung.includes(teil.id))
+      .sort((erstes, zweites) => (zweites.tokens ?? 0) - (erstes.tokens ?? 0))[0];
+    if (schwer) return { id: schwer.id, grund: 'zuviel' };
+  }
   const fehlt = aufgabe.loesung.find((id) => !gewaehlt.has(id));
   return fehlt ? { id: fehlt, grund: 'fehlt' } : null;
 }

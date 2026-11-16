@@ -23,7 +23,7 @@ const alle = await Promise.all(AUFTRAEGE.map((id) => lies(`de/auftraege/${id}.js
 const GEZAEHLT = { ok: true, zaehlt: true };
 const NICHT_GEZAEHLT = { ok: true, zaehlt: false };
 
-// Konzepte, für die es schon eine Runde gibt (Etappe 1: nur Kapitel 1).
+// Konzepte, für die es eine Runde gibt. Seit Version 0.9 sind das alle Konzepte des Lehrplans.
 const spielbar = alle.flatMap((a) => a.runden.filter((r) => r.art === 'konzept').map((r) => r.konzept));
 
 // Spielt alle Aufträge durch. «stark»: jede freie Situation zählt. «schwach»: nie, dann nimmt er den Ausweg.
@@ -80,7 +80,8 @@ test('Agentenbüro: Mit bestandenem Schnelltest geht es direkt zur Mischrunde', 
 
 test('Agentenbüro: Die Konzept-Runden folgen der Reihenfolge des Lehrplans', () => {
   const reihenfolge = lehrplan.konzepte.map((k) => k.id);
-  assert.deepEqual(spielbar, reihenfolge.slice(0, spielbar.length));
+  // Ab Version 0.9 ist das Spiel vollständig: jedes Konzept genau einmal, in Lehrplan-Reihenfolge.
+  assert.deepEqual(spielbar, reihenfolge);
   assert.equal(lehrplan.konzepte.length, 21);
   assert.equal(lehrplan.kapitel.length, 6);
 });
@@ -141,4 +142,24 @@ test('Texte: Echo und die Zentrale heissen überall gleich, keine Wörter aus de
   const alles = JSON.stringify({ texte, lexikon, alle });
   for (const alt of ['Kiwi', 'Garage', 'Studio', 'Spiel-Tokens', 'sechs Fragen', 'Sechs kurze', 'Kundschaft hat nachgefüllt']) assert.ok(!alles.includes(alt), `«${alt}» kommt noch vor`);
   assert.ok(!alles.includes('ß'));
+});
+
+test('Hilfe «Zeig mir, wo»: Von jeder Auswahl aus führt sie Schritt für Schritt zur Lösung', async () => {
+  // Gefunden beim Durchspielen: Bei vollem Koffer zeigte die Hilfe nichts an.
+  const { hilfeTeil, bewerte } = await import('../spiel/code/logik/bewertung.js');
+  for (const auftrag of alle) {
+    for (const [id, aufgabe] of Object.entries(auftrag.aufgaben)) {
+      if (aufgabe.typ) continue;
+      const ids = aufgabe.teile.map((teil) => teil.id);
+      for (let maske = 0; maske < (1 << ids.length); maske += 1) {
+        let wahl = ids.filter((_, stelle) => maske & (1 << stelle));
+        for (let schritt = 0; schritt <= ids.length && !bewerte(aufgabe, wahl).ok; schritt += 1) {
+          const hilfe = hilfeTeil(aufgabe, wahl);
+          assert.ok(hilfe, `${auftrag.id}/${id}: keine Hilfe bei [${wahl}]`);
+          wahl = hilfe.grund === 'zuviel' ? wahl.filter((teil) => teil !== hilfe.id) : [...wahl, hilfe.id];
+        }
+        assert.ok(bewerte(aufgabe, wahl).ok, `${auftrag.id}/${id}: Hilfe führt nicht zur Lösung`);
+      }
+    }
+  }
 });

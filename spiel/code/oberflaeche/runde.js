@@ -219,7 +219,9 @@ function zeigeAufgabe(wurzel, app, nav, a, auftrag) {
       const teil = hilfeTeil(aufgabe, werkbank.auswahl());
       hilfeText.textContent = '';
       const text = { zuviel: t.hilfeZuviel, fehlt: t.hilfeFehlt, falsch: t.hilfeFalscheWahl, platz: t.hilfePlatz };
+      // Gibt es nichts zu zeigen, ist der Aufbau schon richtig. Das sagt die Hilfe dann auch.
       if (teil) werkbank.markiere(teil.id, text[teil.grund]);
+      else hilfeText.textContent = t.hilfeAllesDa;
     } else {
       werkbank.setze(aufgabe.loesung);
       hilfeText.textContent = t.hilfeLoesung;

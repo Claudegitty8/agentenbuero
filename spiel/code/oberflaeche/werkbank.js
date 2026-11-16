@@ -65,13 +65,17 @@ export function baueWerkbank({ aufgabe, t, sichtbar = null, vorgabe = [], auswah
   const gruppen = ARTEN.map((art) => {
     const derArt = teile.filter((teil) => teil.art === art);
     if (derArt.length === 0) return null;
-    return el('div', { klasse: 'teil-gruppe' },
-      // Eine Aufgabe kann ihre Gruppen selbst benennen (artNamen), zum Beispiel beim Deckblatt eines Skills.
-      el('p', { klasse: 'etikett', text: aufgabe.artNamen?.[art] ?? t.art[art] }),
+    // Eine Aufgabe kann ihre Gruppen selbst benennen (artNamen), zum Beispiel beim Deckblatt eines Skills.
+    const gruppenName = aufgabe.artNamen?.[art] ?? t.art[art];
+    // role=group mit Namen: Vorlesehilfen sagen dazu, in welche Gruppe ein Teil gehört.
+    // Das zählt, wenn derselbe Satz in zwei Gruppen steht (zum Beispiel Fallakte oder Funkspruch).
+    return el('div', { klasse: 'teil-gruppe', role: 'group', 'aria-label': gruppenName },
+      el('p', { klasse: 'etikett', text: gruppenName, 'aria-hidden': 'true' }),
       derArt.map((teil) => {
         const knoten = el('button', {
           type: 'button',
           klasse: 'baustein',
+          'data-teil': teil.id,
           onclick: () => {
             if (gewaehlt.has(teil.id)) gewaehlt.delete(teil.id);
             else gewaehlt.add(teil.id);

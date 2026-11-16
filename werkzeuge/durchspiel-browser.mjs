@@ -18,7 +18,11 @@ const lies = async (datei) => JSON.parse(await readFile(path.join(WURZEL, 'spiel
 const t = (await lies('de/texte.json')).app;
 const { AUFTRAEGE } = await import('../spiel/code/inhalte/lader.js');
 const auftraege = await Promise.all(AUFTRAEGE.map((id) => lies(`de/auftraege/${id}.json`)));
-const aufgaben = auftraege.flatMap((a) => Object.values(a.aufgaben));
+const aufgaben = auftraege.flatMap((a) => Object.entries(a.aufgaben).map(([id, aufgabe]) => ({ ...aufgabe, kennung: `${a.id}/${id}` })));
+// Von diesen Aufgaben macht der gute Spieler ein Bildschirmfoto: je eine Art Aufgabe aus jedem Kapitel.
+const FOTO_AUFGABEN = ['nussgipfel/z-a', 'notenstaender/w-a', 'notenstaender/d-a', 'notenstaender/l-a', 'ochsen/f-a', 'ochsen/e-a',
+  'generalversammlung/s-a', 'generalversammlung/s-c', 'generalversammlung/k-a', 'ferienplan/fa-a', 'ferienplan/pr-a',
+  'odermatt/hk-a', 'odermatt/pk-a', 'dorffest/df-a', 'dorffest/df-k'];
 
 const probleme = [];
 const melde = (text) => { probleme.push(text); console.log(`PROBLEM: ${text}`); };
@@ -45,13 +49,26 @@ async function aktuelleAufgabe(seite) {
 
 // Stellt die Lösung ein (stark) oder lässt alles, wie es ist (schwach drückt «Lösung zeigen»).
 async function loese(seite, aufgabe) {
+  if (aufgabe.typ === 'reihe') {
+    // Sortieren: jeden Schritt mit «nach oben» an seinen Platz schieben, von oben nach unten.
+    const textVon = new Map(aufgabe.schritte.map((schritt) => [schritt.id, schritt.text]));
+    for (const [ziel, id] of aufgabe.loesung.entries()) {
+      const text = textVon.get(id);
+      for (let versuch = 0; versuch < aufgabe.schritte.length; versuch += 1) {
+        const zeilen = await seite.locator('li.reihe-zeile .reihe-text').allInnerTexts();
+        if (zeilen.indexOf(text) <= ziel) break;
+        await seite.getByRole('button', { name: t.reiheHoch.replace('{text}', text), exact: true }).click();
+      }
+    }
+    return;
+  }
   if (aufgabe.typ === 'wahl') {
     const richtig = aufgabe.optionen.find((o) => o.richtig);
     await seite.locator('button', { hasText: richtig.text }).first().click();
     return;
   }
   for (const teil of aufgabe.teile) {
-    const ort = seite.locator('button.baustein', { hasText: teil.text });
+    const ort = seite.locator(`button.baustein[data-teil="${teil.id}"]`);
     if ((await ort.count()) === 0) continue;
     const an = (await ort.first().getAttribute('aria-pressed')) === 'true';
     const soll = aufgabe.loesung.includes(teil.id);
@@ -65,27 +82,51 @@ async function spiele(seite, art, fotos) {
   await seite.goto(ADRESSE);
   await seite.waitForSelector('text=' + t.titel);
   if (fotos) await seite.screenshot({ path: path.join(BILDER, '01-zentrale-start.png'), fullPage: true });
-  await drueck(seite, t.auftragAnnehmen);
   let schritte = 0;
   let foto = 2;
-  while (schritte < 600) {
+  let fertig = 0;
+  let amEnde = false;               // Steht gerade das Bild «Auftrag erledigt» da? Dann nur einmal zählen.
+  const gesehen = new Set();
+  let leer = 0;                     // Schritte nacheinander, in denen nichts zu tun war
+  while (schritte < 8000) {
     schritte += 1;
-    await seite.waitForTimeout(30);
-    if ((await seite.locator('h2', { hasText: t.auftragFertigTitel }).count()) > 0) break; // Auftrag fertig
+    await seite.waitForTimeout(20);
+    if ((await seite.locator('h2', { hasText: t.auftragFertigTitel }).count()) > 0) {
+      if (!amEnde) { fertig += 1; amEnde = true; console.log(`${art}: Auftrag ${fertig} von ${auftraege.length} erledigt nach ${schritte} Schritten`); }
+      if (fertig >= auftraege.length) break;                          // alle Aufträge erledigt
+      await drueck(seite, t.zurZentrale);
+      continue;
+    }
+    amEnde = false;
     if (await sichtbar(seite, t.auswegKnopf) && art === 'schwach') { await drueck(seite, t.auswegKnopf); continue; }
-    for (const knopfText of [t.wasPassiert, t.ahaWeiter, t.beispielWeiter, t.weiter, t.naechste, t.zurZentrale, t.weiterBauen]) {
+    for (const knopfText of [t.wasPassiert, t.ahaWeiter, t.beispielWeiter, t.weiter, t.naechste, t.zurZentrale, t.weiterBauen, t.auftragAnnehmen]) {
       if (await sichtbar(seite, knopfText)) {
         if (fotos && foto < 12 && knopfText !== t.naechste) {
           await seite.screenshot({ path: path.join(BILDER, `${String(foto).padStart(2, '0')}-${art}.png`), fullPage: true });
           foto += 1;
         }
         await drueck(seite, knopfText);
+        leer = 0;
         break;
       }
     }
     const aufgabe = await aktuelleAufgabe(seite);
-    const los = aufgabe?.typ === 'wahl' ? t.antworten : t.los;
-    if (!aufgabe || !(await sichtbar(seite, los))) continue;
+    const los = aufgabe?.typ === 'wahl' || aufgabe?.typ === 'reihe' ? t.antworten : t.los;
+    if (!aufgabe || !(await sichtbar(seite, los))) {
+      // Hängt das Spiel? Dann Bild und Text festhalten, statt bis zum Schrittlimit zu warten.
+      leer += 1;
+      if (leer > 40) {
+        await seite.screenshot({ path: path.join(BILDER, `99-haengt-${art}.png`), fullPage: true });
+        melde(`${art}: Spiel hängt. Zu sehen: ${(await seite.locator('main').innerText()).slice(0, 400).replace(/\s+/g, ' ')}`);
+        break;
+      }
+      continue;
+    }
+    leer = 0;
+    if (fotos && FOTO_AUFGABEN.includes(aufgabe.kennung) && !gesehen.has(aufgabe.kennung)) {
+      gesehen.add(aufgabe.kennung);
+      await seite.screenshot({ path: path.join(BILDER, `40-${aufgabe.kennung.replace('/', '-')}.png`), fullPage: true });
+    }
     if (art === 'stark') {
       await loese(seite, aufgabe);
     } else {
@@ -99,7 +140,8 @@ async function spiele(seite, art, fotos) {
     }
     await drueck(seite, los);
   }
-  if ((await seite.locator('h2', { hasText: t.auftragFertigTitel }).count()) === 0) melde(`${art}: Auftrag nach ${schritte} Schritten nicht fertig`);
+  if (fertig < auftraege.length) melde(`${art}: nur ${fertig} von ${auftraege.length} Aufträgen fertig nach ${schritte} Schritten`);
+  if (fotos) for (const kennung of FOTO_AUFGABEN) if (!gesehen.has(kennung)) melde(`stark: Aufgabe ${kennung} kam nie vor`);
   return schritte;
 }
 
@@ -115,7 +157,7 @@ try {
     seite.on('console', (m) => { if (m.type() === 'error') melde(`${art}: Konsole: ${m.text()}`); });
     seite.on('pageerror', (f) => melde(`${art}: Seitenfehler: ${f.message}`));
     const schritte = await spiele(seite, art, art === 'stark');
-    console.log(`${art}: Auftrag fertig nach ${schritte} Schritten, Lösung gezeigt: ${zaehler.hilfen} Mal`);
+    console.log(`${art}: alle Aufträge fertig nach ${schritte} Schritten, Lösung gezeigt: ${zaehler.hilfen} Mal`);
     if (art === 'schwach' && zaehler.hilfen === 0) melde('schwach: Der schwache Spieler hat nie «Lösung zeigen» benutzt, der Test beweist nichts');
     await pruefeBreite(seite, `${art} Ende`);
     if (art === 'stark') {
