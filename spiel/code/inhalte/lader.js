@@ -2,7 +2,7 @@
 const BASIS = new URL('../../inhalte/', import.meta.url);
 
 // Die Aufträge in Spielreihenfolge. Neue Aufträge werden hier eingetragen.
-export const AUFTRAEGE = ['nussgipfel', 'notenstaender', 'ochsen', 'generalversammlung'];
+export const AUFTRAEGE = ['nussgipfel', 'notenstaender', 'ochsen', 'generalversammlung', 'ferienplan'];
 
 async function ladeJson(pfad) {
   const antwort = await fetch(new URL(pfad, BASIS));

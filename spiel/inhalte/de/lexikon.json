@@ -187,5 +187,58 @@
     "kern": null,
     "erklaerung": "Wird der Kontext voll, kann Claude den bisherigen Verlauf zusammenfassen und weitermachen. Dabei gehen Einzelheiten verloren.",
     "genauer": "Notizen ausserhalb des Chats überdauern das Zusammenfassen und sogar neue Sitzungen."
+  },
+  "feldagent": {
+    "begriff": "Subagent",
+    "englisch": "subagent",
+    "kern": "feldagent",
+    "erklaerung": "Ein Helfer mit eigenem Kontext, eigener Anleitung und eigenen Werkzeugen. Er erledigt eine Teilaufgabe und gibt nur die Zusammenfassung zurück. Im Spiel heisst er Feldagent.",
+    "quatsch": "Für eine Plauderei mit vielen Rückfragen kam jede Antwort als knapper Bericht zurück.",
+    "genauer": "In Claude Code liegen eigene Subagenten als Datei in .claude/agents/ (Projekt) oder ~/.claude/agents/ (alle Projekte)."
+  },
+  "profil": {
+    "begriff": "Beschreibung und Werkzeuge eines Subagenten",
+    "englisch": "description, tools",
+    "kern": "profil",
+    "erklaerung": "Die Beschreibung sagt, wann Claude den Subagenten ruft. Die Werkzeugliste legt fest, was er darf.",
+    "quatsch": "Der Rechercheur mit Löschrecht räumte den Ferienordner weg.",
+    "genauer": "Fehlt die Werkzeugliste, bekommt der Subagent die Werkzeuge des Hauptgesprächs. Pflicht sind nur Name und Beschreibung."
+  },
+  "lagebericht": {
+    "begriff": "Auftrag an den Subagenten",
+    "englisch": "task prompt",
+    "kern": "lagebericht",
+    "erklaerung": "Was der Subagent mitbekommt: Ziel, Material und die Form der Rückmeldung. Ein eigener Subagent kennt dein Gespräch nicht.",
+    "quatsch": "Statt drei Zeilen kam ein Bericht über 14 Seiten zurück.",
+    "genauer": "Rückfragen an dich kann ein Subagent nicht stellen. Claude Code kennt auch eine Abzweigung («fork»), die den bisherigen Verlauf mitnimmt."
+  },
+  "aufteilen": {
+    "begriff": "Parallel arbeiten",
+    "englisch": "parallelization",
+    "kern": "aufteilen",
+    "erklaerung": "Unabhängige Teile einer Aufgabe laufen gleichzeitig. Am Schluss werden die Ergebnisse zusammengeführt.",
+    "quatsch": "Zwei Feldagenten suchten Hotels, keiner suchte Ausflüge.",
+    "genauer": "Viele ausführliche Berichte füllen den Hauptkontext. Darum kurze Berichte verlangen."
+  },
+  "zweiterblick": {
+    "begriff": "Prüf-Subagent",
+    "englisch": "reviewer subagent",
+    "kern": "zweiterblick",
+    "erklaerung": "Ein Subagent mit frischem Kontext prüft das Ergebnis gegen die Kriterien. Er sieht nur, was er prüfen soll.",
+    "quatsch": "Ohne «nur Wichtiges» meldete der Prüfagent 47 Kleinigkeiten.",
+    "genauer": "Anthropic rät, ihn nur Lücken melden zu lassen, die für Richtigkeit oder Anforderungen zählen."
+  },
+  "pruefagent": {
+    "begriff": "Prüfagent",
+    "englisch": "reviewer",
+    "kern": null,
+    "erklaerung": "Das Spielwort für einen Subagenten, der Ergebnisse mit frischem Blick prüft."
+  },
+  "modellwahl": {
+    "begriff": "Modell für Subagenten",
+    "englisch": "model",
+    "kern": null,
+    "erklaerung": "Im Profil eines Subagenten lässt sich festlegen, welches Claude-Modell er nutzt, zum Beispiel ein schnelleres für einfache Suchaufgaben.",
+    "genauer": "Das Feld heisst model und ist freiwillig."
   }
 }

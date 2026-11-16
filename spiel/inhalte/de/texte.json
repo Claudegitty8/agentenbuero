@@ -416,23 +416,53 @@
     },
     "feldagent": {
       "name": "Wann ein Feldagent?",
-      "analogie": "Den Praktikanten in die Bibliothek schicken."
+      "analogie": "Den Praktikanten in die Bibliothek schicken.",
+      "aha": [
+        "Ein Feldagent arbeitet in seinem eigenen Koffer.",
+        "Viel Lesestoff schickst du mit ihm weg. Zurück kommt nur sein Bericht.",
+        "Hin und Her mit vielen Rückfragen bleibt bei Echo im Hauptgespräch."
+      ],
+      "tipp": "Viel lesen: Feldagent schicken. Viel reden: selbst im Hauptgespräch."
     },
     "profil": {
       "name": "Einsatzprofil",
-      "analogie": "Stellenbeschrieb und Schlüsselbund."
+      "analogie": "Stellenbeschrieb und Schlüsselbund.",
+      "aha": [
+        "Die Beschreibung sagt, wann Echo den Feldagenten ruft.",
+        "Die Ausrüstungsliste sagt, was er darf. Ohne Liste bekommt er alles.",
+        "Gib nur mit, was er für seine Aufgabe braucht."
+      ],
+      "tipp": "Beschreibung mit Was und Wann, nur nötige Ausrüstung, kurze Anleitung."
     },
     "lagebericht": {
       "name": "Einsatzbefehl und Lagebericht",
-      "analogie": "Ein Laufzettel."
+      "analogie": "Ein Laufzettel.",
+      "aha": [
+        "Ein eigener Feldagent kennt euer Gespräch nicht.",
+        "Gib ihm Ziel und alles nötige Material mit.",
+        "Leg fest, in welcher Form der Bericht zurückkommt."
+      ],
+      "tipp": "Ziel, Material und Form des Berichts gehören in den Einsatzbefehl."
     },
     "aufteilen": {
       "name": "Aufteilen",
-      "analogie": "Zügeln mit Freunden: Jeder nimmt ein Zimmer."
+      "analogie": "Zügeln mit Freunden: Jeder nimmt ein Zimmer.",
+      "aha": [
+        "Unabhängige Teile können gleichzeitig laufen.",
+        "Jeder Feldagent bekommt genau einen Teil, ohne Überschneidung.",
+        "Echo fügt die Berichte zusammen und prüft, ob sie zusammenpassen."
+      ],
+      "tipp": "Klar getrennte Teile, gleiche Berichtsform, am Schluss zusammenführen."
     },
     "zweiterblick": {
       "name": "Zweiter Blick",
-      "analogie": "Das Vier-Augen-Prinzip."
+      "analogie": "Das Vier-Augen-Prinzip.",
+      "aha": [
+        "Wer sich selbst prüft, findet alles perfekt.",
+        "Ein Prüfagent sieht nur das Ergebnis und die Kriterien.",
+        "Er meldet nur, was wirklich zählt."
+      ],
+      "tipp": "Frischer Prüfagent, nur Ergebnis und Kriterien mitgeben, nur Wichtiges melden lassen."
     },
     "hook": {
       "name": "Sicherheitsprotokoll",
