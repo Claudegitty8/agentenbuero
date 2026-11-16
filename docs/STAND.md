@@ -15,7 +15,7 @@ Stand: 16.11.2026 · Version 0.9 · Veröffentlicht: nein (nur private Vorschau)
 ## Offen
 
 - **Repository `agentenbuero` anlegen** (Besitzer). Bis dahin liegt der Code nur in der Arbeitsumgebung und in der privaten Vorschau.
-- Entscheide bestätigen: E-010, E-014 bis E-020 und neu E-022 bis E-026.
+- Entscheide bestätigen: E-010, E-014 bis E-020 und neu E-022 bis E-027.
 - Nicht geprüft: echte Geräte (iPhone, Android), Vorlesehilfe am Gerät, Offline-Betrieb (geht erst auf GitHub Pages).
 - Testrunde mit 3 Erwachsenen (Claude-Nutzer ohne Informatik), danach Version 1.0.
 - Vor breitem Teilen: Kontakt-E-Mail, Hinweise prüfen.

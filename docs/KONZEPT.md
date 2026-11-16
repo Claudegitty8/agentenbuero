@@ -120,7 +120,7 @@ Rolle, Kontextfenster, Zusammenfassen bei vollem Kontext (Compaction), Planmodus
 **Vorgehen:** Den Code des KI-Studios als Vorlage kopieren und anpassen (Meisterschaft, Wiederholung, Hilfen, Ausweg, Speicher, Umwandlung, Inhaltsprüfung, Tests). Das KI-Studio-Repository wird dabei nur gelesen, nie geändert. Neu dazu: Einsatzkoffer, Einsatzschrank, «In Claude ausprobieren», Spielwort neben echtem Wort.
 
 **Noch zu klären im jeweiligen Kapitel:**
-- Skill und Plugin zum Hochladen brauchen eine ZIP-Datei. Ob das Spiel sie selbst erzeugt (ohne Zusatzpaket, Annahme: machbar) oder ob man Claude bittet, sie aus dem kopierten Text zu bauen, entscheide ich mit dir in Kapitel 2.
+- Skill und Plugin zum Hochladen brauchen eine ZIP-Datei. Version 0.9 (E-027, offen): Das Spiel erzeugt keine ZIP-Datei. Die Anleitung im Einsatzschrank sagt, wie man den kopierten Text als Datei speichert, oder man lässt Claude (skill-creator, Claude Code) daraus das Bauteil machen.
 - Kopieren in die Zwischenablage klappt nur auf einer sicheren Adresse (GitHub Pages ja). In der Claude-Vorschau braucht es einen Ersatz (Text markieren).
 
 ## Erste Etappe: Version 0.1
