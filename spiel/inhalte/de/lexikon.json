@@ -105,5 +105,34 @@
     "englisch": "skill",
     "kern": null,
     "erklaerung": "Das Spielwort für einen Skill. Das Deckblatt ist seine Beschreibung, die Beilagen sind Zusatzdateien."
+  },
+  "freigabe": {
+    "begriff": "Konnektor",
+    "englisch": "connector",
+    "kern": "freigabe",
+    "erklaerung": "Eine Verbindung zwischen Claude und einem Dienst wie Kalender oder Mail. Dann sieht Claude nach, statt zu raten. Im Spiel heisst sie Funkleitung.",
+    "quatsch": "Mit Senderecht ohne Nachfrage ging die Menübestätigung an alle 812 Kontakte.",
+    "genauer": "Die Werkzeuge eines Konnektors lassen sich einstellen: Always allow, Needs approval oder Blocked. In Firmenkonten legen das oft die Verantwortlichen fest."
+  },
+  "fremdes": {
+    "begriff": "Prompt Injection",
+    "englisch": "prompt injection",
+    "kern": "fremdes",
+    "erklaerung": "Versteckte Anweisungen in Mails, Websites oder Dateien. Sie sollen Claude zu etwas bringen, das du nicht willst.",
+    "quatsch": "Eine Mail in weisser Schrift wollte alle Rechnungen weiterleiten lassen.",
+    "genauer": "Claude ist darauf trainiert, Anweisungen in fremden Inhalten skeptisch zu behandeln. Ganz sicher ist das nicht. Darum Rechte begrenzen und Anfragen genau lesen."
+  },
+  "funkleitung": {
+    "begriff": "Funkleitung",
+    "englisch": "connector",
+    "kern": null,
+    "erklaerung": "Das Spielwort für einen Konnektor. Die Freigaben sind seine Rechte: was Echo immer darf, wann es fragt und was gesperrt ist."
+  },
+  "mcp": {
+    "begriff": "MCP",
+    "englisch": "Model Context Protocol",
+    "kern": null,
+    "erklaerung": "Ein offener Standard, über den Claude mit anderen Programmen spricht. Viele Konnektoren nutzen ihn.",
+    "genauer": "MCP kennt Werkzeuge, die Claude selbst aufruft, Ressourcen mit Daten und Vorlagen, die du startest."
   }
 }

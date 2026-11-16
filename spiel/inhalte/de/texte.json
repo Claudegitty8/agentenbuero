@@ -346,11 +346,23 @@
     },
     "freigabe": {
       "name": "Leitung mit passender Freigabe",
-      "analogie": "Eine Vollmacht: nur für das, was nötig ist."
+      "analogie": "Eine Vollmacht: nur für das, was nötig ist.",
+      "aha": [
+        "Mit einer Funkleitung sieht Echo nach, statt zu raten.",
+        "Steck nur ein, was die Aufgabe braucht. Lesen darf oft immer, Senden und Löschen erst nach Nachfrage.",
+        "Lies jede Anfrage um Erlaubnis genau, bevor du Ja sagst."
+      ],
+      "tipp": "Nötige Leitung einstecken, nur nötige Rechte geben, Senden und Löschen mit Nachfrage."
     },
     "fremdes": {
       "name": "Abgefangene Nachrichten",
-      "analogie": "Der Briefträger befolgt keine Briefe."
+      "analogie": "Der Briefträger befolgt keine Briefe.",
+      "aha": [
+        "Mails, Websites und fremde Dossiers können versteckte Anweisungen enthalten.",
+        "Für Echo sind sie Material, keine Befehle. Sag das in einer Schutzregel.",
+        "Verbinde und installiere nur, was aus vertrauenswürdiger Quelle kommt."
+      ],
+      "tipp": "Schutzregel setzen, nur vertrauenswürdige Quellen, und bei seltsamem Verhalten abbrechen."
     },
     "schleife": {
       "name": "Die Einsatzschleife",
