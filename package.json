@@ -1,0 +1,13 @@
+{
+  "name": "agentenbuero",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Lernspiel «Agentenbüro»: spielerisch lernen, mit Claude gute Aufträge, Skills, Konnektoren, Agenten und Subagenten zu bauen",
+  "scripts": {
+    "start": "node werkzeuge/server.mjs",
+    "test": "node --test",
+    "inhalte": "node werkzeuge/pruefe-inhalte.mjs",
+    "pruefen": "npm test && npm run inhalte"
+  }
+}

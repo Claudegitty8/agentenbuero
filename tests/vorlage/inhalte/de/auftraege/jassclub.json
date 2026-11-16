@@ -1,0 +1,922 @@
+{
+  "id": "jassclub",
+  "kapitel": 3,
+  "tokenBudget": 6000,
+  "kunde": "Herr Zbinden, Jassclub Hinterwil",
+  "wunsch": "Wir zählen unsere Jass-Punkte noch auf Bierdeckeln. Baut uns einen Punktezähler, der wirklich funktioniert!",
+  "kundenstimme": "Der Zähler rechnet richtig, und gespeichert wird auch. Die Bierdeckel sind wieder nur für das Bier da.",
+  "ueberraschung": "Echo hat jetzt Hände. Aber darf es damit alles anfassen? Morgen kommt ein Schlüsselbund ins Büro. An jedem Werkzeug hängt bald eine Ampel.",
+  "lexikon": [
+    "harness",
+    "terminal"
+  ],
+  "runden": [
+    {
+      "id": "r1",
+      "art": "konzept",
+      "konzept": "tool",
+      "probieren": {
+        "aufgabe": "to-a",
+        "nurTeile": [
+          "fest"
+        ]
+      },
+      "beispiel": {
+        "aufgabe": "to-a"
+      },
+      "luecke": {
+        "aufgabe": "to-b"
+      },
+      "frei": [
+        "to-c",
+        "to-d",
+        "to-e",
+        "to-f"
+      ]
+    },
+    {
+      "id": "r2",
+      "art": "konzept",
+      "konzept": "agentenschleife",
+      "probieren": {
+        "aufgabe": "ag-a",
+        "nurTeile": [
+          "schnell"
+        ]
+      },
+      "beispiel": {
+        "aufgabe": "ag-a"
+      },
+      "luecke": {
+        "aufgabe": "ag-b"
+      },
+      "frei": [
+        "ag-c",
+        "ag-g",
+        "ag-d",
+        "ag-e",
+        "ag-f"
+      ]
+    },
+    {
+      "id": "r3",
+      "art": "konzept",
+      "konzept": "pruefschleife",
+      "probieren": {
+        "aufgabe": "pr-a",
+        "nurTeile": [
+          "huebsch"
+        ]
+      },
+      "beispiel": {
+        "aufgabe": "pr-a"
+      },
+      "luecke": {
+        "aufgabe": "pr-b"
+      },
+      "frei": [
+        "pr-c",
+        "pr-d",
+        "pr-e",
+        "pr-f"
+      ]
+    },
+    {
+      "id": "r4",
+      "art": "misch",
+      "titel": "Alles zusammen",
+      "frei": [
+        "m5-a",
+        "m5-b"
+      ]
+    }
+  ],
+  "aufgaben": {
+    "to-a": {
+      "wunsch": "Echo soll die Punkte vom Jass-Abend in einer Datei speichern.",
+      "grundprompt": "Speichere den Punktestand von heute in der Datei punkte.txt.",
+      "teile": [
+        {
+          "id": "fest",
+          "art": "prompt",
+          "text": "Speichere es ganz sicher und für immer."
+        },
+        {
+          "id": "schreiben",
+          "art": "tool",
+          "text": "Datei schreiben"
+        },
+        {
+          "id": "rechner",
+          "art": "tool",
+          "text": "Taschenrechner"
+        }
+      ],
+      "pruefungen": [
+        {
+          "wenn": {
+            "fehlt": [
+              "schreiben"
+            ]
+          },
+          "fehlbild": "nurGeredet"
+        }
+      ],
+      "fehlbilder": {
+        "nurGeredet": {
+          "texte": [
+            "«Ich habe es ganz fest gespeichert.» Herr Zbinden schaut in den Ordner. Dort liegt keine Datei.",
+            "«Erledigt, alles gespeichert!» Nur: Die Datei punkte.txt gibt es nirgends."
+          ],
+          "hinweis": "Ohne Werkzeug kann Echo nur Text schreiben. Es hat geschrieben, dass es speichert. Gespeichert hat es nichts."
+        }
+      },
+      "erfolg": [
+        "Echo benutzt das Werkzeug «Datei schreiben». Im Ordner liegt jetzt punkte.txt mit dem Stand von heute."
+      ],
+      "loesung": [
+        "schreiben"
+      ]
+    },
+    "to-b": {
+      "typ": "wahl",
+      "wunsch": "Am Freitag jassen wir draussen. Hält das Wetter?",
+      "frage": "Echo soll herausfinden, wie das Wetter am Freitag wird. Welches Werkzeug braucht es dafür?",
+      "echo": "Echo benutzt die Websuche und meldet: «Am Freitag regnet es. Nehmt lieber die Stube.»",
+      "optionen": [
+        {
+          "id": "datei",
+          "text": "Datei lesen",
+          "hinweis": "Im Ordner des Jassclubs steht kein Wetterbericht. Echo muss draussen nachschauen: im Internet."
+        },
+        {
+          "id": "web",
+          "text": "Websuche",
+          "hinweis": "Das Wetter von Freitag steht in keinem Trainingstext. Mit der Websuche kann Echo es nachschauen.",
+          "richtig": true
+        },
+        {
+          "id": "keins",
+          "text": "Keines. Echo weiss das",
+          "hinweis": "Echos Wissen endet an einem Stichtag. Das Wetter von Freitag kann es nur raten."
+        }
+      ],
+      "loesung": [
+        "web"
+      ]
+    },
+    "to-c": {
+      "typ": "wahl",
+      "wunsch": "Schreib doch dem Vorstand kurz eine Mail, Echo.",
+      "frage": "Echo hat kein einziges Werkzeug. Du schreibst: «Schick dem Vorstand eine E-Mail.» Was kann Echo tun?",
+      "echo": "«Hier ist ein Text für die Mail. Verschicken musst du sie selbst, dafür habe ich kein Werkzeug.»",
+      "optionen": [
+        {
+          "id": "text",
+          "text": "Den Mailtext schreiben. Verschickt wird nichts",
+          "hinweis": "Ohne Werkzeug kann Echo nur Text schreiben. Zum Verschicken bräuchte es ein Mail-Werkzeug.",
+          "richtig": true
+        },
+        {
+          "id": "senden",
+          "text": "Die Mail verschicken",
+          "hinweis": "Womit denn? Echo hat kein Mail-Werkzeug. Es kann nur Text schreiben."
+        },
+        {
+          "id": "anrufen",
+          "text": "Den Vorstand anrufen",
+          "hinweis": "Auch dafür bräuchte Echo ein Werkzeug. Ohne Werkzeuge bleibt nur Text."
+        }
+      ],
+      "loesung": [
+        "text"
+      ]
+    },
+    "to-d": {
+      "typ": "wahl",
+      "wunsch": "Was kann Echo eigentlich ganz ohne Werkzeug?",
+      "frage": "Welche dieser Aufgaben schafft Echo ohne ein einziges Werkzeug?",
+      "echo": "«Wie wäre es mit Stöck-Zähler? Oder Trumpf-Meister?» Dafür braucht Echo nur Wörter.",
+      "optionen": [
+        {
+          "id": "lesen",
+          "text": "Die Datei regeln.txt lesen",
+          "hinweis": "Um eine Datei zu öffnen, braucht Echo das Werkzeug «Datei lesen»."
+        },
+        {
+          "id": "test",
+          "text": "Die Tests der App laufen lassen",
+          "hinweis": "Etwas ausführen ist eine Handlung. Dafür braucht Echo ein Werkzeug."
+        },
+        {
+          "id": "name",
+          "text": "Einen Namen für die App erfinden",
+          "hinweis": "Einen Namen erfinden ist reiner Text. Das kann Echo ohne Werkzeug.",
+          "richtig": true
+        }
+      ],
+      "loesung": [
+        "name"
+      ]
+    },
+    "to-e": {
+      "wunsch": "Echo soll unsere Jass-Regeln aus regeln.txt lesen und eine Kurzfassung in kurz.txt ablegen.",
+      "grundprompt": "Lies regeln.txt und schreib eine Kurzfassung in die Datei kurz.txt.",
+      "teile": [
+        {
+          "id": "lesen",
+          "art": "tool",
+          "text": "Datei lesen"
+        },
+        {
+          "id": "schreiben",
+          "art": "tool",
+          "text": "Datei schreiben"
+        },
+        {
+          "id": "web",
+          "art": "tool",
+          "text": "Websuche"
+        }
+      ],
+      "pruefungen": [
+        {
+          "wenn": {
+            "fehlt": [
+              "lesen"
+            ]
+          },
+          "fehlbild": "erfunden"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "schreiben"
+            ]
+          },
+          "fehlbild": "nurGeredet"
+        }
+      ],
+      "fehlbilder": {
+        "erfunden": {
+          "texte": [
+            "Echo schreibt eine Kurzfassung. Darin steht: «Wer die Dame zieht, muss ein Lied singen.» Das steht in keiner Jass-Regel.",
+            "In kurz.txt stehen jetzt Regeln für Schach. Echo konnte regeln.txt gar nicht öffnen."
+          ],
+          "hinweis": "Ohne «Datei lesen» sieht Echo die Regeln nicht. Also hat es welche erfunden."
+        },
+        "nurGeredet": {
+          "texte": [
+            "Echo liest die Regeln und sagt: «Die Kurzfassung ist abgelegt.» Eine Datei kurz.txt gibt es nicht.",
+            "«Fertig gespeichert!» Im Ordner liegt nur regeln.txt. Sonst nichts."
+          ],
+          "hinweis": "Lesen konnte Echo. Zum Ablegen fehlte das Werkzeug «Datei schreiben»."
+        }
+      },
+      "erfolg": [
+        "Echo liest regeln.txt, kürzt auf zehn Zeilen und legt sie in kurz.txt ab. Beide Werkzeuge waren nötig."
+      ],
+      "loesung": [
+        "lesen",
+        "schreiben"
+      ]
+    },
+    "to-f": {
+      "typ": "wahl",
+      "wunsch": "Echo hat die Datei gelesen. Und dann?",
+      "frage": "Echo benutzt das Werkzeug «Datei lesen». Wohin kommt das Ergebnis?",
+      "echo": "Der Inhalt der Datei liegt jetzt auf Echos Tisch. Echo liest ihn und entscheidet, was es als Nächstes tut.",
+      "optionen": [
+        {
+          "id": "kunde",
+          "text": "Direkt zum Kunden. Echo sieht es nicht",
+          "hinweis": "Doch, Echo sieht es. Jedes Ergebnis eines Werkzeugs landet auf Echos Tisch."
+        },
+        {
+          "id": "tisch",
+          "text": "Auf Echos Tisch. Echo arbeitet damit weiter",
+          "hinweis": "Jedes Ergebnis landet im Kontextfenster. Darum füllen viele Werkzeug-Ergebnisse auch den Tisch.",
+          "richtig": true
+        },
+        {
+          "id": "weg",
+          "text": "Es ist sofort wieder weg",
+          "hinweis": "Nein. Das Ergebnis bleibt auf dem Tisch liegen und braucht dort Platz."
+        }
+      ],
+      "loesung": [
+        "tisch"
+      ]
+    },
+    "ag-a": {
+      "wunsch": "In der App werden die Punkte falsch zusammengezählt. Echo soll das flicken.",
+      "grundprompt": "Flick den Fehler beim Zusammenzählen der Punkte.",
+      "teile": [
+        {
+          "id": "schnell",
+          "art": "prompt",
+          "text": "Leg sofort los, ohne lange zu schauen."
+        },
+        {
+          "id": "schauen",
+          "art": "prompt",
+          "text": "Schau zuerst nach, in welcher Datei gerechnet wird."
+        },
+        {
+          "id": "pruefen",
+          "art": "prompt",
+          "text": "Prüf am Schluss, ob die Summe jetzt stimmt."
+        }
+      ],
+      "pruefungen": [
+        {
+          "wenn": {
+            "gewaehlt": [
+              "schnell"
+            ]
+          },
+          "fehlbild": "falscheDatei"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "schauen"
+            ]
+          },
+          "fehlbild": "falscheDatei"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "pruefen"
+            ]
+          },
+          "fehlbild": "ungeprueft"
+        }
+      ],
+      "fehlbilder": {
+        "falscheDatei": {
+          "texte": [
+            "Echo flickt mit viel Eifer die Datei farben.css. Die Punkte stimmen immer noch nicht.",
+            "Echo schreibt hilfe.txt komplett neu. Sehr schön. Gerechnet wird leider woanders."
+          ],
+          "hinweis": "Echo hat nicht zuerst nachgeschaut. Ohne die Station «Kontext sammeln» arbeitet ein Agent am falschen Ort."
+        },
+        "ungeprueft": {
+          "texte": [
+            "«Fertig!» Echo hat eine Zeile geändert. Ob die Summe stimmt, hat niemand nachgeschaut. Sie stimmt nicht.",
+            "Echo ändert etwas und macht Feierabend. 20 plus 30 ergibt jetzt 2030."
+          ],
+          "hinweis": "Die dritte Station fehlt: das Ergebnis prüfen. Erst dann merkt Echo, ob es nochmals ran muss."
+        }
+      },
+      "erfolg": [
+        "Echo schaut nach, findet punkte.js, flickt die Rechnung und prüft: 20 plus 30 ergibt 50. Stimmt."
+      ],
+      "loesung": [
+        "schauen",
+        "pruefen"
+      ]
+    },
+    "ag-b": {
+      "typ": "wahl",
+      "wunsch": "Echo hat geflickt, aber die Summe ist immer noch falsch.",
+      "frage": "Echo prüft sein Ergebnis und sieht: Die Summe stimmt noch nicht. Was tut ein Agent jetzt?",
+      "echo": "Echo schaut nochmals in die Datei, findet eine zweite falsche Zeile, flickt sie und prüft erneut.",
+      "optionen": [
+        {
+          "id": "fertig",
+          "text": "Er meldet «Fertig»",
+          "hinweis": "Dann wäre das Prüfen umsonst gewesen. Ein Agent arbeitet weiter, bis das Ergebnis stimmt."
+        },
+        {
+          "id": "neu",
+          "text": "Er löscht das Projekt und fängt neu an",
+          "hinweis": "Viel zu grob. Ein Agent dreht einfach eine weitere Runde."
+        },
+        {
+          "id": "runde",
+          "text": "Er dreht noch eine Runde: nachschauen, ändern, wieder prüfen",
+          "hinweis": "Das ist die Agentenschleife. Sie wiederholt sich, bis das Ergebnis stimmt.",
+          "richtig": true
+        }
+      ],
+      "loesung": [
+        "runde"
+      ]
+    },
+    "ag-c": {
+      "typ": "wahl",
+      "wunsch": "Wie arbeitet so ein Agent eigentlich?",
+      "frage": "In welcher Reihenfolge arbeitet ein Agent?",
+      "echo": "Echo schaut nach, was da ist. Echo handelt. Echo prüft das Ergebnis. Und beginnt wieder von vorn.",
+      "optionen": [
+        {
+          "id": "kreis",
+          "text": "Nachschauen, handeln, prüfen. Und wieder von vorn",
+          "hinweis": "Genau: Kontext sammeln, handeln, Ergebnis prüfen. Das wiederholt sich, bis die Aufgabe erledigt ist.",
+          "richtig": true
+        },
+        {
+          "id": "handeln",
+          "text": "Handeln, handeln, handeln, am Schluss melden",
+          "hinweis": "Wer nie nachschaut und nie prüft, arbeitet blind."
+        },
+        {
+          "id": "einmal",
+          "text": "Alles in einem einzigen Schritt",
+          "hinweis": "Ein Agent erledigt grössere Aufgaben in vielen kleinen Schritten, nicht in einem."
+        }
+      ],
+      "loesung": [
+        "kreis"
+      ]
+    },
+    "ag-d": {
+      "typ": "wahl",
+      "wunsch": "In welcher Datei stehen eigentlich unsere Regeln?",
+      "frage": "Du fragst Echo nur: «In welcher Datei stehen die Jass-Regeln?» Was braucht es dafür?",
+      "echo": "Echo sucht im Ordner und antwortet: «In regeln.txt.» Mehr war nicht nötig.",
+      "optionen": [
+        {
+          "id": "alle",
+          "text": "Viele Runden mit Ändern und Prüfen",
+          "hinweis": "Hier gibt es nichts zu ändern. Die Schleife passt sich der Aufgabe an."
+        },
+        {
+          "id": "schauen",
+          "text": "Nur nachschauen. Zu ändern gibt es nichts",
+          "hinweis": "Für eine Frage genügt oft die erste Station: Kontext sammeln.",
+          "richtig": true
+        },
+        {
+          "id": "nichts",
+          "text": "Nichts. Echo weiss das auswendig",
+          "hinweis": "Dein Ordner stand in keinem Trainingstext. Echo muss nachschauen."
+        }
+      ],
+      "loesung": [
+        "schauen"
+      ]
+    },
+    "ag-e": {
+      "typ": "wahl",
+      "wunsch": "Hilfe, Echo baut gerade einen Poker-Zähler statt eines Jass-Zählers!",
+      "frage": "Echo arbeitet und läuft sichtbar in die falsche Richtung. Was kannst du tun?",
+      "echo": "Du unterbrichst: «Stopp, Jass, nicht Poker!» Echo korrigiert den Kurs und arbeitet weiter.",
+      "optionen": [
+        {
+          "id": "warten",
+          "text": "Warten, bis es fertig ist, und alles neu bestellen",
+          "hinweis": "Das kostet Zeit und Tokens. Du darfst jederzeit eingreifen."
+        },
+        {
+          "id": "nichts",
+          "text": "Nichts. Ein Agent lässt sich nicht stoppen",
+          "hinweis": "Doch. Du bist Teil der Schleife und kannst jederzeit unterbrechen."
+        },
+        {
+          "id": "stopp",
+          "text": "Unterbrechen und die Richtung korrigieren",
+          "hinweis": "Du gehörst zur Schleife. Du kannst jederzeit unterbrechen und Echo neu ausrichten.",
+          "richtig": true
+        }
+      ],
+      "loesung": [
+        "stopp"
+      ]
+    },
+    "ag-f": {
+      "wunsch": "Der Titel der App soll grün werden, in unserer Clubfarbe.",
+      "grundprompt": "Mach den Titel der App grün.",
+      "teile": [
+        {
+          "id": "raten",
+          "art": "prompt",
+          "text": "Die Datei heisst sicher farbe.txt. Schau nicht nach."
+        },
+        {
+          "id": "schauen",
+          "art": "prompt",
+          "text": "Such zuerst die Datei, in der die Farben stehen."
+        },
+        {
+          "id": "pruefen",
+          "art": "prompt",
+          "text": "Schau am Schluss nach, ob der Titel wirklich grün ist."
+        }
+      ],
+      "pruefungen": [
+        {
+          "wenn": {
+            "gewaehlt": [
+              "raten"
+            ]
+          },
+          "fehlbild": "gibtsNicht"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "schauen"
+            ]
+          },
+          "fehlbild": "falscheDatei"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "pruefen"
+            ]
+          },
+          "fehlbild": "ungeprueft"
+        }
+      ],
+      "fehlbilder": {
+        "gibtsNicht": {
+          "texte": [
+            "Echo legt brav eine neue Datei farbe.txt an und schreibt «grün» hinein. Der Titel bleibt grau.",
+            "Eine Datei farbe.txt gab es nie. Jetzt gibt es eine. Sie bewirkt nichts."
+          ],
+          "hinweis": "Du hast Echo das Nachschauen verboten. Ein Agent muss zuerst sehen, was wirklich da ist."
+        },
+        "falscheDatei": {
+          "texte": [
+            "Echo macht den Hintergrund der Hilfe-Seite grün. Der Titel bleibt grau.",
+            "Grün ist jetzt der Knopf «Abbrechen». Der Titel nicht."
+          ],
+          "hinweis": "Ohne Nachschauen hat Echo am falschen Ort geändert."
+        },
+        "ungeprueft": {
+          "texte": [
+            "«Fertig!» Echo hat «grun» ohne Pünktchen geschrieben. Der Titel ist jetzt schwarz.",
+            "Echo ändert die Farbe und schaut nicht hin. Der Titel leuchtet in Rosa."
+          ],
+          "hinweis": "Echo hat nicht geprüft, was herauskam. Die dritte Station fehlte."
+        }
+      },
+      "erfolg": [
+        "Echo findet stil.css, ändert die Farbe und schaut nach: Der Titel ist grün."
+      ],
+      "loesung": [
+        "schauen",
+        "pruefen"
+      ]
+    },
+    "pr-a": {
+      "wunsch": "Jetzt der Punktezähler selbst. Und diesmal soll er wirklich funktionieren.",
+      "grundprompt": "Bau einen Punktezähler für zwei Jass-Teams.",
+      "teile": [
+        {
+          "id": "huebsch",
+          "art": "prompt",
+          "text": "Es soll fertig aussehen."
+        },
+        {
+          "id": "test",
+          "art": "absicherung",
+          "text": "Prüfung: Team A bekommt 50 und dann 30 Punkte. Die Anzeige muss 80 zeigen. Arbeite, bis das klappt."
+        }
+      ],
+      "pruefungen": [
+        {
+          "wenn": {
+            "fehlt": [
+              "test"
+            ]
+          },
+          "fehlbild": "nurHallo"
+        }
+      ],
+      "fehlbilder": {
+        "nurHallo": {
+          "texte": [
+            "Echo meldet stolz «Fertig!». Die App startet. Auf dem Bildschirm steht nur «Hallo».",
+            "«Fertig!» Der Zähler sieht prächtig aus. Beim Drücken auf «Plus» passiert nichts."
+          ],
+          "hinweis": "Echo hatte keine Prüfung. Also hörte es auf, als es sich fertig anfühlte."
+        }
+      },
+      "erfolg": [
+        "Echo baut, prüft, findet einen Fehler, flickt ihn und prüft nochmals: 50 und 30 ergibt 80. Erst jetzt meldet es «Fertig»."
+      ],
+      "loesung": [
+        "test"
+      ]
+    },
+    "pr-b": {
+      "typ": "wahl",
+      "wunsch": "Die App soll am Schluss anzeigen, wer gewonnen hat.",
+      "frage": "Echo baut die Sieger-Anzeige. Welche Prüfung hilft Echo am meisten?",
+      "echo": "Echo baut, lässt die Prüfung laufen und sieht sofort: «Team A gewinnt» erscheint. Passt.",
+      "optionen": [
+        {
+          "id": "gut",
+          "text": "«Schau, dass es gut wird.»",
+          "hinweis": "Was heisst «gut»? Daran kann Echo nicht ablesen, ob es fertig ist."
+        },
+        {
+          "id": "fall",
+          "text": "«Team A hat 1000 Punkte, Team B 800. Es muss stehen: Team A gewinnt.»",
+          "hinweis": "Eine gute Prüfung nennt einen klaren Fall und das erwartete Ergebnis. Sie sagt Ja oder Nein.",
+          "richtig": true
+        },
+        {
+          "id": "gefuehl",
+          "text": "«Hör auf, wenn du zufrieden bist.»",
+          "hinweis": "Echo ist schnell zufrieden. Ein Gefühl ist keine Prüfung."
+        }
+      ],
+      "loesung": [
+        "fall"
+      ]
+    },
+    "pr-c": {
+      "typ": "wahl",
+      "wunsch": "Echo sagt, der Zähler sei fertig. Dann ist ja gut, oder?",
+      "frage": "Echo meldet: «Fertig, alles funktioniert.» Eine Prüfung ist nie gelaufen. Was weisst du jetzt?",
+      "echo": "Du probierst es aus: Der Knopf «Minus» zählt nach oben. «Fertig» war es also nicht.",
+      "optionen": [
+        {
+          "id": "offen",
+          "text": "Noch nichts. «Sieht fertig aus» heisst nicht «ist fertig»",
+          "hinweis": "Ohne Prüfung ist «Fertig» nur eine Behauptung. Lass prüfen oder prüf selbst.",
+          "richtig": true
+        },
+        {
+          "id": "ok",
+          "text": "Es funktioniert. Echo sagt es ja",
+          "hinweis": "Echo klingt immer sicher. Ob es stimmt, zeigt erst eine Prüfung."
+        },
+        {
+          "id": "kaputt",
+          "text": "Es ist sicher kaputt",
+          "hinweis": "Auch das weisst du nicht. Du weisst es erst nach einer Prüfung."
+        }
+      ],
+      "loesung": [
+        "offen"
+      ]
+    },
+    "pr-d": {
+      "typ": "wahl",
+      "wunsch": "Der Test zeigt Rot. Und jetzt?",
+      "frage": "Echo kann die Prüfung selbst laufen lassen. Sie zeigt Rot. Was soll Echo tun?",
+      "echo": "Echo liest die Fehlermeldung, flickt die Rechnung und lässt den Test nochmals laufen. Grün.",
+      "optionen": [
+        {
+          "id": "loeschen",
+          "text": "Den Test löschen. Dann ist nichts mehr rot",
+          "hinweis": "Das wäre geschummelt. Der Fehler bleibt, man sieht ihn nur nicht mehr."
+        },
+        {
+          "id": "melden",
+          "text": "«Fertig» melden",
+          "hinweis": "Rot heisst: nicht fertig. Die Prüfung ist dazu da, dass Echo weiterarbeitet."
+        },
+        {
+          "id": "flicken",
+          "text": "Fehlermeldung lesen, flicken, nochmals prüfen",
+          "hinweis": "So schliesst sich die Schleife: Die Prüfung zeigt Echo, was noch nicht stimmt.",
+          "richtig": true
+        }
+      ],
+      "loesung": [
+        "flicken"
+      ]
+    },
+    "pr-e": {
+      "wunsch": "Der Zähler soll auch auf dem Handy gut aussehen. Echo soll das selbst merken.",
+      "grundprompt": "Mach den Punktezähler passend für schmale Handy-Bildschirme.",
+      "teile": [
+        {
+          "id": "gefuehl",
+          "art": "prompt",
+          "text": "Du spürst schon, wann es passt."
+        },
+        {
+          "id": "bild",
+          "art": "absicherung",
+          "text": "Mach danach ein Bildschirmfoto in Handybreite und schau nach: Ragt etwas über den Rand?"
+        }
+      ],
+      "pruefungen": [
+        {
+          "wenn": {
+            "gewaehlt": [
+              "gefuehl"
+            ]
+          },
+          "fehlbild": "ragtRaus"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "bild"
+            ]
+          },
+          "fehlbild": "ragtRaus"
+        }
+      ],
+      "fehlbilder": {
+        "ragtRaus": {
+          "texte": [
+            "«Passt perfekt!» Auf dem Handy ragt der Knopf «Stich» halb aus dem Bild.",
+            "«Sieht super aus!» Echo hat es nie angeschaut. Die Punktzahl ist auf dem Handy abgeschnitten."
+          ],
+          "hinweis": "Echo konnte sein Ergebnis nicht sehen. Gib ihm eine Prüfung mit: hier ein Bildschirmfoto."
+        }
+      },
+      "erfolg": [
+        "Echo macht ein Bildschirmfoto, sieht den abgeschnittenen Knopf, flickt ihn und schaut nochmals nach. Jetzt passt alles."
+      ],
+      "loesung": [
+        "bild"
+      ]
+    },
+    "pr-f": {
+      "typ": "wahl",
+      "wunsch": "Was taugt denn überhaupt als Prüfung?",
+      "frage": "Welche Prüfung kann Echo wirklich brauchen?",
+      "echo": "Echo bekommt einen Test mit erwartetem Ergebnis. Der zeigt Grün oder Rot. Daran kann es sich halten.",
+      "optionen": [
+        {
+          "id": "lob",
+          "text": "Ein Lob im Voraus: «Du schaffst das!»",
+          "hinweis": "Nett, aber Echo kann daran nichts ablesen."
+        },
+        {
+          "id": "janein",
+          "text": "Etwas mit klarem Ja oder Nein: ein Test oder ein erwartetes Ergebnis",
+          "hinweis": "Eine Prüfung muss eindeutig sein. Dann merkt Echo selbst, ob es fertig ist.",
+          "richtig": true
+        },
+        {
+          "id": "muehe",
+          "text": "Die Bitte: «Gib dir Mühe»",
+          "hinweis": "Mühe sieht man dem Ergebnis nicht an. Echo braucht etwas zum Nachmessen."
+        }
+      ],
+      "loesung": [
+        "janein"
+      ]
+    },
+    "m5-a": {
+      "wunsch": "Zum Schluss die Rangliste: Echo soll sie aus rangliste.txt holen, richtig sortieren und wieder ablegen. Und es soll stimmen!",
+      "grundprompt": "Sortiere die Rangliste des Jassclubs nach Punkten.",
+      "teile": [
+        {
+          "id": "cool",
+          "art": "prompt",
+          "text": "Mach es irgendwie cool."
+        },
+        {
+          "id": "lesen",
+          "art": "tool",
+          "text": "Datei lesen"
+        },
+        {
+          "id": "schreiben",
+          "art": "tool",
+          "text": "Datei schreiben"
+        },
+        {
+          "id": "test",
+          "art": "absicherung",
+          "text": "Prüfung: Wer am meisten Punkte hat, muss zuoberst stehen. Arbeite, bis das klappt."
+        }
+      ],
+      "pruefungen": [
+        {
+          "wenn": {
+            "gewaehlt": [
+              "cool"
+            ]
+          },
+          "fehlbild": "vage"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "lesen"
+            ]
+          },
+          "fehlbild": "erfunden"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "schreiben"
+            ]
+          },
+          "fehlbild": "nurGeredet"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "test"
+            ]
+          },
+          "fehlbild": "ungeprueft"
+        }
+      ],
+      "fehlbilder": {
+        "vage": {
+          "texte": [
+            "Echo findet «cool»: Die Rangliste ist jetzt nach Schuhgrösse sortiert und blinkt.",
+            "Die Rangliste dreht sich jetzt im Kreis. Sehr cool. Lesen kann sie niemand."
+          ],
+          "hinweis": "«Cool» ist ungefähr. Echo musste raten, was du meinst."
+        },
+        "erfunden": {
+          "texte": [
+            "Echo liefert eine Rangliste mit Herrn Müller, Frau Meier und Herrn Muster. Im Club heisst niemand so.",
+            "Die Rangliste ist tadellos sortiert. Nur sind alle Namen und Punkte ausgedacht."
+          ],
+          "hinweis": "Ohne «Datei lesen» kennt Echo die Rangliste nicht und erfindet eine."
+        },
+        "nurGeredet": {
+          "texte": [
+            "Echo sortiert im Kopf und sagt: «Ist abgelegt.» Die Datei ist unverändert.",
+            "«Gespeichert!» In rangliste.txt steht noch die alte Reihenfolge."
+          ],
+          "hinweis": "Zum Ablegen fehlte das Werkzeug «Datei schreiben»."
+        },
+        "ungeprueft": {
+          "texte": [
+            "«Fertig!» Zuoberst steht Herr Zbinden mit 12 Punkten. Die Siegerin mit 4000 steht ganz unten.",
+            "Echo hat sortiert: nach Alphabet. Geprüft hat es nichts."
+          ],
+          "hinweis": "Ohne Prüfung meldet Echo «Fertig», sobald es fertig aussieht."
+        }
+      },
+      "erfolg": [
+        "Echo liest die Rangliste, sortiert, prüft: Frau Hug steht mit 4000 Punkten zuoberst. Dann legt es die Datei ab."
+      ],
+      "loesung": [
+        "lesen",
+        "schreiben",
+        "test"
+      ]
+    },
+    "m5-b": {
+      "typ": "wahl",
+      "wunsch": "Der Zähler läuft. Was habe ich jetzt eigentlich bestellt: einen Chatbot oder einen Agenten?",
+      "frage": "Was unterscheidet einen Agenten von einem reinen Chatbot?",
+      "echo": "Echo hat für den Jassclub Dateien gelesen, geändert und geprüft. Das ist mehr als reden.",
+      "optionen": [
+        {
+          "id": "schlau",
+          "text": "Ein Agent weiss mehr",
+          "hinweis": "Das Wissen ist dasselbe. Der Unterschied liegt im Handeln."
+        },
+        {
+          "id": "handelt",
+          "text": "Ein Agent hat Werkzeuge und arbeitet in einer Schleife, bis die Aufgabe erledigt ist",
+          "hinweis": "Werkzeuge zum Handeln und eine Schleife aus Nachschauen, Handeln und Prüfen: Das macht einen Agenten aus.",
+          "richtig": true
+        },
+        {
+          "id": "schnell",
+          "text": "Ein Agent antwortet schneller",
+          "hinweis": "Eher im Gegenteil: Ein Agent macht viele Schritte und braucht dafür Zeit und Tokens."
+        }
+      ],
+      "loesung": [
+        "handelt"
+      ]
+    },
+    "ag-g": {
+      "typ": "reihe",
+      "wunsch": "Auf der Hilfe-Seite steht «Trupmf» statt «Trumpf». Wie geht Echo vor?",
+      "frage": "Bring die Schritte eines Agenten in die richtige Reihenfolge.",
+      "schritte": [
+        {
+          "id": "pruefen",
+          "text": "Nachschauen, ob der Fehler jetzt weg ist"
+        },
+        {
+          "id": "handeln",
+          "text": "Das Wort in der Datei korrigieren"
+        },
+        {
+          "id": "schauen",
+          "text": "Die Datei mit der Hilfe-Seite suchen und lesen"
+        }
+      ],
+      "loesung": [
+        "schauen",
+        "handeln",
+        "pruefen"
+      ],
+      "echo": "Echo sucht die Datei, korrigiert das Wort und schaut nach: Der Fehler ist weg.",
+      "daneben": {
+        "texte": [
+          "Echo prüft zuerst, ob der Fehler weg ist. Er ist noch da. Natürlich: Es hat ja noch nichts gemacht.",
+          "Echo korrigiert drauflos, in der falschen Datei. Nachgeschaut hat es erst danach."
+        ],
+        "hinweis": "Erst nachschauen, dann handeln, dann prüfen. In dieser Reihenfolge läuft die Schleife."
+      }
+    }
+  }
+}

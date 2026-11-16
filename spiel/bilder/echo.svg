@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Echo, der Einsatzroboter">
+  <rect width="512" height="512" rx="112" fill="#155e6d"/>
+  <line x1="256" y1="150" x2="256" y2="104" stroke="#f6f4ee" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="256" cy="96" r="26" fill="#3a9bb0" stroke="#f6f4ee" stroke-width="10"/>
+  <rect x="136" y="150" width="240" height="220" rx="56" fill="#3a9bb0"/>
+  <circle cx="210" cy="250" r="26" fill="#1d2420"/>
+  <circle cx="302" cy="250" r="26" fill="#1d2420"/>
+  <rect x="206" y="312" width="100" height="16" rx="8" fill="#1d2420"/>
+</svg>

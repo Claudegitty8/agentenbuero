@@ -1,0 +1,58 @@
+{
+  "ki": {
+    "begriff": "KI",
+    "englisch": "AI (artificial intelligence)",
+    "kern": null,
+    "erklaerung": "KI heisst künstliche Intelligenz. Gemeint sind Programme wie Claude, die Texte verstehen und schreiben und mit Werkzeugen Aufgaben erledigen."
+  },
+  "ziel": {
+    "begriff": "Prompt",
+    "englisch": "prompt",
+    "kern": "ziel",
+    "erklaerung": "Der Auftrag, den du Claude schreibst. Im Spiel heisst er Funkspruch. Claude weiss nur, was darin steht.",
+    "quatsch": "«Text für den Verein» ergab 40 Strophen im Ton eines Kindergeburtstags.",
+    "genauer": "Anthropic rät: klar und direkt sein und Gründe nennen, damit Claude verallgemeinern kann."
+  },
+  "muster": {
+    "begriff": "Beispiele im Prompt",
+    "englisch": "few-shot prompting",
+    "kern": "muster",
+    "erklaerung": "Du zeigst Claude ein paar fertige Muster. So erkennt es Form und Ton, die du willst.",
+    "quatsch": "Mit nur einem Beispiel begann jede Absage mit «Liebe Frau Huber».",
+    "genauer": "Anthropic empfiehlt mehrere passende, verschiedene Beispiele. Die Zahl steht in der Faktendatei."
+  },
+  "material": {
+    "begriff": "Tags",
+    "englisch": "XML tags",
+    "kern": "material",
+    "erklaerung": "Kennzeichen wie <mail> und </mail>. Sie trennen Material von deinem Auftrag.",
+    "quatsch": "Echo befolgte «Bitte alles absagen» aus einer Kundenmail.",
+    "genauer": "Tags sind kein Schutz gegen alles. Sie helfen Claude, Teile auseinanderzuhalten."
+  },
+  "funkspruch": {
+    "begriff": "Funkspruch",
+    "englisch": "prompt",
+    "kern": null,
+    "erklaerung": "Das Spielwort für Prompt. Im Agentenbüro steht immer beides da, damit du das echte Wort lernst."
+  },
+  "einsatzkoffer": {
+    "begriff": "Einsatzkoffer",
+    "englisch": "context window",
+    "kern": null,
+    "erklaerung": "Das Spielwort für den Kontext: alles, was Claude gerade vor sich hat. Ist er zu voll, arbeitet Claude schlechter.",
+    "genauer": "Laut Anthropic füllt sich der Kontext schnell, und mit vollem Kontext sinkt die Qualität."
+  },
+  "token": {
+    "begriff": "Token",
+    "englisch": "token",
+    "kern": null,
+    "erklaerung": "Ein Wortstück. KI zählt Text in Tokens. Im Spiel misst du so den Platz im Einsatzkoffer.",
+    "genauer": "Im Spiel sind die Zahlen vereinfacht. Echte Tokens zählt jedes Modell etwas anders."
+  },
+  "halluzination": {
+    "begriff": "Halluzination",
+    "englisch": "hallucination",
+    "kern": null,
+    "erklaerung": "Wenn KI etwas Falsches sehr überzeugt sagt. Belege und «sag, wenn es fehlt» helfen dagegen."
+  }
+}

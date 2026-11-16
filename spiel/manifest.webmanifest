@@ -1,0 +1,28 @@
+{
+  "name": "Agentenbüro",
+  "short_name": "Agentenbüro",
+  "lang": "de",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f3ee",
+  "theme_color": "#155e6d",
+  "icons": [
+    {
+      "src": "bilder/echo-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "bilder/echo-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "bilder/echo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

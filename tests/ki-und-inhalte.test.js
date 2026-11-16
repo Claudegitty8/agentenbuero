@@ -1,0 +1,133 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { erstelleKi } from '../spiel/code/ki/schnittstelle.js';
+import { erstelleSpeicher } from '../spiel/code/speicher/speicher.js';
+import { neuerStand } from '../spiel/code/logik/ablauf.js';
+import { pruefeInhalte, pruefeAufgabe, pruefeUeber } from '../werkzeuge/pruefe-inhalte.mjs';
+
+const auftrag = JSON.parse(await readFile(new URL('./vorlage/inhalte/de/auftraege/baeckerei.json', import.meta.url), 'utf8'));
+const { aufgaben } = auftrag;
+const turnverein = JSON.parse(await readFile(new URL('./vorlage/inhalte/de/auftraege/turnverein.json', import.meta.url), 'utf8'));
+const dorfmuseum = JSON.parse(await readFile(new URL('./vorlage/inhalte/de/auftraege/dorfmuseum.json', import.meta.url), 'utf8'));
+const dorfzeitung = JSON.parse(await readFile(new URL('./vorlage/inhalte/de/auftraege/dorfzeitung.json', import.meta.url), 'utf8'));
+const alleAufgaben = { ...aufgaben, ...turnverein.aufgaben, ...dorfmuseum.aufgaben, ...dorfzeitung.aufgaben };
+
+test('Simulierte KI macht Quatsch passend zur Lücke und erklärt ihn', async () => {
+  const ki = erstelleKi('simuliert');
+  const leer = await ki.antworte({ aufgabe: aufgaben['p-a'], auswahl: [] });
+  assert.equal(leer.ok, false);
+  assert.equal(leer.fehlbild, 'keinZiel');
+  assert.ok(aufgaben['p-a'].fehlbilder.keinZiel.texte.includes(leer.text));
+  assert.equal(leer.hinweis, aufgaben['p-a'].fehlbilder.keinZiel.hinweis);
+
+  const vage = await ki.antworte({ aufgabe: aufgaben['p-a'], auswahl: ['ziel', 'form', 'vage1'] });
+  assert.equal(vage.fehlbild, 'vage');
+});
+
+test('Simulierte KI bringt beim zweiten Versuch einen anderen Witz', async () => {
+  const ki = erstelleKi('simuliert');
+  const erster = await ki.antworte({ aufgabe: aufgaben['p-a'], auswahl: [], versuch: 0 });
+  const zweiter = await ki.antworte({ aufgabe: aufgaben['p-a'], auswahl: [], versuch: 1 });
+  assert.notEqual(erster.text, zweiter.text);
+});
+
+test('Mit nur einem Beispiel kopiert die simulierte KI genau dieses Beispiel', async () => {
+  const antwort = await erstelleKi('simuliert').antworte({ aufgabe: aufgaben['b-a'], auswahl: ['b2'] });
+  assert.equal(antwort.fehlbild, 'eins');
+  assert.ok(antwort.text.includes('Brot in Not'));
+  assert.equal(antwort.text.includes('{teil}'), false);
+});
+
+test('Jede Aufgabe liefert mit ihrer Lösung ein gutes Ergebnis', async () => {
+  const ki = erstelleKi('simuliert');
+  for (const [id, aufgabe] of Object.entries(alleAufgaben)) {
+    const antwort = await ki.antworte({ aufgabe, auswahl: aufgabe.loesung });
+    assert.equal(antwort.ok, true, `Aufgabe ${id}`);
+    // Bau-Aufgaben haben bei Erfolg keinen Hinweis. Wahl-Aufgaben erklären immer, warum.
+    if (aufgabe.typ === 'wahl') assert.ok(antwort.hinweis);
+    else assert.equal(antwort.hinweis, null);
+    assert.ok(antwort.tokens.eingabe > 0 && antwort.tokens.ausgabe > 0);
+  }
+});
+
+test('Unbekannter KI-Modus wird klar abgelehnt', () => {
+  assert.throws(() => erstelleKi('echt'), /gibt es noch nicht/);
+});
+
+test('Speicher funktioniert auch ohne Gerätespeicher', () => {
+  const speicher = erstelleSpeicher(null);
+  assert.deepEqual(speicher.laden(), neuerStand());
+  assert.equal(speicher.speichern({ ...neuerStand(), rundenZaehler: 2 }), false);
+  assert.equal(speicher.laden().rundenZaehler, 2);
+  assert.deepEqual(speicher.loeschen(), neuerStand());
+  assert.deepEqual(speicher.laden(), neuerStand());
+});
+
+test('Speicher übersteht kaputte Daten und verwirft alte Stände', () => {
+  assert.deepEqual(erstelleSpeicher({ getItem: () => '{kaputt', setItem: () => {} }).laden(), neuerStand());
+  assert.deepEqual(erstelleSpeicher({ getItem: () => '{"version":1,"besuche":3}', setItem: () => {} }).laden(), neuerStand());
+});
+
+test('Die Lerninhalte des Agentenbüros sind vollständig', async () => {
+  assert.deepEqual(await pruefeInhalte(), []);
+});
+
+test('Die Testvorlage aus dem KI-Studio besteht die Inhaltsprüfung weiterhin', async () => {
+  const vorlage = new URL('./vorlage/inhalte/', import.meta.url).pathname;
+  assert.deepEqual(await pruefeInhalte(vorlage), []);
+});
+
+test('Die Inhaltsprüfung findet typische Fehler in einer Aufgabe', () => {
+  const fehler = [];
+  pruefeAufgabe({
+    wunsch: 'w',
+    grundprompt: 'x',
+    erfolg: ['y'],
+    teile: [{ id: 'ziel', art: 'prompt', text: 't' }],
+    pruefungen: [{ wenn: { fehlt: ['ziel'] }, fehlbild: 'keinZiel' }],
+    fehlbilder: { keinZiel: { texte: ['nur einer'] } },
+    loesung: [],
+  }, 'probe', fehler);
+  // Zu wenige Varianten, kein Hinweis, Lösung besteht nicht.
+  assert.equal(fehler.length, 3);
+});
+
+test('«Über dieses Spiel»: Kontakt darf leer sein, eine falsche E-Mail-Adresse fällt auf', async () => {
+  const texte = JSON.parse(await readFile(new URL('./vorlage/inhalte/de/texte.json', import.meta.url), 'utf8'));
+  const pruefe = (aenderung) => {
+    const fehler = [];
+    pruefeUeber({ ...texte.app, ...aenderung }, 'probe', fehler);
+    return fehler;
+  };
+  assert.deepEqual(pruefe({ ueberKontaktAdresse: '' }), []);
+  assert.deepEqual(pruefe({ ueberKontaktAdresse: 'spiel@beispiel.ch' }), []);
+  assert.equal(pruefe({ ueberKontaktAdresse: 'keine adresse' }).length, 1);
+  assert.equal(pruefe({ ueberKontaktAdresse: '<b>@x.ch' }).length, 1);
+  assert.equal(pruefe({ ueberGithubAdresse: 'http://unsicher.example' }).length, 1);
+  assert.equal(pruefe({ ueberInoffiziell: '' }).length, 1);
+  assert.equal(pruefe({ ueberDaten: 'Wort '.repeat(41) }).length, 1);
+});
+
+test('Vorhersagen: Echo tut immer dasselbe, der Hinweis erklärt die gewählte Antwort', async () => {
+  const ki = erstelleKi('simuliert');
+  const aufgabe = dorfmuseum.aufgaben['w-e'];
+  const richtig = await ki.antworte({ aufgabe, auswahl: ['raet'] });
+  const falsch = await ki.antworte({ aufgabe, auswahl: ['nachschlagen'] });
+  const leer = await ki.antworte({ aufgabe, auswahl: [] });
+  assert.equal(richtig.ok, true);
+  assert.equal(falsch.ok, false);
+  assert.equal(leer.ok, false);
+  assert.equal(richtig.text, falsch.text);
+  assert.notEqual(richtig.hinweis, falsch.hinweis);
+});
+
+test('Lange Antworten kosten mehr Tokens als kurze', async () => {
+  const ki = erstelleKi('simuliert');
+  const aufgabe = dorfzeitung.aufgaben['z-a'];
+  const teuer = await ki.antworte({ aufgabe, auswahl: ['lang'] });
+  const gut = await ki.antworte({ aufgabe, auswahl: ['kurz', 'datum'] });
+  assert.equal(teuer.fehlbild, 'teuer');
+  assert.equal(teuer.tokens.ausgabe, 900);
+  assert.ok(gut.tokens.ausgabe < 20);
+});

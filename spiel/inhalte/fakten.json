@@ -1,0 +1,47 @@
+{
+  "hinweis": "Alle Angaben, die schnell veralten. Im Spiel werden Prinzipien gelehrt. Jeder Eintrag braucht eine offizielle Quelle und ein Prüfdatum.",
+  "fakten": [
+    {
+      "id": "beispiele-anzahl",
+      "aussage": "Anthropic empfiehlt 3 bis 5 passende, verschiedene Beispiele.",
+      "quelle": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+      "geprueft": "2026-11-16"
+    },
+    {
+      "id": "format-positiv",
+      "aussage": "Anthropic empfiehlt, zu sagen, was Claude tun soll, statt was es nicht tun soll.",
+      "quelle": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+      "geprueft": "2026-11-16"
+    },
+    {
+      "id": "unterlagen-oben",
+      "aussage": "Lange Unterlagen gehören nach oben, vor die Frage. Claude soll zuerst die passenden Stellen zitieren.",
+      "quelle": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+      "geprueft": "2026-11-16"
+    },
+    {
+      "id": "tags",
+      "aussage": "Anweisungen, Material und Beispiele lassen sich mit Tags wie <mail> und </mail> trennen.",
+      "quelle": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+      "geprueft": "2026-11-16"
+    },
+    {
+      "id": "befragen",
+      "aussage": "Bei grösseren Vorhaben kann man Claude bitten, einen zuerst zu befragen.",
+      "quelle": "https://code.claude.com/docs/en/best-practices",
+      "geprueft": "2026-11-16"
+    },
+    {
+      "id": "kontext-fuellt-sich",
+      "aussage": "Der Kontext füllt sich schnell. Mit vollem Kontext arbeitet Claude schlechter.",
+      "quelle": "https://code.claude.com/docs/en/best-practices",
+      "geprueft": "2026-11-16"
+    },
+    {
+      "id": "skill-beschreibung",
+      "aussage": "Skill-Beschreibung: laut Hilfe-Center höchstens 200 Zeichen, laut Plattform-Doku höchstens 1024. Das Spiel nimmt 200.",
+      "quelle": "https://support.claude.com/en/articles/12512198-use-custom-skills",
+      "geprueft": "2026-11-16"
+    }
+  ]
+}

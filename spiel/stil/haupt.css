@@ -1,0 +1,395 @@
+/* Agentenbüro: schlichte, schematische Gestaltung, zuerst fürs Handy. */
+:root {
+  --grund: #f6f4ee;
+  --flaeche: #ffffff;
+  --text: #1d2420;
+  --leise: #5b6660;
+  --linie: #d9d6cc;
+  --echo: #3a9bb0;
+  --echo-dunkel: #155e6d;
+  --akzent: #1f5fbf;
+  --warn: #8a4b00;
+  --warn-flaeche: #fff3dc;
+  --gut-flaeche: #e7f4d8;
+  --radius: 14px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 17px;
+  line-height: 1.45;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --grund: #141815;
+    --flaeche: #1e2420;
+    --text: #eef1ec;
+    --leise: #a6b0a9;
+    --linie: #343c36;
+    --echo: #5cc2d6;
+    --echo-dunkel: #9adbe8;
+    --akzent: #8ab4ff;
+    --warn: #ffcf87;
+    --warn-flaeche: #3a2c12;
+    --gut-flaeche: #23331a;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--grund);
+  color: var(--text);
+}
+
+main {
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 1rem 1rem 3rem;
+  display: grid;
+  gap: 1rem;
+}
+
+h1, h2, p, ul, ol { margin: 0; }
+h1 { font-size: 1.7rem; }
+h2 { font-size: 1.15rem; }
+
+.kopf p, .klein, .fuss { color: var(--leise); font-size: 0.9rem; }
+
+.karte {
+  background: var(--flaeche);
+  border: 1px solid var(--linie);
+  border-radius: var(--radius);
+  padding: 1rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.etikett {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--leise);
+}
+
+.wunsch { font-size: 1.05rem; }
+
+.prompt {
+  border: 2px dashed var(--linie);
+  border-radius: 10px;
+  padding: 0.7rem;
+  min-height: 3.2rem;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.95rem;
+}
+
+.bausteine { display: grid; gap: 0.5rem; }
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  min-height: 48px;
+  border-radius: 10px;
+}
+
+button:focus-visible { outline: 3px solid var(--akzent); outline-offset: 2px; }
+
+.baustein {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: left;
+  padding: 0.5rem 0.8rem;
+  background: transparent;
+  border: 2px solid var(--linie);
+}
+
+.baustein-zeichen {
+  display: inline-grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  font-weight: 700;
+  flex: none;
+}
+
+.baustein[aria-pressed="true"] {
+  border-color: var(--echo-dunkel);
+  background: var(--gut-flaeche);
+}
+
+.baustein[aria-pressed="true"] .baustein-zeichen { transform: rotate(45deg); }
+
+.los {
+  border: none;
+  background: var(--echo-dunkel);
+  color: var(--grund);
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 0.7rem 1rem;
+}
+
+.los:disabled { opacity: 0.6; }
+
+.echo-zeile {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.8rem;
+  align-items: start;
+}
+
+/* Echo, der Einsatzroboter: eckiger Kopf mit Antenne */
+.echo {
+  position: relative;
+  margin-top: 0.9rem;
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 24%;
+  background: var(--echo);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.auge {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #1d2420;
+}
+
+.echo::before {
+  content: '';
+  position: absolute;
+  top: -0.6rem;
+  left: 50%;
+  width: 0.2rem;
+  height: 0.6rem;
+  transform: translateX(-50%);
+  background: var(--echo-dunkel);
+}
+.echo::after {
+  content: '';
+  position: absolute;
+  top: -0.9rem;
+  left: 50%;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: var(--echo);
+}
+.echo.froh .auge { height: 0.3rem; border-radius: 0.3rem 0.3rem 0 0; }
+
+.sprechblase {
+  background: var(--grund);
+  border: 1px solid var(--linie);
+  border-radius: 4px var(--radius) var(--radius) var(--radius);
+  padding: 0.7rem 0.8rem;
+}
+
+.hinweis:empty { display: none; }
+
+.hinweis {
+  background: var(--warn-flaeche);
+  color: var(--warn);
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.95rem;
+}
+
+.hinweis.gut { background: var(--gut-flaeche); color: var(--echo-dunkel); }
+
+.check, .kapitel { padding-left: 1.3rem; display: grid; gap: 0.3rem; }
+.kapitel span { color: var(--leise); }
+
+.fehler { color: var(--warn); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .baustein-zeichen, .auge { transition: transform 0.15s, height 0.15s; }
+}
+
+/* ---------- Ab Version 0.2: Spielablauf ---------- */
+:root[data-schrift="gross"] { font-size: 20px; }
+:root[data-schrift="sehrgross"] { font-size: 23px; }
+
+main:focus { outline: none; }
+[hidden] { display: none !important; }
+
+.knopf, .knopf-zweit, .knopf-leise, .knopf-warn {
+  padding: 0.6rem 1rem;
+  background: transparent;
+  border: 2px solid var(--linie);
+  font-weight: 600;
+}
+.knopf-leise { border-color: transparent; padding-left: 0; color: var(--akzent); }
+.knopf-warn { border-color: var(--warn); color: var(--warn); }
+
+.knopf-reihe { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+/* Links (z. B. in «Über dieses Spiel»): gut lesbar, unterstrichen, nicht nur über Farbe erkennbar. */
+a { color: var(--akzent); overflow-wrap: anywhere; }
+/* Eigene Zeile mit genug Höhe für den Daumen (mindestens 44 Pixel). */
+.link-zeile { display: inline-flex; align-items: center; min-height: 44px; justify-self: start; }
+.knopf-reihe > * { flex: 1 1 9rem; }
+.aktionen { display: grid; gap: 0.6rem; }
+.aktionen:empty { display: none; }
+
+.leiste { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.leiste-titel { color: var(--leise); font-size: 0.9rem; }
+
+.schritte {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+}
+.schritte li {
+  flex: 1;
+  text-align: center;
+  padding: 0.3rem 0.1rem;
+  border-bottom: 3px solid var(--linie);
+  color: var(--leise);
+}
+.schritte li.aktuell { border-color: var(--echo-dunkel); color: var(--text); font-weight: 700; }
+
+.punkte { display: inline-flex; gap: 0.3rem; vertical-align: middle; }
+.punkt {
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  border: 2px solid var(--echo-dunkel);
+}
+.punkt.voll { background: var(--echo-dunkel); }
+
+.meister-zeile, .meister-liste li, .eintrag summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.meister-liste { list-style: none; padding: 0; display: grid; gap: 0.5rem; }
+
+.teil-gruppe { display: grid; gap: 0.5rem; }
+.baustein:disabled { opacity: 0.75; cursor: default; }
+.baustein.markiert { border-color: var(--akzent); border-style: dashed; }
+.teil-hinweis, .hilfe-text, .status { font-size: 0.95rem; }
+.teil-hinweis:empty, .hilfe-text:empty, .status:empty { display: none; }
+.teil-hinweis, .hilfe-text { color: var(--akzent); }
+.status { font-weight: 600; }
+
+.aha h2 { font-size: 1.4rem; }
+.merkbild {
+  border-left: 4px solid var(--echo);
+  padding-left: 0.8rem;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.runden { padding-left: 1.4rem; display: grid; gap: 0.2rem; color: var(--leise); }
+.runden .aktuell { color: var(--text); font-weight: 700; }
+.runden .geschafft { text-decoration: line-through; }
+.runden .geschafft::after { content: " ✓"; }
+
+.feier { justify-items: center; text-align: center; }
+.wand-eintrag { display: grid; gap: 0.2rem; }
+
+.eintrag summary { cursor: pointer; font-weight: 700; min-height: 44px; }
+.rueckfrage { display: grid; gap: 0.6rem; background: var(--warn-flaeche); border-radius: 10px; padding: 0.8rem; }
+.eintrag { display: block; }
+.eintrag > p { margin-top: 0.5rem; }
+.prompt.system { border-style: solid; border-color: var(--echo); }
+
+/* ---------- Ab Version 0.4: Vorhersagen ---------- */
+.frage { font-size: 1.05rem; }
+.baustein.wahl .baustein-zeichen { transform: none; }
+.baustein.wahl[aria-pressed="true"] .baustein-zeichen { background: var(--echo-dunkel); border-color: var(--echo-dunkel); box-shadow: inset 0 0 0 4px var(--gut-flaeche); }
+.sichtfenster { display: grid; gap: 0.4rem; border-top: 1px solid var(--linie); padding-top: 0.6rem; }
+.anteil { display: grid; grid-template-columns: 7.5rem 1fr 4.5rem; gap: 0.5rem; align-items: center; font-size: 0.9rem; }
+.anteil-bahn { background: var(--grund); border-radius: 6px; height: 0.9rem; overflow: hidden; }
+.anteil-balken { display: block; height: 100%; background: var(--echo); border-radius: 6px; }
+.anteil-stufe { color: var(--leise); }
+.stufe-3 { width: 90%; }
+.stufe-2 { width: 40%; }
+.stufe-1 { width: 8%; }
+
+/* ---------- Ab Version 0.5: Tokens und Kontextfenster ---------- */
+.token-zeile { font-size: 0.9rem; color: var(--leise); }
+.token-zeile.zuviel { color: var(--warn); font-weight: 700; }
+.tisch { display: grid; gap: 0.3rem; border-top: 1px solid var(--linie); padding-top: 0.6rem; }
+.tisch-bahn { display: block; height: 1rem; border-radius: 6px; background: var(--grund); border: 1px solid var(--linie); overflow: hidden; }
+.tisch-fuellung { display: block; height: 100%; background: var(--echo); }
+.tisch[data-zustand="eng"] .tisch-fuellung { background: #c98a00; }
+.tisch[data-zustand="voll"] .tisch-fuellung { background: #b3261e; }
+.tisch[data-zustand="voll"] .klein, .tisch[data-zustand="eng"] .klein { color: var(--warn); font-weight: 600; }
+.fuell-0 { width: 2%; } .fuell-1 { width: 10%; } .fuell-2 { width: 20%; } .fuell-3 { width: 30%; } .fuell-4 { width: 40%; }
+.fuell-5 { width: 50%; } .fuell-6 { width: 60%; } .fuell-7 { width: 70%; } .fuell-8 { width: 80%; } .fuell-9 { width: 90%; } .fuell-10 { width: 100%; }
+.steine { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+.stein { padding: 0.2rem 0.45rem; border-radius: 6px; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.95rem; border: 1px solid var(--linie); }
+.farbe-0 { background: var(--gut-flaeche); } .farbe-1 { background: var(--warn-flaeche); } .farbe-2 { background: var(--grund); } .farbe-3 { background: transparent; }
+.kosten:empty, .budget-hinweis:empty { display: none; }
+
+/* Schnelltest: Ergebnisliste */
+.ergebnis-liste { padding-left: 1.2rem; display: grid; gap: 0.4rem; }
+
+/* Sortieren: Schritte mit Pfeilen verschieben */
+.reihe { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; counter-reset: platz; }
+.reihe-zeile {
+  counter-increment: platz;
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.5rem 0.6rem; border: 2px solid var(--linie); border-radius: 12px; background: var(--flaeche);
+}
+.reihe-zeile::before { content: counter(platz) "."; font-weight: 700; color: var(--leise); min-width: 1.4rem; }
+.reihe-zeile.markiert { border-color: var(--warn); background: var(--warn-flaeche); }
+.reihe-text { flex: 1; }
+.reihe-knoepfe { display: flex; gap: 0.35rem; }
+.reihe-knopf {
+  width: 2.75rem; height: 2.75rem; border: 2px solid var(--linie); border-radius: 10px;
+  background: transparent; color: var(--text); font-size: 1rem;
+}
+.reihe-knopf:disabled { opacity: 0.35; }
+
+/* Ampel an den Rechten: Die Farbe ergänzt den Text, sie ersetzt ihn nicht. */
+.ampel { flex: none; width: 0.85rem; height: 0.85rem; border-radius: 50%; border: 2px solid var(--text); }
+.ampel-gruen { background: #3f9b3a; }
+.ampel-gelb { background: #e8b923; }
+.ampel-rot { background: #c93a32; }
+
+/* Stationen einer Schleife im Aha */
+.stationen-bild { display: grid; gap: 0.3rem; }
+.stationen { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
+.stationen li { padding: 0.35rem 0.7rem; border: 2px solid var(--echo-dunkel); border-radius: 999px; font-weight: 600; }
+.stationen li + li::before { content: "→"; margin-right: 0.6rem; margin-left: -0.2rem; color: var(--leise); font-weight: 400; }
+
+summary:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid var(--akzent); outline-offset: 2px; }
+
+/* Die Zentrale als kleines Bild: Einrichtung des Kapitels und gekaufte Zierde auf einem Boden */
+.zentrale-bild { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 0.5rem; padding: 0.4rem 0.8rem 0.2rem; border-bottom: 4px solid var(--linie); font-size: 1.8rem; line-height: 1.2; }
+
+/* Springen (E-043): Liste der Aufträge in den Einstellungen */
+.sprung-liste { list-style: none; padding: 0; margin: 0.6rem 0 0; display: grid; gap: 0.4rem; }
+.sprung-knopf { width: 100%; text-align: left; }
+.sprung-fertig { display: block; padding: 0.5rem 0.2rem; color: var(--leise, inherit); }
+.sprung-auf > summary::after { content: '▸'; font-size: 1.2em; }
+.sprung-auf[open] > summary::after { content: '▾'; }
+.sprung-liste .rueckfrage, .sprung-zurueck .rueckfrage { margin-top: 0.4rem; }
+.sprung-zurueck { display: grid; gap: 0.4rem; margin-top: 0.6rem; }
+
+/* Einsatzschrank: Vorlage zum Kopieren */
+.schrank-text {
+  display: block;
+  width: 100%;
+  margin: 0.4rem 0 0.8rem;
+  padding: 0.7rem;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--grund);
+  border: 1px solid var(--linie);
+  border-radius: var(--radius);
+  resize: vertical;
+}
