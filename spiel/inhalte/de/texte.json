@@ -366,23 +366,53 @@
     },
     "schleife": {
       "name": "Die Einsatzschleife",
-      "analogie": "Kochen mit Abschmecken."
+      "analogie": "Kochen mit Abschmecken.",
+      "aha": [
+        "Ein Einsatz läuft in Schritten: nachsehen, handeln, prüfen.",
+        "Gib klare Kriterien und lass dir einen Beweis zeigen, statt «Erledigt» zu glauben.",
+        "Soll Echo handeln, schreib eine Anweisung. Auf eine Frage gibt es oft nur Vorschläge."
+      ],
+      "tipp": "Anweisung statt Frage, zuerst nachsehen lassen, danach mit Kriterien prüfen und den Beweis zeigen lassen."
     },
     "plan": {
       "name": "Plan vorlegen lassen",
-      "analogie": "Zuerst die Wanderkarte, dann los."
+      "analogie": "Zuerst die Wanderkarte, dann los.",
+      "aha": [
+        "Bei grossen oder unklaren Aufgaben: zuerst den Plan zeigen lassen.",
+        "Lies den Plan, korrigiere ihn und gib ihn frei. Erst dann legt Echo los.",
+        "Kleine, klare Aufgaben erledigt Echo direkt."
+      ],
+      "tipp": "Gross oder unklar: zuerst den Plan. Klein und klar: direkt."
     },
     "kette": {
       "name": "Feste Kette oder freier Einsatz",
-      "analogie": "Fliessband oder Handwerker."
+      "analogie": "Fliessband oder Handwerker.",
+      "aha": [
+        "Was jedes Mal gleich abläuft, legst du als feste Kette fest.",
+        "Kontrollpunkte halten Fehler auf, bevor sie weiterwandern.",
+        "Offene Fragen passen zu einem freien Einsatz. Fang einfach an."
+      ],
+      "tipp": "Planbares als Kette mit Kontrollpunkt, Offenes als freier Einsatz, und klein anfangen."
     },
     "haltepunkte": {
       "name": "Haltepunkte und Verantwortung",
-      "analogie": "Notbremse und Unterschrift."
+      "analogie": "Notbremse und Unterschrift.",
+      "aha": [
+        "Vor Löschen, Senden und Bestellen fragt Echo zuerst.",
+        "Begrenze die Versuche, damit nichts endlos läuft.",
+        "Was in deinem Namen hinausgeht, liest du selbst."
+      ],
+      "tipp": "Frag vor Unumkehrbarem, höchstens drei Versuche, und lies gegen, was in deinem Namen hinausgeht."
     },
     "frisch": {
       "name": "Koffer frisch halten",
-      "analogie": "Logbuch und aufgeräumter Arbeitstisch."
+      "analogie": "Logbuch und aufgeräumter Arbeitstisch.",
+      "aha": [
+        "Bei langen Aufgaben hält ein Einsatzprotokoll fest, was erledigt und was offen ist.",
+        "Neues Thema: neuer Chat.",
+        "Nach zwei misslungenen Korrekturen: neu anfangen mit besserem Auftrag."
+      ],
+      "tipp": "Stand in einer Datei festhalten, neues Thema im neuen Chat, nach zwei Fehlversuchen frisch starten."
     },
     "feldagent": {
       "name": "Wann ein Feldagent?",

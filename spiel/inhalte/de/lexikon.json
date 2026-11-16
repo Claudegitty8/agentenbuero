@@ -134,5 +134,58 @@
     "kern": null,
     "erklaerung": "Ein offener Standard, über den Claude mit anderen Programmen spricht. Viele Konnektoren nutzen ihn.",
     "genauer": "MCP kennt Werkzeuge, die Claude selbst aufruft, Ressourcen mit Daten und Vorlagen, die du startest."
+  },
+  "schleife": {
+    "begriff": "Agent",
+    "englisch": "agent",
+    "kern": "schleife",
+    "erklaerung": "Claude arbeitet selbständig in Schritten: nachsehen, handeln, prüfen, wiederholen, bis die Aufgabe erledigt ist. Im Spiel heisst das Einsatz.",
+    "quatsch": "Ohne Prüfen meldete Echo «Erledigt», und der Saal war doppelt gebucht.",
+    "genauer": "Laut Anthropic hilft es sehr, Claude eine Prüfung zu geben, die es selbst laufen lassen kann, und einen Beweis zu verlangen."
+  },
+  "plan": {
+    "begriff": "Planmodus",
+    "englisch": "plan mode",
+    "kern": "plan",
+    "erklaerung": "Claude erkundet zuerst und legt einen Plan vor, ohne etwas zu ändern. Erst nach deinem Okay geht es los. Claude Code hat dafür einen eigenen Modus.",
+    "quatsch": "Für einen Tippfehler schrieb Echo drei Seiten Plan.",
+    "genauer": "Anthropic rät: erst erkunden, dann planen, dann umsetzen. Bei kleinen, klaren Änderungen den Plan weglassen."
+  },
+  "kette": {
+    "begriff": "Workflow",
+    "englisch": "workflow",
+    "kern": "kette",
+    "erklaerung": "Ein fester Ablauf mit vorgegebenen Schritten. Ein Agent dagegen entscheidet selbst, welche Schritte er macht.",
+    "quatsch": "Ohne Kontrollpunkt landete ein Zahlendreher auf 500 Flyern.",
+    "genauer": "Anthropic rät, einfach anzufangen und mehr Aufwand nur einzusetzen, wenn es nachweislich besser wird."
+  },
+  "haltepunkte": {
+    "begriff": "Mensch im Ablauf",
+    "englisch": "human in the loop",
+    "kern": "haltepunkte",
+    "erklaerung": "Feste Stellen, an denen Claude anhält und dich fragt. Vor allem vor Schritten, die sich nicht rückgängig machen lassen.",
+    "quatsch": "Echo räumte den Ordner auf, indem es alles löschte.",
+    "genauer": "Im Kurs «AI Fluency» heisst die Verantwortung für das, was du mit KI tust, «Diligence»."
+  },
+  "frisch": {
+    "begriff": "Kontext leeren",
+    "englisch": "clear context",
+    "kern": "frisch",
+    "erklaerung": "Ein neuer Chat beginnt mit leerem Kontext. Für lange Aufgaben hält eine Notizdatei den Stand fest.",
+    "quatsch": "Alles in einem Chat: Echo mischte den Ferienplan in die Vereinseinladung.",
+    "genauer": "Anthropic rät: zwischen Aufgaben ohne Bezug den Kontext leeren, nach zwei misslungenen Korrekturen frisch anfangen."
+  },
+  "einsatzprotokoll": {
+    "begriff": "Einsatzprotokoll",
+    "englisch": "progress notes",
+    "kern": null,
+    "erklaerung": "Das Spielwort für eine Notizdatei mit dem Arbeitsstand: was erledigt ist, was offen ist, was entschieden wurde."
+  },
+  "zusammenfassen": {
+    "begriff": "Zusammenfassen bei vollem Kontext",
+    "englisch": "compaction",
+    "kern": null,
+    "erklaerung": "Wird der Kontext voll, kann Claude den bisherigen Verlauf zusammenfassen und weitermachen. Dabei gehen Einzelheiten verloren.",
+    "genauer": "Notizen ausserhalb des Chats überdauern das Zusammenfassen und sogar neue Sitzungen."
   }
 }
