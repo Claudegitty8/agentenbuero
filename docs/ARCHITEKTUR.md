@@ -1,6 +1,6 @@
 # Architektur: Lernspiel «Agentenbüro»
 
-**Zusätze im Agentenbüro (Version 0.1 bis 0.9, 16.11.2026):**
+**Zusätze im Agentenbüro (Version 0.1 bis 0.10, 17.11.2026):**
 - Die Technik ist aus dem KI-Studio (Version 0.17) übernommen. Kiwi heisst Echo, das Studio heisst Zentrale, Kiwis Tisch heisst Einsatzkoffer (Felder `fenster` und `tokensUeber` wie bisher).
 - **Einsatzschrank** (E-016): Ein Auftrag kann das Feld `schrank` mit `titel`, `vorlage` (ein echter Prompt, höchstens 200 Wörter) und `wo` (wo man ihn bei Claude einfügt) tragen. `spiel/code/logik/schrank.js` (`schrankInhalt`) liefert die freigeschalteten Bauteile, `spiel/code/oberflaeche/schrank.js` zeigt sie mit Kopierknopf. Die Inhaltsprüfung prüft Felder und Texte.
 - **Testvorlage** (E-015): `tests/vorlage/` enthält die Inhalte des KI-Studios. Die übernommenen Tests laufen damit. `tests/agentenbuero.test.js` prüft die eigenen Inhalte.
@@ -10,6 +10,11 @@
 - **Jedes Lösungsteil nötig** (Version 0.9, E-023): Die Inhaltsprüfung entfernt jedes Teil der Lösung einmal und meldet, wenn die Aufgabe trotzdem besteht. Teile einer Gruppe `aus … hoechstens` sind ausgenommen.
 - **Hilfe bei vollem Koffer** (Version 0.9, E-024): `hilfeTeil` zeigt bei einer zutreffenden Prüfung `tokensUeber` auf das schwerste gewählte Teil ausserhalb der Lösung.
 - **Lehrplan aus den Inhalten:** `node werkzeuge/lehrplan-doku.mjs [datum]` schreibt `docs/LEHRPLAN.md`.
+- **«In echt» (Version 0.10, E-029 bis E-031):** Nachgezeichnete Bildschirme der Claude-App liegen als Daten in `spiel/inhalte/de/schirme.json` (kein Bild, nur Textbausteine). Ein Bildschirm hat `stand` (Datum), `fenster`, wahlweise `kopfleiste`, `seitenleiste`, `aktiv` (hervorgehobene Einträge) und `inhalt` (Bausteine: `titel`, `text`, `reiter`, `knoepfe`, `menue`, `liste`, `schalter`, `feld`, `chat`, `eingabe`, `code`, `dateien`, `frage`, `karten`, `einstellungen`). Er kann mit `basis` auf einem anderen aufbauen und mit `einschub` (`nach` einer Stelle, `inhalt`) zum Beispiel ein offenes Menü einfügen. Jeder Eintrag mit `id` ist eine antippbare Stelle. Logik: `spiel/code/logik/schirme.js` (`loeseSchirm`, `stellenVon`, `schrittText`), Zeichnen: `spiel/code/oberflaeche/schirm.js`.
+  - **Durchklicken** (`typ: "klick"`, `oberflaeche/klick.js`): `frage`, `schritte` (je `schirm`, `ziel`, `text` mit Platzhalter `{ziel}`, `falsch` = Stelle → Fehlbild, `sonst`), wahlweise `nachher` (Bild nach dem letzten Tipp), `erfolg`, `fehlbilder`. Die Lösung steht nur in den Zielen (`loesungVon`). Jeder Tipp prüft selbst: falsch getippt oder am Ziel (`selbstAbgabe`, `beiAbgabe`). Die Vorgabe der Lücke ist der Anfang des Wegs. Beispiel und «Lösung zeigen» erscheinen als Bilderstrecke (`baueStrecke`).
+  - **Einstellen im Bild** (`typ: "einstellen"`, `oberflaeche/einstellen.js`): `frage`, `schirm`, `zeilen` (je `id`, `text`, wahlweise `unter`, `start`, `optionen`), `loesung` (eine Option pro Zeile), `pruefungen` und `fehlbilder` wie beim Zusammenstecken. «Zeig mir, wo» zeigt in der betroffenen Zeile die Option der Lösung.
+  - **Sortieren mit Bild:** Ein Schritt einer `reihe` kann `schirm` und `ziel` tragen. Er zeigt dann einen kleinen Ausschnitt um die Stelle.
+  - **Probefahrt** (E-029): `schrank.probefahrt` mit `aufgabe` (eine Aufgabe zum Durchklicken aus demselben Auftrag) und `punkte` (zwei bis sechs, je `id` und `text`). Abgehakte Punkte stehen im Spielstand unter `probefahrt.<auftrag>` (`hakeAb` in `logik/schrank.js`, Umwandlung in `wandleUm`).
 - **Neuer Auftrag:** JSON in `spiel/inhalte/de/auftraege/`, Kennung in `AUFTRAEGE` in `spiel/code/inhalte/lader.js` eintragen, `npm run pruefen`, Browser-Durchspiel, Lehrplan neu erzeugen.
 
 Der folgende Text stammt aus dem KI-Studio und gilt weiter, soweit oben nichts anderes steht. Zahlen wie «24 Konzepte» betreffen dort das KI-Studio.

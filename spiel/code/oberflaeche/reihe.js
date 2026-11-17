@@ -13,7 +13,7 @@ export function baueReihe({ aufgabe, t, schirme = {}, gesperrt = false }) {
   const bilder = new Map(aufgabe.schritte.filter((schritt) => schritt.schirm).map((schritt) => [schritt.id, schritt]));
   const bildVon = (id) => {
     const schritt = bilder.get(id);
-    return schritt ? baueSchirm(loeseSchirm(schirme, schritt.schirm), t, { klein: true, markiert: schritt.ziel, markiertText: t.schirmHier }) : null;
+    return schritt ? baueSchirm(loeseSchirm(schirme, schritt.schirm), t, { klein: true, ausschnitt: schritt.ziel, markiert: schritt.ziel, markiertText: t.schirmHier }) : null;
   };
   const liste = el('ol', { klasse: 'reihe' });
   const hinweisZumTeil = el('p', { klasse: 'teil-hinweis', role: 'status' });

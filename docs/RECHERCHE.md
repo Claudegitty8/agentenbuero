@@ -64,7 +64,7 @@ Quellen: https://support.claude.com/en/articles/11176164 · https://support.clau
 - Eigene Konnektoren laufen über einen MCP-Server im Internet, Claude verbindet sich aus Anthropics Cloud.
 - Eigene Konnektoren sind nicht von Anthropic geprüft: nur vertrauenswürdige verbinden, Rechte genau ansehen, Anfragen um Erlaubnis genau lesen, bei der Funktion «Research» schreibende Werkzeuge ausschalten.
 - MCP kennt drei Arten: Werkzeuge (Claude entscheidet), Ressourcen (Daten), Vorlagen (vom Menschen gestartet). Programme können pro Werkzeug festlegen lassen, ob es verfügbar ist.
-- **Geprüft (vorher Annahme):** Die Werkzeuge eines Konnektors lassen sich nach Gruppen (nur lesen, schreiben und löschen) oder einzeln auf «Always allow», «Needs approval» oder «Blocked» stellen. In Team- und Enterprise-Konten legen das die Verantwortlichen für alle fest (https://support.claude.com/en/articles/11176164). Mitglieder können ihre eigene Freigabe auf «Always allow» setzen, wenn die Rolle es erlaubt (https://support.claude.com/en/articles/13930458). Deutsche Knopfnamen: nicht geprüft, darum nennt das Spiel die englischen.
+- **Geprüft (vorher Annahme):** Die Werkzeuge eines Konnektors lassen sich nach Gruppen (nur lesen, schreiben und löschen) oder einzeln auf «Always allow», «Needs approval» oder «Blocked» stellen. In Team- und Enterprise-Konten legen das die Verantwortlichen für alle fest (https://support.claude.com/en/articles/11176164). Mitglieder können ihre eigene Freigabe auf «Always allow» setzen, wenn die Rolle es erlaubt (https://support.claude.com/en/articles/13930458). Deutsche Namen seit Version 0.10 aus der deutschen Hilfeseite: «Immer zulassen», «Genehmigung erforderlich», «Blockiert» (in der App nicht geprüft, siehe «In echt» unten).
 - Sicherheit bei eigenen Konnektoren (Offiziell, https://support.claude.com/en/articles/11175166): Bösartige Server können versteckte Anweisungen enthalten. Nur Server von vertrauenswürdigen Anbietern, verlangte Rechte prüfen und unnötige ablehnen, Anfragen um Erlaubnis genau lesen, «Allow always» nur für Werkzeuge, denen man ohne Aufsicht traut, nicht nötige Werkzeuge ausschalten.
 - Versteckte Anweisungen (Prompt Injection), Offiziell: Anweisungen in Websites, Mails und Dokumenten können Claude zu ungewollten Handlungen verleiten. Verlangt Claude plötzlich heikle Angaben, den Auftrag sofort stoppen (https://support.claude.com/en/articles/12902428). Beispiel einer Mail mit weisser Schrift, die Weiterleiten verlangt (https://anthropic.com/research/prompt-injection-defenses). Claude ist darauf trainiert, Anweisungen in Werkzeug-Ergebnissen skeptisch zu behandeln (https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks). Darum übertreibt das Spiel bewusst, wenn Echo fremde Anweisungen befolgt, und das Lexikon sagt, dass Claude dagegen trainiert ist.
 - **Unklar:** Verbinden am Handy: Ein neuerer Artikel sagt, man kann am Handy neue Dienste verbinden. Ein älterer sagt, eigene Server lassen sich am Handy nicht hinzufügen. Beides kann stimmen. Nicht neu geprüft, das Spiel behauptet dazu nichts.
@@ -102,6 +102,32 @@ Quellen: https://code.claude.com/docs/en/hooks-guide · https://claude.com/docs/
 - Impressum vor Spenden und Informationspflicht beim Datenschutz: aus dem Wissensspeicher (Stand 13.11.2026), heute nicht neu geprüft. Vor Spenden neu prüfen.
 - Lernforschung (Lernspiele wirken, sich abfragen und verteilt üben, produktives Scheitern): aus dem Wissensspeicher (Stand 11.11.2026), heute nicht neu geprüft.
 
+### In echt: Knopfnamen der deutschen Desktop-App (Version 0.10)
+
+**Vorlage:** 15 Bildschirmfotos des Besitzers vom 17.11.2026 (Windows, Desktop-App, Deutsch). Die Fotos liegen nicht im Repository, weil sie private Chattitel zeigen. Dazu die deutschen Hilfeseiten (https://support.claude.com/de/articles/12512180-skills-in-claude-verwenden und https://support.claude.com/de/articles/11176164-verwenden-sie-konnektoren-um-die-fahigkeiten-von-claude-zu-erweitern, abgerufen 17.11.2026).
+
+**Geprüft (auf den Fotos zu sehen):**
+- Seitenleiste: «+ Neu», «Suchen», «Projekte», «Artefakte», «Geplant», «Design», «Anpassungen». Oben links zwei Symbole für Chat und Code («</>»). Unten links der eigene Name mit Menü: «Einstellungen», «Nutzung», «Sprache», «Hilfe», «Mehr erfahren», «Alle Pläne anzeigen», «Abmelden».
+- Anpassungen: Reiter «Skills», «Konnektoren», «Plugins», Umschalter «Meine» und «Entdecken», Knopf «+ Hinzufügen». Karten unter «Entdecken» mit «Ausprobieren» und «+» (bei Konnektoren nur «+»).
+- Menü «+ Hinzufügen» bei den Skills: «Skill hochladen», «Einen Skill erstellen», «Mit Claude erstellen», «Bildschirm aufnehmen».
+- Skills «Meine»: Abschnitte «Von dir erstellt» und «Von Anthropic & Partnern». Kein Schalter in der Liste zu sehen (die Hilfeseite spricht von einem Schalter).
+- Konnektoren «Meine»: Tabelle «Konnektor», «Typ», «Status». Plugins «Meine»: Liste der Plugins.
+- Einstellungen, «Funktionen»: Abschnitt «Codeausführung und Dateierstellung» mit dem Schalter «Code in der Cloud ausführen» und dem Hinweis «Erforderlich für Skills», dazu «Ausgehenden Netzwerkverkehr erlauben». Unter «Skills»: «Skills wurden zu Anpassen verschoben».
+- Plus im Chat: «Dateien hochladen oder hinzufügen …», «Ordner hinzufügen», «Einen Skill aufnehmen», «Skills», «Konnektoren», «Designsystem», «Plugins», «Recherche».
+- Code-Bereich: «Neue Sitzung», «Umgebung auswählen», «Ordner zum Arbeiten auswählen», Eingabefeld «Beschreibe etwas, das du bauen, ändern oder reparieren möchtest», darunter «Dieser Computer» und «Auto».
+
+**Widerspruch 6:** Die Hilfeseite sagt «Anpassen» und «Fähigkeiten» und für den Schalter «Code-Ausführung und Dateierstellung» (neu «Dateien erstellen und bearbeiten»). Die App sagt «Anpassungen», «Skills» und «Code in der Cloud ausführen». Das Spiel folgt der App (E-032).
+
+**Nicht geprüft (aus der Hilfeseite oder vereinfacht):**
+- Fenster nach «+» bei einem Konnektor mit «Verbinden» und «Abbrechen». Die Anmeldeseite des Dienstes ist erfunden (Zwirbel-Kalender, Zwirbel-Mail).
+- Rechte pro Werkzeug: «Immer zulassen», «Genehmigung erforderlich», «Blockiert». Die Hilfeseite beschreibt das Einschränken als Funktion für Verantwortliche in Team- und Enterprise-Konten. Ob Einzelkonten dieselbe Auswahl sehen, war nicht zu prüfen (der Besitzer hat keinen Konnektor mit Werkzeugen).
+- Konnektoren im Chat: Untermenü mit einem Schalter pro Konnektor und «Konnektoren verwalten».
+- Was «Ausprobieren» bei einem Plugin genau tut und dass «+» es zu «Meine» hinzufügt.
+- Code-Bereich nach dem Senden: Claude meldet die angelegte Datei. Die Auswahl der Nachricht ist eine Vereinfachung im Spiel (beschriftet «Auswahl im Spiel»). Ob Claude vor dem Anlegen um Erlaubnis fragt, hängt vom Modus ab («Auto» auf dem Foto), darum zeigt das Spiel keine Erlaubnisfrage.
+- Ein Dateifenster zum Hochladen (Windows) ist vereinfacht gezeichnet.
+
+**Unklar:** Die Hilfeseite https://support.claude.com/en/articles/17740565 kündigt an, dass «Customize» künftig «Plugins» heisst (Einführung ab 29.10.2026). Die App des Besitzers zeigt am 17.11.2026 noch «Anpassungen». Vor Version 1.0 neu prüfen (Backlog).
+
 ## Fehlerprüfung des Konzepts
 
 **Wie geprüft:** In jeder Runde zuerst ein Prüfskript (`werkzeuge/pruefe_vorschlag.py`): kein scharfes S, 21 Konzepte fortlaufend und richtig auf die Kapitel verteilt, jede Tabellenzeile vollständig, Verweise «Konzept N» passen zum Namen, gleiche Konzeptzahl überall, keine Namen aus Entwurf 1 ausserhalb von der Änderungsliste des Vorschlags, Entscheide fortlaufend, nur https-Links, keine Doppelnamen bei Kapiteln und Bereichen, jedes Spielwort wird auch benutzt. Danach das Dokument von Hand gelesen und jede Fachaussage mit der Quelle aus dieser Sitzung verglichen. Ein neu gefundener Fehlertyp wurde ins Skript aufgenommen und mit einer Gegenprobe getestet (der alte Fehler wird erkannt).
@@ -128,3 +154,16 @@ Quellen: https://code.claude.com/docs/en/hooks-guide · https://claude.com/docs/
 | 4 | 0 | Ganze Prüfung nochmals nach allen Korrekturen: Tests, Inhaltsprüfung, Browser-Durchspiel stark und schwach, Textsuche. | – |
 
 **Ehrlich gesagt:** Eine Runde ohne neuen Fund heisst nicht, dass alles fehlerfrei ist. Nicht geprüft: echte Handys, Vorlesehilfe am Gerät, deutsche Knopfnamen in der Claude-App, ob Skills zwischen App und Claude Code wandern (Widerspruch 3).
+
+## Fehlerprüfung Version 0.10 (In echt)
+
+**Wie geprüft:** Inhaltsprüfung mit neuen Regeln für Bildschirme, Durchklicken, Einstellen und Probefahrt (jede Zielstelle existiert, jeder Fehltipp hat ein Fehlbild, die Hilfe führt von jedem Zustand zur Lösung), 114 Tests, Browser-Durchspiel aller 7 Aufträge mit gutem und schwachem Spieler (der schwache tippt beim Durchklicken zuerst daneben), Probefahrt abhaken und neu laden, Bildschirmfotos in 320, 390 und 1280 px, hell und dunkel, selbst angesehen. Alle neuen Texte einmal ganz gelesen. Keine privaten Angaben aus den Fotos im Spiel (Test sucht danach).
+
+| Runde | Gefunden | Beispiele | Korrigiert |
+|---|---|---|---|
+| 1 | 4 | Kleine Bilder beim Sortieren am Handy unlesbar (jetzt nur ein Ausschnitt um die Stelle). Browser-Durchspiel fand die Schritte mit Bild nicht und versuchte im Beispiel zu tippen. Am Handy ragte eine Sortierzeile 5 px über den Rand. | alle, Durchspiel ergänzt |
+| 2 | 3 | Pfeile «▾» und «›» standen in «Bisher getippt». Schalter für Skills hiess zuerst wie auf der Hilfeseite, nach dem Foto «Code in der Cloud ausführen». Satz «von Anfang an an». | alle, Test ergänzt |
+| 3 | 0 | Ganze Prüfung nochmals: Tests, Inhaltsprüfung, Browser-Durchspiel, Fotos. | – |
+
+**Ehrlich gesagt:** Nicht geprüft sind die oben aufgeführten Stellen, echte Handys und Vorlesehilfen am Gerät.
+

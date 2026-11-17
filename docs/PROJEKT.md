@@ -58,7 +58,7 @@ Dateigrösse: unter 800 KB · Start am Handy: unter 2 Sekunden (Annahme) ·
 Rückfall: ohne Bewegung, wenn «Bewegung reduzieren» eingestellt ist
 
 ## Fertig (Version 1.0), wenn
-- alle 6 Kapitel mit 21 Konzepten und die Schlussmission spielbar sind
+- alle 6 Kapitel mit 21 Konzepten, den 4 Runden «In echt» und die Schlussmission spielbar sind
 - alle Prüfungen grün sind, auch mit einem schwachen Spieler
 - eine Testrunde mit mindestens 3 Erwachsenen (Claude-Nutzer ohne Informatik)
   gelaufen ist und jede Person mindestens ein gebautes Teil in echtem Claude benutzt hat

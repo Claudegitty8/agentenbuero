@@ -13,8 +13,17 @@ export function loeseSchirm(schirme, id, gesehen = new Set()) {
   if (!eigen.basis) return { id, ...eigen };
   const basis = loeseSchirm(schirme, eigen.basis, new Set([...gesehen, id]));
   if (!basis) return null;
-  const { basis: _, ...rest } = eigen;
-  return { ...basis, ...rest, id, inhalt: eigen.inhalt ?? basis.inhalt };
+  const { basis: _, einschub, ...rest } = eigen;
+  const inhalt = eigen.inhalt ?? basis.inhalt ?? [];
+  return { ...basis, ...rest, id, inhalt: einschub ? schiebeEin(inhalt, einschub) : inhalt };
+}
+
+// Ein offenes Menü oder Fenster unter einer Stelle einfügen («einschub»: nach welcher Stelle, welche Bausteine).
+// So bleibt der Rest des Bildschirms aus der Basis und steht nur einmal in den Daten.
+function schiebeEin(inhalt, { nach, inhalt: neu }) {
+  const stelle = inhalt.findIndex((baustein) => stellenVon({ inhalt: [baustein] }).includes(nach));
+  if (stelle < 0) return [...inhalt, ...neu];
+  return [...inhalt.slice(0, stelle + 1), ...neu, ...inhalt.slice(stelle + 1)];
 }
 
 // Alle Einträge eines Bildschirms, die man antippen kann (haben eine id).
@@ -44,7 +53,12 @@ export function stellenVon(schirm) {
 export function schrittText(schritt, schirme) {
   if (!schritt.text?.includes('{ziel}')) return schritt.text;
   const ziel = eintraegeVon(loeseSchirm(schirme, schritt.schirm)).find((e) => e.id === schritt.ziel);
-  return schritt.text.replaceAll('{ziel}', (ziel?.text ?? '').replace(/\s*▾$/, ''));
+  return schritt.text.replaceAll('{ziel}', beschriftung(ziel?.text ?? ''));
+}
+
+// Beschriftung einer Stelle ohne Pfeilzeichen (aus «+ Hinzufügen ▾» wird «+ Hinzufügen», aus «Skills ›» wird «Skills»).
+export function beschriftung(text) {
+  return text.replace(/\s*[▾›]$/, '');
 }
 
 // Ist ein Eintrag hervorgehoben (zum Beispiel der offene Reiter)? Der Bildschirm kann das für Einträge

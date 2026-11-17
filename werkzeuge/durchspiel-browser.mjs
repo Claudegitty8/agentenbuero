@@ -22,7 +22,9 @@ const aufgaben = auftraege.flatMap((a) => Object.entries(a.aufgaben).map(([id, a
 // Von diesen Aufgaben macht der gute Spieler ein Bildschirmfoto: je eine Art Aufgabe aus jedem Kapitel.
 const FOTO_AUFGABEN = ['nussgipfel/z-a', 'notenstaender/w-a', 'notenstaender/d-a', 'notenstaender/l-a', 'ochsen/f-a', 'ochsen/e-a',
   'generalversammlung/s-a', 'generalversammlung/s-c', 'generalversammlung/k-a', 'ferienplan/fa-a', 'ferienplan/pr-a',
-  'odermatt/hk-a', 'odermatt/pk-a', 'dorffest/df-a', 'dorffest/df-k'];
+  'odermatt/hk-a', 'odermatt/pk-a', 'dorffest/df-a', 'dorffest/df-k',
+  // «In echt» (Version 0.10): Durchklicken, Einstellen, Sortieren mit Bildern
+  'notenstaender/se-a', 'notenstaender/se-d', 'notenstaender/se-f', 'ochsen/ke-c', 'ochsen/ke-e', 'ferienplan/sa-e', 'odermatt/hp-a'];
 
 const probleme = [];
 const melde = (text) => { probleme.push(text); console.log(`PROBLEM: ${text}`); };
@@ -55,7 +57,7 @@ async function loese(seite, aufgabe) {
     for (const [ziel, id] of aufgabe.loesung.entries()) {
       const text = textVon.get(id);
       for (let versuch = 0; versuch < aufgabe.schritte.length; versuch += 1) {
-        const zeilen = await seite.locator('li.reihe-zeile .reihe-text').allInnerTexts();
+        const zeilen = await seite.locator('li.reihe-zeile .reihe-text > span:first-child').allInnerTexts(); // ohne die kleinen Bilder
         if (zeilen.indexOf(text) <= ziel) break;
         await seite.getByRole('button', { name: t.reiheHoch.replace('{text}', text), exact: true }).click();
       }
@@ -64,6 +66,8 @@ async function loese(seite, aufgabe) {
   }
   if (aufgabe.typ === 'klick') {
     // Durchklicken: ab dem aktuellen Bild die richtigen Stellen antippen. Der letzte Tipp prüft von selbst.
+    // Im Beispiel (Bilderstrecke) gibt es nichts anzutippen, dort genügt «Echo, los!».
+    if (!(await klickOffen(seite))) return;
     const text = await seite.locator('.klick-fortschritt').innerText();
     const ab = Number(/(\d+)/.exec(text)?.[1] ?? 1) - 1;
     for (const schritt of aufgabe.schritte.slice(ab)) {

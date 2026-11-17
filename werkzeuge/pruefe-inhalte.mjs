@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { bewerte, hilfeTeil, loesungVon } from '../spiel/code/logik/bewertung.js';
 import { ARTEN } from '../spiel/code/logik/prompt.js';
-import { SCHIRM_ARTEN, eintraegeVon, istAktiv, loeseSchirm, stellenVon } from '../spiel/code/logik/schirme.js';
+import { SCHIRM_ARTEN, eintraegeVon, loeseSchirm, stellenVon } from '../spiel/code/logik/schirme.js';
 
 const STANDARD_ORDNER = fileURLToPath(new URL('../spiel/inhalte/', import.meta.url));
 const MAX_WOERTER = 40; // Leitlinie B7: kein Textblock über 40 Wörter
@@ -542,6 +542,8 @@ export function pruefeSchirme(schirme, name, fehler) {
       fehler.push(`${wo}: Basis fehlt oder verweist im Kreis`);
       continue;
     }
+    const einschub = schirme[id].einschub;
+    if (einschub && !stellenVon(loeseSchirm(schirme, schirme[id].basis) ?? {}).includes(einschub.nach)) fehler.push(`${wo}: einschub.nach nennt «${einschub.nach}», das es in der Basis nicht gibt`);
     if (!/^\d{1,2}\.\d{1,2}\.\d{4}$/.test(schirm.stand ?? '')) fehler.push(`${wo}: braucht ein Datum «stand» (TT.MM.JJJJ)`);
     if (!istText(schirm.fenster)) fehler.push(`${wo}: braucht einen Fensternamen`);
     for (const baustein of schirm.inhalt ?? []) {
@@ -550,9 +552,11 @@ export function pruefeSchirme(schirme, name, fehler) {
     const stellen = stellenVon(schirm);
     const doppelt = stellen.filter((stelle, i) => stellen.indexOf(stelle) !== i);
     if (doppelt.length > 0) fehler.push(`${wo}: Stelle doppelt: ${[...new Set(doppelt)].join(', ')}`);
-    const eintraege = [...(schirm.kopfleiste ?? []), ...(schirm.seitenleiste ?? []), ...(schirm.inhalt ?? []).flatMap((b) => b.eintraege ?? [])];
+    // Hervorheben lässt sich jede antippbare Stelle und jeder Eintrag ohne id über seinen Text.
+    const namen = new Set([...stellenVon(schirm),
+      ...[...(schirm.kopfleiste ?? []), ...(schirm.seitenleiste ?? []), ...(schirm.inhalt ?? []).flatMap((b) => b.eintraege ?? [])].map((e) => e.text)]);
     for (const aktiv of schirm.aktiv ?? []) {
-      if (!eintraege.some((e) => istAktiv(schirm, e) && (e.id ?? e.text) === aktiv)) fehler.push(`${wo}: aktiv nennt «${aktiv}», das es nicht gibt`);
+      if (!namen.has(aktiv)) fehler.push(`${wo}: aktiv nennt «${aktiv}», das es nicht gibt`);
     }
     const texte = eintraegeVon(schirm).map((e) => e.text).concat((schirm.inhalt ?? []).map((b) => b.text));
     if (texte.some(zuLang)) fehler.push(`${wo}: Ein Text hat mehr als ${MAX_WOERTER} Wörter`);

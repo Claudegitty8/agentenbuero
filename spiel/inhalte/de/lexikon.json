@@ -294,5 +294,37 @@
     "kern": null,
     "erklaerung": "Ein Satz am Anfang, der Claude eine Rolle gibt, zum Beispiel «Du schreibst für das Sekretariat eines Musikvereins». Das hilft bei Ton und Blickwinkel.",
     "genauer": "Anthropic rät, die Rolle in einem Satz zu nennen."
+  },
+  "skillEcht": {
+    "begriff": "Skill hochladen",
+    "englisch": "upload a skill",
+    "kern": "skillEcht",
+    "erklaerung": "Einen fertigen Skill als ZIP-Datei in die Claude-App bringen: Anpassungen, «+ Hinzufügen», «Skill hochladen». Danach gilt er in allen Chats.",
+    "quatsch": "Herr Imhof hängte das Dossier im Chat an. Im nächsten Chat war es weg.",
+    "genauer": "Die Hilfeseiten sagen «Anpassen» und «Fähigkeiten», die deutsche App «Anpassungen» und «Skills». Gemeint ist dasselbe."
+  },
+  "konnektorEcht": {
+    "begriff": "Konnektor verbinden",
+    "englisch": "connect a connector",
+    "kern": "konnektorEcht",
+    "erklaerung": "Einen Dienst wie Kalender oder Mail mit Claude verbinden: Anpassungen, Konnektoren, hinzufügen, beim Dienst anmelden, Rechte pro Werkzeug einstellen.",
+    "quatsch": "Frau Gisler erlaubte «Mail senden» ohne Nachfrage. Die Probe-Einladung ging an alle Gäste.",
+    "genauer": "Claude erbt deine Rechte im Dienst. Was du dort nicht siehst, sieht auch Claude nicht."
+  },
+  "subagentEcht": {
+    "begriff": "Subagent anlegen",
+    "englisch": "create a subagent",
+    "kern": "subagentEcht",
+    "erklaerung": "Im Code-Bereich Claude bitten, einen Subagenten zu schreiben. Er landet als Datei im Ordner .claude/agents und hat eigene Anleitung und Werkzeuge.",
+    "quatsch": "Familie Meier schrieb nur «Mach einen Agenten». Der Agent hiess agent-1 und durfte alles.",
+    "genauer": "Im Ordner .claude/agents des Projekts gilt er nur dort, in ~/.claude/agents für alle deine Projekte."
+  },
+  "hookEcht": {
+    "begriff": "Hook und Plugin einrichten",
+    "englisch": "set up hooks and plugins",
+    "kern": "hookEcht",
+    "erklaerung": "Plugins holst du unter Anpassungen, Plugins. Hooks lässt du Claude im Code-Bereich schreiben und liest sie vor dem Ja.",
+    "quatsch": "Herr Odermatt sagte zu allem Ja. Ein Hook löschte danach bei jedem Start die Notizen.",
+    "genauer": "Hooks und Subagenten wirken dort, wo Claude selbständig an Dateien arbeitet, zum Beispiel im Code-Bereich."
   }
 }

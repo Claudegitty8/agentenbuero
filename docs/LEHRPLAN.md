@@ -1,6 +1,6 @@
 # Lehrplan
 
-Stand: 16.11.2026 · Version 0.9. Aus den Inhaltsdateien erzeugt mit `node werkzeuge/lehrplan-doku.mjs`. Die Tabelle «Mechanik ist das Konzept» steht in `KONZEPT.md`.
+Stand: 17.11.2026 · Version 0.10. Aus den Inhaltsdateien erzeugt mit `node werkzeuge/lehrplan-doku.mjs`. Die Tabelle «Mechanik ist das Konzept» steht in `KONZEPT.md`.
 
 ## Übersicht
 
@@ -13,31 +13,35 @@ Stand: 16.11.2026 · Version 0.9. Aus den Inhaltsdateien erzeugt mit `node werkz
 | 5 | Das Deckblatt | 2 Das Archiv | Wohin gehört es? | Das Etikett auf dem Ordnerrücken. | ja |
 | 6 | Schlankes Dossier | 2 Das Archiv | Das Deckblatt | Ein Kochbuch mit Inhaltsverzeichnis. | ja |
 | 7 | Probefälle | 2 Das Archiv | Das Deckblatt | Eine Probefahrt vor der Lieferung. | ja |
-| 8 | Leitung mit passender Freigabe | 3 Die Funkleitungen | Ziel, Leser, Grund | Eine Vollmacht: nur für das, was nötig ist. | ja |
-| 9 | Abgefangene Nachrichten | 3 Die Funkleitungen | Material trennen und belegen, Leitung mit passender Freigabe | Der Briefträger befolgt keine Briefe. | ja |
-| 10 | Die Einsatzschleife | 4 Der Einsatz | Ziel, Leser, Grund | Kochen mit Abschmecken. | ja |
-| 11 | Plan vorlegen lassen | 4 Der Einsatz | Die Einsatzschleife | Zuerst die Wanderkarte, dann los. | ja |
-| 12 | Feste Kette oder freier Einsatz | 4 Der Einsatz | Die Einsatzschleife | Fliessband oder Handwerker. | ja |
-| 13 | Haltepunkte und Verantwortung | 4 Der Einsatz | Leitung mit passender Freigabe | Notbremse und Unterschrift. | ja |
-| 14 | Koffer frisch halten | 4 Der Einsatz | Die Einsatzschleife | Logbuch und aufgeräumter Arbeitstisch. | ja |
-| 15 | Wann ein Feldagent? | 5 Agenten im Feld | Koffer frisch halten | Den Praktikanten in die Bibliothek schicken. | ja |
-| 16 | Einsatzprofil | 5 Agenten im Feld | Wann ein Feldagent?, Das Deckblatt | Stellenbeschrieb und Schlüsselbund. | ja |
-| 17 | Einsatzbefehl und Lagebericht | 5 Agenten im Feld | Wann ein Feldagent? | Ein Laufzettel. | ja |
-| 18 | Aufteilen | 5 Agenten im Feld | Wann ein Feldagent? | Zügeln mit Freunden: Jeder nimmt ein Zimmer. | ja |
-| 19 | Zweiter Blick | 5 Agenten im Feld | Wann ein Feldagent?, Die Einsatzschleife | Das Vier-Augen-Prinzip. | ja |
-| 20 | Sicherheitsprotokoll | 6 Die Technikabteilung | Haltepunkte und Verantwortung | Ein Rauchmelder statt «denk dran». | ja |
-| 21 | Einsatzpaket | 6 Die Technikabteilung | Das Deckblatt, Leitung mit passender Freigabe, Einsatzprofil | Eine beschriftete Umzugskiste. | ja |
+| 8 | In echt: Skill hochladen | 2 Das Archiv | Das Deckblatt | Das Dossier ins Archiv der Zentrale stellen. | ja |
+| 9 | Leitung mit passender Freigabe | 3 Die Funkleitungen | Ziel, Leser, Grund | Eine Vollmacht: nur für das, was nötig ist. | ja |
+| 10 | Abgefangene Nachrichten | 3 Die Funkleitungen | Material trennen und belegen, Leitung mit passender Freigabe | Der Briefträger befolgt keine Briefe. | ja |
+| 11 | In echt: Konnektor verbinden | 3 Die Funkleitungen | Leitung mit passender Freigabe | Der Funkleitung einen Schlüssel geben, aber nur für die richtigen Türen. | ja |
+| 12 | Die Einsatzschleife | 4 Der Einsatz | Ziel, Leser, Grund | Kochen mit Abschmecken. | ja |
+| 13 | Plan vorlegen lassen | 4 Der Einsatz | Die Einsatzschleife | Zuerst die Wanderkarte, dann los. | ja |
+| 14 | Feste Kette oder freier Einsatz | 4 Der Einsatz | Die Einsatzschleife | Fliessband oder Handwerker. | ja |
+| 15 | Haltepunkte und Verantwortung | 4 Der Einsatz | Leitung mit passender Freigabe | Notbremse und Unterschrift. | ja |
+| 16 | Koffer frisch halten | 4 Der Einsatz | Die Einsatzschleife | Logbuch und aufgeräumter Arbeitstisch. | ja |
+| 17 | Wann ein Feldagent? | 5 Agenten im Feld | Koffer frisch halten | Den Praktikanten in die Bibliothek schicken. | ja |
+| 18 | Einsatzprofil | 5 Agenten im Feld | Wann ein Feldagent?, Das Deckblatt | Stellenbeschrieb und Schlüsselbund. | ja |
+| 19 | Einsatzbefehl und Lagebericht | 5 Agenten im Feld | Wann ein Feldagent? | Ein Laufzettel. | ja |
+| 20 | Aufteilen | 5 Agenten im Feld | Wann ein Feldagent? | Zügeln mit Freunden: Jeder nimmt ein Zimmer. | ja |
+| 21 | Zweiter Blick | 5 Agenten im Feld | Wann ein Feldagent?, Die Einsatzschleife | Das Vier-Augen-Prinzip. | ja |
+| 22 | In echt: Subagent anlegen | 5 Agenten im Feld | Einsatzprofil | Den Feldagenten mit Ausweis und Schlüsselbund ins Büro holen. | ja |
+| 23 | Sicherheitsprotokoll | 6 Die Technikabteilung | Haltepunkte und Verantwortung | Ein Rauchmelder statt «denk dran». | ja |
+| 24 | Einsatzpaket | 6 Die Technikabteilung | Das Deckblatt, Leitung mit passender Freigabe, Einsatzprofil | Eine beschriftete Umzugskiste. | ja |
+| 25 | In echt: Hook und Plugin | 6 Die Technikabteilung | Sicherheitsprotokoll, Einsatzpaket | Den Rauchmelder montieren und die fertige Kiste ins Regal stellen. | ja |
 
 ## Aufträge
 
 | Nr | Auftrag | Kapitel | Auftraggeber | Runden | Aufgaben | Einsatzschrank |
 |---|---|---|---|---|---|---|
 | 1 | Operation Nussgipfel | 1 Der Funkspruch | Frau Brunner, Bäckerei Brunner | 4 | 20 | Funkspruch: Mitteilung an Stammkunden |
-| 2 | Operation Notenständer | 2 Das Archiv | Herr Imhof, Musikverein Zwirbelwil | 5 | 26 | Dossier (Skill): Protokoll im Vereinsstil |
-| 3 | Operation Stammtisch | 3 Die Funkleitungen | Frau Gisler, Gasthof Ochsen | 3 | 14 | Fallakte: Schutzregeln für Funkleitungen |
+| 2 | Operation Notenständer | 2 Das Archiv | Herr Imhof, Musikverein Zwirbelwil | 6 | 32 | Dossier (Skill): Protokoll im Vereinsstil |
+| 3 | Operation Stammtisch | 3 Die Funkleitungen | Frau Gisler, Gasthof Ochsen | 4 | 20 | Fallakte: Schutzregeln für Funkleitungen |
 | 4 | Operation Generalversammlung | 4 Der Einsatz | Herr Fässler, Gewerbeverein Zwirbelwil | 6 | 32 | Einsatzbefehl für grosse Aufträge |
-| 5 | Operation Ferienplan | 5 Agenten im Feld | Familie Meier | 6 | 32 | Einsatzprofil (Subagent): Reise-Rechercheur |
-| 6 | Operation Hobelbank | 6 Die Technikabteilung | Herr Odermatt, Schreinerei Odermatt | 3 | 14 | Bauplan: Sicherheitsprotokoll und Einsatzpaket |
+| 5 | Operation Ferienplan | 5 Agenten im Feld | Familie Meier | 7 | 38 | Einsatzprofil (Subagent): Reise-Rechercheur |
+| 6 | Operation Hobelbank | 6 Die Technikabteilung | Herr Odermatt, Schreinerei Odermatt | 4 | 20 | Bauplan: Sicherheitsprotokoll und Einsatzpaket |
 | 7 | Operation Dorffest | 6 Die Technikabteilung | Das Dorffest-Komitee, ganz Zwirbelwil | 3 | 11 | Bauplan: dein eigenes kleines System |
 
 ## Kapitel 1: Der Funkspruch – Auftrag «Operation Nussgipfel»
@@ -50,7 +54,7 @@ Auftraggeber: Frau Brunner, Bäckerei Brunner. Wunsch: «Ab Montag öffnen wir s
 - **Merkbild:** Bestellung beim Bäcker: «etwas Süsses» oder «6 Nussgipfel bis 7 Uhr».
 - **Aha:** Echo weiss nur, was im Funkspruch steht. Sag das Ziel, für wen es ist und warum. Fehlt dir selbst etwas, lass Echo zuerst fragen.
 - **Lexikon:** Prompt (prompt)
-- **Probieren und Beispiel:** z-a (nur sichtbar: vage1, vage2)
+- **Probieren und Beispiel:** z-a, Zusammenstecken (nur sichtbar: vage1, vage2)
 - **Lücke:** z-b (schon gesteckt: ziel)
 - **Frei:**
   - z-c, Zusammenstecken: «Mach mir einen Einladungstext fürs Jubiläum. Das Datum weiss ich gerade nicht.»
@@ -87,7 +91,7 @@ Auftraggeber: Frau Brunner, Bäckerei Brunner. Wunsch: «Ab Montag öffnen wir s
 - **Merkbild:** Ein Schnittmuster: Wer drei verschiedene sieht, erkennt, worauf es ankommt.
 - **Aha:** Mit einem Beispiel kopiert Echo es fast wörtlich. Drei verschiedene Beispiele zeigen, was gleich bleiben soll. Sag, wie es sein soll, nicht nur, wie nicht.
 - **Lexikon:** Beispiele im Prompt (few-shot prompting)
-- **Probieren und Beispiel:** m-a (nur sichtbar: bsp1, nicht)
+- **Probieren und Beispiel:** m-a, Zusammenstecken (nur sichtbar: bsp1, nicht)
 - **Lücke:** m-b (schon gesteckt: bsp1)
 - **Frei:**
   - m-c, Zusammenstecken: «Schreib einen Spruch für die Ladentafel vor der Bäckerei.»
@@ -122,7 +126,7 @@ Auftraggeber: Frau Brunner, Bäckerei Brunner. Wunsch: «Ab Montag öffnen wir s
 - **Merkbild:** Beschriftete Ablagefächer: Briefe hier, Aufträge dort.
 - **Aha:** Material ist kein Befehl. Trenn es mit Tags. Lass Echo zuerst die passende Stelle zitieren. Bitte Echo, Lücken zu melden statt zu raten.
 - **Lexikon:** Tags (XML tags)
-- **Probieren und Beispiel:** s-a (nur sichtbar: laut, liste)
+- **Probieren und Beispiel:** s-a, Zusammenstecken (nur sichtbar: laut, liste)
 - **Lücke:** s-b (schon gesteckt: fach, liste)
 - **Frei:**
   - s-c, Zusammenstecken: «Sag Frau Weber, ob es den Nussgipfel auch ohne Nüsse gibt. Sie hat eine Allergie.»
@@ -168,7 +172,7 @@ Auftraggeber: Herr Imhof, Musikverein Zwirbelwil. Wunsch: «Jeden Montag schreib
 - **Merkbild:** Einkaufszettel, Familienordner, Rezeptbuch.
 - **Aha:** Was nur heute gilt, gehört in den Funkspruch. Was in jedem Chat eines Themas gilt, gehört in die Fallakte (Projektanweisung). Einen Ablauf, den du immer wieder brauchst, legst du als Dossier (Skill) ab.
 - **Lexikon:** Projekt (project)
-- **Probieren und Beispiel:** w-a (nur sichtbar: heuteAkte, regelFunk)
+- **Probieren und Beispiel:** w-a, Zusammenstecken (nur sichtbar: heuteAkte, regelFunk)
 - **Lücke:** w-b (schon gesteckt: heuteFunk)
 - **Frei:**
   - w-c, Vorhersagen: «Wohin gehört ein Ablauf, den man jede Woche gleich macht?»
@@ -199,7 +203,7 @@ Auftraggeber: Herr Imhof, Musikverein Zwirbelwil. Wunsch: «Jeden Montag schreib
 - **Merkbild:** Das Etikett auf dem Ordnerrücken.
 - **Aha:** Echo sieht von jedem Dossier zuerst nur das Deckblatt. Darauf steht, was das Dossier tut und wann es gebraucht wird. Zu ungenau: Es bleibt liegen. Zu breit: Es springt überall an.
 - **Lexikon:** Skill-Beschreibung (skill description)
-- **Probieren und Beispiel:** d-a (nur sichtbar: vage, breit)
+- **Probieren und Beispiel:** d-a, Zusammenstecken (nur sichtbar: vage, breit)
 - **Lücke:** d-b (schon gesteckt: tut)
 - **Frei:**
   - d-c, Zusammenstecken: «Schreib das Deckblatt für ein Dossier, das Dankesbriefe an Spender schreibt.»
@@ -229,7 +233,7 @@ Auftraggeber: Herr Imhof, Musikverein Zwirbelwil. Wunsch: «Jeden Montag schreib
 - **Merkbild:** Ein Kochbuch mit Inhaltsverzeichnis.
 - **Aha:** Ein Dossier, ein Ablauf. Die Hauptanleitung bleibt kurz. Lange Listen und Beispiele kommen in Beilagen. Beilagen liest Echo nur, wenn sie gebraucht werden.
 - **Lexikon:** Skill (Agent Skill)
-- **Probieren und Beispiel:** l-a (nur sichtbar: allesKern, fremd)
+- **Probieren und Beispiel:** l-a, Zusammenstecken (nur sichtbar: allesKern, fremd)
 - **Lücke:** l-b (schon gesteckt: kern)
 - **Frei:**
   - l-c, Zusammenstecken: «Pack ein Dossier für Konzertberichte. Bisher stand alles in einem einzigen Riesen-Dossier.»
@@ -261,7 +265,7 @@ Auftraggeber: Herr Imhof, Musikverein Zwirbelwil. Wunsch: «Jeden Montag schreib
 - **Merkbild:** Eine Probefahrt vor der Lieferung.
 - **Aha:** Teste ein Dossier, bevor andere es benutzen. Probe: Springt es bei passenden Bitten an? Gegenprobe: Bleibt es still, wo es nicht passt? Klappt etwas nicht: Deckblatt verbessern und nochmals testen.
 - **Lexikon:** Skill testen (testing a skill)
-- **Probieren und Beispiel:** p-a (nur sichtbar: ohne, soll1)
+- **Probieren und Beispiel:** p-a, Zusammenstecken (nur sichtbar: ohne, soll1)
 - **Lücke:** p-b (schon gesteckt: soll1)
 - **Frei:**
   - p-c, Vorhersagen: «Was tun, wenn eine Probe-Anfrage das Dossier nicht holt?»
@@ -283,12 +287,58 @@ Auftraggeber: Herr Imhof, Musikverein Zwirbelwil. Wunsch: «Jeden Montag schreib
   - Es geht nicht um die Dauer, sondern um eine bestimmte Art Fehler.
   - Nein, die Gegenprobe verbessert das Dossier.
 
+### In echt: Skill hochladen
+
+- **Lernziel:** Anpassungen, «+ Hinzufügen», «Skill hochladen», ZIP wählen. Ohne fertige Datei: «Mit Claude erstellen».
+- **Merkbild:** Das Dossier ins Archiv der Zentrale stellen.
+- **Aha:** Ein Dossier (Skill) ist ein Ordner mit der Datei SKILL.md. Zum Hochladen packst du den Ordner als ZIP. In der Claude-App: links «Anpassungen», oben «+ Hinzufügen», dann «Skill hochladen». So gilt er in allen Chats. Bleibt der Skill grau: In den Einstellungen unter «Funktionen» muss «Code in der Cloud ausführen» an sein.
+- **Lexikon:** Skill hochladen (upload a skill)
+- **Probieren und Beispiel:** se-a, Durchklicken
+- **Lücke:** se-b (schon getippt: anpassungen, hinzufuegen)
+- **Frei:**
+  - se-c, Durchklicken: «Ich habe noch gar keinen Skill. Kann Claude mir einen für die Probenpläne bauen?»
+  - se-d, Sortieren: «In welcher Reihenfolge bringe ich einen fertigen Skill in die App?»
+  - se-e, Vorhersagen: «Der Skill ist hochgeladen, aber grau. Ich kann ihn nicht benutzen. Was ist los?»
+  - se-f, Durchklicken: «Schalt bitte ein, was mein Skill braucht. Ich finde den Schalter nicht.»
+- **Typische Fehler und was Echo dann tut (Hinweise):**
+  - Das Plus im Chat gilt nur für diese Nachricht. Skills gehören links unter «Anpassungen».
+  - Projekte haben Unterlagen und Anweisungen. Skills lädst du unter «Anpassungen» hoch.
+  - Skills findest du links unter «Anpassungen».
+  - «Ausprobieren» und «+» auf einer Karte holen fertige Skills. Eigene kommen über «+ Hinzufügen».
+  - Konnektoren verbinden Dienste. Ein Skill bleibt im Reiter «Skills».
+  - Neue Skills kommen über oben rechts «+ Hinzufügen».
+  - «Mit Claude erstellen» baut einen neuen Skill. Für eine fertige ZIP-Datei: «Skill hochladen».
+  - «Einen Skill erstellen» heisst: neu schreiben. Für eine fertige ZIP-Datei: «Skill hochladen».
+  - «Bildschirm aufnehmen» lädt nichts hoch. Für eine fertige ZIP-Datei: «Skill hochladen».
+  - Hochgeladen wird die ZIP-Datei, die den Skill-Ordner enthält.
+  - Ein Skill ist ein Ordner mit SKILL.md, gepackt als ZIP.
+  - Wähle die richtige ZIP-Datei, statt abzubrechen.
+  - Schau genau auf den Dateinamen: protokoll-verein.zip.
+  - Schau genau auf den Dateinamen: vereinskasse.zip.
+  - «Skill hochladen» braucht eine fertige ZIP-Datei. Ohne Datei: «Mit Claude erstellen».
+  - Soll Claude den Skill mit dir bauen: «Mit Claude erstellen».
+  - Zuerst packen, dann «+ Hinzufügen», «Skill hochladen», Datei wählen. Ausprobieren zum Schluss.
+  - Nein. Ein hochgeladener Skill gilt in allen Chats, nicht nur in Projekten.
+  - Ein falscher Name fällt schon beim Hochladen auf. Dann erscheint der Skill gar nicht in der Liste.
+  - Die Einstellungen öffnest du unten links über deinen Namen.
+  - Im Menü unter deinem Namen führt «Einstellungen» zum Schalter.
+  - Der Schalter für Skills steht unter «Funktionen».
+  - Unter «Funktionen» steht der Schalter «Code in der Cloud ausführen».
+  - Leg zuerst «Code in der Cloud ausführen» um.
+  - Für Skills nötig: «Code in der Cloud ausführen».
+
 ### Mischrunde «Alles zusammen»
 
 - x-a, Zusammenstecken: «Richte für den Verein alles ein: Dauerregeln, ein Dossier fürs Protokoll, und heute das Protokoll vom Montag.»
 - x-b, Zusammenstecken: «Herr Imhof will ein neues Dossier für die Probenplanung. Pack es schlank und teste es.»
 
 **Einsatzschrank:** Dossier (Skill): Protokoll im Vereinsstil. Speichere den Text als SKILL.md in einem Ordner namens protokoll-verein. Packe den Ordner als ZIP und lade ihn in der Claude-App bei den Skills hoch. Oder bitte Claude mit dem «skill-creator», daraus einen Skill zu bauen.
+
+**Probefahrt** (Weg aus se-a):
+- In den Einstellungen unter «Funktionen» ist «Code in der Cloud ausführen» an.
+- Der Ordner protokoll-verein ist als ZIP gepackt.
+- Hochgeladen über Anpassungen, «+ Hinzufügen», «Skill hochladen».
+- Mit einer Protokoll-Bitte ausprobiert.
 
 ## Kapitel 3: Die Funkleitungen – Auftrag «Operation Stammtisch»
 
@@ -300,7 +350,7 @@ Auftraggeber: Frau Gisler, Gasthof Ochsen. Wunsch: «Das Telefon klingelt pausen
 - **Merkbild:** Eine Vollmacht: nur für das, was nötig ist.
 - **Aha:** Mit einer Funkleitung sieht Echo nach, statt zu raten. Steck nur ein, was die Aufgabe braucht. Lesen darf oft immer, Senden und Löschen erst nach Nachfrage. Lies jede Anfrage um Erlaubnis genau, bevor du Ja sagst.
 - **Lexikon:** Konnektor (connector)
-- **Probieren und Beispiel:** f-a (nur sichtbar: alles, aendernFrei)
+- **Probieren und Beispiel:** f-a, Zusammenstecken (nur sichtbar: alles, aendernFrei)
 - **Lücke:** f-b (schon gesteckt: buch)
 - **Frei:**
   - f-c, Zusammenstecken: «Bestätige allen 40 Gästen der Hochzeit vom Samstag per Mail ihre Menüwahl.»
@@ -337,7 +387,7 @@ Auftraggeber: Frau Gisler, Gasthof Ochsen. Wunsch: «Das Telefon klingelt pausen
 - **Merkbild:** Der Briefträger befolgt keine Briefe.
 - **Aha:** Mails, Websites und fremde Dossiers können versteckte Anweisungen enthalten. Für Echo sind sie Material, keine Befehle. Sag das in einer Schutzregel. Verbinde und installiere nur, was aus vertrauenswürdiger Quelle kommt.
 - **Lexikon:** Prompt Injection (prompt injection)
-- **Probieren und Beispiel:** e-a (nur sichtbar: weiterFrei, vertrauen)
+- **Probieren und Beispiel:** e-a, Zusammenstecken (nur sichtbar: weiterFrei, vertrauen)
 - **Lücke:** e-b (schon gesteckt: formular, lesen)
 - **Frei:**
   - e-c, Vorhersagen: «Ein Gratis-Dossier aus dem Internet verspricht doppelt so viele Reservationen.»
@@ -366,12 +416,57 @@ Auftraggeber: Frau Gisler, Gasthof Ochsen. Wunsch: «Das Telefon klingelt pausen
   - Ohne Schutzregel hält Echo die Storno-Mail für einen Auftrag. Sag, dass Mails Material sind.
   - Gib das Senden frei, mit Nachfrage.
 
+### In echt: Konnektor verbinden
+
+- **Lernziel:** Nur nötige Konnektoren verbinden. Lesen erlauben, Senden und Löschen mit Nachfrage oder blockiert.
+- **Merkbild:** Der Funkleitung einen Schlüssel geben, aber nur für die richtigen Türen.
+- **Aha:** Unter «Anpassungen» im Reiter «Konnektoren» fügst du einen Dienst hinzu und meldest dich dort an. Claude sieht danach nur, was du in diesem Dienst auch sehen darfst. Pro Werkzeug stellst du ein: immer erlaubt, mit Nachfrage oder blockiert. Lesen darf oft immer, Senden nur mit Nachfrage.
+- **Lexikon:** Konnektor verbinden (connect a connector)
+- **Probieren und Beispiel:** ke-a, Durchklicken
+- **Lücke:** ke-b (schon getippt: anpassungen, reiterKonnektoren)
+- **Frei:**
+  - ke-c, Einstellen im Bild: «Echo darf meine Mails lesen. Aber nichts verschicken oder löschen, ohne mich zu fragen.»
+  - ke-d, Einstellen im Bild: «Termine ansehen ist in Ordnung. Eintragen nur, wenn ich Ja sage. Und löschen soll Echo gar nichts.»
+  - ke-e, Durchklicken: «In diesem Chat geht es nur um die Menükarte. Die Mails soll Echo hier nicht anfassen.»
+  - ke-f, Vorhersagen: «Sieht Claude jetzt den ganzen Dorfkalender, auch den vom Gemeinderat?»
+- **Typische Fehler und was Echo dann tut (Hinweise):**
+  - Neue Konnektoren verbindest du unter «Anpassungen», Reiter «Konnektoren».
+  - Konnektoren findest du links unter «Anpassungen».
+  - Dienste wie Kalender oder Mail verbindest du im Reiter «Konnektoren».
+  - Einen einzelnen Dienst verbindest du im Reiter «Konnektoren».
+  - Wechsle oben in den Reiter «Konnektoren».
+  - Verbinde nur, was die Aufgabe braucht. Hier: den Kalender.
+  - Neue Konnektoren findest du unter «Entdecken».
+  - Tippe bei der passenden Karte auf «+».
+  - Zum Verbinden: «Verbinden».
+  - Beim Dienst musst du den Zugriff erlauben, sonst bleibt die Leitung tot.
+  - Verbinde nur, was die Aufgabe braucht. Hier: die Mail.
+  - Senden ohne Nachfrage ist heikel. Stell «Mail senden» auf «Genehmigung erforderlich».
+  - Löschen nie ohne Nachfrage. Am sichersten: «Blockiert».
+  - Suchen schadet nicht. Das darf ruhig erlaubt sein.
+  - Eintragen nur mit Nachfrage: «Genehmigung erforderlich».
+  - Frau Gisler will kein Löschen: «Blockiert».
+  - Ansehen schadet nicht. Das darf ruhig erlaubt sein.
+  - Nur für diesen Chat: im Chat «+», dann «Konnektoren».
+  - Die Konnektoren stehen im Plus-Menü unter «Konnektoren».
+  - Die Leitungen stehen unter «Konnektoren».
+  - Schalte genau den Dienst aus, den dieser Chat nicht braucht: die Mail.
+  - Im Chat unten auf «+» tippen, dann «Konnektoren».
+  - Nein. Was Frau Gisler im Dienst nicht sieht, sieht Claude auch nicht.
+  - Nein. Nach dem Verbinden sieht Claude, was Frau Gisler sieht. Die Rechte pro Werkzeug regeln, was Claude tun darf.
+
 ### Mischrunde «Alles zusammen»
 
 - x-a, Zusammenstecken: «Plane mit Echo den Metzgete-Abend: freie Tische nachsehen und die Einladung an die Stammgäste vorbereiten. Versendet wird erst nach Okay.»
 - x-b, Zusammenstecken: «Echo soll die Online-Bewertungen der letzten Woche zusammenfassen und Antworten vorschlagen.»
 
-**Einsatzschrank:** Fallakte: Schutzregeln für Funkleitungen. Füge den Text in die Projektanweisung deines Projekts ein. Stell bei jedem Konnektor die Werkzeuge ein: Lesen nach Bedarf, Senden und Löschen auf «Needs approval» oder «Blocked».
+**Einsatzschrank:** Fallakte: Schutzregeln für Funkleitungen. Füge den Text in die Projektanweisung deines Projekts ein. Stell bei jedem Konnektor die Werkzeuge ein: Lesen nach Bedarf, Senden und Löschen auf «Genehmigung erforderlich» oder «Blockiert».
+
+**Probefahrt** (Weg aus ke-a):
+- Nur Konnektoren verbunden, die eine Aufgabe wirklich braucht.
+- Rechte angesehen: Lesen erlaubt, Senden und Löschen mit Genehmigung oder blockiert.
+- Im Chat unter «+», «Konnektoren» nur eingeschaltet, was dieser Chat braucht.
+- Jede Anfrage um Erlaubnis gelesen, bevor du zugestimmt hast.
 
 ## Kapitel 4: Der Einsatz – Auftrag «Operation Generalversammlung»
 
@@ -383,7 +478,7 @@ Auftraggeber: Herr Fässler, Gewerbeverein Zwirbelwil. Wunsch: «Saal, Einladung
 - **Merkbild:** Kochen mit Abschmecken.
 - **Aha:** Ein Einsatz läuft in Schritten: nachsehen, handeln, prüfen. Gib klare Kriterien und lass dir einen Beweis zeigen, statt «Erledigt» zu glauben. Soll Echo handeln, schreib eine Anweisung. Auf eine Frage gibt es oft nur Vorschläge.
 - **Lexikon:** Agent (agent)
-- **Probieren und Beispiel:** s-a (nur sichtbar: frage, erledigt)
+- **Probieren und Beispiel:** s-a, Zusammenstecken (nur sichtbar: frage, erledigt)
 - **Lücke:** s-b (schon gesteckt: anweisung)
 - **Frei:**
   - s-c, Sortieren: «In welcher Reihenfolge arbeitet Echo bei einem Einsatz?»
@@ -416,7 +511,7 @@ Auftraggeber: Herr Fässler, Gewerbeverein Zwirbelwil. Wunsch: «Saal, Einladung
 - **Merkbild:** Zuerst die Wanderkarte, dann los.
 - **Aha:** Bei grossen oder unklaren Aufgaben: zuerst den Plan zeigen lassen. Lies den Plan, korrigiere ihn und gib ihn frei. Erst dann legt Echo los. Kleine, klare Aufgaben erledigt Echo direkt.
 - **Lexikon:** Planmodus (plan mode)
-- **Probieren und Beispiel:** p-a (nur sichtbar: direkt, ziel)
+- **Probieren und Beispiel:** p-a, Zusammenstecken (nur sichtbar: direkt, ziel)
 - **Lücke:** p-b (schon gesteckt: ziel)
 - **Frei:**
   - p-c, Vorhersagen: «In der Einladung steht «Generalversammulng». Wie gehst du vor?»
@@ -446,7 +541,7 @@ Auftraggeber: Herr Fässler, Gewerbeverein Zwirbelwil. Wunsch: «Saal, Einladung
 - **Merkbild:** Fliessband oder Handwerker.
 - **Aha:** Was jedes Mal gleich abläuft, legst du als feste Kette fest. Kontrollpunkte halten Fehler auf, bevor sie weiterwandern. Offene Fragen passen zu einem freien Einsatz. Fang einfach an.
 - **Lexikon:** Workflow (workflow)
-- **Probieren und Beispiel:** k-a (nur sichtbar: frei, ohne)
+- **Probieren und Beispiel:** k-a, Zusammenstecken (nur sichtbar: frei, ohne)
 - **Lücke:** k-b (schon gesteckt: s1, s2)
 - **Frei:**
   - k-c, Vorhersagen: «Warum kommen weniger Mitglieder zur GV? Kette oder freier Einsatz?»
@@ -473,7 +568,7 @@ Auftraggeber: Herr Fässler, Gewerbeverein Zwirbelwil. Wunsch: «Saal, Einladung
 - **Merkbild:** Notbremse und Unterschrift.
 - **Aha:** Vor Löschen, Senden und Bestellen fragt Echo zuerst. Begrenze die Versuche, damit nichts endlos läuft. Was in deinem Namen hinausgeht, liest du selbst.
 - **Lexikon:** Mensch im Ablauf (human in the loop)
-- **Probieren und Beispiel:** h-a (nur sichtbar: freiLoeschen, versuche)
+- **Probieren und Beispiel:** h-a, Zusammenstecken (nur sichtbar: freiLoeschen, versuche)
 - **Lücke:** h-b (schon gesteckt: auftrag, fragen)
 - **Frei:**
   - h-c, Zusammenstecken: «Echo soll den Apéro im Onlineshop der Metzgerei bestellen. Klappt es nicht, soll es nicht endlos probieren.»
@@ -504,7 +599,7 @@ Auftraggeber: Herr Fässler, Gewerbeverein Zwirbelwil. Wunsch: «Saal, Einladung
 - **Merkbild:** Logbuch und aufgeräumter Arbeitstisch.
 - **Aha:** Bei langen Aufgaben hält ein Einsatzprotokoll fest, was erledigt und was offen ist. Neues Thema: neuer Chat. Nach zwei misslungenen Korrekturen: neu anfangen mit besserem Auftrag.
 - **Lexikon:** Kontext leeren (clear context)
-- **Probieren und Beispiel:** fr-a (nur sichtbar: allesImChat, lesen)
+- **Probieren und Beispiel:** fr-a, Zusammenstecken (nur sichtbar: allesImChat, lesen)
 - **Lücke:** fr-b (schon gesteckt: protokoll)
 - **Frei:**
   - fr-c, Vorhersagen: «Nach der GV will Herr Fässler im selben Chat den Ferienplan seiner Familie machen.»
@@ -545,7 +640,7 @@ Auftraggeber: Familie Meier. Wunsch: «Zwei Wochen Lissabon, mit Kindern und Hun
 - **Merkbild:** Den Praktikanten in die Bibliothek schicken.
 - **Aha:** Ein Feldagent arbeitet in seinem eigenen Koffer. Viel Lesestoff schickst du mit ihm weg. Zurück kommt nur sein Bericht. Hin und Her mit vielen Rückfragen bleibt bei Echo im Hauptgespräch.
 - **Lexikon:** Subagent (subagent)
-- **Probieren und Beispiel:** fa-a (nur sichtbar: selbst, plaudern)
+- **Probieren und Beispiel:** fa-a, Zusammenstecken (nur sichtbar: selbst, plaudern)
 - **Lücke:** fa-b (schon gesteckt: feldagent)
 - **Frei:**
   - fa-c, Vorhersagen: «Die Familie will ausführlich mit Echo über ihre Wünsche plaudern.»
@@ -576,7 +671,7 @@ Auftraggeber: Familie Meier. Wunsch: «Zwei Wochen Lissabon, mit Kindern und Hun
 - **Merkbild:** Stellenbeschrieb und Schlüsselbund.
 - **Aha:** Die Beschreibung sagt, wann Echo den Feldagenten ruft. Die Ausrüstungsliste sagt, was er darf. Ohne Liste bekommt er alles. Gib nur mit, was er für seine Aufgabe braucht.
 - **Lexikon:** Beschreibung und Werkzeuge eines Subagenten (description, tools)
-- **Probieren und Beispiel:** pr-a (nur sichtbar: vage, loeschen)
+- **Probieren und Beispiel:** pr-a, Zusammenstecken (nur sichtbar: vage, loeschen)
 - **Lücke:** pr-b (schon gesteckt: wann)
 - **Frei:**
   - pr-c, Zusammenstecken: «Bau das Profil für einen Feldagenten, der Packlisten auf Vergessenes prüft.»
@@ -610,7 +705,7 @@ Auftraggeber: Familie Meier. Wunsch: «Zwei Wochen Lissabon, mit Kindern und Hun
 - **Merkbild:** Ein Laufzettel.
 - **Aha:** Ein eigener Feldagent kennt euer Gespräch nicht. Gib ihm Ziel und alles nötige Material mit. Leg fest, in welcher Form der Bericht zurückkommt.
 - **Lexikon:** Auftrag an den Subagenten (task prompt)
-- **Probieren und Beispiel:** lb-a (nur sichtbar: roman, duweisst)
+- **Probieren und Beispiel:** lb-a, Zusammenstecken (nur sichtbar: roman, duweisst)
 - **Lücke:** lb-b (schon gesteckt: ziel, material)
 - **Frei:**
   - lb-c, Zusammenstecken: «Ein Feldagent soll nachlesen, was der Hund für die Reise nach Portugal braucht.»
@@ -645,7 +740,7 @@ Auftraggeber: Familie Meier. Wunsch: «Zwei Wochen Lissabon, mit Kindern und Hun
 - **Merkbild:** Zügeln mit Freunden: Jeder nimmt ein Zimmer.
 - **Aha:** Unabhängige Teile können gleichzeitig laufen. Jeder Feldagent bekommt genau einen Teil, ohne Überschneidung. Echo fügt die Berichte zusammen und prüft, ob sie zusammenpassen.
 - **Lexikon:** Parallel arbeiten (parallelization)
-- **Probieren und Beispiel:** au-a (nur sichtbar: alles, zusammen)
+- **Probieren und Beispiel:** au-a, Zusammenstecken (nur sichtbar: alles, zusammen)
 - **Lücke:** au-b (schon gesteckt: essen, museen)
 - **Frei:**
   - au-c, Sortieren: «In welcher Reihenfolge läuft das Aufteilen?»
@@ -673,7 +768,7 @@ Auftraggeber: Familie Meier. Wunsch: «Zwei Wochen Lissabon, mit Kindern und Hun
 - **Merkbild:** Das Vier-Augen-Prinzip.
 - **Aha:** Wer sich selbst prüft, findet alles perfekt. Ein Prüfagent sieht nur das Ergebnis und die Kriterien. Er meldet nur, was wirklich zählt.
 - **Lexikon:** Prüf-Subagent (reviewer subagent)
-- **Probieren und Beispiel:** zb-a (nur sichtbar: selbst, ganzerChat)
+- **Probieren und Beispiel:** zb-a, Zusammenstecken (nur sichtbar: selbst, ganzerChat)
 - **Lücke:** zb-b (schon gesteckt: ergebnis, kriterien)
 - **Frei:**
   - zb-c, Vorhersagen: «Echo prüft seinen eigenen Plan. Was ist das Problem?»
@@ -699,12 +794,51 @@ Auftraggeber: Familie Meier. Wunsch: «Zwei Wochen Lissabon, mit Kindern und Hun
   - Dann übernimmt er Echos Denkfehler.
   - Dann weiss er nicht, was er prüfen soll.
 
+### In echt: Subagent anlegen
+
+- **Lernziel:** Im Code-Bereich Claude um den Subagenten bitten: was er tut, wann, welche Werkzeuge. Datei prüfen, dann erlauben.
+- **Merkbild:** Den Feldagenten mit Ausweis und Schlüsselbund ins Büro holen.
+- **Aha:** Subagenten gibt es in Claude Code. In der Desktop-App ist das der Bereich «</> Code». Ein Subagent ist eine Datei im Ordner .claude/agents. Am einfachsten bittest du Claude, sie zu schreiben. Lies vor dem Ja, welche Datei Claude anlegt und welche Werkzeuge der Feldagent bekommt.
+- **Lexikon:** Subagent anlegen (create a subagent)
+- **Probieren und Beispiel:** sa-a, Durchklicken
+- **Lücke:** sa-b (schon getippt: modusCode, ordnerWaehlen, ordnerFerien)
+- **Frei:**
+  - sa-c, Vorhersagen: «Der Rechercheur soll nur bei unserem Ferienplan helfen, nicht in anderen Projekten.»
+  - sa-d, Sortieren: «Was ist die richtige Reihenfolge, wenn wir einen Subagenten in echt anlegen?»
+  - sa-e, Einstellen im Bild: «Claude fragt, welche Werkzeuge der Rechercheur bekommt. Was sagen wir?»
+  - sa-f, Durchklicken: «Kannst du den Prüfer auch von Anfang an einrichten? Ich will den ganzen Weg sehen.»
+- **Typische Fehler und was Echo dann tut (Hinweise):**
+  - Oben links geht es mit «</> Code» in den Code-Bereich.
+  - Einen Subagent legst du im Code-Bereich an: oben links «</> Code».
+  - Einen eigenen Subagent schreibt Claude im Code-Bereich: oben links «</> Code».
+  - Wähle zuerst «Ordner zum Arbeiten auswählen».
+  - Wähle den Ordner, um den es geht: Familie Meier.
+  - Wähle den Ordner Familie Meier.
+  - Tippe ins Eingabefeld und beschreib den Subagent.
+  - Beschreib dem Subagenten: was er tut, wann er gebraucht wird, welche Werkzeuge er bekommt.
+  - Gib nur die Werkzeuge mit, die er braucht: hier Lesen und Websuche.
+  - Sag dem Prüfer, was er liest, wogegen er prüft und was er meldet.
+  - Der Prüfer liest nur und meldet wichtige Lücken. Ändern tut er nichts.
+  - Dort gilt er in allen deinen Projekten. Familie Meier wollte ihn nur beim Ferienplan.
+  - Ein Skill ist eine Anleitung, kein Subagent mit eigenem Arbeitsbereich.
+  - Erst Code-Bereich und Ordner, dann beschreiben. Lesen vor dem Ausprobieren.
+  - Ein Rechercheur ändert nichts. «Dateien ändern»: Nein.
+  - Zum Suchen braucht es keine Befehle. «Befehle ausführen»: Nein.
+  - Ein Rechercheur muss im Web suchen dürfen.
+  - Lesen schadet nicht. Er muss die Wunschliste lesen dürfen.
+
 ### Mischrunde «Alles zusammen»
 
 - x-a, Zusammenstecken: «Familie Meier will die ganze Reise geplant haben: Recherche, Plan, Prüfung.»
 - x-b, Zusammenstecken: «Bau einen Feldagenten, der künftig jeden Reiseplan der Familie auf die Kosten prüft.»
 
 **Einsatzschrank:** Einsatzprofil (Subagent): Reise-Rechercheur. Speichere den Text in Claude Code als reise-rechercheur.md im Ordner .claude/agents/ deines Projekts oder in ~/.claude/agents/ für alle Projekte. Oder bitte Claude Code, die Datei zu schreiben.
+
+**Probefahrt** (Weg aus sa-a):
+- Im Code-Bereich den Ordner des Projekts gewählt.
+- Claude den Subagenten beschrieben: was, wann, welche Werkzeuge.
+- Die Datei in .claude/agents gelesen.
+- Mit einer passenden Aufgabe ausprobiert.
 
 ## Kapitel 6: Die Technikabteilung – Auftrag «Operation Hobelbank»
 
@@ -716,7 +850,7 @@ Auftraggeber: Herr Odermatt, Schreinerei Odermatt. Wunsch: «Echo arbeitet stund
 - **Merkbild:** Ein Rauchmelder statt «denk dran».
 - **Aha:** Eine Bitte kann im langen Einsatz untergehen. Ein Sicherheitsprotokoll (Hook) läuft an einer festen Stelle jedes Mal, zum Beispiel vor jeder Änderung. Es braucht einen Zeitpunkt und eine Regel. Claude kann es für dich schreiben.
 - **Lexikon:** Hook (hook)
-- **Probieren und Beispiel:** hk-a (nur sichtbar: bitte, wannNach)
+- **Probieren und Beispiel:** hk-a, Zusammenstecken (nur sichtbar: bitte, wannNach)
 - **Lücke:** hk-b (schon gesteckt: wannNach)
 - **Frei:**
   - hk-c, Vorhersagen: «Welche Regel gehört in ein Sicherheitsprotokoll?»
@@ -750,7 +884,7 @@ Auftraggeber: Herr Odermatt, Schreinerei Odermatt. Wunsch: «Echo arbeitet stund
 - **Merkbild:** Eine beschriftete Umzugskiste.
 - **Aha:** Ein Einsatzpaket (Plugin) bündelt Dossiers, Funkleitungen, Feldagenten und Sicherheitsprotokolle. Pack alles hinein, was zusammen gebraucht wird, und leg eine kurze Anleitung bei. Passwörter und Privates gehören nie hinein. Teste, bevor du teilst.
 - **Lexikon:** Plugin (plugin)
-- **Probieren und Beispiel:** pk-a (nur sichtbar: passwort, privat)
+- **Probieren und Beispiel:** pk-a, Zusammenstecken (nur sichtbar: passwort, privat)
 - **Lücke:** pk-b (schon gesteckt: skill, leitung)
 - **Frei:**
   - pk-c, Vorhersagen: «Was gehört nie in ein Einsatzpaket?»
@@ -776,12 +910,53 @@ Auftraggeber: Herr Odermatt, Schreinerei Odermatt. Wunsch: «Echo arbeitet stund
   - Dann findet die Filiale deine Fehler.
   - Rückmeldungen sind gut, aber erst nach deinem eigenen Test.
 
+### In echt: Hook und Plugin
+
+- **Lernziel:** Plugins unter Anpassungen holen. Hooks von Claude im Code-Bereich schreiben lassen und vor dem Ja lesen.
+- **Merkbild:** Den Rauchmelder montieren und die fertige Kiste ins Regal stellen.
+- **Aha:** Ein Plugin holst du unter «Anpassungen» im Reiter «Plugins». Unter «Meine» siehst du, was du schon hast. Einen Hook schreibt dir Claude im Code-Bereich. Er steht dann in der Einstellungsdatei deines Projekts. Lies vor dem Ja genau, wann der Hook läuft und was er tut.
+- **Lexikon:** Hook und Plugin einrichten (set up hooks and plugins)
+- **Probieren und Beispiel:** hp-a, Durchklicken
+- **Lücke:** hp-b (schon getippt: modusCode, ordnerWaehlen, ordnerOdermatt)
+- **Frei:**
+  - hp-c, Vorhersagen: «Wo richte ich so einen Hook überhaupt ein?»
+  - hp-d, Sortieren: «In welcher Reihenfolge richten wir den Hook in echt ein?»
+  - hp-e, Durchklicken: «Ich habe letzte Woche ein Plugin geholt. Wo finde ich es wieder?»
+  - hp-f, Durchklicken: «Zeig mir den ganzen Weg zum Hook, von der ersten Seite bis zum Schluss.»
+- **Typische Fehler und was Echo dann tut (Hinweise):**
+  - Plugins findest du links unter «Anpassungen», Reiter «Plugins».
+  - Neue Plugins holst du unter «Anpassungen», Reiter «Plugins».
+  - Wechsle oben in den Reiter «Plugins».
+  - Hinzufügen geht mit «+» auf der Karte.
+  - Hol das Paket, das zur Schreinerei passt: «schreinerei-offerten».
+  - Neue Plugins stehen unter «Entdecken».
+  - Tippe bei «schreinerei-offerten» auf «+».
+  - Oben links geht es mit «</> Code» in den Code-Bereich.
+  - Einen Hook legst du im Code-Bereich an: oben links «</> Code».
+  - Einen eigenen Hook schreibt Claude im Code-Bereich: oben links «</> Code».
+  - Wähle zuerst «Ordner zum Arbeiten auswählen».
+  - Wähle den Ordner, um den es geht: der Schreinerei.
+  - Wähle den Ordner der Schreinerei.
+  - Tippe ins Eingabefeld und beschreib den Hook.
+  - Was immer gelten muss: «Richte einen Hook ein», mit Zeitpunkt und Regel.
+  - Ein Hook braucht einen engen Zeitpunkt und eine klare Regel.
+  - Ein Skill ist eine Anleitung. Ein Hook ist eine feste Regel, die Claude im Code-Bereich einträgt.
+  - Dort gibt es Schalter für Funktionen, aber keine eigenen Hooks.
+  - Erst Code-Bereich und Ordner, dann beschreiben. Lesen vor dem Testen.
+  - Deine Plugins stehen unter «Meine».
+
 ### Mischrunde «Alles zusammen»
 
 - x-a, Zusammenstecken: «Vor jedem Versand einer Offerte sollen die Preise gegengeprüft werden. Immer, ohne Ausnahme.»
 - x-b, Zusammenstecken: «Das ganze Setup der Schreinerei soll als Paket in die Filiale: getestet, vollständig, ohne Geheimnisse.»
 
 **Einsatzschrank:** Bauplan: Sicherheitsprotokoll und Einsatzpaket. Gib den Text in Claude Code ein und ersetze alles in eckigen Klammern. Mit /hooks siehst du, welche Hooks aktiv sind. Teste Hook und Plugin selbst, bevor du sie teilst.
+
+**Probefahrt** (Weg aus hp-f):
+- Im Code-Bereich Claude gebeten, den Hook zu schreiben.
+- Gelesen, wann der Hook läuft und was er tut.
+- Mit einer Testdatei geprüft, ob er greift.
+- Ein Plugin unter Anpassungen, Plugins geholt und unter «Meine» gefunden.
 
 ## Kapitel 6: Die Technikabteilung – Auftrag «Operation Dorffest»
 

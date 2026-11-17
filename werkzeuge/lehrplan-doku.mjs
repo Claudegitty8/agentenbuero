@@ -69,8 +69,11 @@ for (const auftrag of auftraege) {
     zeilen.push(`- **Merkbild:** ${k.analogie}`);
     zeilen.push(`- **Aha:** ${k.aha.join(' ')}`);
     zeilen.push(`- **Lexikon:** ${eintrag ? `${eintrag.begriff} (${eintrag.englisch})` : '–'}`);
-    zeilen.push(`- **Probieren und Beispiel:** ${runde.probieren.aufgabe} (nur sichtbar: ${runde.probieren.nurTeile.join(', ')})`);
-    zeilen.push(`- **Lücke:** ${runde.luecke.aufgabe} (schon gesteckt: ${runde.luecke.vorgabe.join(', ')})`);
+    // Beim Durchklicken gibt es keine Teile zum Ausblenden. Die Vorgabe der Lücke sind dort die ersten Tipps.
+    const sichtbar = runde.probieren.nurTeile ? ` (nur sichtbar: ${runde.probieren.nurTeile.join(', ')})` : '';
+    const klick = auftrag.aufgaben[runde.luecke.aufgabe].typ === 'klick';
+    zeilen.push(`- **Probieren und Beispiel:** ${runde.probieren.aufgabe}, ${form(auftrag.aufgaben[runde.probieren.aufgabe])}${sichtbar}`);
+    zeilen.push(`- **Lücke:** ${runde.luecke.aufgabe} (${klick ? 'schon getippt' : 'schon gesteckt'}: ${runde.luecke.vorgabe.join(', ')})`);
     zeilen.push('- **Frei:**');
     zeilen.push(...runde.frei.map((id) => `  - ${id}, ${form(auftrag.aufgaben[id])}: «${auftrag.aufgaben[id].wunsch}»`));
     zeilen.push('- **Typische Fehler und was Echo dann tut (Hinweise):**');
@@ -78,6 +81,9 @@ for (const auftrag of auftraege) {
     zeilen.push(...hinweise(auftrag, [...new Set(ids)]).map((h) => `  - ${h}`), '');
   }
   if (auftrag.schrank) zeilen.push(`**Einsatzschrank:** ${auftrag.schrank.titel}. ${auftrag.schrank.wo}`, '');
+  if (auftrag.schrank?.probefahrt) {
+    zeilen.push(`**Probefahrt** (Weg aus ${auftrag.schrank.probefahrt.aufgabe}):`, ...auftrag.schrank.probefahrt.punkte.map((p) => `- ${p.text}`), '');
+  }
 }
 
 await writeFile(path.join(WURZEL, 'docs/LEHRPLAN.md'), `${zeilen.join('\n').trimEnd()}\n`);

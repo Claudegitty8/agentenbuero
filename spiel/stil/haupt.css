@@ -429,7 +429,7 @@ summary:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid
 .schirm button.stelle:hover { background: var(--grund); border-color: var(--linie); }
 .schirm-seite-eintrag { width: 100%; }
 .schirm-seite .stelle, .schirm-seite .still { padding-inline: 0.4rem; }
-.schirm-seite .still:not(.markiert):last-child { color: var(--leise); font-style: italic; }
+.schirm .leise { color: var(--leise); font-style: italic; }
 .schirm .stelle.aktiv, .schirm .still.aktiv { background: var(--linie); font-weight: 600; }
 .schirm-kopf-eintrag { font-size: 0.85rem; }
 .schirm-titel { font-size: 1.15rem; font-weight: 600; font-family: Georgia, "Times New Roman", serif; }
@@ -448,6 +448,8 @@ summary:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid
 .schirm-karten { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(10rem, 100%), 1fr)); gap: 0.4rem; }
 .schirm-karte { display: grid; gap: 0.2rem; padding: 0.45rem; border: 1px solid var(--linie); border-radius: 10px; }
 .schirm-schalter { width: 100%; justify-content: space-between; }
+.schalter-text { display: grid; }
+.schalter-text small { color: var(--leise); font-size: 0.8rem; }
 .schalter { flex: none; width: 2.4rem; height: 1.3rem; border-radius: 999px; background: var(--linie); position: relative; }
 .schalter::after { content: ""; position: absolute; top: 0.15rem; left: 0.15rem; width: 1rem; height: 1rem; border-radius: 50%; background: var(--flaeche); }
 .schalter.an { background: var(--echo-dunkel); }
@@ -497,7 +499,19 @@ summary:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid
 .einstell-option.markiert { outline: 3px dashed var(--akzent); outline-offset: 2px; }
 .einstell-option:disabled { opacity: 0.75; cursor: default; }
 
-/* Schmale Bildschirme: Die Seitenleiste wird schmaler, Texte dürfen umbrechen. */
+/* Ausschnitt beim Sortieren: nur Fenster und die eine Stelle */
+.schirm.ausschnitt { max-width: 18rem; min-width: 0; }
+.reihe, .reihe-zeile { min-width: 0; }
+.schirm.ausschnitt .schirm-fenster { flex-wrap: nowrap; }
+.schirm.ausschnitt .schirm-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.schirm.ausschnitt .schirm-koerper { min-height: 0; }
+.schirm.ausschnitt .schirm-stand { display: none; }
+
+/* Schmale Bildschirme: Die Seitenleiste wird schmaler, Texte dürfen umbrechen.
+   Beim Einstellen braucht es die Seitenleiste nicht, dort bekommen die Zeilen den Platz. */
+@media (max-width: 480px) {
+  .einstellen .schirm-seite { display: none; }
+}
 @media (max-width: 420px) {
   .schirm-seite { width: 6.4rem; }
   .schirm { font-size: 0.82rem; }

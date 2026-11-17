@@ -6,7 +6,7 @@ Du lernst: gute Aufträge (Prompts), Projekte und Gedächtnis, Skills, Konnektor
 
 - Läuft im Browser, fürs Handy gemacht, ohne Konto.
 - Dein Spielstand bleibt auf deinem Gerät. Keine Cookies, kein Tracking.
-- Stand: Version 0.9, alle 6 Kapitel und die Schlussmission spielbar.
+- Stand: Version 0.10 (in Arbeit), alle 6 Kapitel und die Schlussmission spielbar, dazu vier Runden «In echt» mit nachgezeichneten Bildschirmen der Claude-App.
 
 **Inoffiziell:** Das Agentenbüro ist kein Angebot von Anthropic und nicht mit Anthropic verbunden. Claude und Claude Code sind Marken von Anthropic.
 

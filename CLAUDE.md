@@ -8,7 +8,7 @@ Die Technik stammt aus dem Lernspiel «KI-Studio» (`Claudegitty8/game-how-to-us
 
 - `docs/STAND.md`: wo wir stehen, was offen ist. Immer zuerst.
 - `docs/PROJEKT.md`: Steckbrief (Ziel, Zielgruppe, Hosting, Datenschutz, Rechte, Budgets).
-- `docs/KONZEPT.md`: Spielidee, 21 Kernkonzepte mit «Mechanik ist das Konzept», Aufbau.
+- `docs/KONZEPT.md`: Spielidee, 21 Kernkonzepte plus 4 Runden «In echt» mit «Mechanik ist das Konzept», Aufbau.
 - `docs/LEHRPLAN.md`: pro Konzept Lernziel, Übungen, Fehlbilder. Wird erzeugt mit `node werkzeuge/lehrplan-doku.mjs`.
 - `docs/REGELN.md`: Fachlogik mit Testfällen (Meisterschaft, Wiederholung, Hilfen, Ausweg, Einsatzschrank).
 - `docs/ENTSCHEIDE.md`: alle Entscheide mit Datum und Status.

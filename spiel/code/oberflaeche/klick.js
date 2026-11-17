@@ -4,7 +4,7 @@
 // Zusätzlich: selbstAbgabe (kein Knopf «Echo, los!» nötig) und beiAbgabe (meldet, wann geprüft werden soll).
 import { el, fuelle } from './bausteine.js';
 import { baueSchirm } from './schirm.js';
-import { eintraegeVon, loeseSchirm, schrittText } from '../logik/schirme.js';
+import { beschriftung, eintraegeVon, loeseSchirm, schrittText } from '../logik/schirme.js';
 import { loesungVon } from '../logik/bewertung.js';
 
 // Bilderstrecke: alle Schritte untereinander, die richtige Stelle jeweils hervorgehoben.
@@ -97,7 +97,7 @@ export function baueKlick({ aufgabe, t, schirme, vorgabe = [], auswahl = [], ges
 
   // Der Text der getippten Stelle, für die Zeile «Bisher getippt».
   function textVon(schritt, id) {
-    return eintraegeVon(loeseSchirm(schirme, schritt.schirm)).find((e) => e.id === id)?.text ?? id;
+    return beschriftung(eintraegeVon(loeseSchirm(schirme, schritt.schirm)).find((e) => e.id === id)?.text ?? id);
   }
 
   const knoten = el('section', { klasse: 'karte werkbank klick' },

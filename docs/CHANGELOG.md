@@ -1,5 +1,23 @@
 # Changelog
 
+## Version 0.10 (17.11.2026, noch nicht veröffentlicht)
+
+Bebilderte Übungen «In echt»: Wie man Skills, Konnektoren, Subagenten, Hooks und Plugins in der echten Claude-App einrichtet.
+
+### Neu
+- Vier Runden «In echt», je am Ende eines Kapitels vor der Mischrunde: Skill hochladen (Notenständer), Konnektor verbinden (Stammtisch), Subagent anlegen (Ferienplan), Hook und Plugin (Hobelbank). 25 statt 21 Konzepte (E-031).
+- 36 nachgezeichnete Bildschirme der deutschen Claude-Desktop-App aus Textbausteinen, nach Bildschirmfotos des Besitzers (E-030, E-032). Jedes Bild trägt «Vereinfacht nachgezeichnet, Stand 17.11.2026».
+- Neue Übungsform «Durchklicken»: In den Bildern die richtige Stelle antippen. Jeder Fehltipp wird sofort erklärt, danach geht es im selben Bild weiter.
+- Neue Übungsform «Einstellen im Bild»: Rechte pro Werkzeug und Werkzeuge eines Subagenten einstellen.
+- Sortieren mit kleinen Bildern, Bilderstrecke als Beispiel und bei «Lösung zeigen».
+- Probefahrt im Einsatzschrank: den Weg nochmals ansehen und abhaken, was in der echten App geklappt hat. Die Haken bleiben gespeichert (E-029).
+- 24 neue Aufgaben (14 Durchklicken, 3 Einstellen, 3 Sortieren, 4 Vorhersagen), zusammen 173. 4 Lexikon-Einträge (45), 5 Fakten mit Quelle (20).
+
+### Geändert
+- Einsatzschrank «Schutzregeln für Funkleitungen»: deutsche Namen der Rechte statt englischer.
+- Inhaltsprüfung kennt Bildschirme, Durchklicken, Einstellen und Probefahrt. Browser-Durchspiel tippt sich durch die Bilder, der schwache Spieler tippt zuerst daneben.
+- Tests: 114 (14 neue).
+
 ## Version 0.9 (16.11.2026)
 
 Alle 21 Konzepte sind spielbar. Version 1.0 folgt nach der Testrunde mit Erwachsenen.

@@ -125,7 +125,7 @@
     "ueberKontaktEtikett": "Kontakt",
     "ueberKontakt": "Fragen oder einen Fehler gefunden? Schreib an:",
     "ueberKontaktAdresse": "",
-    "fuss": "Agentenbüro, Version 0.9",
+    "fuss": "Agentenbüro, Version 0.10",
     "echoNaechster": "Der Funk knackt. Ein neuer Auftrag kommt herein!",
     "systemEtikett": "Rolle (gilt für jede Nachricht)",
     "systemLeer": "(noch leer)",
@@ -523,6 +523,46 @@
         "Passwörter und Privates gehören nie hinein. Teste, bevor du teilst."
       ],
       "tipp": "Alles, was zusammengehört, getestet, mit Anleitung, ohne Geheimnisse."
+    },
+    "skillEcht": {
+      "name": "In echt: Skill hochladen",
+      "analogie": "Das Dossier ins Archiv der Zentrale stellen.",
+      "aha": [
+        "Ein Dossier (Skill) ist ein Ordner mit der Datei SKILL.md. Zum Hochladen packst du den Ordner als ZIP.",
+        "In der Claude-App: links «Anpassungen», oben «+ Hinzufügen», dann «Skill hochladen». So gilt er in allen Chats.",
+        "Bleibt der Skill grau: In den Einstellungen unter «Funktionen» muss «Code in der Cloud ausführen» an sein."
+      ],
+      "tipp": "Anpassungen, «+ Hinzufügen», «Skill hochladen», ZIP wählen. Ohne fertige Datei: «Mit Claude erstellen»."
+    },
+    "konnektorEcht": {
+      "name": "In echt: Konnektor verbinden",
+      "analogie": "Der Funkleitung einen Schlüssel geben, aber nur für die richtigen Türen.",
+      "aha": [
+        "Unter «Anpassungen» im Reiter «Konnektoren» fügst du einen Dienst hinzu und meldest dich dort an.",
+        "Claude sieht danach nur, was du in diesem Dienst auch sehen darfst.",
+        "Pro Werkzeug stellst du ein: immer erlaubt, mit Nachfrage oder blockiert. Lesen darf oft immer, Senden nur mit Nachfrage."
+      ],
+      "tipp": "Nur nötige Konnektoren verbinden. Lesen erlauben, Senden und Löschen mit Nachfrage oder blockiert."
+    },
+    "subagentEcht": {
+      "name": "In echt: Subagent anlegen",
+      "analogie": "Den Feldagenten mit Ausweis und Schlüsselbund ins Büro holen.",
+      "aha": [
+        "Subagenten gibt es in Claude Code. In der Desktop-App ist das der Bereich «</> Code».",
+        "Ein Subagent ist eine Datei im Ordner .claude/agents. Am einfachsten bittest du Claude, sie zu schreiben.",
+        "Lies vor dem Ja, welche Datei Claude anlegt und welche Werkzeuge der Feldagent bekommt."
+      ],
+      "tipp": "Im Code-Bereich Claude um den Subagenten bitten: was er tut, wann, welche Werkzeuge. Datei prüfen, dann erlauben."
+    },
+    "hookEcht": {
+      "name": "In echt: Hook und Plugin",
+      "analogie": "Den Rauchmelder montieren und die fertige Kiste ins Regal stellen.",
+      "aha": [
+        "Ein Plugin holst du unter «Anpassungen» im Reiter «Plugins». Unter «Meine» siehst du, was du schon hast.",
+        "Einen Hook schreibt dir Claude im Code-Bereich. Er steht dann in der Einstellungsdatei deines Projekts.",
+        "Lies vor dem Ja genau, wann der Hook läuft und was er tut."
+      ],
+      "tipp": "Plugins unter Anpassungen holen. Hooks von Claude im Code-Bereich schreiben lassen und vor dem Ja lesen."
     }
   }
 }

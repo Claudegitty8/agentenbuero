@@ -13,7 +13,28 @@
   "schrank": {
     "titel": "Einsatzprofil (Subagent): Reise-Rechercheur",
     "vorlage": "---\nname: reise-rechercheur\ndescription: Recherchiert Verbindungen, Unterkünfte und Ausflüge für eine Reise und bringt eine kurze Auswahl zurück. Verwenden, wenn für eine Reise viel gesucht oder gelesen werden muss.\ntools: WebSearch, WebFetch, Read\n---\nDu recherchierst für eine Reise. Du kennst das Gespräch nicht: Alles Nötige steht im Auftrag.\nHalte dich an die Kriterien im Auftrag.\nBericht: höchstens fünf Zeilen pro Thema, jede mit Quelle. Was du nicht findest, sagst du.",
-    "wo": "Speichere den Text in Claude Code als reise-rechercheur.md im Ordner .claude/agents/ deines Projekts oder in ~/.claude/agents/ für alle Projekte. Oder bitte Claude Code, die Datei zu schreiben."
+    "wo": "Speichere den Text in Claude Code als reise-rechercheur.md im Ordner .claude/agents/ deines Projekts oder in ~/.claude/agents/ für alle Projekte. Oder bitte Claude Code, die Datei zu schreiben.",
+    "probefahrt": {
+      "aufgabe": "sa-a",
+      "punkte": [
+        {
+          "id": "ordner",
+          "text": "Im Code-Bereich den Ordner des Projekts gewählt."
+        },
+        {
+          "id": "beschreiben",
+          "text": "Claude den Subagenten beschrieben: was, wann, welche Werkzeuge."
+        },
+        {
+          "id": "lesen",
+          "text": "Die Datei in .claude/agents gelesen."
+        },
+        {
+          "id": "testen",
+          "text": "Mit einer passenden Aufgabe ausprobiert."
+        }
+      ]
+    }
   },
   "runden": [
     {
@@ -152,6 +173,31 @@
         "zb-d",
         "zb-e",
         "zb-f"
+      ]
+    },
+    {
+      "id": "r-echt",
+      "art": "konzept",
+      "konzept": "subagentEcht",
+      "probieren": {
+        "aufgabe": "sa-a"
+      },
+      "beispiel": {
+        "aufgabe": "sa-a"
+      },
+      "luecke": {
+        "aufgabe": "sa-b",
+        "vorgabe": [
+          "modusCode",
+          "ordnerWaehlen",
+          "ordnerFerien"
+        ]
+      },
+      "frei": [
+        "sa-c",
+        "sa-d",
+        "sa-e",
+        "sa-f"
       ]
     },
     {
@@ -2487,6 +2533,668 @@
         "lesen",
         "anleitung"
       ]
+    },
+    "sa-a": {
+      "typ": "klick",
+      "wunsch": "Wir wollen den Reise-Rechercheur wirklich in Claude haben. Wie legen wir ihn an?",
+      "frage": "Leg für Familie Meier den Subagenten reise-rechercheur an. Tippe dich durch.",
+      "schritte": [
+        {
+          "schirm": "app",
+          "ziel": "modusCode",
+          "text": "Tippe oben auf «{ziel}».",
+          "falsch": {
+            "eingabe": "chatStattCode",
+            "anpassungen": "anpassungenStatt"
+          },
+          "sonst": "codeDaneben"
+        },
+        {
+          "schirm": "code-start",
+          "ziel": "ordnerWaehlen",
+          "text": "Tippe auf «{ziel}».",
+          "falsch": {
+            "umgebung": "umgebungZuerst",
+            "codeEingabe": "ohneOrdner",
+            "anpassungen": "anpassungenStatt"
+          },
+          "sonst": "codeDaneben2"
+        },
+        {
+          "schirm": "ordner-dialog",
+          "ziel": "ordnerFerien",
+          "text": "Wähle den Ordner «{ziel}».",
+          "falsch": {
+            "ordnerVerein": "falscherOrdner",
+            "ordnerOdermatt": "falscherOrdner",
+            "abbrechenOrdner": "ordnerAbgebrochen"
+          },
+          "sonst": "ordnerAbgebrochen"
+        },
+        {
+          "schirm": "code-ferien",
+          "ziel": "codeEingabe",
+          "text": "Tippe ins Eingabefeld.",
+          "falsch": {
+            "codePlus": "plusStatt"
+          },
+          "sonst": "codeDaneben3"
+        },
+        {
+          "schirm": "code-ferien-agent",
+          "ziel": "nachrichtGut",
+          "text": "Wähle die Nachricht, die Was, Wann und Werkzeuge nennt.",
+          "falsch": {
+            "nachrichtVage": "vage",
+            "nachrichtAlles": "darfAlles"
+          },
+          "sonst": "codeDaneben3"
+        }
+      ],
+      "nachher": "code-ferien-agent-fertig",
+      "erfolg": [
+        "Angelegt. Der Rechercheur steht in .claude/agents und darf nur lesen und suchen.",
+        "Geschafft. Ab jetzt schickt Claude ihn, wenn Unterkünfte oder Züge gesucht sind."
+      ],
+      "fehlbilder": {
+        "codeDaneben": {
+          "texte": [
+            "Echo landet woanders. Den Code-Bereich gibt es hier nicht.",
+            "Falsche Tür. Hier arbeitet Claude nicht in deinen Ordnern."
+          ],
+          "hinweis": "Oben links geht es mit «</> Code» in den Code-Bereich."
+        },
+        "chatStattCode": {
+          "texte": [
+            "Echo schreibt im Chat. Dort arbeitet Claude nicht in deinen Ordnern, ein Subagent entsteht so nicht.",
+            "Im Chat bleibt der Subagent ein Gespräch. Eine Datei dafür legt Claude im Code-Bereich an."
+          ],
+          "hinweis": "Einen Subagent legst du im Code-Bereich an: oben links «</> Code»."
+        },
+        "anpassungenStatt": {
+          "texte": [
+            "Echo öffnet die Anpassungen. Dort holst du fertige Skills, Konnektoren und Plugins. Einen eigenen Subagent schreibt Claude im Code-Bereich.",
+            "Fertiges aus dem Verzeichnis statt etwas Eigenes für dein Projekt."
+          ],
+          "hinweis": "Einen eigenen Subagent schreibt Claude im Code-Bereich: oben links «</> Code»."
+        },
+        "umgebungZuerst": {
+          "texte": [
+            "Echo öffnet die Umgebung. Der Ordner, in dem Claude arbeiten soll, fehlt aber noch.",
+            "Erst wählen, wo gearbeitet wird. Dann loslegen."
+          ],
+          "hinweis": "Wähle zuerst «Ordner zum Arbeiten auswählen»."
+        },
+        "ohneOrdner": {
+          "texte": [
+            "Echo schreibt los, aber es ist noch kein Ordner gewählt. Wohin soll der Subagent?",
+            "Ohne Ordner fehlt der Platz für den Subagent."
+          ],
+          "hinweis": "Wähle zuerst «Ordner zum Arbeiten auswählen»."
+        },
+        "codeDaneben2": {
+          "texte": [
+            "Hier passiert nichts mit dem Ordner.",
+            "Echo wartet. Noch ist kein Ordner gewählt."
+          ],
+          "hinweis": "Wähle zuerst «Ordner zum Arbeiten auswählen»."
+        },
+        "falscherOrdner": {
+          "texte": [
+            "Echo arbeitet im falschen Ordner. Der Subagent gälte dort und nicht bei Familie Meier.",
+            "Falscher Ordner: Bei Familie Meier fehlt der Subagent weiter."
+          ],
+          "hinweis": "Wähle den Ordner, um den es geht: Familie Meier."
+        },
+        "ordnerAbgebrochen": {
+          "texte": [
+            "Abgebrochen. Kein Ordner ist gewählt.",
+            "Das Fenster ist zu. Claude weiss nicht, wo es arbeiten soll."
+          ],
+          "hinweis": "Wähle den Ordner Familie Meier."
+        },
+        "plusStatt": {
+          "texte": [
+            "Echo öffnet das Plus. Anhängen musst du nichts, schreiben reicht.",
+            "Eine Datei mehr hilft hier nicht."
+          ],
+          "hinweis": "Tippe ins Eingabefeld und beschreib den Subagent."
+        },
+        "codeDaneben3": {
+          "texte": [
+            "Hier schreibst du Claude nichts.",
+            "Echo wartet auf deine Nachricht."
+          ],
+          "hinweis": "Tippe ins Eingabefeld und beschreib den Subagent."
+        },
+        "vage": {
+          "texte": [
+            "Claude legt agent-1 an. Wann er gerufen wird und was er darf, steht nirgends.",
+            "Ein Agent ohne Beschreibung: Echo weiss nie, wann es ihn schicken soll."
+          ],
+          "hinweis": "Beschreib dem Subagenten: was er tut, wann er gebraucht wird, welche Werkzeuge er bekommt."
+        },
+        "darfAlles": {
+          "texte": [
+            "Der Rechercheur darf alles. Beim Aufräumen seiner Notizen löscht er den Ferienplan.",
+            "Ohne Werkzeugliste bekommt er alles, auch Schreiben und Löschen."
+          ],
+          "hinweis": "Gib nur die Werkzeuge mit, die er braucht: hier Lesen und Websuche."
+        }
+      }
+    },
+    "sa-b": {
+      "typ": "klick",
+      "wunsch": "Bevor wir buchen, soll jemand mit frischem Blick den ganzen Plan prüfen.",
+      "frage": "Leg den Subagenten plan-pruefer an. Der Ordner ist schon gewählt.",
+      "schritte": [
+        {
+          "schirm": "app",
+          "ziel": "modusCode",
+          "text": "Tippe oben auf «{ziel}».",
+          "falsch": {
+            "eingabe": "chatStattCode",
+            "anpassungen": "anpassungenStatt"
+          },
+          "sonst": "codeDaneben"
+        },
+        {
+          "schirm": "code-start",
+          "ziel": "ordnerWaehlen",
+          "text": "Tippe auf «{ziel}».",
+          "falsch": {
+            "umgebung": "umgebungZuerst",
+            "codeEingabe": "ohneOrdner",
+            "anpassungen": "anpassungenStatt"
+          },
+          "sonst": "codeDaneben2"
+        },
+        {
+          "schirm": "ordner-dialog",
+          "ziel": "ordnerFerien",
+          "text": "Wähle den Ordner «{ziel}».",
+          "falsch": {
+            "ordnerVerein": "falscherOrdner",
+            "ordnerOdermatt": "falscherOrdner",
+            "abbrechenOrdner": "ordnerAbgebrochen"
+          },
+          "sonst": "ordnerAbgebrochen"
+        },
+        {
+          "schirm": "code-ferien",
+          "ziel": "codeEingabe",
+          "text": "Tippe ins Eingabefeld.",
+          "falsch": {
+            "codePlus": "plusStatt"
+          },
+          "sonst": "codeDaneben3"
+        },
+        {
+          "schirm": "code-ferien-pruefer",
+          "ziel": "prueferGut",
+          "text": "Wähle die Nachricht mit Prüfliste und «nur lesen».",
+          "falsch": {
+            "prueferVage": "prueferVage",
+            "prueferUmbau": "prueferBaut"
+          },
+          "sonst": "codeDaneben3"
+        }
+      ],
+      "nachher": "code-ferien-pruefer-fertig",
+      "erfolg": [
+        "Angelegt. Der Prüfer liest nur und meldet wichtige Lücken.",
+        "Geschafft. Der zweite Blick ist eingerichtet."
+      ],
+      "fehlbilder": {
+        "codeDaneben": {
+          "texte": [
+            "Echo landet woanders. Den Code-Bereich gibt es hier nicht.",
+            "Falsche Tür. Hier arbeitet Claude nicht in deinen Ordnern."
+          ],
+          "hinweis": "Oben links geht es mit «</> Code» in den Code-Bereich."
+        },
+        "chatStattCode": {
+          "texte": [
+            "Echo schreibt im Chat. Dort arbeitet Claude nicht in deinen Ordnern, ein Subagent entsteht so nicht.",
+            "Im Chat bleibt der Subagent ein Gespräch. Eine Datei dafür legt Claude im Code-Bereich an."
+          ],
+          "hinweis": "Einen Subagent legst du im Code-Bereich an: oben links «</> Code»."
+        },
+        "anpassungenStatt": {
+          "texte": [
+            "Echo öffnet die Anpassungen. Dort holst du fertige Skills, Konnektoren und Plugins. Einen eigenen Subagent schreibt Claude im Code-Bereich.",
+            "Fertiges aus dem Verzeichnis statt etwas Eigenes für dein Projekt."
+          ],
+          "hinweis": "Einen eigenen Subagent schreibt Claude im Code-Bereich: oben links «</> Code»."
+        },
+        "umgebungZuerst": {
+          "texte": [
+            "Echo öffnet die Umgebung. Der Ordner, in dem Claude arbeiten soll, fehlt aber noch.",
+            "Erst wählen, wo gearbeitet wird. Dann loslegen."
+          ],
+          "hinweis": "Wähle zuerst «Ordner zum Arbeiten auswählen»."
+        },
+        "ohneOrdner": {
+          "texte": [
+            "Echo schreibt los, aber es ist noch kein Ordner gewählt. Wohin soll der Subagent?",
+            "Ohne Ordner fehlt der Platz für den Subagent."
+          ],
+          "hinweis": "Wähle zuerst «Ordner zum Arbeiten auswählen»."
+        },
+        "codeDaneben2": {
+          "texte": [
+            "Hier passiert nichts mit dem Ordner.",
+            "Echo wartet. Noch ist kein Ordner gewählt."
+          ],
+          "hinweis": "Wähle zuerst «Ordner zum Arbeiten auswählen»."
+        },
+        "falscherOrdner": {
+          "texte": [
+            "Echo arbeitet im falschen Ordner. Der Subagent gälte dort und nicht bei Familie Meier.",
+            "Falscher Ordner: Bei Familie Meier fehlt der Subagent weiter."
+          ],
+          "hinweis": "Wähle den Ordner, um den es geht: Familie Meier."
+        },
+        "ordnerAbgebrochen": {
+          "texte": [
+            "Abgebrochen. Kein Ordner ist gewählt.",
+            "Das Fenster ist zu. Claude weiss nicht, wo es arbeiten soll."
+          ],
+          "hinweis": "Wähle den Ordner Familie Meier."
+        },
+        "plusStatt": {
+          "texte": [
+            "Echo öffnet das Plus. Anhängen musst du nichts, schreiben reicht.",
+            "Eine Datei mehr hilft hier nicht."
+          ],
+          "hinweis": "Tippe ins Eingabefeld und beschreib den Subagent."
+        },
+        "codeDaneben3": {
+          "texte": [
+            "Hier schreibst du Claude nichts.",
+            "Echo wartet auf deine Nachricht."
+          ],
+          "hinweis": "Tippe ins Eingabefeld und beschreib den Subagent."
+        },
+        "prueferVage": {
+          "texte": [
+            "Claude legt einen Prüfer ohne Prüfliste an. Er findet alles «gut».",
+            "Ein Prüfer, der nicht weiss, wogegen er prüft."
+          ],
+          "hinweis": "Sag dem Prüfer, was er liest, wogegen er prüft und was er meldet."
+        },
+        "prueferBaut": {
+          "texte": [
+            "Der Prüfer baut den Ferienplan um, statt Lücken zu melden. 47 Änderungen, keiner weiss warum.",
+            "Ein Prüfer, der selbst schreibt, ist kein zweiter Blick mehr."
+          ],
+          "hinweis": "Der Prüfer liest nur und meldet wichtige Lücken. Ändern tut er nichts."
+        }
+      }
+    },
+    "sa-c": {
+      "typ": "wahl",
+      "wunsch": "Der Rechercheur soll nur bei unserem Ferienplan helfen, nicht in anderen Projekten.",
+      "frage": "Wo muss die Datei des Subagenten liegen, damit er nur im Ferienplan-Ordner gilt?",
+      "optionen": [
+        {
+          "id": "projekt",
+          "text": "Im Ordner .claude/agents im Ferienplan-Ordner.",
+          "richtig": true,
+          "hinweis": "Genau. Im Ordner .claude/agents eines Projekts gilt er nur dort."
+        },
+        {
+          "id": "alle",
+          "text": "Im Ordner ~/.claude/agents im eigenen Benutzerordner.",
+          "hinweis": "Dort gilt er in allen deinen Projekten. Familie Meier wollte ihn nur beim Ferienplan."
+        },
+        {
+          "id": "skills",
+          "text": "Als Skill unter «Anpassungen» hochladen.",
+          "hinweis": "Ein Skill ist eine Anleitung, kein Subagent mit eigenem Arbeitsbereich."
+        }
+      ],
+      "echo": "Echo legt die Datei in .claude/agents im Ferienplan-Ordner. In anderen Projekten taucht der Rechercheur nicht auf.",
+      "loesung": [
+        "projekt"
+      ]
+    },
+    "sa-d": {
+      "typ": "reihe",
+      "wunsch": "Was ist die richtige Reihenfolge, wenn wir einen Subagenten in echt anlegen?",
+      "frage": "Bring die Schritte zum Anlegen eines Subagenten in die richtige Reihenfolge.",
+      "schritte": [
+        {
+          "id": "lesen",
+          "text": "Die angelegte Datei lesen: Beschreibung und Werkzeuge"
+        },
+        {
+          "id": "code",
+          "text": "Oben auf «</> Code» tippen",
+          "schirm": "app",
+          "ziel": "modusCode"
+        },
+        {
+          "id": "testen",
+          "text": "Mit einer passenden Aufgabe ausprobieren"
+        },
+        {
+          "id": "beschreiben",
+          "text": "Claude den Subagenten beschreiben: was, wann, welche Werkzeuge"
+        },
+        {
+          "id": "ordner",
+          "text": "Den Ordner des Projekts wählen",
+          "schirm": "code-start",
+          "ziel": "ordnerWaehlen"
+        }
+      ],
+      "loesung": [
+        "code",
+        "ordner",
+        "beschreiben",
+        "lesen",
+        "testen"
+      ],
+      "echo": "Code-Bereich, Ordner, beschreiben, Datei lesen, ausprobieren. Der Rechercheur tut, was er soll, und nicht mehr.",
+      "daneben": {
+        "texte": [
+          "Claude schreibt den Subagenten, aber in keinen Ordner. Er ist nirgends zu finden.",
+          "Familie Meier probiert den Rechercheur aus, bevor jemand seine Werkzeuge gelesen hat. Er darf alles."
+        ],
+        "hinweis": "Erst Code-Bereich und Ordner, dann beschreiben. Lesen vor dem Ausprobieren."
+      }
+    },
+    "sa-e": {
+      "typ": "einstellen",
+      "wunsch": "Claude fragt, welche Werkzeuge der Rechercheur bekommt. Was sagen wir?",
+      "frage": "Stell ein, welche Werkzeuge der Reise-Rechercheur bekommt.",
+      "schirm": "code-ferien-werkzeuge",
+      "zeilen": [
+        {
+          "id": "lesen",
+          "text": "Dateien lesen",
+          "start": "lesenNein",
+          "optionen": [
+            {
+              "id": "lesenJa",
+              "text": "Ja"
+            },
+            {
+              "id": "lesenNein",
+              "text": "Nein"
+            }
+          ]
+        },
+        {
+          "id": "web",
+          "text": "Im Web suchen",
+          "start": "webNein",
+          "optionen": [
+            {
+              "id": "webJa",
+              "text": "Ja"
+            },
+            {
+              "id": "webNein",
+              "text": "Nein"
+            }
+          ]
+        },
+        {
+          "id": "aendern",
+          "text": "Dateien ändern",
+          "start": "aendernJa",
+          "optionen": [
+            {
+              "id": "aendernJa",
+              "text": "Ja"
+            },
+            {
+              "id": "aendernNein",
+              "text": "Nein"
+            }
+          ]
+        },
+        {
+          "id": "befehle",
+          "text": "Befehle ausführen",
+          "start": "befehleJa",
+          "optionen": [
+            {
+              "id": "befehleJa",
+              "text": "Ja"
+            },
+            {
+              "id": "befehleNein",
+              "text": "Nein"
+            }
+          ]
+        }
+      ],
+      "loesung": [
+        "lesenJa",
+        "webJa",
+        "aendernNein",
+        "befehleNein"
+      ],
+      "pruefungen": [
+        {
+          "wenn": {
+            "gewaehlt": [
+              "aendernJa"
+            ]
+          },
+          "fehlbild": "darfAendern"
+        },
+        {
+          "wenn": {
+            "gewaehlt": [
+              "befehleJa"
+            ]
+          },
+          "fehlbild": "darfBefehle"
+        },
+        {
+          "wenn": {
+            "gewaehlt": [
+              "webNein"
+            ]
+          },
+          "fehlbild": "keinWeb"
+        },
+        {
+          "wenn": {
+            "gewaehlt": [
+              "lesenNein"
+            ]
+          },
+          "fehlbild": "keinLesen"
+        }
+      ],
+      "erfolg": [
+        "Richtig ausgerüstet: lesen und suchen, sonst nichts.",
+        "So kann der Rechercheur suchen, aber nichts kaputt machen."
+      ],
+      "fehlbilder": {
+        "darfAendern": {
+          "texte": [
+            "Der Rechercheur schreibt seine Funde gleich in den Ferienplan und überschreibt dabei die Zugzeiten.",
+            "Ein Sucher mit Schreibrecht: Plötzlich ist der Plan anders."
+          ],
+          "hinweis": "Ein Rechercheur ändert nichts. «Dateien ändern»: Nein."
+        },
+        "darfBefehle": {
+          "texte": [
+            "Der Rechercheur führt Befehle aus und räumt «zur Sicherheit» den Ordner auf.",
+            "Befehle braucht er zum Suchen nicht. Er hat sie trotzdem benutzt."
+          ],
+          "hinweis": "Zum Suchen braucht es keine Befehle. «Befehle ausführen»: Nein."
+        },
+        "keinWeb": {
+          "texte": [
+            "Ohne Websuche findet der Rechercheur keine einzige Unterkunft.",
+            "Er sucht nur in alten Dateien. Die Preise sind vom letzten Jahr."
+          ],
+          "hinweis": "Ein Rechercheur muss im Web suchen dürfen."
+        },
+        "keinLesen": {
+          "texte": [
+            "Ohne Lesen kennt der Rechercheur die Wunschliste der Familie nicht.",
+            "Er sucht Hotels für vier, die Familie ist zu fünft."
+          ],
+          "hinweis": "Lesen schadet nicht. Er muss die Wunschliste lesen dürfen."
+        }
+      }
+    },
+    "sa-f": {
+      "typ": "klick",
+      "wunsch": "Kannst du den Prüfer auch von Anfang an einrichten? Ich will den ganzen Weg sehen.",
+      "frage": "Richte den Subagenten plan-pruefer von Anfang an ein. Tippe dich durch.",
+      "schritte": [
+        {
+          "schirm": "app",
+          "ziel": "modusCode",
+          "text": "Tippe oben auf «{ziel}».",
+          "falsch": {
+            "eingabe": "chatStattCode",
+            "anpassungen": "anpassungenStatt"
+          },
+          "sonst": "codeDaneben"
+        },
+        {
+          "schirm": "code-start",
+          "ziel": "ordnerWaehlen",
+          "text": "Tippe auf «{ziel}».",
+          "falsch": {
+            "umgebung": "umgebungZuerst",
+            "codeEingabe": "ohneOrdner",
+            "anpassungen": "anpassungenStatt"
+          },
+          "sonst": "codeDaneben2"
+        },
+        {
+          "schirm": "ordner-dialog",
+          "ziel": "ordnerFerien",
+          "text": "Wähle den Ordner «{ziel}».",
+          "falsch": {
+            "ordnerVerein": "falscherOrdner",
+            "ordnerOdermatt": "falscherOrdner",
+            "abbrechenOrdner": "ordnerAbgebrochen"
+          },
+          "sonst": "ordnerAbgebrochen"
+        },
+        {
+          "schirm": "code-ferien",
+          "ziel": "codeEingabe",
+          "text": "Tippe ins Eingabefeld.",
+          "falsch": {
+            "codePlus": "plusStatt"
+          },
+          "sonst": "codeDaneben3"
+        },
+        {
+          "schirm": "code-ferien-pruefer",
+          "ziel": "prueferGut",
+          "text": "Wähle die Nachricht mit Prüfliste und «nur lesen».",
+          "falsch": {
+            "prueferVage": "prueferVage",
+            "prueferUmbau": "prueferBaut"
+          },
+          "sonst": "codeDaneben3"
+        }
+      ],
+      "nachher": "code-ferien-pruefer-fertig",
+      "erfolg": [
+        "Angelegt, von Anfang bis Ende. Der Prüfer liest nur und meldet Wichtiges.",
+        "Geschafft. Den Weg kennst du jetzt ganz."
+      ],
+      "fehlbilder": {
+        "codeDaneben": {
+          "texte": [
+            "Echo landet woanders. Den Code-Bereich gibt es hier nicht.",
+            "Falsche Tür. Hier arbeitet Claude nicht in deinen Ordnern."
+          ],
+          "hinweis": "Oben links geht es mit «</> Code» in den Code-Bereich."
+        },
+        "chatStattCode": {
+          "texte": [
+            "Echo schreibt im Chat. Dort arbeitet Claude nicht in deinen Ordnern, ein Subagent entsteht so nicht.",
+            "Im Chat bleibt der Subagent ein Gespräch. Eine Datei dafür legt Claude im Code-Bereich an."
+          ],
+          "hinweis": "Einen Subagent legst du im Code-Bereich an: oben links «</> Code»."
+        },
+        "anpassungenStatt": {
+          "texte": [
+            "Echo öffnet die Anpassungen. Dort holst du fertige Skills, Konnektoren und Plugins. Einen eigenen Subagent schreibt Claude im Code-Bereich.",
+            "Fertiges aus dem Verzeichnis statt etwas Eigenes für dein Projekt."
+          ],
+          "hinweis": "Einen eigenen Subagent schreibt Claude im Code-Bereich: oben links «</> Code»."
+        },
+        "umgebungZuerst": {
+          "texte": [
+            "Echo öffnet die Umgebung. Der Ordner, in dem Claude arbeiten soll, fehlt aber noch.",
+            "Erst wählen, wo gearbeitet wird. Dann loslegen."
+          ],
+          "hinweis": "Wähle zuerst «Ordner zum Arbeiten auswählen»."
+        },
+        "ohneOrdner": {
+          "texte": [
+            "Echo schreibt los, aber es ist noch kein Ordner gewählt. Wohin soll der Subagent?",
+            "Ohne Ordner fehlt der Platz für den Subagent."
+          ],
+          "hinweis": "Wähle zuerst «Ordner zum Arbeiten auswählen»."
+        },
+        "codeDaneben2": {
+          "texte": [
+            "Hier passiert nichts mit dem Ordner.",
+            "Echo wartet. Noch ist kein Ordner gewählt."
+          ],
+          "hinweis": "Wähle zuerst «Ordner zum Arbeiten auswählen»."
+        },
+        "falscherOrdner": {
+          "texte": [
+            "Echo arbeitet im falschen Ordner. Der Subagent gälte dort und nicht bei Familie Meier.",
+            "Falscher Ordner: Bei Familie Meier fehlt der Subagent weiter."
+          ],
+          "hinweis": "Wähle den Ordner, um den es geht: Familie Meier."
+        },
+        "ordnerAbgebrochen": {
+          "texte": [
+            "Abgebrochen. Kein Ordner ist gewählt.",
+            "Das Fenster ist zu. Claude weiss nicht, wo es arbeiten soll."
+          ],
+          "hinweis": "Wähle den Ordner Familie Meier."
+        },
+        "plusStatt": {
+          "texte": [
+            "Echo öffnet das Plus. Anhängen musst du nichts, schreiben reicht.",
+            "Eine Datei mehr hilft hier nicht."
+          ],
+          "hinweis": "Tippe ins Eingabefeld und beschreib den Subagent."
+        },
+        "codeDaneben3": {
+          "texte": [
+            "Hier schreibst du Claude nichts.",
+            "Echo wartet auf deine Nachricht."
+          ],
+          "hinweis": "Tippe ins Eingabefeld und beschreib den Subagent."
+        },
+        "prueferVage": {
+          "texte": [
+            "Claude legt einen Prüfer ohne Prüfliste an. Er findet alles «gut».",
+            "Ein Prüfer, der nicht weiss, wogegen er prüft."
+          ],
+          "hinweis": "Sag dem Prüfer, was er liest, wogegen er prüft und was er meldet."
+        },
+        "prueferBaut": {
+          "texte": [
+            "Der Prüfer baut den Ferienplan um, statt Lücken zu melden. 47 Änderungen, keiner weiss warum.",
+            "Ein Prüfer, der selbst schreibt, ist kein zweiter Blick mehr."
+          ],
+          "hinweis": "Der Prüfer liest nur und meldet wichtige Lücken. Ändern tut er nichts."
+        }
+      }
     }
   }
 }

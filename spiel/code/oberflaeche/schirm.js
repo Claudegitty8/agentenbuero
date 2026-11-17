@@ -13,6 +13,7 @@ function stelle(eintrag, o, klasse, ...inhalt) {
   const klassen = [klasse];
   if (istAktiv(o.schirm, eintrag)) klassen.push('aktiv');
   if (eintrag.haupt) klassen.push('haupt');
+  if (eintrag.leise) klassen.push('leise'); // Platzhalter wie «Deine Chats …»
   const markiert = eintrag.id && o.markiert === eintrag.id;
   if (markiert) klassen.push('markiert');
   if (eintrag.id && o.getroffen === eintrag.id) klassen.push('getroffen');
@@ -43,7 +44,7 @@ const BAUSTEINE = {
   liste: (b, o) => el('div', { klasse: 'schirm-liste' }, b.eintraege.map((e) => el('div', { klasse: 'schirm-zeile' },
     stelle(e.knopf ? { text: e.text } : e, o, 'schirm-zeile-text', el('strong', { text: e.text }), unter(e)),
     e.knopf ? stelle(e.knopf, o, 'schirm-knopf klein', text(e.knopf)) : null))),
-  schalter: (b, o) => stelle(b, o, 'schirm-schalter', el('span', { text: b.text }),
+  schalter: (b, o) => stelle(b, o, 'schirm-schalter', el('span', { klasse: 'schalter-text' }, el('span', { text: b.text }), unter(b)),
     el('span', { klasse: b.an ? 'schalter an' : 'schalter', 'aria-hidden': 'true' }),
     el('span', { klasse: 'nur-vorlesen', text: b.an ? ` (${o.t.schirmAn})` : ` (${o.t.schirmAus})` })),
   feld: (b, o) => stelle(b, o, 'schirm-feld', el('small', { text: b.text }), el('span', { klasse: 'feld-wert', text: b.wert ?? '' })),
@@ -65,6 +66,18 @@ const BAUSTEINE = {
   einstellungen: (b, o) => el('div', { klasse: 'schirm-einstellungen' }, o.einstellungen ?? []),
 };
 
+// Ausschnitt um eine Stelle (zum Beispiel für die kleinen Bilder beim Sortieren): nur das Fenster und der Teil,
+// in dem die Stelle liegt. Aus der Seitenleiste nur die Stelle und ihre Nachbarn. So bleibt das Bild auch am Handy lesbar.
+function ausschnittVon(schirm, id) {
+  const nur = { ...schirm, kopfleiste: [], seitenleiste: null, inhalt: [] };
+  if ((schirm.kopfleiste ?? []).some((e) => e.id === id)) return { ...nur, kopfleiste: schirm.kopfleiste };
+  const seite = schirm.seitenleiste ?? [];
+  const stelle = seite.findIndex((e) => e.id === id);
+  if (stelle >= 0) return { ...nur, inhalt: [{ art: 'menue', eintraege: seite.slice(Math.max(0, stelle - 2), stelle + 3) }] };
+  const baustein = (schirm.inhalt ?? []).find((b) => b.id === id || JSON.stringify(b).includes(`"id":"${id}"`));
+  return baustein ? { ...nur, inhalt: [baustein] } : schirm;
+}
+
 // Die Bausteinarten, die gezeichnet werden können (ein Test vergleicht sie mit SCHIRM_ARTEN der Logik).
 export const BAUSTEIN_ARTEN = Object.keys(BAUSTEINE);
 
@@ -72,6 +85,7 @@ export const BAUSTEIN_ARTEN = Object.keys(BAUSTEINE);
 // optionen: beiTipp(id), markiert (id), markiertText, getroffen (id), aus (alles gesperrt),
 //           einstellungen (fertige Zeilen), klein (Vorschau, zum Beispiel in der Bilderstrecke).
 export function baueSchirm(schirm, t, optionen = {}) {
+  if (optionen.ausschnitt) return baueSchirm(ausschnittVon(schirm, optionen.ausschnitt), t, { ...optionen, ausschnitt: null, eng: true });
   const o = { ...optionen, schirm, t, beiTipp: optionen.klein ? null : optionen.beiTipp ?? null };
   const kopf = el('div', { klasse: 'schirm-fenster' },
     el('span', { klasse: 'schirm-punkte', 'aria-hidden': 'true' }),
@@ -84,6 +98,7 @@ export function baueSchirm(schirm, t, optionen = {}) {
   const klassen = ['schirm'];
   if (seite) klassen.push('mit-seite');
   if (optionen.klein) klassen.push('klein');
+  if (optionen.eng) klassen.push('ausschnitt');
   if (schirm.dunkel) klassen.push('dunkel');
   return el('figure', {
     klasse: klassen.join(' '),

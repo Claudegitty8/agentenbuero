@@ -69,6 +69,13 @@
       ]
     },
     {
+      "id": "skillEcht",
+      "kapitel": 2,
+      "braucht": [
+        "deckblatt"
+      ]
+    },
+    {
       "id": "freigabe",
       "kapitel": 3,
       "braucht": [
@@ -80,6 +87,13 @@
       "kapitel": 3,
       "braucht": [
         "material",
+        "freigabe"
+      ]
+    },
+    {
+      "id": "konnektorEcht",
+      "kapitel": 3,
+      "braucht": [
         "freigabe"
       ]
     },
@@ -156,6 +170,13 @@
       ]
     },
     {
+      "id": "subagentEcht",
+      "kapitel": 5,
+      "braucht": [
+        "profil"
+      ]
+    },
+    {
       "id": "hook",
       "kapitel": 6,
       "braucht": [
@@ -169,6 +190,14 @@
         "deckblatt",
         "freigabe",
         "profil"
+      ]
+    },
+    {
+      "id": "hookEcht",
+      "kapitel": 6,
+      "braucht": [
+        "hook",
+        "paket"
       ]
     }
   ]

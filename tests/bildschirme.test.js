@@ -72,6 +72,10 @@ test('Bildschirme: Basis wird übernommen, Kreise und Unbekanntes ergeben null',
   assert.deepEqual(stellenVon(skills), ['neu', 'anpassungen', 'reiterSkills', 'reiterKonnektoren', 'hinzufuegen']);
   assert.ok(istAktiv(skills, skills.seitenleiste[1]));
   assert.ok(!istAktiv(skills, skills.seitenleiste[0]));
+  // Ein offenes Menü wird direkt unter der Stelle eingefügt, der Rest kommt aus der Basis.
+  const mitMenue = loeseSchirm({ ...SCHIRME, menue: { basis: 'skills', einschub: { nach: 'reiterSkills', inhalt: [{ art: 'menue', eintraege: [{ id: 'hoch', text: 'Hochladen' }] }] } } }, 'menue');
+  assert.deepEqual(mitMenue.inhalt.map((b) => b.art), ['reiter', 'menue', 'knoepfe']);
+  assert.deepEqual(mitMenue.aktiv, ['anpassungen', 'reiterSkills']);
   assert.equal(loeseSchirm(SCHIRME, 'kreisA'), null);
   assert.equal(loeseSchirm(SCHIRME, 'gibtEsNicht'), null);
   assert.equal(loeseSchirm(undefined, 'grund'), null);
@@ -80,6 +84,8 @@ test('Bildschirme: Basis wird übernommen, Kreise und Unbekanntes ergeben null',
 test('Durchklicken: {ziel} im Schritt wird zur Beschriftung der richtigen Stelle', () => {
   assert.equal(schrittText({ schirm: 'skills', ziel: 'hinzufuegen', text: 'Tippe auf «{ziel}».' }, SCHIRME), 'Tippe auf «+ Hinzufügen».');
   assert.equal(schrittText({ schirm: 'skills', ziel: 'x', text: 'Ohne Platzhalter.' }, SCHIRME), 'Ohne Platzhalter.');
+  // Pfeile für Menüs gehören nicht in den Text: «Skills ›» wird zu «Skills».
+  assert.equal(schrittText({ schirm: 'menue', ziel: 'm', text: '«{ziel}»' }, { menue: { inhalt: [{ art: 'menue', eintraege: [{ id: 'm', text: 'Skills ›' }] }] } }), '«Skills»');
 });
 
 test('Bildschirme: Logik und Oberfläche kennen dieselben Bausteine', () => {
@@ -174,9 +180,10 @@ test('Inhaltsprüfung: findet Fehler in den Bildschirmen', () => {
     ...SCHIRME,
     ohneStand: { fenster: 'X', inhalt: [{ art: 'gibtsNicht' }, { art: 'knoepfe', eintraege: [{ id: 'a', text: 'Grösse' }, { id: 'a', text: 'b' }] }] },
     falschAktiv: { basis: 'grund', aktiv: ['niemand'], inhalt: [] },
+    falscherEinschub: { basis: 'skills', einschub: { nach: 'gibtsNicht', inhalt: [] } },
   }, 's', fehler);
   for (const erwartet of ['«kreisA»: Basis fehlt', '«ohneStand»: braucht ein Datum', 'unbekannter Baustein «gibtsNicht»',
-    'Stelle doppelt: a', 'aktiv nennt «niemand»']) {
+    'Stelle doppelt: a', 'aktiv nennt «niemand»', 'einschub.nach nennt «gibtsNicht»']) {
     assert.ok(fehler.some((f) => f.includes(erwartet)), `erwartet: ${erwartet}\n${fehler.join('\n')}`);
   }
   const mitSz = [];

@@ -1,11 +1,12 @@
 # Backlog
 
-Stand: 16.11.2026 (Version 0.9). Muss = für Version 1.0 nötig. Soll = wichtig, aber nicht zwingend. Kann = gute Idee für später.
+Stand: 17.11.2026 (Version 0.10). Muss = für Version 1.0 nötig. Soll = wichtig, aber nicht zwingend. Kann = gute Idee für später.
 
 ## Muss
 - Kontakt-E-Mail und Prüfung der Hinweise vor breitem Teilen.
 - Testrunde mit mindestens 3 Erwachsenen (Claude-Nutzer ohne Informatik).
 - Vor Version 1.0: Fakten in `fakten.json` und `RECHERCHE.md` neu prüfen (Prüfdatum älter als drei Monate).
+- Vor Version 1.0: die Bildschirme «In echt» mit der aktuellen Claude-App abgleichen, vor allem die «nicht geprüft»-Stellen (RECHERCHE.md). Die App wird gerade umgebaut (Anpassungen heisst künftig «Plugins»).
 - Veröffentlichen auf GitHub Pages und Test auf echten Handys.
 
 ## Soll
@@ -15,6 +16,8 @@ Stand: 16.11.2026 (Version 0.9). Muss = für Version 1.0 nötig. Soll = wichtig,
 - Hinweis, den Link im richtigen Browser oder auf dem Home-Bildschirm zu öffnen (nicht im Browser von WhatsApp).
 - Skill- und Plugin-ZIP direkt im Spiel erzeugen (Annahme: ohne Zusatzpaket machbar). In Version 0.9 nicht gebaut: Die Vorlagen werden kopiert, die Anleitung sagt, wie man daraus eine Datei macht.
 - Agentenwand: jeder gebaute Feldagent sichtbar in der Zentrale (Idee aus dem Konzept).
+
+- Runden «In echt» nachholen für alle, die einen Auftrag vor Version 0.10 erledigt haben (E-031). Bis dahin zeigt der Einsatzschrank den Weg als Probefahrt.
 
 ## Kann
 - Knopf «Fortschritt teilen» ohne Server (öffnet WhatsApp oder SMS mit fertigem Text).

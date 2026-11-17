@@ -6,48 +6,208 @@
   "wunsch": "Echo arbeitet stundenlang an unseren Offerten. Zwei Regeln dürfen dabei nie vergessen gehen. Und die Filiale in Stans will alles genauso haben.",
   "kundenstimme": "Die Buchhaltung ist sicher, und in Stans läuft alles wie bei uns. Ohne ein einziges Passwort im Paket.",
   "ueberraschung": "Ganz Zwirbelwil hat vom Agentenbüro gehört. Das Dorffest-Komitee meldet sich mit dem grössten Auftrag bisher.",
-  "lexikon": ["sicherheitsprotokoll", "befehle", "claudemd"],
+  "lexikon": [
+    "sicherheitsprotokoll",
+    "befehle",
+    "claudemd"
+  ],
   "schrank": {
     "titel": "Bauplan: Sicherheitsprotokoll und Einsatzpaket",
     "vorlage": "Schreib mir einen Hook für Claude Code: [Zeitpunkt, zum Beispiel vor jeder Dateiänderung] soll [Regel, zum Beispiel Änderungen im Ordner «Buchhaltung» sperren]. Erklär mir in einfachen Worten, was er tut, und zeig ihn mir, bevor du ihn einträgst.\nPack danach ein Plugin namens [name]: den Skill [skill], den Konnektor [konnektor], den Subagenten [subagent] und diesen Hook. Keine Passwörter und keine Zugangsdaten. Leg eine kurze Anleitung bei, was jede Person selbst verbinden muss. Zeig mir zuerst den Plan.",
-    "wo": "Gib den Text in Claude Code ein und ersetze alles in eckigen Klammern. Mit /hooks siehst du, welche Hooks aktiv sind. Teste Hook und Plugin selbst, bevor du sie teilst."
+    "wo": "Gib den Text in Claude Code ein und ersetze alles in eckigen Klammern. Mit /hooks siehst du, welche Hooks aktiv sind. Teste Hook und Plugin selbst, bevor du sie teilst.",
+    "probefahrt": {
+      "aufgabe": "hp-f",
+      "punkte": [
+        {
+          "id": "hook",
+          "text": "Im Code-Bereich Claude gebeten, den Hook zu schreiben."
+        },
+        {
+          "id": "lesen",
+          "text": "Gelesen, wann der Hook läuft und was er tut."
+        },
+        {
+          "id": "testen",
+          "text": "Mit einer Testdatei geprüft, ob er greift."
+        },
+        {
+          "id": "plugin",
+          "text": "Ein Plugin unter Anpassungen, Plugins geholt und unter «Meine» gefunden."
+        }
+      ]
+    }
   },
   "runden": [
     {
-      "id": "r1", "art": "konzept", "konzept": "hook",
-      "probieren": { "aufgabe": "hk-a", "nurTeile": ["bitte", "wannNach"] },
-      "beispiel": { "aufgabe": "hk-a" },
-      "luecke": { "aufgabe": "hk-b", "vorgabe": ["wannNach"] },
-      "frei": ["hk-c", "hk-d", "hk-e", "hk-f"]
+      "id": "r1",
+      "art": "konzept",
+      "konzept": "hook",
+      "probieren": {
+        "aufgabe": "hk-a",
+        "nurTeile": [
+          "bitte",
+          "wannNach"
+        ]
+      },
+      "beispiel": {
+        "aufgabe": "hk-a"
+      },
+      "luecke": {
+        "aufgabe": "hk-b",
+        "vorgabe": [
+          "wannNach"
+        ]
+      },
+      "frei": [
+        "hk-c",
+        "hk-d",
+        "hk-e",
+        "hk-f"
+      ]
     },
     {
-      "id": "r2", "art": "konzept", "konzept": "paket",
-      "probieren": { "aufgabe": "pk-a", "nurTeile": ["passwort", "privat"] },
-      "beispiel": { "aufgabe": "pk-a" },
-      "luecke": { "aufgabe": "pk-b", "vorgabe": ["skill", "leitung"] },
-      "frei": ["pk-c", "pk-d", "pk-e", "pk-f"]
+      "id": "r2",
+      "art": "konzept",
+      "konzept": "paket",
+      "probieren": {
+        "aufgabe": "pk-a",
+        "nurTeile": [
+          "passwort",
+          "privat"
+        ]
+      },
+      "beispiel": {
+        "aufgabe": "pk-a"
+      },
+      "luecke": {
+        "aufgabe": "pk-b",
+        "vorgabe": [
+          "skill",
+          "leitung"
+        ]
+      },
+      "frei": [
+        "pk-c",
+        "pk-d",
+        "pk-e",
+        "pk-f"
+      ]
     },
-    { "id": "r3", "art": "misch", "titel": "Alles zusammen", "frei": ["x-a", "x-b"] }
+    {
+      "id": "r-echt",
+      "art": "konzept",
+      "konzept": "hookEcht",
+      "probieren": {
+        "aufgabe": "hp-a"
+      },
+      "beispiel": {
+        "aufgabe": "hp-a"
+      },
+      "luecke": {
+        "aufgabe": "hp-b",
+        "vorgabe": [
+          "modusCode",
+          "ordnerWaehlen",
+          "ordnerOdermatt"
+        ]
+      },
+      "frei": [
+        "hp-c",
+        "hp-d",
+        "hp-e",
+        "hp-f"
+      ]
+    },
+    {
+      "id": "r3",
+      "art": "misch",
+      "titel": "Alles zusammen",
+      "frei": [
+        "x-a",
+        "x-b"
+      ]
+    }
   ],
   "aufgaben": {
     "hk-a": {
       "wunsch": "Im Ordner «Buchhaltung» darf Echo nie etwas ändern. Ohne jede Ausnahme, auch nach drei Stunden Arbeit.",
       "grundprompt": "Sicherheitsprotokoll für Echo in der Schreinerei.",
       "nachrichtVon": "Dein Sicherheitsprotokoll (Hook)",
-      "artNamen": { "zettel": "Fallakte (eine Bitte an Echo)", "feld": "Sicherheitsprotokoll: wann", "absicherung": "Sicherheitsprotokoll: was" },
+      "artNamen": {
+        "zettel": "Fallakte (eine Bitte an Echo)",
+        "feld": "Sicherheitsprotokoll: wann",
+        "absicherung": "Sicherheitsprotokoll: was"
+      },
       "teile": [
-        { "id": "bitte", "art": "zettel", "text": "Ändere nie etwas im Ordner «Buchhaltung»." },
-        { "id": "wannVor", "art": "feld", "text": "Wann: vor jeder Dateiänderung" },
-        { "id": "wannNach", "art": "feld", "text": "Wann: nach jeder Dateiänderung" },
-        { "id": "wasSperren", "art": "absicherung", "text": "Was: Liegt die Datei im Ordner «Buchhaltung», wird die Änderung gesperrt." },
-        { "id": "wasAlles", "art": "absicherung", "text": "Was: Jede Änderung wird gesperrt." }
+        {
+          "id": "bitte",
+          "art": "zettel",
+          "text": "Ändere nie etwas im Ordner «Buchhaltung»."
+        },
+        {
+          "id": "wannVor",
+          "art": "feld",
+          "text": "Wann: vor jeder Dateiänderung"
+        },
+        {
+          "id": "wannNach",
+          "art": "feld",
+          "text": "Wann: nach jeder Dateiänderung"
+        },
+        {
+          "id": "wasSperren",
+          "art": "absicherung",
+          "text": "Was: Liegt die Datei im Ordner «Buchhaltung», wird die Änderung gesperrt."
+        },
+        {
+          "id": "wasAlles",
+          "art": "absicherung",
+          "text": "Was: Jede Änderung wird gesperrt."
+        }
       ],
       "pruefungen": [
-        { "wenn": { "gewaehlt": ["wasAlles"] }, "fehlbild": "nichtsGeht" },
-        { "wenn": { "gewaehlt": ["wannNach"] }, "fehlbild": "zuSpaet" },
-        { "wenn": { "aus": ["wannVor", "wasSperren"], "hoechstens": 0 }, "fehlbild": "nurBitte" },
-        { "wenn": { "fehlt": ["wannVor"] }, "fehlbild": "keinAusloeser" },
-        { "wenn": { "fehlt": ["wasSperren"] }, "fehlbild": "keineRegel" }
+        {
+          "wenn": {
+            "gewaehlt": [
+              "wasAlles"
+            ]
+          },
+          "fehlbild": "nichtsGeht"
+        },
+        {
+          "wenn": {
+            "gewaehlt": [
+              "wannNach"
+            ]
+          },
+          "fehlbild": "zuSpaet"
+        },
+        {
+          "wenn": {
+            "aus": [
+              "wannVor",
+              "wasSperren"
+            ],
+            "hoechstens": 0
+          },
+          "fehlbild": "nurBitte"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "wannVor"
+            ]
+          },
+          "fehlbild": "keinAusloeser"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "wasSperren"
+            ]
+          },
+          "fehlbild": "keineRegel"
+        }
       ],
       "fehlbilder": {
         "nichtsGeht": {
@@ -90,24 +250,77 @@
         "Nach drei Stunden will ich eine Datei in «Buchhaltung» umbenennen. Das Sicherheitsprotokoll sperrt es und sagt mir warum. Ich arbeite an den Offerten weiter.",
         "Vor jeder Änderung geprüft, nur die Buchhaltung gesperrt. Jedes Mal, ohne Ausnahme."
       ],
-      "loesung": ["wannVor", "wasSperren"]
+      "loesung": [
+        "wannVor",
+        "wasSperren"
+      ]
     },
     "hk-b": {
       "wunsch": "Nach jeder Änderung an einer Offerte soll automatisch geprüft werden, ob die Mehrwertsteuer ausgewiesen ist.",
       "grundprompt": "Sicherheitsprotokoll für die Offerten.",
       "nachrichtVon": "Dein Sicherheitsprotokoll (Hook)",
-      "artNamen": { "zettel": "Fallakte (eine Bitte an Echo)", "feld": "Sicherheitsprotokoll: wann", "absicherung": "Sicherheitsprotokoll: was" },
+      "artNamen": {
+        "zettel": "Fallakte (eine Bitte an Echo)",
+        "feld": "Sicherheitsprotokoll: wann",
+        "absicherung": "Sicherheitsprotokoll: was"
+      },
       "teile": [
-        { "id": "bitte", "art": "zettel", "text": "Denk bitte immer an die Mehrwertsteuer." },
-        { "id": "wannNach", "art": "feld", "text": "Wann: nach jeder Änderung an einer Offerte" },
-        { "id": "wannStart", "art": "feld", "text": "Wann: einmal am Morgen beim Start" },
-        { "id": "wasPruefen", "art": "absicherung", "text": "Was: Prüfen, ob die Mehrwertsteuer in der Offerte ausgewiesen ist. Sonst Echo die Lücke melden." }
+        {
+          "id": "bitte",
+          "art": "zettel",
+          "text": "Denk bitte immer an die Mehrwertsteuer."
+        },
+        {
+          "id": "wannNach",
+          "art": "feld",
+          "text": "Wann: nach jeder Änderung an einer Offerte"
+        },
+        {
+          "id": "wannStart",
+          "art": "feld",
+          "text": "Wann: einmal am Morgen beim Start"
+        },
+        {
+          "id": "wasPruefen",
+          "art": "absicherung",
+          "text": "Was: Prüfen, ob die Mehrwertsteuer in der Offerte ausgewiesen ist. Sonst Echo die Lücke melden."
+        }
       ],
       "pruefungen": [
-        { "wenn": { "gewaehlt": ["wannStart"] }, "fehlbild": "zuSelten" },
-        { "wenn": { "aus": ["wannNach", "wasPruefen"], "hoechstens": 0 }, "fehlbild": "nurBitte" },
-        { "wenn": { "fehlt": ["wannNach"] }, "fehlbild": "keinAusloeser" },
-        { "wenn": { "fehlt": ["wasPruefen"] }, "fehlbild": "keineRegel" }
+        {
+          "wenn": {
+            "gewaehlt": [
+              "wannStart"
+            ]
+          },
+          "fehlbild": "zuSelten"
+        },
+        {
+          "wenn": {
+            "aus": [
+              "wannNach",
+              "wasPruefen"
+            ],
+            "hoechstens": 0
+          },
+          "fehlbild": "nurBitte"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "wannNach"
+            ]
+          },
+          "fehlbild": "keinAusloeser"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "wasPruefen"
+            ]
+          },
+          "fehlbild": "keineRegel"
+        }
       ],
       "fehlbilder": {
         "zuSelten": {
@@ -143,60 +356,158 @@
         "Nach jeder Änderung prüft das Sicherheitsprotokoll die Offerte. Bei der Küche Bürgi meldet es: Mehrwertsteuer fehlt. Ich ergänze sie sofort.",
         "Jede Änderung, jede Prüfung. Keine Offerte geht ohne Mehrwertsteuer hinaus."
       ],
-      "loesung": ["wannNach", "wasPruefen"]
+      "loesung": [
+        "wannNach",
+        "wasPruefen"
+      ]
     },
     "hk-c": {
       "typ": "wahl",
       "wunsch": "Welche Regel gehört in ein Sicherheitsprotokoll?",
       "frage": "Welche dieser Regeln gehört in ein Sicherheitsprotokoll (Hook) statt in den Funkspruch?",
       "optionen": [
-        { "id": "freundlich", "text": "Schreib diese Offerte etwas freundlicher.", "hinweis": "Einmalig und Geschmackssache. Das gehört in den Funkspruch." },
-        { "id": "buchhaltung", "text": "Nie etwas im Ordner «Buchhaltung» ändern, ohne Ausnahme.", "hinweis": "Genau. Was ohne Ausnahme gelten muss, gehört in einen Hook.", "richtig": true },
-        { "id": "termin", "text": "Nenne in dieser Offerte den Liefertermin.", "hinweis": "Das gilt nur heute. Funkspruch." }
+        {
+          "id": "freundlich",
+          "text": "Schreib diese Offerte etwas freundlicher.",
+          "hinweis": "Einmalig und Geschmackssache. Das gehört in den Funkspruch."
+        },
+        {
+          "id": "buchhaltung",
+          "text": "Nie etwas im Ordner «Buchhaltung» ändern, ohne Ausnahme.",
+          "hinweis": "Genau. Was ohne Ausnahme gelten muss, gehört in einen Hook.",
+          "richtig": true
+        },
+        {
+          "id": "termin",
+          "text": "Nenne in dieser Offerte den Liefertermin.",
+          "hinweis": "Das gilt nur heute. Funkspruch."
+        }
       ],
       "echo": "Die Buchhaltungs-Regel kommt ins Sicherheitsprotokoll. Freundlichkeit und Termin bleiben im Funkspruch.",
-      "loesung": ["buchhaltung"]
+      "loesung": [
+        "buchhaltung"
+      ]
     },
     "hk-d": {
       "typ": "wahl",
       "wunsch": "Die Bitte in der Fallakte wurde nach drei Stunden vergessen. Warum?",
       "frage": "In der Fallakte steht: «Prüf vor dem Senden die Adresse.» Nach drei Stunden Arbeit sendet Echo ungeprüft. Warum?",
       "optionen": [
-        { "id": "frech", "text": "Echo ist ungehorsam.", "hinweis": "Echo will nicht stören. Aber Bitten können im langen Einsatz untergehen." },
-        { "id": "bitte", "text": "Eine Bitte kann im langen Einsatz untergehen. Ein Hook läuft jedes Mal.", "hinweis": "Genau. Darum gehört so eine Regel in ein Sicherheitsprotokoll.", "richtig": true },
-        { "id": "geloescht", "text": "Die Fallakte wurde gelöscht.", "hinweis": "Sie ist noch da. Es war eine Bitte, kein Hook." }
+        {
+          "id": "frech",
+          "text": "Echo ist ungehorsam.",
+          "hinweis": "Echo will nicht stören. Aber Bitten können im langen Einsatz untergehen."
+        },
+        {
+          "id": "bitte",
+          "text": "Eine Bitte kann im langen Einsatz untergehen. Ein Hook läuft jedes Mal.",
+          "hinweis": "Genau. Darum gehört so eine Regel in ein Sicherheitsprotokoll.",
+          "richtig": true
+        },
+        {
+          "id": "geloescht",
+          "text": "Die Fallakte wurde gelöscht.",
+          "hinweis": "Sie ist noch da. Es war eine Bitte, kein Hook."
+        }
       ],
       "echo": "Herr Odermatt baut ein Sicherheitsprotokoll: vor jedem Senden die Adresse prüfen. Seither geht keine Offerte mehr an die falsche Adresse.",
-      "loesung": ["bitte"]
+      "loesung": [
+        "bitte"
+      ]
     },
     "hk-e": {
       "typ": "wahl",
       "wunsch": "Herr Odermatt kann nicht programmieren. Wie kommt er zu einem Hook?",
       "frage": "Herr Odermatt kann nicht programmieren, möchte aber ein Sicherheitsprotokoll. Wie geht er vor?",
       "optionen": [
-        { "id": "gar", "text": "Gar nicht, Hooks sind nur für Programmierer.", "hinweis": "Doch, Claude kann den Hook für dich schreiben." },
-        { "id": "claude", "text": "Claude Code beschreiben, was der Hook tun soll, ihn schreiben lassen und mit /hooks nachsehen.", "hinweis": "Genau. So empfiehlt es auch die Anleitung von Claude Code.", "richtig": true },
-        { "id": "forum", "text": "Einen Hook aus einem Forum kopieren, ohne ihn zu lesen.", "hinweis": "Ein Hook führt Befehle auf deinem Computer aus. Fremdes nie ungelesen." }
+        {
+          "id": "gar",
+          "text": "Gar nicht, Hooks sind nur für Programmierer.",
+          "hinweis": "Doch, Claude kann den Hook für dich schreiben."
+        },
+        {
+          "id": "claude",
+          "text": "Claude Code beschreiben, was der Hook tun soll, ihn schreiben lassen und mit /hooks nachsehen.",
+          "hinweis": "Genau. So empfiehlt es auch die Anleitung von Claude Code.",
+          "richtig": true
+        },
+        {
+          "id": "forum",
+          "text": "Einen Hook aus einem Forum kopieren, ohne ihn zu lesen.",
+          "hinweis": "Ein Hook führt Befehle auf deinem Computer aus. Fremdes nie ungelesen."
+        }
       ],
       "echo": "Claude Code schreibt den Hook und erklärt ihn in einfachen Worten. Herr Odermatt sieht ihn unter /hooks.",
-      "loesung": ["claude"]
+      "loesung": [
+        "claude"
+      ]
     },
     "hk-f": {
       "wunsch": "Echo soll sich jedes Mal melden, wenn es auf Herrn Odermatt wartet. Er arbeitet nebenbei in der Werkstatt.",
       "grundprompt": "Sicherheitsprotokoll für Meldungen.",
       "nachrichtVon": "Dein Sicherheitsprotokoll (Hook)",
-      "artNamen": { "zettel": "Fallakte (eine Bitte an Echo)", "feld": "Sicherheitsprotokoll: wann", "absicherung": "Sicherheitsprotokoll: was" },
+      "artNamen": {
+        "zettel": "Fallakte (eine Bitte an Echo)",
+        "feld": "Sicherheitsprotokoll: wann",
+        "absicherung": "Sicherheitsprotokoll: was"
+      },
       "teile": [
-        { "id": "bitte", "art": "zettel", "text": "Sag mir bitte Bescheid, wenn du mich brauchst." },
-        { "id": "wannWarten", "art": "feld", "text": "Wann: wenn Echo auf eine Antwort oder eine Erlaubnis wartet" },
-        { "id": "wannImmer", "art": "feld", "text": "Wann: nach jedem einzelnen Schritt" },
-        { "id": "wasMelden", "art": "absicherung", "text": "Was: eine Meldung am Computer anzeigen und einen Ton abspielen." }
+        {
+          "id": "bitte",
+          "art": "zettel",
+          "text": "Sag mir bitte Bescheid, wenn du mich brauchst."
+        },
+        {
+          "id": "wannWarten",
+          "art": "feld",
+          "text": "Wann: wenn Echo auf eine Antwort oder eine Erlaubnis wartet"
+        },
+        {
+          "id": "wannImmer",
+          "art": "feld",
+          "text": "Wann: nach jedem einzelnen Schritt"
+        },
+        {
+          "id": "wasMelden",
+          "art": "absicherung",
+          "text": "Was: eine Meldung am Computer anzeigen und einen Ton abspielen."
+        }
       ],
       "pruefungen": [
-        { "wenn": { "gewaehlt": ["wannImmer"] }, "fehlbild": "zuOft" },
-        { "wenn": { "aus": ["wannWarten", "wasMelden"], "hoechstens": 0 }, "fehlbild": "nurBitte" },
-        { "wenn": { "fehlt": ["wannWarten"] }, "fehlbild": "keinAusloeser" },
-        { "wenn": { "fehlt": ["wasMelden"] }, "fehlbild": "keineRegel" }
+        {
+          "wenn": {
+            "gewaehlt": [
+              "wannImmer"
+            ]
+          },
+          "fehlbild": "zuOft"
+        },
+        {
+          "wenn": {
+            "aus": [
+              "wannWarten",
+              "wasMelden"
+            ],
+            "hoechstens": 0
+          },
+          "fehlbild": "nurBitte"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "wannWarten"
+            ]
+          },
+          "fehlbild": "keinAusloeser"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "wasMelden"
+            ]
+          },
+          "fehlbild": "keineRegel"
+        }
       ],
       "fehlbilder": {
         "zuOft": {
@@ -232,27 +543,89 @@
         "Echo wartet auf eine Erlaubnis. Der Computer piept, Herr Odermatt kommt, sagt Okay und hobelt weiter.",
         "Gemeldet wird nur, wenn Echo wartet. Jedes Mal."
       ],
-      "loesung": ["wannWarten", "wasMelden"]
+      "loesung": [
+        "wannWarten",
+        "wasMelden"
+      ]
     },
-
     "pk-a": {
       "wunsch": "Pack das Einsatzpaket für die Filiale in Stans. Echo soll dort Offerten genauso schreiben wie hier.",
       "grundprompt": "Plugin «schreinerei-odermatt» für die Filiale in Stans.",
       "nachrichtVon": "Dein Einsatzpaket (Plugin)",
-      "artNamen": { "karte": "Dossiers (Skills)", "stecker": "Funkleitungen (Konnektoren)", "absicherung": "Sicherheitsprotokolle (Hooks)", "kontext": "Sonstiges" },
+      "artNamen": {
+        "karte": "Dossiers (Skills)",
+        "stecker": "Funkleitungen (Konnektoren)",
+        "absicherung": "Sicherheitsprotokolle (Hooks)",
+        "kontext": "Sonstiges"
+      },
       "teile": [
-        { "id": "skill", "art": "karte", "text": "Dossier «offerte-schreiben»" },
-        { "id": "privat", "art": "karte", "text": "Dossier «ferienfotos-odermatt» (privat)" },
-        { "id": "leitung", "art": "stecker", "text": "Funkleitung zum Offerten-Ordner" },
-        { "id": "hook", "art": "absicherung", "text": "Sicherheitsprotokoll: Buchhaltung nie ändern" },
-        { "id": "passwort", "art": "kontext", "text": "Passwort für das Bankkonto der Schreinerei" }
+        {
+          "id": "skill",
+          "art": "karte",
+          "text": "Dossier «offerte-schreiben»"
+        },
+        {
+          "id": "privat",
+          "art": "karte",
+          "text": "Dossier «ferienfotos-odermatt» (privat)"
+        },
+        {
+          "id": "leitung",
+          "art": "stecker",
+          "text": "Funkleitung zum Offerten-Ordner"
+        },
+        {
+          "id": "hook",
+          "art": "absicherung",
+          "text": "Sicherheitsprotokoll: Buchhaltung nie ändern"
+        },
+        {
+          "id": "passwort",
+          "art": "kontext",
+          "text": "Passwort für das Bankkonto der Schreinerei"
+        }
       ],
       "pruefungen": [
-        { "wenn": { "gewaehlt": ["passwort"] }, "fehlbild": "geheimnis" },
-        { "wenn": { "gewaehlt": ["privat"] }, "fehlbild": "privat" },
-        { "wenn": { "fehlt": ["skill"] }, "fehlbild": "keinSkill" },
-        { "wenn": { "fehlt": ["leitung"] }, "fehlbild": "keineLeitung" },
-        { "wenn": { "fehlt": ["hook"] }, "fehlbild": "keinHook" }
+        {
+          "wenn": {
+            "gewaehlt": [
+              "passwort"
+            ]
+          },
+          "fehlbild": "geheimnis"
+        },
+        {
+          "wenn": {
+            "gewaehlt": [
+              "privat"
+            ]
+          },
+          "fehlbild": "privat"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "skill"
+            ]
+          },
+          "fehlbild": "keinSkill"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "leitung"
+            ]
+          },
+          "fehlbild": "keineLeitung"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "hook"
+            ]
+          },
+          "fehlbild": "keinHook"
+        }
       ],
       "fehlbilder": {
         "geheimnis": {
@@ -295,24 +668,77 @@
         "Paket «schreinerei-odermatt»: Dossier, Funkleitung, Sicherheitsprotokoll. Kein Passwort, nichts Privates. In Stans schreibt Echo die erste Offerte wie in Zwirbelwil.",
         "Alles, was zusammengehört, in einem Paket. Ohne Geheimnisse."
       ],
-      "loesung": ["skill", "leitung", "hook"]
+      "loesung": [
+        "skill",
+        "leitung",
+        "hook"
+      ]
     },
     "pk-b": {
       "wunsch": "Pack ein Einsatzpaket für den neuen Lernenden: Er soll mit Echo Zuschnittlisten erstellen.",
       "grundprompt": "Plugin «zuschnitt» für den Lernenden.",
       "nachrichtVon": "Dein Einsatzpaket (Plugin)",
-      "artNamen": { "karte": "Dossiers (Skills)", "stecker": "Funkleitungen (Konnektoren)", "absicherung": "Sicherheitsprotokolle (Hooks)", "kontext": "Sonstiges" },
+      "artNamen": {
+        "karte": "Dossiers (Skills)",
+        "stecker": "Funkleitungen (Konnektoren)",
+        "absicherung": "Sicherheitsprotokolle (Hooks)",
+        "kontext": "Sonstiges"
+      },
       "teile": [
-        { "id": "skill", "art": "karte", "text": "Dossier «zuschnittliste»" },
-        { "id": "leitung", "art": "stecker", "text": "Funkleitung zum Lagerbestand" },
-        { "id": "hook", "art": "absicherung", "text": "Sicherheitsprotokoll: vor jedem Bestellen beim Holzhändler nachfragen" },
-        { "id": "passwort", "art": "kontext", "text": "Login des Holzhändlers mit Passwort" }
+        {
+          "id": "skill",
+          "art": "karte",
+          "text": "Dossier «zuschnittliste»"
+        },
+        {
+          "id": "leitung",
+          "art": "stecker",
+          "text": "Funkleitung zum Lagerbestand"
+        },
+        {
+          "id": "hook",
+          "art": "absicherung",
+          "text": "Sicherheitsprotokoll: vor jedem Bestellen beim Holzhändler nachfragen"
+        },
+        {
+          "id": "passwort",
+          "art": "kontext",
+          "text": "Login des Holzhändlers mit Passwort"
+        }
       ],
       "pruefungen": [
-        { "wenn": { "gewaehlt": ["passwort"] }, "fehlbild": "geheimnis" },
-        { "wenn": { "fehlt": ["skill"] }, "fehlbild": "keinSkill" },
-        { "wenn": { "fehlt": ["leitung"] }, "fehlbild": "keineLeitung" },
-        { "wenn": { "fehlt": ["hook"] }, "fehlbild": "keinHook" }
+        {
+          "wenn": {
+            "gewaehlt": [
+              "passwort"
+            ]
+          },
+          "fehlbild": "geheimnis"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "skill"
+            ]
+          },
+          "fehlbild": "keinSkill"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "leitung"
+            ]
+          },
+          "fehlbild": "keineLeitung"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "hook"
+            ]
+          },
+          "fehlbild": "keinHook"
+        }
       ],
       "fehlbilder": {
         "geheimnis": {
@@ -348,48 +774,130 @@
         "Paket «zuschnitt»: Dossier, Leitung zum Lager, Sicherheitsprotokoll vor dem Bestellen. Der Lernende meldet sich selbst beim Holzhändler an.",
         "Vollständig und ohne Passwort. Die erste Zuschnittliste stimmt."
       ],
-      "loesung": ["skill", "leitung", "hook"]
+      "loesung": [
+        "skill",
+        "leitung",
+        "hook"
+      ]
     },
     "pk-c": {
       "typ": "wahl",
       "wunsch": "Was gehört nie in ein Einsatzpaket?",
       "frage": "Was gehört nie in ein Einsatzpaket (Plugin), das du weitergibst?",
       "optionen": [
-        { "id": "skill", "text": "Ein getestetes Dossier.", "hinweis": "Das gehört genau hinein." },
-        { "id": "passwort", "text": "Passwörter und Zugangsdaten.", "hinweis": "Genau. Jede Person meldet sich bei den Funkleitungen selbst an.", "richtig": true },
-        { "id": "hook", "text": "Ein Sicherheitsprotokoll.", "hinweis": "Das darf und soll mit." }
+        {
+          "id": "skill",
+          "text": "Ein getestetes Dossier.",
+          "hinweis": "Das gehört genau hinein."
+        },
+        {
+          "id": "passwort",
+          "text": "Passwörter und Zugangsdaten.",
+          "hinweis": "Genau. Jede Person meldet sich bei den Funkleitungen selbst an.",
+          "richtig": true
+        },
+        {
+          "id": "hook",
+          "text": "Ein Sicherheitsprotokoll.",
+          "hinweis": "Das darf und soll mit."
+        }
       ],
       "echo": "Das Paket reist ohne Passwörter. In Stans meldet sich jede Person selbst an.",
-      "loesung": ["passwort"]
+      "loesung": [
+        "passwort"
+      ]
     },
     "pk-d": {
       "typ": "wahl",
       "wunsch": "Ein Gratis-Paket aus dem Internet verspricht den «Schreinerei-Turbo».",
       "frage": "Ein unbekanntes Einsatzpaket «Schreinerei-Turbo» ist gratis im Internet. Es enthält auch Sicherheitsprotokolle. Was tust du?",
       "optionen": [
-        { "id": "gleich", "text": "Gleich installieren, gratis ist gratis.", "hinweis": "Sicherheitsprotokolle führen Befehle auf deinem Computer aus. Unbekanntes nie ungeprüft." },
-        { "id": "pruefen", "text": "Nur aus vertrauenswürdiger Quelle, und vorher ansehen, was drin ist.", "hinweis": "Genau. Ein Paket behandelst du wie ein Programm.", "richtig": true },
-        { "id": "teilweise", "text": "Installieren und hoffen, dass nichts passiert.", "hinweis": "Hoffen ist kein Schutz." }
+        {
+          "id": "gleich",
+          "text": "Gleich installieren, gratis ist gratis.",
+          "hinweis": "Sicherheitsprotokolle führen Befehle auf deinem Computer aus. Unbekanntes nie ungeprüft."
+        },
+        {
+          "id": "pruefen",
+          "text": "Nur aus vertrauenswürdiger Quelle, und vorher ansehen, was drin ist.",
+          "hinweis": "Genau. Ein Paket behandelst du wie ein Programm.",
+          "richtig": true
+        },
+        {
+          "id": "teilweise",
+          "text": "Installieren und hoffen, dass nichts passiert.",
+          "hinweis": "Hoffen ist kein Schutz."
+        }
       ],
       "echo": "Herr Odermatt schaut hinein. Ein Sicherheitsprotokoll schickt bei jedem Start Dateien an eine fremde Adresse. Weg damit.",
-      "loesung": ["pruefen"]
+      "loesung": [
+        "pruefen"
+      ]
     },
     "pk-e": {
       "wunsch": "Pack das Paket so, dass das Offerten-Dossier in der Filiale wirklich funktioniert.",
       "grundprompt": "Plugin «offerten» für die Filiale.",
       "nachrichtVon": "Dein Einsatzpaket (Plugin)",
-      "artNamen": { "karte": "Dossiers (Skills)", "tool": "Feldagenten (Subagenten)", "kontext": "Sonstiges" },
+      "artNamen": {
+        "karte": "Dossiers (Skills)",
+        "tool": "Feldagenten (Subagenten)",
+        "kontext": "Sonstiges"
+      },
       "teile": [
-        { "id": "skill", "art": "karte", "text": "Dossier «offerte-schreiben» (ruft den Feldagenten «masse-pruefer»)" },
-        { "id": "agent", "art": "tool", "text": "Feldagent «masse-pruefer»" },
-        { "id": "anleitung", "art": "kontext", "text": "Kurze Anleitung: was im Paket ist und was jede Person selbst verbinden muss." },
-        { "id": "passwort", "art": "kontext", "text": "Alle Zugangsdaten, damit es schneller geht." }
+        {
+          "id": "skill",
+          "art": "karte",
+          "text": "Dossier «offerte-schreiben» (ruft den Feldagenten «masse-pruefer»)"
+        },
+        {
+          "id": "agent",
+          "art": "tool",
+          "text": "Feldagent «masse-pruefer»"
+        },
+        {
+          "id": "anleitung",
+          "art": "kontext",
+          "text": "Kurze Anleitung: was im Paket ist und was jede Person selbst verbinden muss."
+        },
+        {
+          "id": "passwort",
+          "art": "kontext",
+          "text": "Alle Zugangsdaten, damit es schneller geht."
+        }
       ],
       "pruefungen": [
-        { "wenn": { "gewaehlt": ["passwort"] }, "fehlbild": "geheimnis" },
-        { "wenn": { "fehlt": ["skill"] }, "fehlbild": "keinSkill" },
-        { "wenn": { "fehlt": ["agent"] }, "fehlbild": "abhaengigkeit" },
-        { "wenn": { "fehlt": ["anleitung"] }, "fehlbild": "keineAnleitung" }
+        {
+          "wenn": {
+            "gewaehlt": [
+              "passwort"
+            ]
+          },
+          "fehlbild": "geheimnis"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "skill"
+            ]
+          },
+          "fehlbild": "keinSkill"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "agent"
+            ]
+          },
+          "fehlbild": "abhaengigkeit"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "anleitung"
+            ]
+          },
+          "fehlbild": "keineAnleitung"
+        }
       ],
       "fehlbilder": {
         "geheimnis": {
@@ -425,39 +933,118 @@
         "Paket mit Dossier, Masse-Prüfer und Anleitung. In der Filiale läuft die erste Offerte durch, mit geprüften Massen.",
         "Vollständig, mit Anleitung, ohne Zugangsdaten."
       ],
-      "loesung": ["skill", "agent", "anleitung"]
+      "loesung": [
+        "skill",
+        "agent",
+        "anleitung"
+      ]
     },
     "pk-f": {
       "typ": "wahl",
       "wunsch": "Das Dossier ist ungetestet, das Sicherheitsprotokoll neu. Was zuerst?",
       "frage": "Die Filiale will das Paket sofort. Dein Dossier ist ungetestet, das Sicherheitsprotokoll neu. Was tust du zuerst?",
       "optionen": [
-        { "id": "sofort", "text": "Sofort verteilen, die Filiale wartet.", "hinweis": "Dann findet die Filiale deine Fehler." },
-        { "id": "testen", "text": "Zuerst selbst testen, dann teilen.", "hinweis": "Genau. Erst prüfen, dann weitergeben.", "richtig": true },
-        { "id": "hoffen", "text": "Verteilen und um Rückmeldung bitten.", "hinweis": "Rückmeldungen sind gut, aber erst nach deinem eigenen Test." }
+        {
+          "id": "sofort",
+          "text": "Sofort verteilen, die Filiale wartet.",
+          "hinweis": "Dann findet die Filiale deine Fehler."
+        },
+        {
+          "id": "testen",
+          "text": "Zuerst selbst testen, dann teilen.",
+          "hinweis": "Genau. Erst prüfen, dann weitergeben.",
+          "richtig": true
+        },
+        {
+          "id": "hoffen",
+          "text": "Verteilen und um Rückmeldung bitten.",
+          "hinweis": "Rückmeldungen sind gut, aber erst nach deinem eigenen Test."
+        }
       ],
       "echo": "Beim Test fällt auf: Das Sicherheitsprotokoll sperrt auch die Offerten. Herr Odermatt korrigiert, dann geht das Paket nach Stans.",
-      "loesung": ["testen"]
+      "loesung": [
+        "testen"
+      ]
     },
-
     "x-a": {
       "wunsch": "Vor jedem Versand einer Offerte sollen die Preise gegengeprüft werden. Immer, ohne Ausnahme.",
       "grundprompt": "Sicherheitsprotokoll für den Versand von Offerten.",
       "nachrichtVon": "Dein Sicherheitsprotokoll (Hook)",
-      "artNamen": { "zettel": "Fallakte (eine Bitte an Echo)", "feld": "Sicherheitsprotokoll: wann", "absicherung": "Sicherheitsprotokoll: was" },
+      "artNamen": {
+        "zettel": "Fallakte (eine Bitte an Echo)",
+        "feld": "Sicherheitsprotokoll: wann",
+        "absicherung": "Sicherheitsprotokoll: was"
+      },
       "teile": [
-        { "id": "bitte", "art": "zettel", "text": "Prüf bitte vor dem Versand die Preise." },
-        { "id": "wannVor", "art": "feld", "text": "Wann: vor jedem Versand einer Offerte" },
-        { "id": "wannNach", "art": "feld", "text": "Wann: nach dem Versand" },
-        { "id": "wasPruef", "art": "absicherung", "text": "Was: Ein Prüfagent vergleicht die Preise mit der Preisliste. Stimmt etwas nicht, wird der Versand gesperrt." },
-        { "id": "selbst", "art": "absicherung", "text": "Was: Echo prüft seine eigene Offerte." }
+        {
+          "id": "bitte",
+          "art": "zettel",
+          "text": "Prüf bitte vor dem Versand die Preise."
+        },
+        {
+          "id": "wannVor",
+          "art": "feld",
+          "text": "Wann: vor jedem Versand einer Offerte"
+        },
+        {
+          "id": "wannNach",
+          "art": "feld",
+          "text": "Wann: nach dem Versand"
+        },
+        {
+          "id": "wasPruef",
+          "art": "absicherung",
+          "text": "Was: Ein Prüfagent vergleicht die Preise mit der Preisliste. Stimmt etwas nicht, wird der Versand gesperrt."
+        },
+        {
+          "id": "selbst",
+          "art": "absicherung",
+          "text": "Was: Echo prüft seine eigene Offerte."
+        }
       ],
       "pruefungen": [
-        { "wenn": { "gewaehlt": ["wannNach"] }, "fehlbild": "zuSpaet" },
-        { "wenn": { "gewaehlt": ["selbst"] }, "fehlbild": "selbstGeprueft" },
-        { "wenn": { "aus": ["wannVor", "wasPruef"], "hoechstens": 0 }, "fehlbild": "nurBitte" },
-        { "wenn": { "fehlt": ["wannVor"] }, "fehlbild": "keinAusloeser" },
-        { "wenn": { "fehlt": ["wasPruef"] }, "fehlbild": "keineRegel" }
+        {
+          "wenn": {
+            "gewaehlt": [
+              "wannNach"
+            ]
+          },
+          "fehlbild": "zuSpaet"
+        },
+        {
+          "wenn": {
+            "gewaehlt": [
+              "selbst"
+            ]
+          },
+          "fehlbild": "selbstGeprueft"
+        },
+        {
+          "wenn": {
+            "aus": [
+              "wannVor",
+              "wasPruef"
+            ],
+            "hoechstens": 0
+          },
+          "fehlbild": "nurBitte"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "wannVor"
+            ]
+          },
+          "fehlbild": "keinAusloeser"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "wasPruef"
+            ]
+          },
+          "fehlbild": "keineRegel"
+        }
       ],
       "fehlbilder": {
         "zuSpaet": {
@@ -500,28 +1087,102 @@
         "Vor dem Versand prüft ein Prüfagent die Preise. Bei der Offerte Bürgi sperrt er: Arbeitsplatte 180 statt 1800 Franken. Echo korrigiert.",
         "Jede Offerte, jedes Mal, mit frischem Blick. Erst dann geht sie hinaus."
       ],
-      "loesung": ["wannVor", "wasPruef"]
+      "loesung": [
+        "wannVor",
+        "wasPruef"
+      ]
     },
     "x-b": {
       "wunsch": "Das ganze Setup der Schreinerei soll als Paket in die Filiale: getestet, vollständig, ohne Geheimnisse.",
       "grundprompt": "Plugin «schreinerei-komplett» für Stans.",
       "nachrichtVon": "Dein Einsatzpaket (Plugin)",
-      "artNamen": { "karte": "Dossiers (Skills)", "stecker": "Funkleitungen (Konnektoren)", "absicherung": "Sicherheitsprotokolle (Hooks)", "kontext": "Sonstiges" },
+      "artNamen": {
+        "karte": "Dossiers (Skills)",
+        "stecker": "Funkleitungen (Konnektoren)",
+        "absicherung": "Sicherheitsprotokolle (Hooks)",
+        "kontext": "Sonstiges"
+      },
       "teile": [
-        { "id": "skill", "art": "karte", "text": "Dossier «offerte-schreiben», getestet mit Proben und Gegenprobe" },
-        { "id": "ungetestet", "art": "karte", "text": "Dossier «alles-schreinerei», ungetestet" },
-        { "id": "leitung", "art": "stecker", "text": "Funkleitung zum Offerten-Ordner" },
-        { "id": "hook", "art": "absicherung", "text": "Sicherheitsprotokoll: Buchhaltung nie ändern" },
-        { "id": "anleitung", "art": "kontext", "text": "Anleitung: Jede Person verbindet die Funkleitung selbst, mit eigenem Login." },
-        { "id": "passwort", "art": "kontext", "text": "Herrn Odermatts Login für den Offerten-Ordner" }
+        {
+          "id": "skill",
+          "art": "karte",
+          "text": "Dossier «offerte-schreiben», getestet mit Proben und Gegenprobe"
+        },
+        {
+          "id": "ungetestet",
+          "art": "karte",
+          "text": "Dossier «alles-schreinerei», ungetestet"
+        },
+        {
+          "id": "leitung",
+          "art": "stecker",
+          "text": "Funkleitung zum Offerten-Ordner"
+        },
+        {
+          "id": "hook",
+          "art": "absicherung",
+          "text": "Sicherheitsprotokoll: Buchhaltung nie ändern"
+        },
+        {
+          "id": "anleitung",
+          "art": "kontext",
+          "text": "Anleitung: Jede Person verbindet die Funkleitung selbst, mit eigenem Login."
+        },
+        {
+          "id": "passwort",
+          "art": "kontext",
+          "text": "Herrn Odermatts Login für den Offerten-Ordner"
+        }
       ],
       "pruefungen": [
-        { "wenn": { "gewaehlt": ["passwort"] }, "fehlbild": "geheimnis" },
-        { "wenn": { "gewaehlt": ["ungetestet"] }, "fehlbild": "ungetestet" },
-        { "wenn": { "fehlt": ["skill"] }, "fehlbild": "keinSkill" },
-        { "wenn": { "fehlt": ["leitung"] }, "fehlbild": "keineLeitung" },
-        { "wenn": { "fehlt": ["hook"] }, "fehlbild": "keinHook" },
-        { "wenn": { "fehlt": ["anleitung"] }, "fehlbild": "keineAnleitung" }
+        {
+          "wenn": {
+            "gewaehlt": [
+              "passwort"
+            ]
+          },
+          "fehlbild": "geheimnis"
+        },
+        {
+          "wenn": {
+            "gewaehlt": [
+              "ungetestet"
+            ]
+          },
+          "fehlbild": "ungetestet"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "skill"
+            ]
+          },
+          "fehlbild": "keinSkill"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "leitung"
+            ]
+          },
+          "fehlbild": "keineLeitung"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "hook"
+            ]
+          },
+          "fehlbild": "keinHook"
+        },
+        {
+          "wenn": {
+            "fehlt": [
+              "anleitung"
+            ]
+          },
+          "fehlbild": "keineAnleitung"
+        }
       ],
       "fehlbilder": {
         "geheimnis": {
@@ -571,7 +1232,607 @@
         "Paket «schreinerei-komplett»: getestetes Dossier, Funkleitung, Sicherheitsprotokoll, Anleitung. Kein Login drin. In Stans läuft alles am ersten Tag.",
         "Vollständig, getestet, ohne Geheimnisse."
       ],
-      "loesung": ["skill", "leitung", "hook", "anleitung"]
+      "loesung": [
+        "skill",
+        "leitung",
+        "hook",
+        "anleitung"
+      ]
+    },
+    "hp-a": {
+      "typ": "klick",
+      "wunsch": "Es gibt ein fertiges Paket für Schreinereien. Wie kommt es in meine Claude-App?",
+      "frage": "Hol für Herrn Odermatt das Plugin «schreinerei-offerten». Tippe dich durch.",
+      "schritte": [
+        {
+          "schirm": "app",
+          "ziel": "anpassungen",
+          "text": "Tippe links auf «{ziel}».",
+          "falsch": {
+            "plus": "plChat"
+          },
+          "sonst": "plDaneben1"
+        },
+        {
+          "schirm": "skills-entdecken",
+          "ziel": "reiterPlugins",
+          "text": "Wechsle oben in den Reiter «{ziel}».",
+          "falsch": {
+            "plusKarte1": "plSkill",
+            "plusKarte2": "plSkill",
+            "ausprobieren1": "plSkill",
+            "ausprobieren2": "plSkill",
+            "reiterKonnektoren": "plKonn",
+            "hinzufuegen": "plHochladen"
+          },
+          "sonst": "plDaneben2"
+        },
+        {
+          "schirm": "plugins-entdecken",
+          "ziel": "plusOfferten",
+          "text": "Tippe bei «schreinerei-offerten» auf «+».",
+          "falsch": {
+            "ausprobierenOfferten": "ausprobiert",
+            "plusVerein": "falschesPaket",
+            "ausprobierenVerein": "falschesPaket",
+            "meine": "meineZuFrueh"
+          },
+          "sonst": "plDaneben3"
+        }
+      ],
+      "nachher": "plugins-meine-odermatt",
+      "erfolg": [
+        "Hinzugefügt. «schreinerei-offerten» steht jetzt bei «Meine».",
+        "Geschafft. Das Paket ist in der App."
+      ],
+      "fehlbilder": {
+        "plDaneben1": {
+          "texte": [
+            "Echo landet woanders. Plugins gibt es hier nicht.",
+            "Falsche Tür. Hier holst du kein Paket."
+          ],
+          "hinweis": "Plugins findest du links unter «Anpassungen», Reiter «Plugins»."
+        },
+        "plChat": {
+          "texte": [
+            "Echo öffnet das Plus im Chat. Neue Plugins holst du dort nicht.",
+            "Im Chat ist das Paket noch gar nicht da."
+          ],
+          "hinweis": "Neue Plugins holst du unter «Anpassungen», Reiter «Plugins»."
+        },
+        "plSkill": {
+          "texte": [
+            "Das ist ein Skill, kein Plugin. Herr Odermatt wollte das ganze Paket.",
+            "Ein einzelnes Dossier statt der ganzen Kiste."
+          ],
+          "hinweis": "Wechsle oben in den Reiter «Plugins»."
+        },
+        "plKonn": {
+          "texte": [
+            "Echo öffnet die Konnektoren. Die verbinden einen Dienst. Ein Plugin bündelt mehrere Bauteile.",
+            "Eine Leitung statt eines Pakets."
+          ],
+          "hinweis": "Wechsle oben in den Reiter «Plugins»."
+        },
+        "plHochladen": {
+          "texte": [
+            "Echo will einen eigenen Skill hochladen. Das Paket kommt aber fertig aus dem Verzeichnis.",
+            "Hochladen braucht eine Datei. Herr Odermatt hat keine."
+          ],
+          "hinweis": "Wechsle oben in den Reiter «Plugins»."
+        },
+        "plDaneben2": {
+          "texte": [
+            "Hier passiert nichts mit dem Plugin.",
+            "Echo sucht, findet aber kein Paket."
+          ],
+          "hinweis": "Wechsle oben in den Reiter «Plugins»."
+        },
+        "ausprobiert": {
+          "texte": [
+            "Echo probiert das Plugin aus. Hinzugefügt ist es damit nicht.",
+            "Ein Test, aber unter «Meine» steht es noch nicht."
+          ],
+          "hinweis": "Hinzufügen geht mit «+» auf der Karte."
+        },
+        "falschesPaket": {
+          "texte": [
+            "Echo holt das Vereins-Paket. Für die Schreinerei bringt es nichts.",
+            "Einladungen und Protokolle statt Offerten."
+          ],
+          "hinweis": "Hol das Paket, das zur Schreinerei passt: «schreinerei-offerten»."
+        },
+        "meineZuFrueh": {
+          "texte": [
+            "Unter «Meine» stehen nur Plugins, die du schon hast. Das neue ist noch nicht dabei.",
+            "Echo schaut in die eigene Liste. Neues findet man dort nicht."
+          ],
+          "hinweis": "Neue Plugins stehen unter «Entdecken»."
+        },
+        "plDaneben3": {
+          "texte": [
+            "Hier wird nichts hinzugefügt.",
+            "Echo blättert, das Paket fehlt weiter."
+          ],
+          "hinweis": "Tippe bei «schreinerei-offerten» auf «+»."
+        }
+      }
+    },
+    "hp-b": {
+      "typ": "klick",
+      "wunsch": "Vor jeder Änderung an meinen Offerten soll es eine Sicherung geben. Immer, ohne Ausnahme.",
+      "frage": "Lass Claude den Hook einrichten. Der Ordner ist schon gewählt.",
+      "schritte": [
+        {
+          "schirm": "app",
+          "ziel": "modusCode",
+          "text": "Tippe oben auf «{ziel}».",
+          "falsch": {
+            "eingabe": "chatStattCode",
+            "anpassungen": "anpassungenStatt"
+          },
+          "sonst": "codeDaneben"
+        },
+        {
+          "schirm": "code-start",
+          "ziel": "ordnerWaehlen",
+          "text": "Tippe auf «{ziel}».",
+          "falsch": {
+            "umgebung": "umgebungZuerst",
+            "codeEingabe": "ohneOrdner",
+            "anpassungen": "anpassungenStatt"
+          },
+          "sonst": "codeDaneben2"
+        },
+        {
+          "schirm": "ordner-dialog",
+          "ziel": "ordnerOdermatt",
+          "text": "Wähle den Ordner «{ziel}».",
+          "falsch": {
+            "ordnerVerein": "falscherOrdner",
+            "ordnerFerien": "falscherOrdner",
+            "abbrechenOrdner": "ordnerAbgebrochen"
+          },
+          "sonst": "ordnerAbgebrochen"
+        },
+        {
+          "schirm": "code-odermatt",
+          "ziel": "codeEingabe",
+          "text": "Tippe ins Eingabefeld.",
+          "falsch": {
+            "codePlus": "plusStatt"
+          },
+          "sonst": "codeDaneben3"
+        },
+        {
+          "schirm": "code-odermatt-hook",
+          "ziel": "hookGut",
+          "text": "Wähle die Nachricht mit Zeitpunkt und enger Regel.",
+          "falsch": {
+            "hookBitte": "bitteStatt",
+            "hookAlles": "zuBreit"
+          },
+          "sonst": "codeDaneben3"
+        }
+      ],
+      "nachher": "code-odermatt-fertig",
+      "erfolg": [
+        "Eingerichtet. Vor jeder Änderung an Offerten gibt es jetzt eine Sicherungskopie, jedes Mal.",
+        "Geschafft. Der Rauchmelder hängt."
+      ],
+      "fehlbilder": {
+        "codeDaneben": {
+          "texte": [
+            "Echo landet woanders. Den Code-Bereich gibt es hier nicht.",
+            "Falsche Tür. Hier arbeitet Claude nicht in deinen Ordnern."
+          ],
+          "hinweis": "Oben links geht es mit «</> Code» in den Code-Bereich."
+        },
+        "chatStattCode": {
+          "texte": [
+            "Echo schreibt im Chat. Dort arbeitet Claude nicht in deinen Ordnern, ein Hook entsteht so nicht.",
+            "Im Chat bleibt der Hook ein Gespräch. Eine Datei dafür legt Claude im Code-Bereich an."
+          ],
+          "hinweis": "Einen Hook legst du im Code-Bereich an: oben links «</> Code»."
+        },
+        "anpassungenStatt": {
+          "texte": [
+            "Echo öffnet die Anpassungen. Dort holst du fertige Skills, Konnektoren und Plugins. Einen eigenen Hook schreibt Claude im Code-Bereich.",
+            "Fertiges aus dem Verzeichnis statt etwas Eigenes für dein Projekt."
+          ],
+          "hinweis": "Einen eigenen Hook schreibt Claude im Code-Bereich: oben links «</> Code»."
+        },
+        "umgebungZuerst": {
+          "texte": [
+            "Echo öffnet die Umgebung. Der Ordner, in dem Claude arbeiten soll, fehlt aber noch.",
+            "Erst wählen, wo gearbeitet wird. Dann loslegen."
+          ],
+          "hinweis": "Wähle zuerst «Ordner zum Arbeiten auswählen»."
+        },
+        "ohneOrdner": {
+          "texte": [
+            "Echo schreibt los, aber es ist noch kein Ordner gewählt. Wohin soll der Hook?",
+            "Ohne Ordner fehlt der Platz für den Hook."
+          ],
+          "hinweis": "Wähle zuerst «Ordner zum Arbeiten auswählen»."
+        },
+        "codeDaneben2": {
+          "texte": [
+            "Hier passiert nichts mit dem Ordner.",
+            "Echo wartet. Noch ist kein Ordner gewählt."
+          ],
+          "hinweis": "Wähle zuerst «Ordner zum Arbeiten auswählen»."
+        },
+        "falscherOrdner": {
+          "texte": [
+            "Echo arbeitet im falschen Ordner. Der Hook gälte dort und nicht bei der Schreinerei.",
+            "Falscher Ordner: Bei der Schreinerei fehlt der Hook weiter."
+          ],
+          "hinweis": "Wähle den Ordner, um den es geht: der Schreinerei."
+        },
+        "ordnerAbgebrochen": {
+          "texte": [
+            "Abgebrochen. Kein Ordner ist gewählt.",
+            "Das Fenster ist zu. Claude weiss nicht, wo es arbeiten soll."
+          ],
+          "hinweis": "Wähle den Ordner der Schreinerei."
+        },
+        "plusStatt": {
+          "texte": [
+            "Echo öffnet das Plus. Anhängen musst du nichts, schreiben reicht.",
+            "Eine Datei mehr hilft hier nicht."
+          ],
+          "hinweis": "Tippe ins Eingabefeld und beschreib den Hook."
+        },
+        "codeDaneben3": {
+          "texte": [
+            "Hier schreibst du Claude nichts.",
+            "Echo wartet auf deine Nachricht."
+          ],
+          "hinweis": "Tippe ins Eingabefeld und beschreib den Hook."
+        },
+        "bitteStatt": {
+          "texte": [
+            "Claude notiert die Bitte. Im langen Einsatz geht sie unter, am Freitag fehlt die Sicherung.",
+            "Eine Bitte ist kein Hook. Sie gilt nur, solange Claude daran denkt."
+          ],
+          "hinweis": "Was immer gelten muss: «Richte einen Hook ein», mit Zeitpunkt und Regel."
+        },
+        "zuBreit": {
+          "texte": [
+            "Der Hook sichert vor jeder Aktion alles. Nach einer Woche ist die Festplatte voll.",
+            "Jede Kleinigkeit dauert ewig, weil zuerst alles gesichert wird."
+          ],
+          "hinweis": "Ein Hook braucht einen engen Zeitpunkt und eine klare Regel."
+        }
+      }
+    },
+    "hp-c": {
+      "typ": "wahl",
+      "wunsch": "Wo richte ich so einen Hook überhaupt ein?",
+      "frage": "Herr Odermatt will einen eigenen Hook. Wo entsteht er?",
+      "optionen": [
+        {
+          "id": "code",
+          "text": "Im Code-Bereich: Claude bitten, ihn zu schreiben.",
+          "richtig": true,
+          "hinweis": "Genau. Claude schreibt den Hook in die Einstellungsdatei des Projekts."
+        },
+        {
+          "id": "skills",
+          "text": "Unter «Anpassungen» als Skill hochladen.",
+          "hinweis": "Ein Skill ist eine Anleitung. Ein Hook ist eine feste Regel, die Claude im Code-Bereich einträgt."
+        },
+        {
+          "id": "funktionen",
+          "text": "In den Einstellungen unter «Funktionen» einschalten.",
+          "hinweis": "Dort gibt es Schalter für Funktionen, aber keine eigenen Hooks."
+        }
+      ],
+      "echo": "Echo öffnet den Code-Bereich, wählt den Ordner der Schreinerei und lässt Claude den Hook schreiben.",
+      "loesung": [
+        "code"
+      ]
+    },
+    "hp-d": {
+      "typ": "reihe",
+      "wunsch": "In welcher Reihenfolge richten wir den Hook in echt ein?",
+      "frage": "Bring die Schritte für einen Hook in die richtige Reihenfolge.",
+      "schritte": [
+        {
+          "id": "testen",
+          "text": "Mit einer Testdatei prüfen, ob er greift"
+        },
+        {
+          "id": "ordner",
+          "text": "Den Ordner der Schreinerei wählen",
+          "schirm": "code-start",
+          "ziel": "ordnerWaehlen"
+        },
+        {
+          "id": "lesen",
+          "text": "Lesen, was Claude eingetragen hat: wann und was"
+        },
+        {
+          "id": "code",
+          "text": "Oben auf «</> Code» tippen",
+          "schirm": "app",
+          "ziel": "modusCode"
+        },
+        {
+          "id": "beschreiben",
+          "text": "Claude den Hook beschreiben: Zeitpunkt und Regel"
+        }
+      ],
+      "loesung": [
+        "code",
+        "ordner",
+        "beschreiben",
+        "lesen",
+        "testen"
+      ],
+      "echo": "Code-Bereich, Ordner, beschreiben, lesen, testen. Die Sicherung kommt jedes Mal.",
+      "daneben": {
+        "texte": [
+          "Claude schreibt den Hook, aber in keinen Ordner. Er greift nirgends.",
+          "Herr Odermatt testet, bevor er gelesen hat. Der Hook sichert alles, die Festplatte läuft voll."
+        ],
+        "hinweis": "Erst Code-Bereich und Ordner, dann beschreiben. Lesen vor dem Testen."
+      }
+    },
+    "hp-e": {
+      "typ": "klick",
+      "wunsch": "Ich habe letzte Woche ein Plugin geholt. Wo finde ich es wieder?",
+      "frage": "Zeig Herrn Odermatt die Liste seiner Plugins. Tippe dich durch.",
+      "schritte": [
+        {
+          "schirm": "app",
+          "ziel": "anpassungen",
+          "text": "Tippe links auf «{ziel}».",
+          "falsch": {
+            "plus": "plChat"
+          },
+          "sonst": "plDaneben1"
+        },
+        {
+          "schirm": "skills-entdecken",
+          "ziel": "reiterPlugins",
+          "text": "Wechsle oben in den Reiter «{ziel}».",
+          "falsch": {
+            "plusKarte1": "plSkill",
+            "plusKarte2": "plSkill",
+            "ausprobieren1": "plSkill",
+            "ausprobieren2": "plSkill",
+            "reiterKonnektoren": "plKonn",
+            "hinzufuegen": "plHochladen"
+          },
+          "sonst": "plDaneben2"
+        },
+        {
+          "schirm": "plugins-entdecken",
+          "ziel": "meine",
+          "text": "Tippe oben auf «{ziel}».",
+          "falsch": {
+            "plusOfferten": "nochmalHolen",
+            "plusVerein": "nochmalHolen",
+            "ausprobierenOfferten": "entdeckenStatt",
+            "ausprobierenVerein": "entdeckenStatt"
+          },
+          "sonst": "entdeckenStatt"
+        }
+      ],
+      "nachher": "plugins-meine-odermatt",
+      "erfolg": [
+        "Da ist es: unter «Meine» stehen alle Plugins, die du hast.",
+        "Gefunden. «Meine» zeigt deine Plugins."
+      ],
+      "fehlbilder": {
+        "plDaneben1": {
+          "texte": [
+            "Echo landet woanders. Plugins gibt es hier nicht.",
+            "Falsche Tür. Hier holst du kein Paket."
+          ],
+          "hinweis": "Plugins findest du links unter «Anpassungen», Reiter «Plugins»."
+        },
+        "plChat": {
+          "texte": [
+            "Echo öffnet das Plus im Chat. Neue Plugins holst du dort nicht.",
+            "Im Chat ist das Paket noch gar nicht da."
+          ],
+          "hinweis": "Neue Plugins holst du unter «Anpassungen», Reiter «Plugins»."
+        },
+        "plSkill": {
+          "texte": [
+            "Das ist ein Skill, kein Plugin. Herr Odermatt wollte das ganze Paket.",
+            "Ein einzelnes Dossier statt der ganzen Kiste."
+          ],
+          "hinweis": "Wechsle oben in den Reiter «Plugins»."
+        },
+        "plKonn": {
+          "texte": [
+            "Echo öffnet die Konnektoren. Die verbinden einen Dienst. Ein Plugin bündelt mehrere Bauteile.",
+            "Eine Leitung statt eines Pakets."
+          ],
+          "hinweis": "Wechsle oben in den Reiter «Plugins»."
+        },
+        "plHochladen": {
+          "texte": [
+            "Echo will einen eigenen Skill hochladen. Das Paket kommt aber fertig aus dem Verzeichnis.",
+            "Hochladen braucht eine Datei. Herr Odermatt hat keine."
+          ],
+          "hinweis": "Wechsle oben in den Reiter «Plugins»."
+        },
+        "plDaneben2": {
+          "texte": [
+            "Hier passiert nichts mit dem Plugin.",
+            "Echo sucht, findet aber kein Paket."
+          ],
+          "hinweis": "Wechsle oben in den Reiter «Plugins»."
+        },
+        "nochmalHolen": {
+          "texte": [
+            "Echo tippt nochmals auf «+». Gesucht war aber die Liste der Plugins, die du schon hast.",
+            "Neu holen statt nachschauen."
+          ],
+          "hinweis": "Deine Plugins stehen unter «Meine»."
+        },
+        "entdeckenStatt": {
+          "texte": [
+            "Hier sind neue Plugins. Deine eigenen stehen anderswo.",
+            "Echo blättert im Verzeichnis statt in der eigenen Liste."
+          ],
+          "hinweis": "Deine Plugins stehen unter «Meine»."
+        }
+      }
+    },
+    "hp-f": {
+      "typ": "klick",
+      "wunsch": "Zeig mir den ganzen Weg zum Hook, von der ersten Seite bis zum Schluss.",
+      "frage": "Lass Claude den Sicherungs-Hook einrichten, von Anfang an. Tippe dich durch.",
+      "schritte": [
+        {
+          "schirm": "app",
+          "ziel": "modusCode",
+          "text": "Tippe oben auf «{ziel}».",
+          "falsch": {
+            "eingabe": "chatStattCode",
+            "anpassungen": "anpassungenStatt"
+          },
+          "sonst": "codeDaneben"
+        },
+        {
+          "schirm": "code-start",
+          "ziel": "ordnerWaehlen",
+          "text": "Tippe auf «{ziel}».",
+          "falsch": {
+            "umgebung": "umgebungZuerst",
+            "codeEingabe": "ohneOrdner",
+            "anpassungen": "anpassungenStatt"
+          },
+          "sonst": "codeDaneben2"
+        },
+        {
+          "schirm": "ordner-dialog",
+          "ziel": "ordnerOdermatt",
+          "text": "Wähle den Ordner «{ziel}».",
+          "falsch": {
+            "ordnerVerein": "falscherOrdner",
+            "ordnerFerien": "falscherOrdner",
+            "abbrechenOrdner": "ordnerAbgebrochen"
+          },
+          "sonst": "ordnerAbgebrochen"
+        },
+        {
+          "schirm": "code-odermatt",
+          "ziel": "codeEingabe",
+          "text": "Tippe ins Eingabefeld.",
+          "falsch": {
+            "codePlus": "plusStatt"
+          },
+          "sonst": "codeDaneben3"
+        },
+        {
+          "schirm": "code-odermatt-hook",
+          "ziel": "hookGut",
+          "text": "Wähle die Nachricht mit Zeitpunkt und enger Regel.",
+          "falsch": {
+            "hookBitte": "bitteStatt",
+            "hookAlles": "zuBreit"
+          },
+          "sonst": "codeDaneben3"
+        }
+      ],
+      "nachher": "code-odermatt-fertig",
+      "erfolg": [
+        "Eingerichtet, von Anfang bis Ende. Die Sicherung kommt jedes Mal.",
+        "Geschafft. Den Weg zum Hook kennst du jetzt ganz."
+      ],
+      "fehlbilder": {
+        "codeDaneben": {
+          "texte": [
+            "Echo landet woanders. Den Code-Bereich gibt es hier nicht.",
+            "Falsche Tür. Hier arbeitet Claude nicht in deinen Ordnern."
+          ],
+          "hinweis": "Oben links geht es mit «</> Code» in den Code-Bereich."
+        },
+        "chatStattCode": {
+          "texte": [
+            "Echo schreibt im Chat. Dort arbeitet Claude nicht in deinen Ordnern, ein Hook entsteht so nicht.",
+            "Im Chat bleibt der Hook ein Gespräch. Eine Datei dafür legt Claude im Code-Bereich an."
+          ],
+          "hinweis": "Einen Hook legst du im Code-Bereich an: oben links «</> Code»."
+        },
+        "anpassungenStatt": {
+          "texte": [
+            "Echo öffnet die Anpassungen. Dort holst du fertige Skills, Konnektoren und Plugins. Einen eigenen Hook schreibt Claude im Code-Bereich.",
+            "Fertiges aus dem Verzeichnis statt etwas Eigenes für dein Projekt."
+          ],
+          "hinweis": "Einen eigenen Hook schreibt Claude im Code-Bereich: oben links «</> Code»."
+        },
+        "umgebungZuerst": {
+          "texte": [
+            "Echo öffnet die Umgebung. Der Ordner, in dem Claude arbeiten soll, fehlt aber noch.",
+            "Erst wählen, wo gearbeitet wird. Dann loslegen."
+          ],
+          "hinweis": "Wähle zuerst «Ordner zum Arbeiten auswählen»."
+        },
+        "ohneOrdner": {
+          "texte": [
+            "Echo schreibt los, aber es ist noch kein Ordner gewählt. Wohin soll der Hook?",
+            "Ohne Ordner fehlt der Platz für den Hook."
+          ],
+          "hinweis": "Wähle zuerst «Ordner zum Arbeiten auswählen»."
+        },
+        "codeDaneben2": {
+          "texte": [
+            "Hier passiert nichts mit dem Ordner.",
+            "Echo wartet. Noch ist kein Ordner gewählt."
+          ],
+          "hinweis": "Wähle zuerst «Ordner zum Arbeiten auswählen»."
+        },
+        "falscherOrdner": {
+          "texte": [
+            "Echo arbeitet im falschen Ordner. Der Hook gälte dort und nicht bei der Schreinerei.",
+            "Falscher Ordner: Bei der Schreinerei fehlt der Hook weiter."
+          ],
+          "hinweis": "Wähle den Ordner, um den es geht: der Schreinerei."
+        },
+        "ordnerAbgebrochen": {
+          "texte": [
+            "Abgebrochen. Kein Ordner ist gewählt.",
+            "Das Fenster ist zu. Claude weiss nicht, wo es arbeiten soll."
+          ],
+          "hinweis": "Wähle den Ordner der Schreinerei."
+        },
+        "plusStatt": {
+          "texte": [
+            "Echo öffnet das Plus. Anhängen musst du nichts, schreiben reicht.",
+            "Eine Datei mehr hilft hier nicht."
+          ],
+          "hinweis": "Tippe ins Eingabefeld und beschreib den Hook."
+        },
+        "codeDaneben3": {
+          "texte": [
+            "Hier schreibst du Claude nichts.",
+            "Echo wartet auf deine Nachricht."
+          ],
+          "hinweis": "Tippe ins Eingabefeld und beschreib den Hook."
+        },
+        "bitteStatt": {
+          "texte": [
+            "Claude notiert die Bitte. Im langen Einsatz geht sie unter, am Freitag fehlt die Sicherung.",
+            "Eine Bitte ist kein Hook. Sie gilt nur, solange Claude daran denkt."
+          ],
+          "hinweis": "Was immer gelten muss: «Richte einen Hook ein», mit Zeitpunkt und Regel."
+        },
+        "zuBreit": {
+          "texte": [
+            "Der Hook sichert vor jeder Aktion alles. Nach einer Woche ist die Festplatte voll.",
+            "Jede Kleinigkeit dauert ewig, weil zuerst alles gesichert wird."
+          ],
+          "hinweis": "Ein Hook braucht einen engen Zeitpunkt und eine klare Regel."
+        }
+      }
     }
   }
 }

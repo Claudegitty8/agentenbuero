@@ -14,7 +14,28 @@
   "schrank": {
     "titel": "Dossier (Skill): Protokoll im Vereinsstil",
     "vorlage": "---\nname: protokoll-verein\ndescription: Schreibt Protokolle der Vereinssitzungen im Stil unseres Vereins. Verwenden, wenn ein Protokoll, Sitzungsnotizen oder eine Traktandenliste gewünscht sind.\n---\n# Protokoll im Vereinsstil\n1. Kopf: Datum, Ort, Anwesende, Entschuldigte.\n2. Pro Traktandum: kurz, was besprochen und was beschlossen wurde.\n3. Pendenzen mit Name und Termin.\n4. Schluss: nächste Sitzung.\nTon: sachlich, per Du, kurze Sätze. Beispiele stehen in beispiele.md.",
-    "wo": "Speichere den Text als SKILL.md in einem Ordner namens protokoll-verein. Packe den Ordner als ZIP und lade ihn in der Claude-App bei den Skills hoch. Oder bitte Claude mit dem «skill-creator», daraus einen Skill zu bauen."
+    "wo": "Speichere den Text als SKILL.md in einem Ordner namens protokoll-verein. Packe den Ordner als ZIP und lade ihn in der Claude-App bei den Skills hoch. Oder bitte Claude mit dem «skill-creator», daraus einen Skill zu bauen.",
+    "probefahrt": {
+      "aufgabe": "se-a",
+      "punkte": [
+        {
+          "id": "code",
+          "text": "In den Einstellungen unter «Funktionen» ist «Code in der Cloud ausführen» an."
+        },
+        {
+          "id": "zip",
+          "text": "Der Ordner protokoll-verein ist als ZIP gepackt."
+        },
+        {
+          "id": "hoch",
+          "text": "Hochgeladen über Anpassungen, «+ Hinzufügen», «Skill hochladen»."
+        },
+        {
+          "id": "test",
+          "text": "Mit einer Protokoll-Bitte ausprobiert."
+        }
+      ]
+    }
   },
   "runden": [
     {
@@ -123,6 +144,30 @@
         "p-d",
         "p-e",
         "p-f"
+      ]
+    },
+    {
+      "id": "r-echt",
+      "art": "konzept",
+      "konzept": "skillEcht",
+      "probieren": {
+        "aufgabe": "se-a"
+      },
+      "beispiel": {
+        "aufgabe": "se-a"
+      },
+      "luecke": {
+        "aufgabe": "se-b",
+        "vorgabe": [
+          "anpassungen",
+          "hinzufuegen"
+        ]
+      },
+      "frei": [
+        "se-c",
+        "se-d",
+        "se-e",
+        "se-f"
       ]
     },
     {
@@ -2095,6 +2140,580 @@
         "beilage",
         "test"
       ]
+    },
+    "se-a": {
+      "typ": "klick",
+      "wunsch": "Das Dossier für die Protokolle liegt als ZIP auf meinem Computer. Wie kommt es in meine Claude-App?",
+      "frage": "Lade den Skill «protokoll-verein» in der Claude-App hoch. Tippe dich durch.",
+      "schritte": [
+        {
+          "schirm": "app",
+          "ziel": "anpassungen",
+          "text": "Tippe links auf «{ziel}».",
+          "falsch": {
+            "plus": "anhang",
+            "projekte": "projekt"
+          },
+          "sonst": "daneben1"
+        },
+        {
+          "schirm": "skills-entdecken",
+          "ziel": "hinzufuegen",
+          "text": "Tippe oben rechts auf «{ziel}».",
+          "falsch": {
+            "ausprobieren1": "verzeichnis",
+            "plusKarte1": "verzeichnis",
+            "ausprobieren2": "verzeichnis",
+            "plusKarte2": "verzeichnis",
+            "reiterKonnektoren": "konnektorReiter"
+          },
+          "sonst": "daneben2"
+        },
+        {
+          "schirm": "skills-menue",
+          "ziel": "hochladen",
+          "text": "Wähle im Menü «{ziel}».",
+          "falsch": {
+            "mitClaude": "mitClaude",
+            "selbst": "selbst",
+            "aufnehmen": "aufnehmen"
+          },
+          "sonst": "daneben2"
+        },
+        {
+          "schirm": "datei-oeffnen",
+          "ziel": "zipProtokoll",
+          "text": "Wähle die Datei «{ziel}».",
+          "falsch": {
+            "ordnerProtokoll": "keinZip",
+            "docxProtokoll": "wordDatei",
+            "abbrechen": "abbrechen",
+            "zipKasse": "kasseStattProtokoll"
+          },
+          "sonst": "abbrechen"
+        }
+      ],
+      "nachher": "skills-meine-protokoll",
+      "erfolg": [
+        "Hochgeladen. «protokoll-verein» steht jetzt bei «Von dir erstellt». Probier es gleich mit einer Protokoll-Bitte aus.",
+        "Geschafft. Das Dossier ist in der App und gilt in allen Chats."
+      ],
+      "fehlbilder": {
+        "anhang": {
+          "texte": [
+            "Echo hängt die ZIP-Datei an diese eine Nachricht. Im nächsten Chat ist sie weg.",
+            "Die Datei liegt jetzt nur in diesem Chat. Morgen fragt Echo wieder nach dem Protokoll-Muster."
+          ],
+          "hinweis": "Das Plus im Chat gilt nur für diese Nachricht. Skills gehören links unter «Anpassungen»."
+        },
+        "projekt": {
+          "texte": [
+            "Echo öffnet die Projekte. Dort liegen Unterlagen und Anweisungen, aber keine Skills.",
+            "Im Projekt wäre die Datei nur ein Dokument unter vielen, kein Skill."
+          ],
+          "hinweis": "Projekte haben Unterlagen und Anweisungen. Skills lädst du unter «Anpassungen» hoch."
+        },
+        "daneben1": {
+          "texte": [
+            "Echo landet woanders. Von Skills ist hier nichts zu sehen.",
+            "Falsche Tür. Hier gibt es keinen Platz für Skills."
+          ],
+          "hinweis": "Skills findest du links unter «Anpassungen»."
+        },
+        "verzeichnis": {
+          "texte": [
+            "Echo holt einen fremden Skill aus dem Verzeichnis. Der eigene liegt immer noch auf dem Computer.",
+            "Jetzt ist ein fertiger Skill von jemand anderem da. Der eigene fehlt weiter."
+          ],
+          "hinweis": "«Ausprobieren» und «+» auf einer Karte holen fertige Skills. Eigene kommen über «+ Hinzufügen»."
+        },
+        "konnektorReiter": {
+          "texte": [
+            "Echo öffnet die Konnektoren. Dort verbindet man Dienste wie Kalender oder Mail, keine Skills.",
+            "Konnektoren sind Funkleitungen zu anderen Diensten. Ein Dossier gehört nicht dorthin."
+          ],
+          "hinweis": "Konnektoren verbinden Dienste. Ein Skill bleibt im Reiter «Skills»."
+        },
+        "daneben2": {
+          "texte": [
+            "Echo sucht und filtert, aber hochladen geht so nicht.",
+            "Hier passiert nichts mit der ZIP-Datei."
+          ],
+          "hinweis": "Neue Skills kommen über oben rechts «+ Hinzufügen»."
+        },
+        "mitClaude": {
+          "texte": [
+            "Echo beginnt ein Gespräch, um einen neuen Skill zu bauen. Der fertige liegt unbenutzt im Download-Ordner.",
+            "Doppelte Arbeit: Claude baut neu, was es schon gibt."
+          ],
+          "hinweis": "«Mit Claude erstellen» baut einen neuen Skill. Für eine fertige ZIP-Datei: «Skill hochladen»."
+        },
+        "selbst": {
+          "texte": [
+            "Echo öffnet ein leeres Blatt für einen neuen Skill. Der fertige bleibt liegen.",
+            "Jetzt schreibst du alles nochmals von Hand ab."
+          ],
+          "hinweis": "«Einen Skill erstellen» heisst: neu schreiben. Für eine fertige ZIP-Datei: «Skill hochladen»."
+        },
+        "aufnehmen": {
+          "texte": [
+            "Echo nimmt den Bildschirm auf. Die ZIP-Datei bleibt, wo sie ist.",
+            "Eine Aufnahme statt eines Uploads. Der Skill ist immer noch nicht da."
+          ],
+          "hinweis": "«Bildschirm aufnehmen» lädt nichts hoch. Für eine fertige ZIP-Datei: «Skill hochladen»."
+        },
+        "keinZip": {
+          "texte": [
+            "Echo will den Ordner nehmen. Erwartet wird aber die ZIP-Datei, in der der Ordner steckt.",
+            "Der Ordner passt hier nicht. Zuerst als ZIP packen."
+          ],
+          "hinweis": "Hochgeladen wird die ZIP-Datei, die den Skill-Ordner enthält."
+        },
+        "wordDatei": {
+          "texte": [
+            "Echo nimmt das Word-Protokoll. Das ist ein Text, kein Skill. Die Datei SKILL.md fehlt.",
+            "Ein altes Protokoll ist kein Skill. Hochladen klappt nur mit der ZIP-Datei."
+          ],
+          "hinweis": "Ein Skill ist ein Ordner mit SKILL.md, gepackt als ZIP."
+        },
+        "abbrechen": {
+          "texte": [
+            "Abgebrochen. Nichts ist hochgeladen.",
+            "Das Fenster ist zu. Der Skill fehlt weiter."
+          ],
+          "hinweis": "Wähle die richtige ZIP-Datei, statt abzubrechen."
+        },
+        "kasseStattProtokoll": {
+          "texte": [
+            "Echo lädt den Kassen-Skill hoch. Herr Imhof wollte aber das Protokoll.",
+            "Falsche Datei: Jetzt kann Echo Jahresrechnungen, aber keine Protokolle."
+          ],
+          "hinweis": "Schau genau auf den Dateinamen: protokoll-verein.zip."
+        }
+      }
+    },
+    "se-b": {
+      "typ": "klick",
+      "wunsch": "Ich bin die Kassierin. Der Verein hat mir den Skill für die Kasse als ZIP geschickt. Bitte bring ihn in meine App.",
+      "frage": "Frau Imhof will den Skill «vereinskasse» hochladen. Die ersten Schritte sind gemacht.",
+      "schritte": [
+        {
+          "schirm": "app",
+          "ziel": "anpassungen",
+          "text": "Tippe links auf «{ziel}».",
+          "falsch": {
+            "plus": "anhang",
+            "projekte": "projekt"
+          },
+          "sonst": "daneben1"
+        },
+        {
+          "schirm": "skills-entdecken",
+          "ziel": "hinzufuegen",
+          "text": "Tippe oben rechts auf «{ziel}».",
+          "falsch": {
+            "ausprobieren1": "verzeichnis",
+            "plusKarte1": "verzeichnis",
+            "ausprobieren2": "verzeichnis",
+            "plusKarte2": "verzeichnis",
+            "reiterKonnektoren": "konnektorReiter"
+          },
+          "sonst": "daneben2"
+        },
+        {
+          "schirm": "skills-menue",
+          "ziel": "hochladen",
+          "text": "Wähle im Menü «{ziel}».",
+          "falsch": {
+            "mitClaude": "mitClaude",
+            "selbst": "selbst",
+            "aufnehmen": "aufnehmen"
+          },
+          "sonst": "daneben2"
+        },
+        {
+          "schirm": "datei-oeffnen",
+          "ziel": "zipKasse",
+          "text": "Wähle die Datei «{ziel}».",
+          "falsch": {
+            "ordnerProtokoll": "keinZip",
+            "docxProtokoll": "wordDatei",
+            "abbrechen": "abbrechen",
+            "zipProtokoll": "protokollStattKasse"
+          },
+          "sonst": "abbrechen"
+        }
+      ],
+      "nachher": "skills-meine-kasse",
+      "erfolg": [
+        "Hochgeladen. «vereinskasse» steht bei «Von dir erstellt». Jetzt kann Frau Imhof ihn ausprobieren.",
+        "Geschafft. Der Kassen-Skill ist in der App."
+      ],
+      "fehlbilder": {
+        "anhang": {
+          "texte": [
+            "Echo hängt die ZIP-Datei an diese eine Nachricht. Im nächsten Chat ist sie weg.",
+            "Die Datei liegt jetzt nur in diesem Chat. Morgen fragt Echo wieder nach dem Protokoll-Muster."
+          ],
+          "hinweis": "Das Plus im Chat gilt nur für diese Nachricht. Skills gehören links unter «Anpassungen»."
+        },
+        "projekt": {
+          "texte": [
+            "Echo öffnet die Projekte. Dort liegen Unterlagen und Anweisungen, aber keine Skills.",
+            "Im Projekt wäre die Datei nur ein Dokument unter vielen, kein Skill."
+          ],
+          "hinweis": "Projekte haben Unterlagen und Anweisungen. Skills lädst du unter «Anpassungen» hoch."
+        },
+        "daneben1": {
+          "texte": [
+            "Echo landet woanders. Von Skills ist hier nichts zu sehen.",
+            "Falsche Tür. Hier gibt es keinen Platz für Skills."
+          ],
+          "hinweis": "Skills findest du links unter «Anpassungen»."
+        },
+        "verzeichnis": {
+          "texte": [
+            "Echo holt einen fremden Skill aus dem Verzeichnis. Der eigene liegt immer noch auf dem Computer.",
+            "Jetzt ist ein fertiger Skill von jemand anderem da. Der eigene fehlt weiter."
+          ],
+          "hinweis": "«Ausprobieren» und «+» auf einer Karte holen fertige Skills. Eigene kommen über «+ Hinzufügen»."
+        },
+        "konnektorReiter": {
+          "texte": [
+            "Echo öffnet die Konnektoren. Dort verbindet man Dienste wie Kalender oder Mail, keine Skills.",
+            "Konnektoren sind Funkleitungen zu anderen Diensten. Ein Dossier gehört nicht dorthin."
+          ],
+          "hinweis": "Konnektoren verbinden Dienste. Ein Skill bleibt im Reiter «Skills»."
+        },
+        "daneben2": {
+          "texte": [
+            "Echo sucht und filtert, aber hochladen geht so nicht.",
+            "Hier passiert nichts mit der ZIP-Datei."
+          ],
+          "hinweis": "Neue Skills kommen über oben rechts «+ Hinzufügen»."
+        },
+        "mitClaude": {
+          "texte": [
+            "Echo beginnt ein Gespräch, um einen neuen Skill zu bauen. Der fertige liegt unbenutzt im Download-Ordner.",
+            "Doppelte Arbeit: Claude baut neu, was es schon gibt."
+          ],
+          "hinweis": "«Mit Claude erstellen» baut einen neuen Skill. Für eine fertige ZIP-Datei: «Skill hochladen»."
+        },
+        "selbst": {
+          "texte": [
+            "Echo öffnet ein leeres Blatt für einen neuen Skill. Der fertige bleibt liegen.",
+            "Jetzt schreibst du alles nochmals von Hand ab."
+          ],
+          "hinweis": "«Einen Skill erstellen» heisst: neu schreiben. Für eine fertige ZIP-Datei: «Skill hochladen»."
+        },
+        "aufnehmen": {
+          "texte": [
+            "Echo nimmt den Bildschirm auf. Die ZIP-Datei bleibt, wo sie ist.",
+            "Eine Aufnahme statt eines Uploads. Der Skill ist immer noch nicht da."
+          ],
+          "hinweis": "«Bildschirm aufnehmen» lädt nichts hoch. Für eine fertige ZIP-Datei: «Skill hochladen»."
+        },
+        "keinZip": {
+          "texte": [
+            "Echo will den Ordner nehmen. Erwartet wird aber die ZIP-Datei, in der der Ordner steckt.",
+            "Der Ordner passt hier nicht. Zuerst als ZIP packen."
+          ],
+          "hinweis": "Hochgeladen wird die ZIP-Datei, die den Skill-Ordner enthält."
+        },
+        "wordDatei": {
+          "texte": [
+            "Echo nimmt das Word-Protokoll. Das ist ein Text, kein Skill. Die Datei SKILL.md fehlt.",
+            "Ein altes Protokoll ist kein Skill. Hochladen klappt nur mit der ZIP-Datei."
+          ],
+          "hinweis": "Ein Skill ist ein Ordner mit SKILL.md, gepackt als ZIP."
+        },
+        "abbrechen": {
+          "texte": [
+            "Abgebrochen. Nichts ist hochgeladen.",
+            "Das Fenster ist zu. Der Skill fehlt weiter."
+          ],
+          "hinweis": "Wähle die richtige ZIP-Datei, statt abzubrechen."
+        },
+        "protokollStattKasse": {
+          "texte": [
+            "Echo lädt den Protokoll-Skill hoch. Frau Imhof wollte die Kasse.",
+            "Falsche Datei: Der Kassen-Skill liegt weiter im Download-Ordner."
+          ],
+          "hinweis": "Schau genau auf den Dateinamen: vereinskasse.zip."
+        }
+      }
+    },
+    "se-c": {
+      "typ": "klick",
+      "wunsch": "Ich habe noch gar keinen Skill. Kann Claude mir einen für die Probenpläne bauen?",
+      "frage": "Frau Kessler ist schon bei den Skills. Sie hat keine Datei, Claude soll den Skill mit ihr bauen.",
+      "schritte": [
+        {
+          "schirm": "skills-entdecken",
+          "ziel": "hinzufuegen",
+          "text": "Tippe oben rechts auf «{ziel}».",
+          "falsch": {
+            "ausprobieren1": "verzeichnis",
+            "plusKarte1": "verzeichnis",
+            "ausprobieren2": "verzeichnis",
+            "plusKarte2": "verzeichnis",
+            "reiterKonnektoren": "konnektorReiter"
+          },
+          "sonst": "daneben2"
+        },
+        {
+          "schirm": "skills-menue",
+          "ziel": "mitClaude",
+          "text": "Wähle «{ziel}».",
+          "falsch": {
+            "hochladen": "hochladenOhneDatei",
+            "selbst": "selbstStattClaude",
+            "aufnehmen": "aufnehmen"
+          },
+          "sonst": "daneben2"
+        }
+      ],
+      "erfolg": [
+        "Richtig. Hier baut Claude den Skill im Gespräch mit Frau Kessler.",
+        "Genau. Ohne fertige Datei hilft «Mit Claude erstellen»."
+      ],
+      "fehlbilder": {
+        "verzeichnis": {
+          "texte": [
+            "Echo holt einen fremden Skill aus dem Verzeichnis. Der eigene liegt immer noch auf dem Computer.",
+            "Jetzt ist ein fertiger Skill von jemand anderem da. Der eigene fehlt weiter."
+          ],
+          "hinweis": "«Ausprobieren» und «+» auf einer Karte holen fertige Skills. Eigene kommen über «+ Hinzufügen»."
+        },
+        "konnektorReiter": {
+          "texte": [
+            "Echo öffnet die Konnektoren. Dort verbindet man Dienste wie Kalender oder Mail, keine Skills.",
+            "Konnektoren sind Funkleitungen zu anderen Diensten. Ein Dossier gehört nicht dorthin."
+          ],
+          "hinweis": "Konnektoren verbinden Dienste. Ein Skill bleibt im Reiter «Skills»."
+        },
+        "daneben2": {
+          "texte": [
+            "Echo sucht und filtert, aber hochladen geht so nicht.",
+            "Hier passiert nichts mit der ZIP-Datei."
+          ],
+          "hinweis": "Neue Skills kommen über oben rechts «+ Hinzufügen»."
+        },
+        "hochladenOhneDatei": {
+          "texte": [
+            "Echo öffnet die Dateiauswahl. Aber Frau Kessler hat ja noch gar keine Skill-Datei.",
+            "Hochladen ohne Datei: Das Fenster bleibt leer."
+          ],
+          "hinweis": "«Skill hochladen» braucht eine fertige ZIP-Datei. Ohne Datei: «Mit Claude erstellen»."
+        },
+        "selbstStattClaude": {
+          "texte": [
+            "Echo öffnet ein leeres Blatt. Frau Kessler müsste alles selbst schreiben.",
+            "Jetzt schreibt Frau Kessler von Hand, obwohl Claude helfen könnte."
+          ],
+          "hinweis": "Soll Claude den Skill mit dir bauen: «Mit Claude erstellen»."
+        },
+        "aufnehmen": {
+          "texte": [
+            "Echo nimmt den Bildschirm auf. Die ZIP-Datei bleibt, wo sie ist.",
+            "Eine Aufnahme statt eines Uploads. Der Skill ist immer noch nicht da."
+          ],
+          "hinweis": "«Bildschirm aufnehmen» lädt nichts hoch. Für eine fertige ZIP-Datei: «Skill hochladen»."
+        }
+      }
+    },
+    "se-d": {
+      "typ": "reihe",
+      "wunsch": "In welcher Reihenfolge bringe ich einen fertigen Skill in die App?",
+      "frage": "Bring die Schritte zum Hochladen in die richtige Reihenfolge.",
+      "schritte": [
+        {
+          "id": "testen",
+          "text": "Mit einer Protokoll-Bitte ausprobieren"
+        },
+        {
+          "id": "hinzu",
+          "text": "Unter «Anpassungen» oben rechts «+ Hinzufügen» öffnen",
+          "schirm": "skills-entdecken",
+          "ziel": "hinzufuegen"
+        },
+        {
+          "id": "zip",
+          "text": "Den Ordner protokoll-verein als ZIP packen"
+        },
+        {
+          "id": "datei",
+          "text": "Die ZIP-Datei wählen"
+        },
+        {
+          "id": "hoch",
+          "text": "Im Menü «Skill hochladen» wählen",
+          "schirm": "skills-menue",
+          "ziel": "hochladen"
+        }
+      ],
+      "loesung": [
+        "zip",
+        "hinzu",
+        "hoch",
+        "datei",
+        "testen"
+      ],
+      "echo": "Packen, «+ Hinzufügen», «Skill hochladen», Datei wählen, ausprobieren. Der Skill ist da und tut, was er soll.",
+      "daneben": {
+        "texte": [
+          "Echo will die ZIP-Datei wählen, aber es gibt noch keine. Der Ordner ist nicht gepackt.",
+          "Echo probiert den Skill aus, bevor er hochgeladen ist. Claude kennt ihn noch nicht."
+        ],
+        "hinweis": "Zuerst packen, dann «+ Hinzufügen», «Skill hochladen», Datei wählen. Ausprobieren zum Schluss."
+      }
+    },
+    "se-e": {
+      "typ": "wahl",
+      "wunsch": "Der Skill ist hochgeladen, aber grau. Ich kann ihn nicht benutzen. Was ist los?",
+      "frage": "Herr Imhofs Skill ist hochgeladen, aber grau. Woran liegt es am ehesten?",
+      "optionen": [
+        {
+          "id": "codeAus",
+          "text": "In den Einstellungen ist «Code in der Cloud ausführen» aus.",
+          "richtig": true,
+          "hinweis": "Genau. Dieser Schalter unter «Funktionen» ist für Skills nötig. Ohne ihn bleiben sie grau."
+        },
+        {
+          "id": "nurProjekt",
+          "text": "Skills funktionieren nur in Projekten.",
+          "hinweis": "Nein. Ein hochgeladener Skill gilt in allen Chats, nicht nur in Projekten."
+        },
+        {
+          "id": "name",
+          "text": "Der Ordnername ist falsch.",
+          "hinweis": "Ein falscher Name fällt schon beim Hochladen auf. Dann erscheint der Skill gar nicht in der Liste."
+        }
+      ],
+      "echo": "Echo schaut unter «Funktionen» nach: «Code in der Cloud ausführen» ist aus. Eingeschaltet, und der Skill ist nicht mehr grau.",
+      "loesung": [
+        "codeAus"
+      ]
+    },
+    "se-f": {
+      "typ": "klick",
+      "wunsch": "Schalt bitte ein, was mein Skill braucht. Ich finde den Schalter nicht.",
+      "frage": "Schalte für Herrn Imhof ein, was Skills brauchen. Tippe dich durch.",
+      "schritte": [
+        {
+          "schirm": "app",
+          "ziel": "profil",
+          "text": "Tippe unten links auf deinen Namen.",
+          "falsch": {
+            "anpassungen": "anpassungenStattEinst"
+          },
+          "sonst": "daneben3"
+        },
+        {
+          "schirm": "app-profilmenue",
+          "ziel": "einstellungen",
+          "text": "Wähle «{ziel}».",
+          "falsch": {
+            "hilfe": "hilfeSeite",
+            "abmelden": "abgemeldet",
+            "anpassungen": "anpassungenStattEinst"
+          },
+          "sonst": "daneben3"
+        },
+        {
+          "schirm": "einstellungen",
+          "ziel": "funktionen",
+          "text": "Tippe links auf «{ziel}».",
+          "falsch": {
+            "einstSkills": "einstSkills",
+            "schliessen": "zugemacht"
+          },
+          "sonst": "daneben4"
+        },
+        {
+          "schirm": "einstellungen-funktionen",
+          "ziel": "codeCloud",
+          "text": "Schalte «{ziel}» ein.",
+          "falsch": {
+            "netzwerk": "netzwerk",
+            "artefakteSchalter": "schonAn",
+            "konnektorSuche": "schonAn",
+            "schliessen": "zugemacht",
+            "einstSkills": "einstSkills"
+          },
+          "sonst": "daneben4"
+        }
+      ],
+      "nachher": "einstellungen-funktionen-an",
+      "erfolg": [
+        "Eingeschaltet. Jetzt ist der Skill nicht mehr grau.",
+        "Geschafft. «Code in der Cloud ausführen» ist an, Skills laufen."
+      ],
+      "fehlbilder": {
+        "anpassungenStattEinst": {
+          "texte": [
+            "Echo öffnet die Anpassungen. Dort sind die Skills, aber nicht der Schalter für die Code-Ausführung.",
+            "Hier liegt der Skill. Grau bleibt er trotzdem."
+          ],
+          "hinweis": "Die Einstellungen öffnest du unten links über deinen Namen."
+        },
+        "daneben3": {
+          "texte": [
+            "Hier gibt es keine Einstellungen.",
+            "Echo sucht den Schalter am falschen Ort."
+          ],
+          "hinweis": "Die Einstellungen öffnest du unten links über deinen Namen."
+        },
+        "hilfeSeite": {
+          "texte": [
+            "Echo öffnet die Hilfe. Dort steht, wo der Schalter ist. Umgelegt ist er damit nicht.",
+            "Lesen hilft, aber der Skill ist immer noch grau."
+          ],
+          "hinweis": "Im Menü unter deinem Namen führt «Einstellungen» zum Schalter."
+        },
+        "abgemeldet": {
+          "texte": [
+            "Echo meldet dich ab. Jetzt musst du dich zuerst wieder anmelden.",
+            "Abgemeldet. Der Schalter ist so nicht näher gekommen."
+          ],
+          "hinweis": "Im Menü unter deinem Namen führt «Einstellungen» zum Schalter."
+        },
+        "einstSkills": {
+          "texte": [
+            "Echo öffnet die Skills in den Einstellungen. Der Schalter für die Code-Ausführung ist woanders.",
+            "Die Skills sind hier, aber grau bleiben sie."
+          ],
+          "hinweis": "Der Schalter für Skills steht unter «Funktionen»."
+        },
+        "daneben4": {
+          "texte": [
+            "Hier ist der Schalter nicht.",
+            "Echo blättert, findet aber keine Code-Ausführung."
+          ],
+          "hinweis": "Unter «Funktionen» steht der Schalter «Code in der Cloud ausführen»."
+        },
+        "zugemacht": {
+          "texte": [
+            "Echo schliesst die Einstellungen. Der Schalter ist noch aus.",
+            "Fenster zu, Schalter aus. Der Skill bleibt grau."
+          ],
+          "hinweis": "Leg zuerst «Code in der Cloud ausführen» um."
+        },
+        "netzwerk": {
+          "texte": [
+            "Echo erlaubt den Netzwerkverkehr. Der Skill bleibt grau, «Code in der Cloud ausführen» ist noch aus.",
+            "Jetzt darf Claude ins Internet. Für den Skill fehlt aber immer noch der richtige Schalter."
+          ],
+          "hinweis": "Für Skills nötig: «Code in der Cloud ausführen»."
+        },
+        "schonAn": {
+          "texte": [
+            "Echo schaltet etwas aus, das schon an war. Der Skill bleibt grau.",
+            "Falscher Schalter. «Code in der Cloud ausführen» ist noch aus."
+          ],
+          "hinweis": "Für Skills nötig: «Code in der Cloud ausführen»."
+        }
+      }
     }
   }
 }
