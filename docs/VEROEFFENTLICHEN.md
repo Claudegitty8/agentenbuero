@@ -2,7 +2,7 @@
 
 Stand: 16. November 2026. Übernommen aus dem KI-Studio, angepasst.
 
-**Stand 17.11.2026:** Veröffentlicht unter https://claudegitty8.github.io/agentenbuero/ (Version 0.10, Repository öffentlich, Entscheid E-028). Version 0.9 und 0.10 liefen mit allen Prüfungen durch.
+**Stand 17.11.2026:** Veröffentlicht unter https://claudegitty8.github.io/agentenbuero/ (Version 0.11, Repository öffentlich, Entscheid E-028). Version 0.9, 0.10 und 0.11 liefen mit allen Prüfungen durch.
 
 Diese Anleitung ist für den Besitzer. Claude veröffentlicht nichts ohne ausdrückliches Ja.
 

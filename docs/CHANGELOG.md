@@ -1,6 +1,8 @@
 # Changelog
 
-## Version 0.11 (17.11.2026, noch nicht veröffentlicht)
+## Version 0.11 (17.11.2026)
+
+Veröffentlicht am 17.11.2026 auf https://claudegitty8.github.io/agentenbuero/. Die Veröffentlichung lief durch (alle Prüfungen, Hochladen auf GitHub Pages). Die Seite selbst konnte ich danach nicht im Browser öffnen: nicht geprüft.
 
 ### Neu
 - Lexikon: neuer Teil «So geht es in echt (Anleitungen)» mit 11 Anleitungen zu den vier Themen (3 Skill, 3 Konnektor, 2 Subagent, 3 Hook und Plugin). Wege zum Durchklicken erscheinen als Bilderstrecke, Rechte und Werkzeuge als fertig eingestelltes Bild (E-033).
