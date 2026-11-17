@@ -1,8 +1,10 @@
 # Changelog
 
-## Version 0.10 (17.11.2026, noch nicht veröffentlicht)
+## Version 0.10 (17.11.2026)
 
 Bebilderte Übungen «In echt»: Wie man Skills, Konnektoren, Subagenten, Hooks und Plugins in der echten Claude-App einrichtet.
+
+Veröffentlicht am 17.11.2026 auf https://claudegitty8.github.io/agentenbuero/.
 
 ### Neu
 - Vier Runden «In echt», je am Ende eines Kapitels vor der Mischrunde: Skill hochladen (Notenständer), Konnektor verbinden (Stammtisch), Subagent anlegen (Ferienplan), Hook und Plugin (Hobelbank). 25 statt 21 Konzepte (E-031).
