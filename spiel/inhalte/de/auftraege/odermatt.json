@@ -1834,5 +1834,22 @@
         }
       }
     }
+  },
+  "anleitungen": {
+    "konzept": "hookEcht",
+    "wege": [
+      {
+        "aufgabe": "hp-a",
+        "titel": "Ein Plugin holen"
+      },
+      {
+        "aufgabe": "hp-e",
+        "titel": "Deine Plugins wiederfinden"
+      },
+      {
+        "aufgabe": "hp-f",
+        "titel": "Einen Hook einrichten lassen"
+      }
+    ]
   }
 }

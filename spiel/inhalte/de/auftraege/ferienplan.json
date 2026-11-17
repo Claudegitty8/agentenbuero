@@ -3196,5 +3196,18 @@
         }
       }
     }
+  },
+  "anleitungen": {
+    "konzept": "subagentEcht",
+    "wege": [
+      {
+        "aufgabe": "sa-a",
+        "titel": "Einen Subagenten anlegen"
+      },
+      {
+        "aufgabe": "sa-e",
+        "titel": "Werkzeuge eines Subagenten wählen"
+      }
+    ]
   }
 }

@@ -3,6 +3,32 @@ import { el, fuelle, knopf, punkte, leiste } from './bausteine.js';
 import { erfolge, neuerFortschritt } from '../logik/meisterschaft.js';
 import { wendeSchriftAn } from './schrift.js';
 import { wandleUm, pruefeLauf, sprungStatus, springeZuAuftrag } from '../logik/extras.js';
+import { anleitungenInhalt } from '../logik/anleitungen.js';
+import { baueStrecke } from './klick.js';
+import { baueEinstellen } from './einstellen.js';
+import { loesungVon } from '../logik/bewertung.js';
+
+// «So geht es in echt» (E-033): die Wege durch die echte Claude-App, jederzeit zum Nachschlagen.
+// Durchklicken erscheint als Bilderstrecke, Einstellen als fertig eingestelltes Bild.
+function anleitungen(app, t) {
+  const { auftraege, schirme, texte } = app.inhalte;
+  const themen = anleitungenInhalt(app.stand, auftraege);
+  if (themen.length === 0) return null;
+  const wegBild = (aufgabe) => (aufgabe.typ === 'einstellen'
+    ? [el('p', { klasse: 'klein', text: t.anleitungEingestellt }),
+      baueEinstellen({ aufgabe, t, schirme, auswahl: loesungVon(aufgabe), gesperrt: true, nurBild: true }).knoten]
+    : [baueStrecke(aufgabe, schirme, t)]);
+  return el('section', { klasse: 'karte anleitungen' },
+    el('h2', { text: t.anleitungenTitel }),
+    el('p', { klasse: 'klein', text: t.anleitungenInfo }),
+    themen.map((thema) => el('div', { klasse: 'anleitung-thema' },
+      el('h3', { text: texte.konzepte[thema.konzept]?.name ?? thema.titel }),
+      thema.offen
+        ? thema.wege.map((weg) => el('details', { klasse: 'anleitung' },
+          el('summary', { text: weg.titel }),
+          ...wegBild(weg.aufgabe)))
+        : el('p', { klasse: 'klein', text: fuelle(t.anleitungZu, { auftrag: thema.titel }) }))));
+}
 
 export function zeigeLexikon(wurzel, app, nav) {
   const { texte, lexikon, lehrplan, regeln } = app.inhalte;
@@ -16,6 +42,7 @@ export function zeigeLexikon(wurzel, app, nav) {
 
   wurzel.append(
     leiste(t, nav, t.lexikonTitel),
+    ...[anleitungen(app, t)].filter(Boolean),
     ...app.stand.lexikon.map((id) => {
       const eintrag = lexikon[id];
       const kern = eintrag.kern ? texte.konzepte[eintrag.kern] : null;

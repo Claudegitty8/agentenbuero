@@ -1,5 +1,15 @@
 # Changelog
 
+## Version 0.11 (17.11.2026, noch nicht veröffentlicht)
+
+### Neu
+- Lexikon: neuer Teil «So geht es in echt (Anleitungen)» mit 11 Anleitungen zu den vier Themen (3 Skill, 3 Konnektor, 2 Subagent, 3 Hook und Plugin). Wege zum Durchklicken erscheinen als Bilderstrecke, Rechte und Werkzeuge als fertig eingestelltes Bild (E-033).
+- Ein Thema öffnet sich, sobald man seine Runde erreicht hat oder den Auftrag erledigt hat. So bekommen auch Spielstände von vor Version 0.10 die Anleitungen.
+
+### Geändert
+- Inhaltsprüfung prüft das neue Feld `anleitungen`. Browser-Durchspiel prüft die Anleitungen im Lexikon.
+- Tests: 116 (2 neue).
+
 ## Version 0.10 (17.11.2026)
 
 Bebilderte Übungen «In echt»: Wie man Skills, Konnektoren, Subagenten, Hooks und Plugins in der echten Claude-App einrichtet.

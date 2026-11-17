@@ -526,3 +526,13 @@ summary:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid
 .probefahrt-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.2rem; }
 .probefahrt-liste li { display: flex; align-items: center; gap: 0.6rem; min-height: 44px; }
 .probefahrt-liste input { width: 1.4rem; height: 1.4rem; flex: none; accent-color: var(--echo-dunkel); }
+
+/* Anleitungen «So geht es in echt» im Lexikon (E-033) */
+.anleitungen h3 { margin: 0.4rem 0 0; font-size: 1rem; }
+.anleitung-thema { display: grid; gap: 0.3rem; }
+.anleitung > summary { min-height: 44px; display: flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0 0.2rem; border-bottom: 1px solid var(--linie); list-style: none; }
+.anleitung > summary::-webkit-details-marker { display: none; }
+.anleitung > summary::before { content: '▸'; color: var(--leise); }
+.anleitung[open] > summary::before { content: '▾'; }
+.anleitung[open] > summary { font-weight: 600; margin-bottom: 0.5rem; }
+.anleitung .werkbank { padding: 0; border: 0; }

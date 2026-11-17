@@ -6,7 +6,8 @@ import { el } from './bausteine.js';
 import { baueSchirm } from './schirm.js';
 import { loeseSchirm } from '../logik/schirme.js';
 
-export function baueEinstellen({ aufgabe, t, schirme, vorgabe = [], auswahl = [], gesperrt = false }) {
+// nurBild: nur der eingestellte Bildschirm, ohne Frage und Hilfe (für die Anleitungen im Lexikon).
+export function baueEinstellen({ aufgabe, t, schirme, vorgabe = [], auswahl = [], gesperrt = false, nurBild = false }) {
   let zu = gesperrt;
   let markiert = null;
   const fest = new Set(vorgabe);
@@ -54,12 +55,14 @@ export function baueEinstellen({ aufgabe, t, schirme, vorgabe = [], auswahl = []
     : { ...schirm, inhalt: [...(schirm.inhalt ?? []), { art: 'einstellungen' }] };
   buehne.append(baueSchirm(mitPlatz, t, { einstellungen: zeilen }));
 
-  const knoten = el('section', { klasse: 'karte werkbank einstellen' },
-    el('p', { klasse: 'etikett', text: t.einstellenEtikett }),
-    el('p', { klasse: 'frage', text: aufgabe.frage }),
-    el('p', { klasse: 'klein', text: t.einstellenHilfe }),
-    buehne,
-    meldung);
+  const knoten = nurBild
+    ? el('div', { klasse: 'einstellen' }, buehne)
+    : el('section', { klasse: 'karte werkbank einstellen' },
+      el('p', { klasse: 'etikett', text: t.einstellenEtikett }),
+      el('p', { klasse: 'frage', text: aufgabe.frage }),
+      el('p', { klasse: 'klein', text: t.einstellenHilfe }),
+      buehne,
+      meldung);
 
   zeichne();
 

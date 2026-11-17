@@ -241,6 +241,21 @@ try {
       await drueck(seite, t.lexikonKnopf.replace('{anzahl}', String((await lies('de/lexikon.json')) && Object.keys(await lies('de/lexikon.json')).length)));
       await seite.screenshot({ path: path.join(BILDER, '31-lexikon.png'), fullPage: true });
       await pruefeBreite(seite, 'Lexikon');
+      // Anleitungen «So geht es in echt» (E-033): nach dem ganzen Spiel alle offen, aufklappbar, mit Bild.
+      const wegeSoll = auftraege.reduce((summe, a) => summe + (a.anleitungen?.wege.length ?? 0), 0);
+      const wegeIst = await seite.locator('.anleitungen details.anleitung').count();
+      if (wegeIst !== wegeSoll) melde(`Lexikon: ${wegeIst} statt ${wegeSoll} Anleitungen`);
+      if (wegeIst > 0) {
+        await seite.locator('.anleitungen details.anleitung summary').first().click();
+        if ((await seite.locator('.anleitungen details[open] .strecke-schritt').count()) === 0) melde('Lexikon: Anleitung zeigt keine Bilderstrecke');
+        const einstellen = seite.locator('.anleitungen details.anleitung', { has: seite.locator('summary', { hasText: 'Rechte' }) });
+        if (await einstellen.count()) {
+          await einstellen.first().locator('summary').click();
+          if ((await einstellen.first().locator('button.einstell-option[aria-pressed="true"]').count()) === 0) melde('Lexikon: Anleitung zum Einstellen zeigt nichts eingestellt');
+        }
+        await seite.screenshot({ path: path.join(BILDER, '31b-lexikon-anleitungen.png'), fullPage: true });
+        await pruefeBreite(seite, 'Lexikon mit Anleitungen');
+      }
       await drueck(seite, t.zurueck);
       await drueck(seite, t.einstellungenKnopf);
       await seite.screenshot({ path: path.join(BILDER, '32-einstellungen.png'), fullPage: true });

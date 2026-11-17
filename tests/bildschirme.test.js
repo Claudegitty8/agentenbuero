@@ -236,3 +236,32 @@ test('Inhaltsprüfung: Probefahrt braucht eine Aufgabe zum Durchklicken und zwei
   assert.ok(fehler.some((f) => f.includes('zwei bis sechs Punkte')));
   assert.ok(fehler.some((f) => f.includes('schrankProbefahrt fehlt')));
 });
+
+test('Anleitungen im Lexikon: offen ab der Runde oder nach dem Auftrag, kaputte Stände gehen nicht kaputt', async () => {
+  const { anleitungenInhalt } = await import('../spiel/code/logik/anleitungen.js');
+  const auftrag = {
+    id: 'probe', titel: 'Operation Probe', runden: [{ konzept: 'skillEcht' }], aufgaben: { k: KLICK, e: EINSTELLEN },
+    anleitungen: { konzept: 'skillEcht', wege: [{ aufgabe: 'k', titel: 'Hochladen' }, { aufgabe: 'e', titel: 'Rechte' }, { aufgabe: 'weg', titel: 'Fehlt' }] },
+  };
+  const ohne = { id: 'ohne', runden: [], aufgaben: {} };
+  const [zu] = anleitungenInhalt({ erledigt: [], lexikon: ['ki'] }, [auftrag, ohne]);
+  assert.equal(zu.offen, false);
+  assert.deepEqual(zu.wege.map((w) => w.titel), ['Hochladen', 'Rechte']); // unbekannte Aufgaben fallen weg
+  assert.equal(anleitungenInhalt({ erledigt: [], lexikon: ['skillEcht'] }, [auftrag])[0].offen, true); // Runde erreicht
+  assert.equal(anleitungenInhalt({ erledigt: ['probe'], lexikon: [] }, [auftrag])[0].offen, true); // Stand von vor 0.10
+  assert.equal(anleitungenInhalt(undefined, [auftrag])[0].offen, false);
+  assert.equal(anleitungenInhalt({ erledigt: 'kaputt', lexikon: 7 }, [auftrag])[0].offen, false);
+  assert.deepEqual(anleitungenInhalt({}, undefined), []);
+});
+
+test('Inhaltsprüfung: Anleitungen brauchen ein Konzept des Auftrags und Wege zum Durchklicken oder Einstellen', async () => {
+  const { pruefeAuftrag } = await import('../werkzeuge/pruefe-inhalte.mjs');
+  const fehler = [];
+  pruefeAuftrag({
+    id: 'p', kunde: 'K', wunsch: 'W', kundenstimme: 'S', ueberraschung: 'U', runden: [], aufgaben: { w: { typ: 'wahl' } },
+    anleitungen: { konzept: 'gibtsNicht', wege: [{ aufgabe: 'w', titel: '' }, { aufgabe: 'w', titel: 'Doppelt' }] },
+  }, 'p', { regeln: {}, konzepte: new Set(), texte: { app: {} }, lexikon: {} }, fehler);
+  for (const erwartet of ['hat keine Runde', 'Durchklicken oder Einstellen', 'kurzen titel', 'ist doppelt', 'anleitungenTitel fehlt']) {
+    assert.ok(fehler.some((f) => f.includes(erwartet)), `erwartet: ${erwartet}`);
+  }
+});

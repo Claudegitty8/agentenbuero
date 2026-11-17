@@ -206,6 +206,23 @@ export function pruefeAuftrag(auftrag, name, { regeln, konzepte, texte, lexikon,
       }
     }
   }
+  // Anleitungen im Lexikon (E-033): Konzept einer Runde dieses Auftrags, Wege zum Durchklicken oder Einstellen.
+  if (auftrag.anleitungen) {
+    const { konzept, wege = [] } = auftrag.anleitungen;
+    if (!(auftrag.runden ?? []).some((runde) => runde.konzept === konzept)) fehler.push(`${name}: anleitungen.konzept «${konzept}» hat keine Runde in diesem Auftrag`);
+    if (wege.length === 0) fehler.push(`${name}: anleitungen braucht mindestens einen Weg`);
+    const gesehenWege = new Set();
+    for (const weg of wege) {
+      const typ = auftrag.aufgaben?.[weg.aufgabe]?.typ;
+      if (typ !== 'klick' && typ !== 'einstellen') fehler.push(`${name}: Anleitung «${weg.aufgabe}» muss eine Aufgabe zum Durchklicken oder Einstellen sein`);
+      if (!istText(weg.titel) || zuLang(weg.titel)) fehler.push(`${name}: Anleitung «${weg.aufgabe}» braucht einen kurzen titel`);
+      if (gesehenWege.has(weg.aufgabe)) fehler.push(`${name}: Anleitung «${weg.aufgabe}» ist doppelt`);
+      gesehenWege.add(weg.aufgabe);
+    }
+    for (const feld of ['anleitungenTitel', 'anleitungenInfo', 'anleitungZu', 'anleitungEingestellt']) {
+      if (!istText(texte.app?.[feld])) fehler.push(`texte.json: ${feld} fehlt (gebraucht für die Anleitungen im Lexikon)`);
+    }
+  }
   // Eigene Gruppennamen einer Aufgabe (artNamen): nur bekannte Arten, kurze Texte.
   for (const [id, aufgabe] of Object.entries(auftrag.aufgaben ?? {})) {
     for (const [art, text] of Object.entries(aufgabe.artNamen ?? {})) {

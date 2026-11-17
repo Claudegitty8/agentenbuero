@@ -1,6 +1,6 @@
 # Backlog
 
-Stand: 17.11.2026 (Version 0.10). Muss = für Version 1.0 nötig. Soll = wichtig, aber nicht zwingend. Kann = gute Idee für später.
+Stand: 17.11.2026 (Version 0.11). Muss = für Version 1.0 nötig. Soll = wichtig, aber nicht zwingend. Kann = gute Idee für später.
 
 ## Muss
 - Kontakt-E-Mail und Prüfung der Hinweise vor breitem Teilen.
@@ -17,7 +17,7 @@ Stand: 17.11.2026 (Version 0.10). Muss = für Version 1.0 nötig. Soll = wichtig
 - Skill- und Plugin-ZIP direkt im Spiel erzeugen (Annahme: ohne Zusatzpaket machbar). In Version 0.9 nicht gebaut: Die Vorlagen werden kopiert, die Anleitung sagt, wie man daraus eine Datei macht.
 - Agentenwand: jeder gebaute Feldagent sichtbar in der Zentrale (Idee aus dem Konzept).
 
-- Runden «In echt» nachholen für alle, die einen Auftrag vor Version 0.10 erledigt haben (E-031). Bis dahin zeigt der Einsatzschrank den Weg als Probefahrt.
+- Runden «In echt» nachholen für alle, die einen Auftrag vor Version 0.10 erledigt haben (E-031). Bis dahin zeigen der Einsatzschrank (Probefahrt) und das Lexikon (Anleitungen, E-033) den Weg.
 
 ## Kann
 - Knopf «Fortschritt teilen» ohne Server (öffnet WhatsApp oder SMS mit fertigem Text).

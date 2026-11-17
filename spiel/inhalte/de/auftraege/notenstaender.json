@@ -2715,5 +2715,22 @@
         }
       }
     }
+  },
+  "anleitungen": {
+    "konzept": "skillEcht",
+    "wege": [
+      {
+        "aufgabe": "se-a",
+        "titel": "Einen fertigen Skill hochladen"
+      },
+      {
+        "aufgabe": "se-c",
+        "titel": "Einen Skill mit Claude bauen"
+      },
+      {
+        "aufgabe": "se-f",
+        "titel": "Code-Ausführung einschalten (für Skills nötig)"
+      }
+    ]
   }
 }

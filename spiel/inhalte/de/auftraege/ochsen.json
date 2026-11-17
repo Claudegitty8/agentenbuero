@@ -2149,5 +2149,22 @@
         "eigene"
       ]
     }
+  },
+  "anleitungen": {
+    "konzept": "konnektorEcht",
+    "wege": [
+      {
+        "aufgabe": "ke-a",
+        "titel": "Einen Konnektor verbinden"
+      },
+      {
+        "aufgabe": "ke-c",
+        "titel": "Rechte pro Werkzeug einstellen"
+      },
+      {
+        "aufgabe": "ke-e",
+        "titel": "Einen Konnektor nur in einem Chat ausschalten"
+      }
+    ]
   }
 }

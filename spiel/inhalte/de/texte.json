@@ -125,7 +125,7 @@
     "ueberKontaktEtikett": "Kontakt",
     "ueberKontakt": "Fragen oder einen Fehler gefunden? Schreib an:",
     "ueberKontaktAdresse": "",
-    "fuss": "Agentenbüro, Version 0.10",
+    "fuss": "Agentenbüro, Version 0.11",
     "echoNaechster": "Der Funk knackt. Ein neuer Auftrag kommt herein!",
     "systemEtikett": "Rolle (gilt für jede Nachricht)",
     "systemLeer": "(noch leer)",
@@ -273,7 +273,11 @@
     "hilfeLoesungKlick": "So ist der ganze Weg. Echo prüft ihn gleich. Das zählt nicht für die Meisterschaft.",
     "schrankProbefahrt": "Probefahrt in echt",
     "schrankProbefahrtInfo": "Freiwillig: Mach es einmal in deiner Claude-App und hake ab, was geklappt hat.",
-    "schrankWegZeigen": "Den Weg nochmals ansehen"
+    "schrankWegZeigen": "Den Weg nochmals ansehen",
+    "anleitungenTitel": "So geht es in echt (Anleitungen)",
+    "anleitungenInfo": "Hier findest du jederzeit wieder, wie es in der echten Claude-App geht. Tippe auf eine Anleitung, um sie aufzuklappen.",
+    "anleitungZu": "Öffnet sich im Auftrag «{auftrag}».",
+    "anleitungEingestellt": "So ist es gut eingestellt:"
   },
   "kapitel": {
     "1": {
