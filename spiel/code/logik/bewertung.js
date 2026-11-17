@@ -33,9 +33,33 @@ function bewerteReihe(aufgabe, auswahl) {
   return { ok, fehlbild: ok ? null : 'daneben', pruefung: null };
 }
 
+// Übungsform «Durchklicken»: Der Spieler tippt in gezeichneten Bildschirmen nacheinander die richtigen Stellen.
+// auswahl = die getippten Stellen in Reihenfolge. Richtig ist nur der ganze Weg ohne Fehltipp.
+// Beim ersten falschen Tipp bestimmt der Schritt das Fehlbild: zuerst «falsch» für genau diese Stelle, sonst «sonst».
+function bewerteKlick(aufgabe, auswahl) {
+  const loesung = loesungVon(aufgabe);
+  const stelle = loesung.findIndex((id, index) => auswahl[index] !== id);
+  if (stelle < 0) {
+    if (auswahl.length === loesung.length) return { ok: true, fehlbild: null, pruefung: null };
+    // Mehr Tipps als Schritte: Das Spiel lässt das nicht zu. Falls doch, zählt es als Fehltipp im letzten Schritt.
+    return { ok: false, fehlbild: aufgabe.schritte.at(-1).sonst, pruefung: null, stelle: loesung.length - 1 };
+  }
+  const schritt = aufgabe.schritte[stelle];
+  // Noch nicht fertig getippt (zum Beispiel zu früh abgegeben): gilt wie ein Fehltipp in diesem Schritt.
+  const getippt = auswahl[stelle];
+  return { ok: false, fehlbild: schritt.falsch?.[getippt] ?? schritt.sonst, pruefung: null, stelle };
+}
+
+// Die richtige Auswahl einer Aufgabe. Beim Durchklicken steht sie nur einmal in den Daten: als Ziel jedes Schritts.
+export function loesungVon(aufgabe) {
+  return aufgabe.typ === 'klick' ? aufgabe.schritte.map((schritt) => schritt.ziel) : aufgabe.loesung;
+}
+
 export function bewerte(aufgabe, auswahl = []) {
   if (aufgabe.typ === 'wahl') return bewerteWahl(aufgabe, auswahl);
   if (aufgabe.typ === 'reihe') return bewerteReihe(aufgabe, auswahl);
+  if (aufgabe.typ === 'klick') return bewerteKlick(aufgabe, auswahl);
+  // «Einstellen im Bild» (typ einstellen) wird wie Zusammenstecken mit Prüfungen bewertet.
   const gewaehlt = new Set(auswahl);
   const treffer = aufgabe.pruefungen.find((pruefung) => trifftZu(pruefung.wenn, gewaehlt, aufgabe)) ?? null;
   return { ok: !treffer, fehlbild: treffer?.fehlbild ?? null, pruefung: treffer };
@@ -55,7 +79,22 @@ export function hilfeTeil(aufgabe, auswahl = []) {
     const stelle = aufgabe.loesung.findIndex((id, index) => auswahl[index] !== id);
     return stelle < 0 ? null : { id: aufgabe.loesung[stelle], grund: 'platz' };
   }
+  if (aufgabe.typ === 'klick') {
+    // Beim Durchklicken: die Stelle, die im aktuellen Bildschirm richtig wäre.
+    const loesung = loesungVon(aufgabe);
+    const stelle = loesung.findIndex((id, index) => auswahl[index] !== id);
+    return stelle < 0 ? null : { id: loesung[stelle], grund: 'tippen' };
+  }
   const gewaehlt = new Set(auswahl);
+  if (aufgabe.typ === 'einstellen') {
+    // Beim Einstellen: in der Zeile, die gerade nicht passt, die Einstellung der Lösung zeigen.
+    const pruefung = bewerte(aufgabe, auswahl).pruefung;
+    if (!pruefung) return null;
+    const betroffen = pruefung.wenn.gewaehlt?.find((id) => gewaehlt.has(id)) ?? pruefung.wenn.fehlt?.find((id) => !gewaehlt.has(id));
+    const zeile = aufgabe.zeilen.find((z) => z.optionen.some((option) => option.id === betroffen));
+    const ziel = zeile?.optionen.find((option) => aufgabe.loesung.includes(option.id));
+    return ziel ? { id: ziel.id, grund: 'einstellen' } : null;
+  }
   const schaedlich = new Set(aufgabe.pruefungen.flatMap((pruefung) => pruefung.wenn.gewaehlt ?? []));
   const zuviel = auswahl.find((id) => schaedlich.has(id));
   if (zuviel) return { id: zuviel, grund: 'zuviel' };

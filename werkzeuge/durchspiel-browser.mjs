@@ -62,6 +62,23 @@ async function loese(seite, aufgabe) {
     }
     return;
   }
+  if (aufgabe.typ === 'klick') {
+    // Durchklicken: ab dem aktuellen Bild die richtigen Stellen antippen. Der letzte Tipp prüft von selbst.
+    const text = await seite.locator('.klick-fortschritt').innerText();
+    const ab = Number(/(\d+)/.exec(text)?.[1] ?? 1) - 1;
+    for (const schritt of aufgabe.schritte.slice(ab)) {
+      await seite.locator(`.klick-buehne button.stelle[data-stelle="${schritt.ziel}"]`).click();
+      await seite.waitForTimeout(30);
+    }
+    return;
+  }
+  if (aufgabe.typ === 'einstellen') {
+    for (const id of aufgabe.loesung) {
+      const ort = seite.locator(`button.einstell-option[data-teil="${id}"]`);
+      if ((await ort.getAttribute('aria-pressed')) !== 'true') await ort.click();
+    }
+    return;
+  }
   if (aufgabe.typ === 'wahl') {
     const richtig = aufgabe.optionen.find((o) => o.richtig);
     await seite.locator('button', { hasText: richtig.text }).first().click();
@@ -76,7 +93,15 @@ async function loese(seite, aufgabe) {
   }
 }
 
-const zaehler = { hilfen: 0 };
+const zaehler = { hilfen: 0, fehltipps: 0 };
+
+// Text des Knopfs, der eine Aufgabe prüft. Beim Durchklicken gibt es ihn nur im Beispiel («Echo, los!»).
+const losText = (aufgabe) => ({ wahl: t.antworten, reihe: t.antworten, einstellen: t.einstellenPruefen }[aufgabe?.typ] ?? t.los);
+
+// Kann man im Bild gerade etwas antippen? Dann prüft beim Durchklicken jeder Tipp von selbst.
+async function klickOffen(seite) {
+  return (await seite.locator('.klick-buehne button.stelle:not([disabled])').count()) > 0;
+}
 
 async function spiele(seite, art, fotos) {
   await seite.goto(ADRESSE);
@@ -111,8 +136,9 @@ async function spiele(seite, art, fotos) {
       }
     }
     const aufgabe = await aktuelleAufgabe(seite);
-    const los = aufgabe?.typ === 'wahl' || aufgabe?.typ === 'reihe' ? t.antworten : t.los;
-    if (!aufgabe || !(await sichtbar(seite, los))) {
+    const los = losText(aufgabe);
+    const klick = aufgabe?.typ === 'klick' && !(await sichtbar(seite, los)) && (await klickOffen(seite));
+    if (!aufgabe || (!klick && !(await sichtbar(seite, los)))) {
       // Hängt das Spiel? Dann Bild und Text festhalten, statt bis zum Schrittlimit zu warten.
       leer += 1;
       if (leer > 40) {
@@ -130,7 +156,19 @@ async function spiele(seite, art, fotos) {
     if (art === 'stark') {
       await loese(seite, aufgabe);
     } else {
-      // Schwacher Spieler: nimmt alle Hilfestufen bis «Lösung zeigen». Das zählt nie für die Meisterschaft.
+      // Schwacher Spieler: tippt beim Durchklicken zuerst daneben (das prüft sofort und zeigt ein Fehlbild).
+      if (klick) {
+        const ziel = aufgabe.schritte[0].ziel;
+        const falsch = seite.locator(`.klick-buehne button.stelle:not([disabled]):not([data-stelle="${ziel}"])`).first();
+        if ((await falsch.count()) > 0 && !(await seite.locator('.klick-bisher').innerText())) {
+          await falsch.click();
+          await seite.waitForTimeout(60);
+          zaehler.fehltipps += 1;
+          if (!(await seite.locator('.schirm .getroffen').count())) melde(`schwach: Fehltipp in ${aufgabe.kennung} ist nicht markiert`);
+          if (!(await klickOffen(seite))) continue; // zum Beispiel Wiederholung: ein Versuch, dann geht es weiter
+        }
+      }
+      // Dann nimmt er alle Hilfestufen bis «Lösung zeigen». Das zählt nie für die Meisterschaft.
       let hilfen = 0;
       for (const stufe of t.hilfe) {
         if (await sichtbar(seite, stufe)) { await drueck(seite, stufe); hilfen += 1; }
@@ -138,7 +176,8 @@ async function spiele(seite, art, fotos) {
       if (hilfen === 0) await loese(seite, aufgabe);                     // Probieren und Beispiel: keine Hilfe
       else zaehler.hilfen += 1;
     }
-    await drueck(seite, los);
+    // Beim Durchklicken hat der letzte Tipp (oder «Lösung zeigen») schon geprüft.
+    if (!klick) await drueck(seite, los);
   }
   if (fertig < auftraege.length) melde(`${art}: nur ${fertig} von ${auftraege.length} Aufträgen fertig nach ${schritte} Schritten`);
   if (fotos) for (const kennung of FOTO_AUFGABEN) if (!gesehen.has(kennung)) melde(`stark: Aufgabe ${kennung} kam nie vor`);
@@ -159,6 +198,7 @@ try {
     const schritte = await spiele(seite, art, art === 'stark');
     console.log(`${art}: alle Aufträge fertig nach ${schritte} Schritten, Lösung gezeigt: ${zaehler.hilfen} Mal`);
     if (art === 'schwach' && zaehler.hilfen === 0) melde('schwach: Der schwache Spieler hat nie «Lösung zeigen» benutzt, der Test beweist nichts');
+    if (art === 'schwach' && aufgaben.some((a) => a.typ === 'klick') && zaehler.fehltipps === 0) melde('schwach: Beim Durchklicken nie danebengetippt, der Fehltipp ist ungeprüft');
     await pruefeBreite(seite, `${art} Ende`);
     if (art === 'stark') {
       await seite.screenshot({ path: path.join(BILDER, '20-auftrag-fertig.png'), fullPage: true });
@@ -170,6 +210,22 @@ try {
       if (kopiert !== auftraege[0].schrank.vorlage) melde('Einsatzschrank: kopierter Text stimmt nicht');
       if (!(await seite.locator('main').innerText()).includes(t.schrankKopiert)) melde('Einsatzschrank: keine Meldung «Kopiert»');
       await pruefeBreite(seite, 'Einsatzschrank 390');
+      // Probefahrt (E-029): Weg aufklappen, einen Punkt abhaken, neu laden, der Haken ist noch da.
+      const mitProbe = auftraege.filter((a) => a.schrank?.probefahrt);
+      if (mitProbe.length > 0) {
+        const anzahlSchrank = auftraege.filter((a) => a.schrank).length;
+        await seite.locator('summary', { hasText: t.schrankWegZeigen }).first().click();
+        if ((await seite.locator('.probefahrt-weg[open] .strecke-schritt').count()) === 0) melde('Probefahrt: Der Weg erscheint nicht');
+        await seite.screenshot({ path: path.join(BILDER, '22-probefahrt.png'), fullPage: true });
+        await pruefeBreite(seite, 'Probefahrt 390');
+        const feld = seite.locator('.probefahrt input[type=checkbox]').first();
+        const feldId = await feld.getAttribute('id');
+        await feld.check();
+        await seite.reload();
+        await seite.waitForSelector('text=' + t.titel);
+        await drueck(seite, t.schrankKnopf.replace('{anzahl}', String(anzahlSchrank)));
+        if (!(await seite.locator(`#${feldId}`).isChecked())) melde('Probefahrt: Haken ist nach dem Neuladen weg');
+      }
       // Weitere Ansichten und Breiten
       await drueck(seite, t.zurueck);
       for (const [breite, hoehe] of [[320, 640], [768, 1024], [1280, 900]]) {

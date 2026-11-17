@@ -3,11 +3,22 @@
 import { readFile, readdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
-import { bewerte } from '../spiel/code/logik/bewertung.js';
+import { bewerte, hilfeTeil, loesungVon } from '../spiel/code/logik/bewertung.js';
 import { ARTEN } from '../spiel/code/logik/prompt.js';
+import { SCHIRM_ARTEN, eintraegeVon, istAktiv, loeseSchirm, stellenVon } from '../spiel/code/logik/schirme.js';
 
 const STANDARD_ORDNER = fileURLToPath(new URL('../spiel/inhalte/', import.meta.url));
 const MAX_WOERTER = 40; // Leitlinie B7: kein Textblock über 40 Wörter
+
+// Eine Datei, die es nicht in jedem Inhaltsordner gibt (zum Beispiel die Bildschirme in der Testvorlage).
+async function liesWennDa(ordner, datei, fehler) {
+  try {
+    await readFile(path.join(ordner, datei));
+  } catch {
+    return null;
+  }
+  return lies(ordner, datei, fehler);
+}
 
 async function lies(ordner, datei, fehler) {
   try {
@@ -73,6 +84,10 @@ export async function pruefeInhalte(ordner = STANDARD_ORDNER, sprachen = ['de'])
       const texte = await lies(ordner, `${sprache}/texte.json`, fehler);
       const lexikon = await lies(ordner, `${sprache}/lexikon.json`, fehler);
       if (!texte || !lexikon) continue;
+      // Nachgezeichnete Bildschirme für «In echt».
+      const schirmDatei = await liesWennDa(ordner, `${sprache}/schirme.json`, fehler);
+      const schirme = schirmDatei?.schirme ?? {};
+      pruefeSchirme(schirme, `${sprache}/schirme.json`, fehler);
 
       for (const kapitel of lehrplan.kapitel) {
         const eintrag = texte.kapitel?.[kapitel.id];
@@ -127,7 +142,7 @@ export async function pruefeInhalte(ordner = STANDARD_ORDNER, sprachen = ['de'])
       for (const datei of dateien) {
         const name = `${sprache}/auftraege/${datei}`;
         const auftrag = await lies(ordner, name, fehler);
-        if (auftrag) pruefeAuftrag(auftrag, name, { regeln, konzepte: gesehen, texte, lexikon }, fehler);
+        if (auftrag) pruefeAuftrag(auftrag, name, { regeln, konzepte: gesehen, texte, lexikon, schirme }, fehler);
       }
     }
   }
@@ -158,7 +173,7 @@ export function pruefeUeber(app, name, fehler) {
   }
 }
 
-export function pruefeAuftrag(auftrag, name, { regeln, konzepte, texte, lexikon }, fehler) {
+export function pruefeAuftrag(auftrag, name, { regeln, konzepte, texte, lexikon, schirme = {} }, fehler) {
   for (const feld of ['id', 'kunde', 'wunsch', 'kundenstimme', 'ueberraschung']) {
     if (!istText(auftrag[feld])) fehler.push(`${name}: ${feld} fehlt`);
     if (zuLang(auftrag[feld])) fehler.push(`${name}: ${feld} hat mehr als ${MAX_WOERTER} Wörter`);
@@ -177,6 +192,18 @@ export function pruefeAuftrag(auftrag, name, { regeln, konzepte, texte, lexikon 
     for (const feld of ['schrankKnopf', 'schrankTitel', 'schrankInfo', 'schrankLeer', 'schrankVorlage', 'schrankWo',
       'schrankKopieren', 'schrankKopiert', 'schrankKopierenNicht', 'schrankNeu', 'schrankOeffnen']) {
       if (!istText(texte.app?.[feld])) fehler.push(`texte.json: ${feld} fehlt (gebraucht für den Einsatzschrank)`);
+    }
+    // Probefahrt (E-029): ein Weg zum Durchklicken aus diesem Auftrag und zwei bis sechs Punkte zum Abhaken.
+    const probe = auftrag.schrank.probefahrt;
+    if (probe) {
+      if (auftrag.aufgaben?.[probe.aufgabe]?.typ !== 'klick') fehler.push(`${name}: schrank.probefahrt.aufgabe muss eine Aufgabe zum Durchklicken sein`);
+      const punkte = probe.punkte ?? [];
+      if (punkte.length < 2 || punkte.length > 6) fehler.push(`${name}: schrank.probefahrt braucht zwei bis sechs Punkte`);
+      if (new Set(punkte.map((p) => p.id)).size !== punkte.length) fehler.push(`${name}: schrank.probefahrt hat doppelte Punkte`);
+      if (punkte.some((p) => !istText(p.id) || !istText(p.text) || zuLang(p.text))) fehler.push(`${name}: schrank.probefahrt: Punkt ohne id, ohne text oder zu lang`);
+      for (const feld of ['schrankProbefahrt', 'schrankProbefahrtInfo', 'schrankWegZeigen']) {
+        if (!istText(texte.app?.[feld])) fehler.push(`texte.json: ${feld} fehlt (gebraucht für die Probefahrt)`);
+      }
     }
   }
   // Eigene Gruppennamen einer Aufgabe (artNamen): nur bekannte Arten, kurze Texte.
@@ -215,7 +242,10 @@ export function pruefeAuftrag(auftrag, name, { regeln, konzepte, texte, lexikon 
     if (lexikon[runde.konzept]?.kern !== runde.konzept) fehler.push(`${wo}: Lexikon-Eintrag für «${runde.konzept}» fehlt`);
 
     const probieren = kennt(runde.probieren?.aufgabe, `${wo} Probieren`);
-    if (probieren) {
+    if (probieren?.typ === 'klick' || probieren?.typ === 'einstellen') {
+      // Durchklicken und Einstellen: Probieren ist frei, es gibt keine Teile zum Weglassen.
+      if (runde.probieren.nurTeile) fehler.push(`${wo}: Probieren mit Bildschirm braucht keine nurTeile`);
+    } else if (probieren) {
       // Beim Probieren muss jede mögliche Auswahl Quatsch ergeben.
       for (const menge of teilmengen(runde.probieren.nurTeile ?? [])) {
         if (bewerte(probieren, menge).ok) fehler.push(`${wo}: Probieren lässt sich lösen (${menge.join(', ')})`);
@@ -225,26 +255,44 @@ export function pruefeAuftrag(auftrag, name, { regeln, konzepte, texte, lexikon 
     const luecke = kennt(runde.luecke?.aufgabe, `${wo} Lücke`);
     if (luecke) {
       const vorgabe = runde.luecke.vorgabe ?? [];
-      if (vorgabe.some((id) => !luecke.loesung?.includes(id))) fehler.push(`${wo}: Vorgabe der Lücke gehört nicht zur Lösung`);
-      if (bewerte(luecke, vorgabe).ok) fehler.push(`${wo}: Die Lücke ist schon gelöst`);
+      const loesung = loesungVon(luecke) ?? [];
+      if (vorgabe.some((id) => !loesung.includes(id))) fehler.push(`${wo}: Vorgabe der Lücke gehört nicht zur Lösung`);
+      // Beim Durchklicken ist die Vorgabe der Anfang des Wegs: die ersten Schritte, schon getippt.
+      if (luecke.typ === 'klick' && (vorgabe.length === 0 || vorgabe.some((id, i) => loesung[i] !== id))) {
+        fehler.push(`${wo}: Vorgabe der Lücke muss der Anfang des Wegs sein`);
+      }
+      const startwahl = luecke.typ === 'einstellen' ? startVon(luecke, vorgabe) : vorgabe;
+      if (bewerte(luecke, startwahl).ok) fehler.push(`${wo}: Die Lücke ist schon gelöst`);
     }
   }
 
   for (const [id, aufgabe] of Object.entries(aufgaben)) {
     if (!benutzt.has(id)) fehler.push(`${name}: Aufgabe «${id}» wird nirgends verwendet`);
-    pruefeAufgabe(aufgabe, `${name} Aufgabe ${id}`, fehler);
+    pruefeAufgabe(aufgabe, `${name} Aufgabe ${id}`, fehler, schirme);
   }
 }
 
 // Eine Aufgabe ist in Ordnung, wenn ihre Lösung besteht, ein leerer Prompt scheitert
 // und jedes Fehlbild mehrere Varianten und einen erklärenden Hinweis hat.
-export function pruefeAufgabe(aufgabe, name, fehler) {
+export function pruefeAufgabe(aufgabe, name, fehler, schirme = {}) {
   if (aufgabe.typ === 'wahl') {
     pruefeWahl(aufgabe, name, fehler);
     return;
   }
   if (aufgabe.typ === 'reihe') {
-    pruefeReihe(aufgabe, name, fehler);
+    pruefeReihe(aufgabe, name, fehler, schirme);
+    return;
+  }
+  if (aufgabe.typ === 'klick') {
+    pruefeKlick(aufgabe, name, fehler, schirme);
+    return;
+  }
+  if (aufgabe.typ === 'einstellen') {
+    pruefeEinstellen(aufgabe, name, fehler, schirme);
+    return;
+  }
+  if (aufgabe.typ) {
+    fehler.push(`${name}: unbekannte Übungsform «${aufgabe.typ}»`);
     return;
   }
   if (!istText(aufgabe.wunsch)) fehler.push(`${name}: wunsch fehlt`);
@@ -312,7 +360,7 @@ export function pruefeAufgabe(aufgabe, name, fehler) {
 
 // Übungsform «Sortieren»: mindestens drei Schritte, die Lösung nennt jeden genau einmal,
 // und die gezeigte Anfangsreihenfolge ist noch nicht die Lösung.
-function pruefeReihe(aufgabe, name, fehler) {
+function pruefeReihe(aufgabe, name, fehler, schirme) {
   for (const feld of ['wunsch', 'frage', 'echo']) {
     if (!istText(aufgabe[feld])) fehler.push(`${name}: ${feld} fehlt`);
   }
@@ -327,6 +375,12 @@ function pruefeReihe(aufgabe, name, fehler) {
   if (bewerte(aufgabe, ids).ok) fehler.push(`${name}: Die Schritte stehen schon in der richtigen Reihenfolge`);
   if (!bewerte(aufgabe, loesung).ok) fehler.push(`${name}: Die Lösung besteht nicht`);
   if ((aufgabe.daneben?.texte ?? []).length < 2 || !istText(aufgabe.daneben?.hinweis)) fehler.push(`${name}: daneben braucht zwei Varianten und einen Hinweis`);
+  // Ein Schritt kann ein kleines Bild zeigen. Dann muss es den Bildschirm und die gezeigte Stelle geben.
+  for (const schritt of schritte.filter((s) => s.schirm)) {
+    const schirm = loeseSchirm(schirme, schritt.schirm);
+    if (!schirm) fehler.push(`${name}: Schritt «${schritt.id}» zeigt unbekannten Bildschirm «${schritt.schirm}»`);
+    else if (schritt.ziel && !stellenVon(schirm).includes(schritt.ziel)) fehler.push(`${name}: Schritt «${schritt.id}»: Stelle «${schritt.ziel}» gibt es im Bild nicht`);
+  }
   const texte = [aufgabe.wunsch, aufgabe.frage, aufgabe.echo, ...schritte.map((s) => s.text), ...(aufgabe.daneben?.texte ?? []), aufgabe.daneben?.hinweis];
   if (texte.some(zuLang)) fehler.push(`${name}: Ein Text hat mehr als ${MAX_WOERTER} Wörter`);
 }
@@ -350,6 +404,159 @@ function pruefeWahl(aufgabe, name, fehler) {
   }
   const texte = [aufgabe.wunsch, aufgabe.frage, aufgabe.echo, ...optionen.flatMap((option) => [option.text, option.hinweis])];
   if (texte.some(zuLang)) fehler.push(`${name}: Ein Text hat mehr als ${MAX_WOERTER} Wörter`);
+}
+
+// Fehlbilder der Bildschirm-Übungen: jedes wird benutzt, hat zwei Varianten und einen Hinweis.
+function pruefeFehlbilder(fehlbilder, benutzt, name, fehler) {
+  for (const id of benutzt) {
+    if (!fehlbilder[id]) fehler.push(`${name}: Fehlbild «${id}» fehlt`);
+  }
+  for (const [id, fehlbild] of Object.entries(fehlbilder)) {
+    if (!benutzt.has(id)) fehler.push(`${name}: Fehlbild «${id}» wird nirgends benutzt`);
+    if ((fehlbild.texte ?? []).length < 2) fehler.push(`${name}: Fehlbild «${id}» braucht mindestens zwei Varianten`);
+    if (!istText(fehlbild.hinweis)) fehler.push(`${name}: Fehlbild «${id}» braucht einen Hinweis`);
+    if ((fehlbild.texte ?? []).some((text) => text.includes('{teil}'))) fehler.push(`${name}: Fehlbild «${id}»: {teil} gibt es hier nicht`);
+  }
+}
+
+// Übungsform «Durchklicken»: Jeder Schritt zeigt einen bekannten Bildschirm, die richtige Stelle gibt es darin,
+// und es gibt dort mindestens eine falsche Stelle zum Antippen. Jeder Fehltipp führt zu einem Fehlbild.
+function pruefeKlick(aufgabe, name, fehler, schirme) {
+  for (const feld of ['wunsch', 'frage']) {
+    if (!istText(aufgabe[feld])) fehler.push(`${name}: ${feld} fehlt`);
+  }
+  if (!Array.isArray(aufgabe.erfolg) || aufgabe.erfolg.length < 1) fehler.push(`${name}: mindestens ein Erfolgstext nötig`);
+  // Die Lösung steht nur einmal in den Daten: als Ziel jedes Schritts (Regel 11).
+  if ('loesung' in aufgabe) fehler.push(`${name}: Durchklicken braucht keine loesung, sie steht in den Schritten (ziel)`);
+  const schritte = aufgabe.schritte ?? [];
+  if (schritte.length < 2) fehler.push(`${name}: mindestens zwei Schritte nötig`);
+  const benutzt = new Set();
+  for (const [nr, schritt] of schritte.entries()) {
+    const wo = `${name} Schritt ${nr + 1}`;
+    if (!istText(schritt.text)) fehler.push(`${wo}: text fehlt`);
+    const schirm = loeseSchirm(schirme, schritt.schirm);
+    if (!schirm) {
+      fehler.push(`${wo}: unbekannter Bildschirm «${schritt.schirm}»`);
+      continue;
+    }
+    const stellen = stellenVon(schirm);
+    if (!stellen.includes(schritt.ziel)) fehler.push(`${wo}: Stelle «${schritt.ziel}» gibt es im Bild «${schritt.schirm}» nicht`);
+    if (stellen.length < 2) fehler.push(`${wo}: Im Bild braucht es mindestens eine falsche Stelle zum Antippen`);
+    for (const [stelle, fehlbild] of Object.entries(schritt.falsch ?? {})) {
+      if (!stellen.includes(stelle)) fehler.push(`${wo}: falsch nennt Stelle «${stelle}», die es im Bild nicht gibt`);
+      if (stelle === schritt.ziel) fehler.push(`${wo}: Die richtige Stelle steht auch unter falsch`);
+      benutzt.add(fehlbild);
+    }
+    if (!istText(schritt.sonst)) fehler.push(`${wo}: sonst fehlt (Fehlbild für alle übrigen Stellen)`);
+    else benutzt.add(schritt.sonst);
+  }
+  if (aufgabe.nachher && !loeseSchirm(schirme, aufgabe.nachher)) fehler.push(`${name}: unbekannter Bildschirm nachher «${aufgabe.nachher}»`);
+  pruefeFehlbilder(aufgabe.fehlbilder ?? {}, benutzt, name, fehler);
+  if (schritte.length > 0 && !bewerte(aufgabe, loesungVon(aufgabe)).ok) fehler.push(`${name}: Der richtige Weg besteht nicht`);
+  const texte = [aufgabe.wunsch, aufgabe.frage, ...(aufgabe.erfolg ?? []), ...schritte.map((s) => s.text),
+    ...Object.values(aufgabe.fehlbilder ?? {}).flatMap((f) => [...(f.texte ?? []), f.hinweis])];
+  if (texte.some(zuLang)) fehler.push(`${name}: Ein Text hat mehr als ${MAX_WOERTER} Wörter`);
+}
+
+// Startzustand einer Übung «Einstellen»: wie in der echten App, dann die Vorgabe darüber.
+function startVon(aufgabe, vorgabe = []) {
+  const wahl = new Map((aufgabe.zeilen ?? []).map((zeile) => [zeile.id, zeile.start]));
+  for (const id of vorgabe) {
+    const zeile = (aufgabe.zeilen ?? []).find((z) => z.optionen.some((o) => o.id === id));
+    if (zeile) wahl.set(zeile.id, id);
+  }
+  return [...wahl.values()];
+}
+
+// Übungsform «Einstellen im Bild»: jede Zeile mit Startwert und mindestens zwei Optionen,
+// die Lösung stellt jede Zeile genau einmal ein und besteht, der Startzustand besteht nicht.
+// Von jedem möglichen Zustand aus führt die Hilfe «Zeig mir, wo» zur Lösung.
+function pruefeEinstellen(aufgabe, name, fehler, schirme) {
+  const vorher = fehler.length;
+  for (const feld of ['wunsch', 'frage']) {
+    if (!istText(aufgabe[feld])) fehler.push(`${name}: ${feld} fehlt`);
+  }
+  if (!Array.isArray(aufgabe.erfolg) || aufgabe.erfolg.length < 1) fehler.push(`${name}: mindestens ein Erfolgstext nötig`);
+  if (!loeseSchirm(schirme, aufgabe.schirm)) fehler.push(`${name}: unbekannter Bildschirm «${aufgabe.schirm}»`);
+  const zeilen = aufgabe.zeilen ?? [];
+  if (zeilen.length < 1) fehler.push(`${name}: mindestens eine Zeile nötig`);
+  const optionIds = new Set();
+  for (const zeile of zeilen) {
+    if (!istText(zeile.text)) fehler.push(`${name}: Zeile «${zeile.id}» braucht einen text`);
+    if ((zeile.optionen ?? []).length < 2) fehler.push(`${name}: Zeile «${zeile.id}» braucht mindestens zwei Optionen`);
+    for (const option of zeile.optionen ?? []) {
+      if (optionIds.has(option.id)) fehler.push(`${name}: Option «${option.id}» ist doppelt`);
+      optionIds.add(option.id);
+      if (!istText(option.text)) fehler.push(`${name}: Option «${option.id}» braucht einen text`);
+    }
+    if (!(zeile.optionen ?? []).some((o) => o.id === zeile.start)) fehler.push(`${name}: Zeile «${zeile.id}» braucht einen gültigen start`);
+    const inLoesung = (zeile.optionen ?? []).filter((o) => (aufgabe.loesung ?? []).includes(o.id));
+    if (inLoesung.length !== 1) fehler.push(`${name}: Die Lösung muss Zeile «${zeile.id}» genau einmal einstellen`);
+  }
+  if ((aufgabe.loesung ?? []).some((id) => !optionIds.has(id))) fehler.push(`${name}: Lösung nennt eine unbekannte Option`);
+  const benutzt = new Set();
+  for (const pruefung of aufgabe.pruefungen ?? []) {
+    benutzt.add(pruefung.fehlbild);
+    for (const id of [...(pruefung.wenn.gewaehlt ?? []), ...(pruefung.wenn.fehlt ?? []), ...(pruefung.wenn.aus ?? [])]) {
+      if (!optionIds.has(id)) fehler.push(`${name}: Prüfung nennt unbekannte Option «${id}»`);
+    }
+    if ('tokensUeber' in pruefung.wenn) fehler.push(`${name}: tokensUeber passt nicht zum Einstellen`);
+  }
+  pruefeFehlbilder(aufgabe.fehlbilder ?? {}, benutzt, name, fehler);
+  if (!aufgabe.pruefungen) {
+    fehler.push(`${name}: pruefungen fehlen`);
+  } else if (fehler.length === vorher) {
+    // Nur wenn der Aufbau stimmt: sonst gäbe es Folgefehler.
+    if (!bewerte(aufgabe, aufgabe.loesung).ok) fehler.push(`${name}: Die Lösung besteht die eigenen Prüfungen nicht`);
+    if (bewerte(aufgabe, startVon(aufgabe)).ok) fehler.push(`${name}: Schon der Startzustand gilt als richtig`);
+    // Alle Zustände durchgehen (wenige Zeilen, wenige Optionen): Die Hilfe muss jedes Mal weiterführen.
+    const zustaende = zeilen.reduce((liste, zeile) => liste.flatMap((wahl) => zeile.optionen.map((o) => [...wahl, o.id])), [[]]);
+    for (const zustand of zustaende.slice(0, 500)) {
+      let wahl = zustand;
+      for (let schritt = 0; schritt <= zeilen.length && !bewerte(aufgabe, wahl).ok; schritt += 1) {
+        const hilfe = hilfeTeil(aufgabe, wahl);
+        if (!hilfe) break;
+        const zeile = zeilen.find((z) => z.optionen.some((o) => o.id === hilfe.id));
+        wahl = wahl.map((id) => (zeile.optionen.some((o) => o.id === id) ? hilfe.id : id));
+      }
+      if (!bewerte(aufgabe, wahl).ok) {
+        fehler.push(`${name}: Hilfe führt von [${zustand}] nicht zur Lösung`);
+        break;
+      }
+    }
+  }
+  const texte = [aufgabe.wunsch, aufgabe.frage, ...(aufgabe.erfolg ?? []),
+    ...zeilen.flatMap((z) => [z.text, z.unter, ...(z.optionen ?? []).map((o) => o.text)]),
+    ...Object.values(aufgabe.fehlbilder ?? {}).flatMap((f) => [...(f.texte ?? []), f.hinweis])];
+  if (texte.some(zuLang)) fehler.push(`${name}: Ein Text hat mehr als ${MAX_WOERTER} Wörter`);
+}
+
+// Die nachgezeichneten Bildschirme: Jeder lässt sich auflösen, kennt nur bekannte Bausteine,
+// hat jede antippbare Stelle nur einmal, ein Datum (Stand) und kurze Texte.
+export function pruefeSchirme(schirme, name, fehler) {
+  if (JSON.stringify(schirme).includes('ß')) fehler.push(`${name}: enthält ein scharfes S, bitte «ss» schreiben`);
+  for (const id of Object.keys(schirme)) {
+    const wo = `${name} «${id}»`;
+    const schirm = loeseSchirm(schirme, id);
+    if (!schirm) {
+      fehler.push(`${wo}: Basis fehlt oder verweist im Kreis`);
+      continue;
+    }
+    if (!/^\d{1,2}\.\d{1,2}\.\d{4}$/.test(schirm.stand ?? '')) fehler.push(`${wo}: braucht ein Datum «stand» (TT.MM.JJJJ)`);
+    if (!istText(schirm.fenster)) fehler.push(`${wo}: braucht einen Fensternamen`);
+    for (const baustein of schirm.inhalt ?? []) {
+      if (!SCHIRM_ARTEN.includes(baustein.art)) fehler.push(`${wo}: unbekannter Baustein «${baustein.art}»`);
+    }
+    const stellen = stellenVon(schirm);
+    const doppelt = stellen.filter((stelle, i) => stellen.indexOf(stelle) !== i);
+    if (doppelt.length > 0) fehler.push(`${wo}: Stelle doppelt: ${[...new Set(doppelt)].join(', ')}`);
+    const eintraege = [...(schirm.kopfleiste ?? []), ...(schirm.seitenleiste ?? []), ...(schirm.inhalt ?? []).flatMap((b) => b.eintraege ?? [])];
+    for (const aktiv of schirm.aktiv ?? []) {
+      if (!eintraege.some((e) => istAktiv(schirm, e) && (e.id ?? e.text) === aktiv)) fehler.push(`${wo}: aktiv nennt «${aktiv}», das es nicht gibt`);
+    }
+    const texte = eintraegeVon(schirm).map((e) => e.text).concat((schirm.inhalt ?? []).map((b) => b.text));
+    if (texte.some(zuLang)) fehler.push(`${wo}: Ein Text hat mehr als ${MAX_WOERTER} Wörter`);
+  }
 }
 
 // Direkter Aufruf von der Kommandozeile

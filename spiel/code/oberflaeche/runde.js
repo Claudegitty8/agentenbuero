@@ -6,7 +6,7 @@ import { baueUebung, istFrage } from './werkbank.js';
 import {
   ansicht, weiter, verbucheFrei, verbucheWiederholungsErgebnis, verbraucheTokens, SCHRITTE, auswegOffen, ueberspringeRunde,
 } from '../logik/ablauf.js';
-import { hilfeTeil } from '../logik/bewertung.js';
+import { hilfeTeil, loesungVon } from '../logik/bewertung.js';
 import { erfolge, neuerFortschritt } from '../logik/meisterschaft.js';
 import { daumenKarte } from './extras.js';
 
@@ -76,11 +76,14 @@ function zeigeAufgabe(wurzel, app, nav, a, auftrag) {
   const werkbank = baueUebung({
     aufgabe,
     t,
+    schirme: app.inhalte.schirme,
     sichtbar: a.nurTeile ?? null,
     zeigeTokens: app.stand.lauf?.tokens != null,
     vorgabe: a.vorgabe ?? [],
-    auswahl: art === 'beispiel' ? aufgabe.loesung : [],
+    auswahl: art === 'beispiel' ? loesungVon(aufgabe) : [],
     gesperrt: art === 'beispiel',
+    // Beim Durchklicken prüft ein Tipp selbst: falsch getippt oder am Ziel angekommen.
+    beiAbgabe: () => pruefe(),
   });
 
   // --- Kopf: Wo bin ich? ---
@@ -99,7 +102,8 @@ function zeigeAufgabe(wurzel, app, nav, a, auftrag) {
   } else {
     kopf.push(schrittReihe(t, art));
   }
-  kopf.push(el('p', { klasse: 'klein', text: fuelle((istWahl && t.schrittHilfeWahl[art]) || t.schrittHilfe[art], { anzahl: noetig }) }));
+  const schrittTexte = { klick: t.schrittHilfeKlick, einstellen: t.schrittHilfeEinstellen }[aufgabe.typ] ?? (istWahl ? t.schrittHilfeWahl : {});
+  kopf.push(el('p', { klasse: 'klein', text: fuelle(schrittTexte[art] || t.schrittHilfe[art], { anzahl: noetig }) }));
 
   // Hinweis und Ausweg, wenn freie Situationen immer wieder nicht zählen (E-047).
   if (art === 'frei' && a.schonGesehen) kopf.push(el('p', { klasse: 'hinweis schon-gesehen', text: t.schonGesehen }));
@@ -144,7 +148,8 @@ function zeigeAufgabe(wurzel, app, nav, a, auftrag) {
     aktionen.replaceChildren(...knoepfe);
   }
 
-  const los = knopf(istWahl ? t.antworten : t.los, async () => {
+  async function pruefe() {
+    if (los.disabled) return;
     if (istWahl && werkbank.auswahl().length === 0) {
       status.textContent = t.waehleZuerst;
       return;
@@ -187,7 +192,8 @@ function zeigeAufgabe(wurzel, app, nav, a, auftrag) {
         status.textContent = zaehlt ? t.gezaehlt : t.nichtGezaehlt;
         fertig(knopf(t.naechste, () => schliesseAb({ ok: true, zaehlt }), 'los'));
       } else {
-        status.textContent = aufgabe.typ === 'reihe' ? t.nochmalReihe : istWahl ? t.nochmalWahl : t.nochmal;
+        const nochmal = { reihe: t.nochmalReihe, klick: t.nochmalKlick, einstellen: t.nochmalEinstellen, wahl: t.nochmalWahl };
+        status.textContent = nochmal[aufgabe.typ] ?? t.nochmal;
         aktionen.replaceChildren(knopf(t.andere, () => schliesseAb({ ok: false, zaehlt: false }), 'knopf-zweit'));
       }
     } else if (art === 'misch') {
@@ -207,8 +213,13 @@ function zeigeAufgabe(wurzel, app, nav, a, auftrag) {
     if (mitHilfeKnopf && !antwort.ok && fehlschlaege >= 2 && hilfeStufe === 0) {
       hilfeText.textContent = t.hilfeAngebot;
     }
-    ergebnis.scrollIntoView({ block: 'nearest', behavior: 'auto' });
-  }, 'los');
+    // Beim Durchklicken bleibt das Bild im Blick. Echos Antwort steht darunter.
+    if (!werkbank.selbstAbgabe) ergebnis.scrollIntoView({ block: 'nearest', behavior: 'auto' });
+  }
+
+  const los = knopf(werkbank.losText ?? (istWahl ? t.antworten : t.los), pruefe, 'los');
+  // Beim Durchklicken braucht es keinen Knopf: Jeder Tipp prüft selbst. Nur das Beispiel wird per Knopf abgeschlossen.
+  los.hidden = Boolean(werkbank.selbstAbgabe) && art !== 'beispiel';
 
   // --- Drei Hilfestufen: Tipp, Teil zeigen, Lösung zeigen ---
   const hilfeKnopf = knopf(t.hilfe[0], () => {
@@ -218,13 +229,15 @@ function zeigeAufgabe(wurzel, app, nav, a, auftrag) {
     } else if (hilfeStufe === 2) {
       const teil = hilfeTeil(aufgabe, werkbank.auswahl());
       hilfeText.textContent = '';
-      const text = { zuviel: t.hilfeZuviel, fehlt: t.hilfeFehlt, falsch: t.hilfeFalscheWahl, platz: t.hilfePlatz };
+      const text = { zuviel: t.hilfeZuviel, fehlt: t.hilfeFehlt, falsch: t.hilfeFalscheWahl, platz: t.hilfePlatz, tippen: t.hilfeTippen, einstellen: t.hilfeEinstellen };
       // Gibt es nichts zu zeigen, ist der Aufbau schon richtig. Das sagt die Hilfe dann auch.
       if (teil) werkbank.markiere(teil.id, text[teil.grund]);
       else hilfeText.textContent = t.hilfeAllesDa;
     } else {
-      werkbank.setze(aufgabe.loesung);
-      hilfeText.textContent = t.hilfeLoesung;
+      werkbank.setze(loesungVon(aufgabe));
+      hilfeText.textContent = werkbank.selbstAbgabe ? t.hilfeLoesungKlick : t.hilfeLoesung;
+      // Beim Durchklicken gibt es keinen Knopf zum Prüfen: Die gezeigte Lösung wird gleich geprüft.
+      if (werkbank.selbstAbgabe) pruefe();
     }
     if (hilfeStufe >= t.hilfe.length) hilfeKnopf.hidden = true;
     else hilfeKnopf.textContent = t.hilfe[hilfeStufe];

@@ -393,3 +393,122 @@ summary:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid
   border-radius: var(--radius);
   resize: vertical;
 }
+
+/* «In echt»: nachgezeichnete Bildschirme der Claude-App. Schlicht, damit man die Stelle sucht und nicht das Design.
+   Jede antippbare Stelle ist mindestens 44 Pixel hoch. In der Bilderstrecke (klein) ist nichts antippbar. */
+.nur-vorlesen { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.schirm {
+  margin: 0;
+  border: 2px solid var(--text);
+  border-radius: 12px;
+  background: var(--flaeche);
+  overflow: hidden;
+  font-size: 0.9rem;
+  hyphens: auto;
+}
+.schirm:focus { outline: 3px solid var(--akzent); outline-offset: 2px; }
+.schirm:focus:not(:focus-visible) { outline: none; }
+.schirm-fenster {
+  display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;
+  padding: 0.25rem 0.5rem; background: var(--grund); border-bottom: 1px solid var(--linie);
+}
+.schirm-punkte { width: 2.2rem; height: 0.6rem; background: radial-gradient(circle, var(--linie) 0.28rem, transparent 0.3rem) 0 0 / 0.75rem 0.6rem repeat-x; }
+.schirm-name { flex: 1; font-size: 0.8rem; color: var(--leise); }
+.schirm-koerper { display: flex; min-height: 9rem; }
+.schirm-seite {
+  flex: 0 0 auto; width: 8.2rem; padding: 0.35rem; display: grid; align-content: start; gap: 0.1rem;
+  background: var(--grund); border-right: 1px solid var(--linie);
+}
+.schirm-inhalt { flex: 1; min-width: 0; overflow-wrap: anywhere; padding: 0.6rem; display: grid; align-content: start; gap: 0.55rem; }
+.schirm button.stelle, .schirm .still {
+  min-height: 44px; padding: 0.3rem 0.55rem; border-radius: 8px;
+  display: inline-flex; align-items: center; gap: 0.4rem; text-align: left;
+  background: transparent; border: 1px solid transparent; color: var(--text);
+}
+.schirm .still { cursor: default; }
+.schirm button.stelle:hover { background: var(--grund); border-color: var(--linie); }
+.schirm-seite-eintrag { width: 100%; }
+.schirm-seite .stelle, .schirm-seite .still { padding-inline: 0.4rem; }
+.schirm-seite .still:not(.markiert):last-child { color: var(--leise); font-style: italic; }
+.schirm .stelle.aktiv, .schirm .still.aktiv { background: var(--linie); font-weight: 600; }
+.schirm-kopf-eintrag { font-size: 0.85rem; }
+.schirm-titel { font-size: 1.15rem; font-weight: 600; font-family: Georgia, "Times New Roman", serif; }
+.schirm-text { font-weight: 600; }
+.schirm-klein { font-size: 0.8rem; color: var(--leise); }
+.schirm-reiter, .schirm-knoepfe { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.schirm-reiter-eintrag.aktiv { border-color: var(--linie); }
+.schirm-knopf { border-color: var(--linie) !important; }
+.schirm-knopf.haupt { border-color: var(--text) !important; font-weight: 600; }
+.schirm-knopf.klein { min-height: 44px; }
+.schirm-menue { display: grid; gap: 0.1rem; padding: 0.3rem; border: 1px solid var(--linie); border-radius: 10px; box-shadow: 0 4px 14px rgb(0 0 0 / 0.12); background: var(--flaeche); }
+.schirm-menue-eintrag, .schirm-zeile-text { flex-direction: column; align-items: flex-start !important; gap: 0 !important; }
+.schirm-menue-eintrag small, .schirm-zeile-text small, .schirm-karte small { color: var(--leise); font-size: 0.8rem; }
+.schirm-liste { display: grid; gap: 0.2rem; }
+.schirm-zeile { display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; border-bottom: 1px solid var(--linie); padding-bottom: 0.2rem; }
+.schirm-karten { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(10rem, 100%), 1fr)); gap: 0.4rem; }
+.schirm-karte { display: grid; gap: 0.2rem; padding: 0.45rem; border: 1px solid var(--linie); border-radius: 10px; }
+.schirm-schalter { width: 100%; justify-content: space-between; }
+.schalter { flex: none; width: 2.4rem; height: 1.3rem; border-radius: 999px; background: var(--linie); position: relative; }
+.schalter::after { content: ""; position: absolute; top: 0.15rem; left: 0.15rem; width: 1rem; height: 1rem; border-radius: 50%; background: var(--flaeche); }
+.schalter.an { background: var(--echo-dunkel); }
+.schalter.an::after { left: 1.25rem; }
+.schirm-feld { width: 100%; flex-direction: column; align-items: stretch !important; border-color: var(--linie) !important; }
+.feld-wert { min-height: 1.2rem; }
+.schirm-chat { display: grid; gap: 0.35rem; }
+.blase { padding: 0.4rem 0.6rem; border-radius: 10px; max-width: 92%; }
+.blase.von-ich { justify-self: end; background: var(--grund); border: 1px solid var(--linie); }
+.blase.von-claude { justify-self: start; }
+.schirm-eingabe-zeile { display: flex; gap: 0.3rem; align-items: stretch; border: 1px solid var(--linie); border-radius: 12px; padding: 0.25rem; }
+.schirm-eingabe { flex: 1; color: var(--leise) !important; }
+.schirm-knopf.rund { border-radius: 999px; min-width: 44px; justify-content: center; }
+.schirm-code { margin: 0; padding: 0.5rem; border-radius: 8px; background: var(--grund); border: 1px solid var(--linie); font-size: 0.8rem; white-space: pre-wrap; overflow-wrap: anywhere; }
+.schirm-dateien { display: grid; gap: 0.1rem; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.85rem; }
+.schirm-datei.ebene-1 { margin-left: 1rem; } .schirm-datei.ebene-2 { margin-left: 2rem; }
+.schirm-frage { display: grid; gap: 0.4rem; padding: 0.5rem; border: 2px solid var(--linie); border-radius: 10px; }
+.schirm-stand { padding: 0.25rem 0.6rem; font-size: 0.75rem; color: var(--leise); border-top: 1px solid var(--linie); }
+
+/* Hervorhebungen: Hilfe und Bilderstrecke zeigen die richtige Stelle, ein Fehltipp bleibt rot umrandet sichtbar. */
+.schirm .markiert { outline: 3px dashed var(--akzent); outline-offset: 1px; background: var(--gut-flaeche) !important; }
+.schirm .getroffen { outline: 3px solid var(--warn); outline-offset: 1px; background: var(--warn-flaeche) !important; }
+@media (prefers-reduced-motion: no-preference) {
+  .schirm:not(.klein) .markiert { animation: zeig-hin 1.2s ease-in-out 2; }
+  @keyframes zeig-hin { 50% { outline-offset: 4px; } }
+}
+
+/* Bilderstrecke: kleine Bilder untereinander, je mit dem Schritt in Worten */
+.schirm.klein { font-size: 0.72rem; border-width: 1px; }
+.schirm.klein .still { min-height: 0; padding: 0.15rem 0.35rem; }
+.schirm.klein .schirm-seite { width: 6rem; }
+.schirm.klein .schirm-koerper { min-height: 0; }
+.strecke { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.9rem; }
+.strecke-schritt { display: grid; gap: 0.35rem; }
+.reihe-text { display: grid; gap: 0.35rem; min-width: 0; }
+.klick-buehne { display: grid; gap: 0.5rem; }
+.klick-bisher:empty, .klick-fortschritt:empty { display: none; }
+
+/* Einstellen im Bild: Optionen wie Knöpfe in einer Zeile, die gewählte ist gefüllt */
+.schirm-einstellungen { display: grid; gap: 0.5rem; }
+.einstell-zeile { display: grid; gap: 0.3rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--linie); }
+.einstell-name { display: grid; }
+.einstell-name small { color: var(--leise); font-size: 0.8rem; }
+.einstell-optionen { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.einstell-option { min-height: 44px; padding: 0.3rem 0.7rem; border: 2px solid var(--linie); background: transparent; border-radius: 999px; }
+.einstell-option[aria-pressed="true"] { background: var(--echo-dunkel); border-color: var(--echo-dunkel); color: var(--flaeche); font-weight: 600; }
+.einstell-option.markiert { outline: 3px dashed var(--akzent); outline-offset: 2px; }
+.einstell-option:disabled { opacity: 0.75; cursor: default; }
+
+/* Schmale Bildschirme: Die Seitenleiste wird schmaler, Texte dürfen umbrechen. */
+@media (max-width: 420px) {
+  .schirm-seite { width: 6.4rem; }
+  .schirm { font-size: 0.82rem; }
+  .schirm-inhalt { padding: 0.4rem; }
+}
+
+/* Probefahrt im Einsatzschrank: Weg zum Nachlesen und Punkte zum Abhaken */
+.probefahrt { display: grid; gap: 0.5rem; padding-top: 0.6rem; border-top: 1px solid var(--linie); }
+.probefahrt h3 { margin: 0; font-size: 1.05rem; }
+.probefahrt-weg > summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font-weight: 600; }
+.probefahrt-weg[open] > summary { margin-bottom: 0.5rem; }
+.probefahrt-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.2rem; }
+.probefahrt-liste li { display: flex; align-items: center; gap: 0.6rem; min-height: 44px; }
+.probefahrt-liste input { width: 1.4rem; height: 1.4rem; flex: none; accent-color: var(--echo-dunkel); }

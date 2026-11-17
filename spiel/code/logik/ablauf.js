@@ -20,6 +20,7 @@ export function neuerStand() {
     umfrage: {},           // freiwillige Fragen: vorher und nachher, je Anzahl richtige
     daumen: {},            // pro Auftrag: hoch oder runter
     schnelltest: {},       // pro Auftrag: wie oft gestartet und welche Aufgaben zuletzt (E-048)
+    probefahrt: {},        // pro Auftrag: abgehakte Punkte der Probefahrt im Einsatzschrank (E-029)
     einstellungen: { schrift: 'normal' },
   };
 }

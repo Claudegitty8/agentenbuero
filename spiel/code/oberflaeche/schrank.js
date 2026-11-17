@@ -1,7 +1,31 @@
 // Einsatzschrank: gebaute Bauteile ansehen und für echtes Claude kopieren («In Claude ausprobieren»).
 // Das Spiel schickt dabei nichts weg. Der Spieler fügt den Text selbst bei Claude ein.
 import { el, fuelle, knopf, leiste } from './bausteine.js';
-import { schrankInhalt } from '../logik/schrank.js';
+import { hakeAb, schrankInhalt } from '../logik/schrank.js';
+import { baueStrecke } from './klick.js';
+
+// Probefahrt (E-029): den Weg in der echten App nachlesen und abhaken, was man selbst gemacht hat.
+// Freiwillig. Die Haken stehen im Spielstand, damit sie nach dem Neuladen noch da sind.
+function probefahrt(app, eintrag, t) {
+  const { aufgabe, punkte } = eintrag.probefahrt;
+  const liste = el('ul', { klasse: 'probefahrt-liste' }, punkte.map((punkt) => {
+    const feldId = `probe-${eintrag.auftrag}-${punkt.id}`;
+    const feld = el('input', {
+      type: 'checkbox',
+      id: feldId,
+      checked: punkt.erledigt,
+      onchange: () => app.setze(hakeAb(app.stand, eintrag.auftrag, punkt.id, feld.checked)),
+    });
+    return el('li', {}, feld, el('label', { for: feldId, text: punkt.text }));
+  }));
+  return el('div', { klasse: 'probefahrt' },
+    el('h3', { text: t.schrankProbefahrt }),
+    el('p', { klasse: 'klein', text: t.schrankProbefahrtInfo }),
+    aufgabe ? el('details', { klasse: 'probefahrt-weg' },
+      el('summary', { text: t.schrankWegZeigen }),
+      baueStrecke(aufgabe, app.inhalte.schirme, t)) : null,
+    liste);
+}
 
 export function zeigeSchrank(wurzel, app, nav) {
   const t = app.inhalte.texte.app;
@@ -43,6 +67,7 @@ export function zeigeSchrank(wurzel, app, nav) {
       el('p', {}, el('strong', { text: `${t.schrankWo} ` }), el('span', { text: eintrag.wo })),
       kopieren,
       status,
+      eintrag.probefahrt ? probefahrt(app, eintrag, t) : null,
     ));
   }
 }

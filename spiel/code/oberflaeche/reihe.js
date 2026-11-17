@@ -1,12 +1,20 @@
 // Die Übungsform «Sortieren»: Der Spieler bringt Schritte in die richtige Reihenfolge.
 // Bietet dieselben Funktionen wie die Werkbank, damit der Rundenablauf alle Formen gleich behandelt.
 import { el, fuelle } from './bausteine.js';
+import { baueSchirm } from './schirm.js';
+import { loeseSchirm } from '../logik/schirme.js';
 
-export function baueReihe({ aufgabe, t, gesperrt = false }) {
+export function baueReihe({ aufgabe, t, schirme = {}, gesperrt = false }) {
   let ordnung = aufgabe.schritte.map((schritt) => schritt.id);
   let zu = gesperrt;
   let markiert = null;
   const texte = new Map(aufgabe.schritte.map((schritt) => [schritt.id, schritt.text]));
+  // Ein Schritt kann ein kleines Bild haben: so sieht der Bildschirm in diesem Schritt aus.
+  const bilder = new Map(aufgabe.schritte.filter((schritt) => schritt.schirm).map((schritt) => [schritt.id, schritt]));
+  const bildVon = (id) => {
+    const schritt = bilder.get(id);
+    return schritt ? baueSchirm(loeseSchirm(schirme, schritt.schirm), t, { klein: true, markiert: schritt.ziel, markiertText: t.schirmHier }) : null;
+  };
   const liste = el('ol', { klasse: 'reihe' });
   const hinweisZumTeil = el('p', { klasse: 'teil-hinweis', role: 'status' });
 
@@ -33,7 +41,7 @@ export function baueReihe({ aufgabe, t, gesperrt = false }) {
         'aria-label': fuelle(t.reiheRunter, { text }), text: '▼', onclick: () => schiebe(id, 1),
       });
       const zeile = el('li', { klasse: id === markiert ? 'reihe-zeile markiert' : 'reihe-zeile' },
-        el('span', { klasse: 'reihe-text', text }), el('span', { klasse: 'reihe-knoepfe' }, hoch, runter));
+        el('div', { klasse: 'reihe-text' }, el('span', { text }), bildVon(id)), el('span', { klasse: 'reihe-knoepfe' }, hoch, runter));
       if (id === fokusId) queueMicrotask(() => [richtung < 0 ? hoch : runter, hoch, runter].find((k) => !k.disabled)?.focus());
       return zeile;
     }));

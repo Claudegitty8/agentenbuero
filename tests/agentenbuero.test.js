@@ -13,6 +13,7 @@ import { schnelltestAufgaben, verbucheSchnelltest, wandleUm } from '../spiel/cod
 import { schrankInhalt } from '../spiel/code/logik/schrank.js';
 import { erstelleKi } from '../spiel/code/ki/schnittstelle.js';
 import { pruefeAuftrag } from '../werkzeuge/pruefe-inhalte.mjs';
+import { loesungVon } from '../spiel/code/logik/bewertung.js';
 
 const lies = async (pfad) => JSON.parse(await readFile(new URL(`../spiel/inhalte/${pfad}`, import.meta.url), 'utf8'));
 const regeln = await lies('regeln.json');
@@ -92,7 +93,7 @@ test('Agentenbüro: Jeder Wunsch kommt nur einmal vor, jede Lösung besteht', as
   const ki = erstelleKi('simuliert');
   for (const auftrag of alle) {
     for (const [id, aufgabe] of Object.entries(auftrag.aufgaben)) {
-      const antwort = await ki.antworte({ aufgabe, auswahl: aufgabe.loesung, versuch: 0 });
+      const antwort = await ki.antworte({ aufgabe, auswahl: loesungVon(aufgabe), versuch: 0 });
       assert.equal(antwort.ok, true, `${auftrag.id} ${id}`);
     }
   }

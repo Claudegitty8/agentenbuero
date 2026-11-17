@@ -234,7 +234,46 @@
     "schrankKopiert": "Kopiert. Öffne jetzt Claude und füge den Text ein.",
     "schrankKopierenNicht": "Kopieren ging nicht. Der Text ist markiert: Halte ihn gedrückt und wähle «Kopieren».",
     "schrankNeu": "Neu im Einsatzschrank: {titel}",
-    "schrankOeffnen": "Zum Einsatzschrank"
+    "schrankOeffnen": "Zum Einsatzschrank",
+    "schirmLabel": "Nachgezeichneter Bildschirm: {name}",
+    "schirmStand": "Vereinfacht nachgezeichnet, Stand {datum}. Die echte App kann etwas anders aussehen.",
+    "schirmHier": "hier tippen",
+    "schirmAn": "eingeschaltet",
+    "schirmAus": "ausgeschaltet",
+    "streckeSchritt": "Schritt {nr}:",
+    "streckeEnde": "Danach sieht es so aus:",
+    "streckeHilfe": "So geht es Schritt für Schritt. Die hervorgehobene Stelle ist die richtige.",
+    "klickEtikett": "In echt: Tippe die richtige Stelle",
+    "klickFortschritt": "Bild {nr} von {anzahl}",
+    "klickRichtig": "Richtig. Weiter mit Bild {nr} von {anzahl}.",
+    "klickDaneben": "Das war nicht die richtige Stelle. Echos Antwort steht unten.",
+    "klickGeschafft": "Geschafft. Alle Schritte stimmen.",
+    "klickBisher": "Bisher getippt: {weg}",
+    "einstellenEtikett": "In echt: Stell es richtig ein",
+    "einstellenHilfe": "Tippe in jeder Zeile die passende Einstellung an.",
+    "einstellenPruefen": "Einstellung prüfen",
+    "schrittHilfeKlick": {
+      "probieren": "Tippe im Bild dort, wo du es versuchen würdest. Hier kann nichts schiefgehen.",
+      "beispiel": "So kommst du hin. Schau die Bilder durch und drück dann auf «Echo, los!».",
+      "luecke": "Die ersten Schritte sind schon getippt. Tippe den Rest.",
+      "frei": "Jetzt allein. {anzahl} Wege ohne Fehltipp, dann geht es weiter.",
+      "wiederholung": "Eine Frage zu früher. Du hast einen Versuch."
+    },
+    "schrittHilfeEinstellen": {
+      "probieren": "Stell ein, wie du es machen würdest. Hier kann nichts schiefgehen.",
+      "beispiel": "So ist es gut eingestellt. Drück auf «Einstellung prüfen».",
+      "luecke": "Eine Zeile ist schon eingestellt. Stell den Rest ein.",
+      "frei": "Jetzt allein. {anzahl} Situationen beim ersten Versuch richtig, dann geht es weiter.",
+      "wiederholung": "Eine Frage zu früher. Du hast einen Versuch."
+    },
+    "nochmalKlick": "Tippe im selben Bild nochmals. Oder nimm eine andere Situation.",
+    "nochmalEinstellen": "Stell neu ein und prüf nochmals. Oder nimm eine andere Situation.",
+    "hilfeTippen": "Hier geht es weiter.",
+    "hilfeEinstellen": "Diese Einstellung passt hier besser.",
+    "hilfeLoesungKlick": "So ist der ganze Weg. Echo prüft ihn gleich. Das zählt nicht für die Meisterschaft.",
+    "schrankProbefahrt": "Probefahrt in echt",
+    "schrankProbefahrtInfo": "Freiwillig: Mach es einmal in deiner Claude-App und hake ab, was geklappt hat.",
+    "schrankWegZeigen": "Den Weg nochmals ansehen"
   },
   "kapitel": {
     "1": {

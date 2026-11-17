@@ -1,0 +1,58 @@
+{
+  "hinweis": "Vereinfachte Nachzeichnungen der Claude-Desktop-App (Deutsch). Vorlage: Bildschirmfoto des Besitzers vom 17.11.2026 und die Hilfeseiten in docs/RECHERCHE.md. Keine privaten Chattitel, keine fremden Marken.",
+  "schirme": {
+    "app": {
+      "stand": "17.11.2026",
+      "fenster": "Claude",
+      "kopfleiste": [
+        { "id": "modusChat", "text": "Chat" },
+        { "id": "modusCode", "text": "</> Code" }
+      ],
+      "seitenleiste": [
+        { "id": "neu", "text": "+ Neu" },
+        { "id": "suchen", "text": "Suchen" },
+        { "id": "projekte", "text": "Projekte" },
+        { "id": "artefakte", "text": "Artefakte" },
+        { "id": "geplant", "text": "Geplant" },
+        { "id": "design", "text": "Design" },
+        { "id": "anpassungen", "text": "Anpassungen" },
+        { "text": "Deine Chats …" }
+      ],
+      "aktiv": ["modusChat"],
+      "inhalt": [
+        { "art": "titel", "text": "Wie kann ich helfen?" },
+        { "art": "eingabe", "id": "eingabe", "text": "Schreib Claude eine Nachricht …", "knoepfe": [{ "id": "plus", "text": "+" }] }
+      ]
+    },
+    "anpassungen-skills": {
+      "basis": "app",
+      "aktiv": ["modusChat", "anpassungen", "reiterSkills", "entdecken"],
+      "inhalt": [
+        { "art": "titel", "text": "Anpassungen" },
+        { "art": "reiter", "eintraege": [
+          { "id": "reiterSkills", "text": "Skills" },
+          { "id": "reiterKonnektoren", "text": "Konnektoren" },
+          { "id": "reiterPlugins", "text": "Plugins" }
+        ] },
+        { "art": "reiter", "eintraege": [
+          { "id": "meine", "text": "Meine" },
+          { "id": "entdecken", "text": "Entdecken" }
+        ] },
+        { "art": "knoepfe", "eintraege": [
+          { "id": "hinzufuegen", "text": "+ Hinzufügen ▾", "haupt": true }
+        ] },
+        { "art": "text", "text": "Neue Skills" },
+        { "art": "karten", "eintraege": [
+          { "titel": "protokoll-helfer", "text": "Schreibt Sitzungsprotokolle nach Vorlage.", "knoepfe": [
+            { "id": "ausprobieren1", "text": "Ausprobieren" },
+            { "id": "plusKarte1", "text": "+" }
+          ] },
+          { "titel": "vereinskasse", "text": "Prüft Belege und macht die Jahresrechnung.", "knoepfe": [
+            { "id": "ausprobieren2", "text": "Ausprobieren" },
+            { "id": "plusKarte2", "text": "+" }
+          ] }
+        ] }
+      ]
+    }
+  }
+}

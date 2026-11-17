@@ -52,17 +52,21 @@ export function zeigeSchnelltest(wurzel, app, nav, daten = {}) {
   const { konzept, aufgabe: aufgabeId } = reihe[ergebnisse.length];
   const aufgabe = auftrag.aufgaben[aufgabeId];
   const istWahl = istFrage(aufgabe);
-  const werkbank = baueUebung({ aufgabe, t });
+  // Beim Durchklicken prüft ein Tipp selbst (falsch getippt oder am Ziel). Im Schnelltest zählt nur der erste Versuch.
+  const werkbank = baueUebung({ aufgabe, t, schirme: app.inhalte.schirme, beiAbgabe: () => pruefe() });
   const echo = echoFigur(t.echoName);
   const sprechblase = el('p', { klasse: 'sprechblase', text: t.echoBereit });
   const status = el('p', { klasse: 'status' });
   const aktionen = el('div', { klasse: 'aktionen' });
 
-  const pruefen = knopf(istWahl ? t.antworten : t.los, async () => {
+  let geprueft = false;
+  async function pruefe() {
+    if (geprueft) return;
     if (istWahl && werkbank.auswahl().length === 0) {
       status.textContent = t.waehleZuerst;
       return;
     }
+    geprueft = true;
     const antwort = await app.ki.antworte({ aufgabe, auswahl: werkbank.auswahl(), versuch: 0 });
     werkbank.sperre();
     pruefen.hidden = true;
@@ -71,7 +75,9 @@ export function zeigeSchnelltest(wurzel, app, nav, daten = {}) {
     status.textContent = antwort.ok ? t.schnelltestRichtig : t.schnelltestFalsch;
     const neu = [...ergebnisse, { konzept, aufgabe: aufgabeId, richtig: antwort.ok }];
     aktionen.replaceChildren(knopf(t.weiter, () => nav.zu('schnelltest', { laeuft: true, ergebnisse: neu }), 'los'));
-  }, 'los');
+  }
+  const pruefen = knopf(werkbank.losText ?? (istWahl ? t.antworten : t.los), pruefe, 'los');
+  pruefen.hidden = Boolean(werkbank.selbstAbgabe);
 
   wurzel.append(
     el('p', { klasse: 'etikett', text: `${fuelle(t.schnelltestZaehler, { nr: ergebnisse.length + 1, anzahl: reihe.length })} · ${texte.konzepte[konzept].name}` }),

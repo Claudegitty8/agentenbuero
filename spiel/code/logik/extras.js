@@ -156,6 +156,17 @@ function pruefeSchnelltest(wert) {
   return sauber;
 }
 
+// Behält nur Probefahrt-Einträge, die wie einer aussehen: pro Auftrag eine Liste abgehakter Punkte (E-029).
+function pruefeProbefahrt(wert) {
+  if (!istObjekt(wert)) return {};
+  const sauber = {};
+  for (const [auftrag, punkte] of Object.entries(wert)) {
+    const liste = nurTexte(punkte);
+    if (liste?.length) sauber[auftrag] = [...new Set(liste)];
+  }
+  return sauber;
+}
+
 // Macht aus einem gespeicherten oder geladenen Wert einen gültigen Spielstand der aktuellen Version.
 // Gibt null zurück, wenn der Wert gar nicht wie ein Spielstand aussieht.
 export function wandleUm(wert) {
@@ -172,6 +183,7 @@ export function wandleUm(wert) {
     umfrage: istObjekt(wert.umfrage) ? wert.umfrage : {},
     daumen: istObjekt(wert.daumen) ? wert.daumen : {},
     schnelltest: pruefeSchnelltest(wert.schnelltest),
+    probefahrt: pruefeProbefahrt(wert.probefahrt),
     einstellungen: { ...leer.einstellungen, ...(istObjekt(wert.einstellungen) ? wert.einstellungen : {}) },
     // Ein laufender Auftrag aus einer anderen Version passt vielleicht nicht mehr. Dann beginnt er neu.
     lauf: wert.version === STAND_VERSION && istObjekt(wert.lauf) ? wert.lauf : null,

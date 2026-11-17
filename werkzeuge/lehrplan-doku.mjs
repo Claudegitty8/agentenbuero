@@ -16,7 +16,7 @@ const lexikon = await lies('de/lexikon.json');
 const auftraege = await Promise.all(AUFTRAEGE.map((id) => lies(`de/auftraege/${id}.json`)));
 const version = paket.version.replace(/\.0$/, '');
 
-const FORM = { wahl: 'Vorhersagen', reihe: 'Sortieren' };
+const FORM = { wahl: 'Vorhersagen', reihe: 'Sortieren', klick: 'Durchklicken', einstellen: 'Einstellen im Bild' };
 const form = (aufgabe) => FORM[aufgabe.typ] ?? 'Zusammenstecken';
 const name = (id) => texte.konzepte[id].name;
 const kapitelName = (nr) => `${nr} ${texte.kapitel[nr].name}`;

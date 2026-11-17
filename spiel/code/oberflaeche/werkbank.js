@@ -3,19 +3,23 @@
 import { el, fuelle } from './bausteine.js';
 import { baueWahl } from './wahl.js';
 import { baueReihe } from './reihe.js';
+import { baueKlick } from './klick.js';
+import { baueEinstellen } from './einstellen.js';
 import { ARTEN, bauePrompt, baueSystemPrompt, hatSystemPrompt, hatZettel, zaehleTokens } from '../logik/prompt.js';
 
-// Wählt zur Aufgabe die passende Übungsform: Zusammenstecken, Vorhersagen oder Sortieren.
+// Wählt zur Aufgabe die passende Übungsform: Zusammenstecken, Vorhersagen, Sortieren, Durchklicken oder Einstellen.
 export function baueUebung(optionen) {
   const { typ } = optionen.aufgabe;
   if (typ === 'wahl') return baueWahl(optionen);
   if (typ === 'reihe') return baueReihe(optionen);
+  if (typ === 'klick') return baueKlick(optionen);
+  if (typ === 'einstellen') return baueEinstellen(optionen);
   return baueWerkbank(optionen);
 }
 
-// Vorhersagen und Sortieren sind Fragen, kein Prompt.
+// Nur beim Zusammenstecken entsteht ein Prompt. Alle anderen Formen sind Fragen.
 export function istFrage(aufgabe) {
-  return aufgabe.typ === 'wahl' || aufgabe.typ === 'reihe';
+  return Boolean(aufgabe.typ);
 }
 
 export function baueWerkbank({ aufgabe, t, sichtbar = null, vorgabe = [], auswahl = [], gesperrt = false, zeigeTokens = false }) {
