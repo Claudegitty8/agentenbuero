@@ -2,7 +2,7 @@
 
 Stand: 16. November 2026. Übernommen aus dem KI-Studio, angepasst.
 
-**Stand 17.11.2026:** Das Repository ist öffentlich (Entscheid E-028), alle Stände sind hochgeladen. GitHub Pages ist noch nicht eingeschaltet. Die Adresse wird `https://claudegitty8.github.io/agentenbuero/` sein.
+**Stand 17.11.2026:** Veröffentlicht unter https://claudegitty8.github.io/agentenbuero/ (Version 0.9, Repository öffentlich, Entscheid E-028). Die erste Veröffentlichung lief mit allen Prüfungen durch.
 
 Diese Anleitung ist für den Besitzer. Claude veröffentlicht nichts ohne ausdrückliches Ja.
 

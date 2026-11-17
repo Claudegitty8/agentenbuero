@@ -4,6 +4,8 @@
 
 Alle 21 Konzepte sind spielbar. Version 1.0 folgt nach der Testrunde mit Erwachsenen.
 
+Veröffentlicht am 17.11.2026 auf https://claudegitty8.github.io/agentenbuero/.
+
 ### Neu
 - Auftrag 2 «Operation Notenständer» (Musikverein, Kapitel 2 «Das Archiv»): Wohin gehört es, Deckblatt, Schlankes Dossier, Probefälle.
 - Auftrag 3 «Operation Stammtisch» (Gasthof Ochsen, Kapitel 3 «Die Funkleitungen»): Freigaben mit Ampel, abgefangene Nachrichten (E-022).
