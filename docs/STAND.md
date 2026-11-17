@@ -1,6 +1,6 @@
 # Stand
 
-Stand: 16.11.2026 · Version 0.9 · Veröffentlicht: nein (nur private Vorschau)
+Stand: 17.11.2026 · Version 0.9 · Code öffentlich auf GitHub (`Claudegitty8/agentenbuero`), Spiel noch nicht online (GitHub Pages wird eingeschaltet)
 
 ## Fertig (Version 0.9)
 
@@ -14,7 +14,7 @@ Stand: 16.11.2026 · Version 0.9 · Veröffentlicht: nein (nur private Vorschau)
 
 ## Offen
 
-- **Repository `agentenbuero` anlegen** (Besitzer). Bis dahin liegt der Code nur in der Arbeitsumgebung und in der privaten Vorschau.
+- **GitHub Pages einschalten** (Besitzer): Settings, Pages, Quelle «GitHub Actions». Danach Veröffentlichung starten und am Handy testen.
 - Entscheide bestätigen: E-010, E-014 bis E-020 und neu E-022 bis E-027.
 - Nicht geprüft: echte Geräte (iPhone, Android), Vorlesehilfe am Gerät, Offline-Betrieb (geht erst auf GitHub Pages).
 - Testrunde mit 3 Erwachsenen (Claude-Nutzer ohne Informatik), danach Version 1.0.
@@ -22,6 +22,6 @@ Stand: 16.11.2026 · Version 0.9 · Veröffentlicht: nein (nur private Vorschau)
 
 ## Nächste Etappe (Vorschlag)
 
-1. Repository anlegen, hochladen, GitHub Pages einschalten, auf dem Handy testen (Checkliste in `VEROEFFENTLICHEN.md`).
+1. GitHub Pages einschalten, veröffentlichen, auf dem Handy testen (Checkliste in `VEROEFFENTLICHEN.md`).
 2. Testrunde mit 3 Erwachsenen, Rückmeldungen einbauen.
 3. Danach Backlog «Soll»: Leiste unten (E-019), eigene Bauteile im Einsatzschrank (E-020).
