@@ -125,7 +125,7 @@
     "ueberKontaktEtikett": "Kontakt",
     "ueberKontakt": "Fragen oder einen Fehler gefunden? Schreib an:",
     "ueberKontaktAdresse": "",
-    "fuss": "Agentenbüro, Version 0.11",
+    "fuss": "Agentenbüro, Version 0.12",
     "echoNaechster": "Der Funk knackt. Ein neuer Auftrag kommt herein!",
     "systemEtikett": "Rolle (gilt für jede Nachricht)",
     "systemLeer": "(noch leer)",
@@ -277,7 +277,13 @@
     "anleitungenTitel": "So geht es in echt (Anleitungen)",
     "anleitungenInfo": "Hier findest du jederzeit wieder, wie es in der echten Claude-App geht. Tippe auf eine Anleitung, um sie aufzuklappen.",
     "anleitungZu": "Öffnet sich im Auftrag «{auftrag}».",
-    "anleitungEingestellt": "So ist es gut eingestellt:"
+    "anleitungEingestellt": "So ist es gut eingestellt:",
+    "wahlhilfeTitel": "Was nehme ich wann? (Wahlhilfe)",
+    "wahlhilfeInfo": "Für jedes Bauteil kurz: wann es passt, warum, und Beispiele.",
+    "wahlhilfeWann": "Wann",
+    "wahlhilfeWarum": "Warum",
+    "wahlhilfeBeispiele": "Beispiele",
+    "wahlhilfeMehr": "{anzahl} weitere Bauteile lernst du in den nächsten Aufträgen kennen."
   },
   "kapitel": {
     "1": {
@@ -567,6 +573,16 @@
         "Lies vor dem Ja genau, wann der Hook läuft und was er tut."
       ],
       "tipp": "Plugins unter Anpassungen holen. Hooks von Claude im Code-Bereich schreiben lassen und vor dem Ja lesen."
+    },
+    "anbieterEcht": {
+      "name": "In echt: Anbieter prüfen",
+      "analogie": "Den Handwerker erst ausweisen lassen, bevor er den Hausschlüssel bekommt.",
+      "aha": [
+        "Ein eigener Konnektor, ein fremder Skill oder ein Plugin kommt nicht von selbst von Anthropic. Prüf zuerst, wer es herausgibt.",
+        "Ein Plugin kann Programme mit deinen Rechten ausführen, ein Skill kann Code enthalten. Schau hinein, bevor du es einschaltest.",
+        "Gib nur die nötigen Rechte. Verhält es sich seltsam: stoppen und sofort trennen."
+      ],
+      "tipp": "Wer gibt es heraus? Was will es dürfen? Was steckt drin? Wie werde ich es wieder los?"
     }
   }
 }

@@ -1473,6 +1473,182 @@
           "art": "einstellungen"
         }
       ]
+    },
+    "konnektoren-meine-drei": {
+      "basis": "anpassungen",
+      "aktiv": [
+        "modusChat",
+        "anpassungen",
+        "reiterKonnektoren",
+        "meine"
+      ],
+      "einschub": {
+        "nach": "hinzufuegen",
+        "inhalt": [
+          {
+            "art": "text",
+            "text": "Konnektor · Typ · Status"
+          },
+          {
+            "art": "liste",
+            "eintraege": [
+              {
+                "id": "konnKalender",
+                "text": "Zwirbel-Kalender",
+                "unter": "Web · verbunden"
+              },
+              {
+                "id": "konnMail",
+                "text": "Zwirbel-Mail",
+                "unter": "Web · verbunden"
+              },
+              {
+                "id": "konnAblage",
+                "text": "Dorf-Ablage",
+                "unter": "Web · verbunden"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "konnektoren-meine-ohne-ablage": {
+      "basis": "anpassungen",
+      "aktiv": [
+        "modusChat",
+        "anpassungen",
+        "reiterKonnektoren",
+        "meine"
+      ],
+      "einschub": {
+        "nach": "hinzufuegen",
+        "inhalt": [
+          {
+            "art": "text",
+            "text": "Konnektor · Typ · Status"
+          },
+          {
+            "art": "liste",
+            "eintraege": [
+              {
+                "text": "Zwirbel-Kalender",
+                "unter": "Web · verbunden"
+              },
+              {
+                "text": "Zwirbel-Mail",
+                "unter": "Web · verbunden"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "konnektoren-meine-ohne-mail": {
+      "basis": "anpassungen",
+      "aktiv": [
+        "modusChat",
+        "anpassungen",
+        "reiterKonnektoren",
+        "meine"
+      ],
+      "einschub": {
+        "nach": "hinzufuegen",
+        "inhalt": [
+          {
+            "art": "text",
+            "text": "Konnektor · Typ · Status"
+          },
+          {
+            "art": "liste",
+            "eintraege": [
+              {
+                "text": "Zwirbel-Kalender",
+                "unter": "Web · verbunden"
+              },
+              {
+                "text": "Dorf-Ablage",
+                "unter": "Web · verbunden"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "konnektor-ablage-verbunden": {
+      "basis": "anpassungen",
+      "aktiv": [
+        "modusChat",
+        "anpassungen"
+      ],
+      "inhalt": [
+        {
+          "art": "knoepfe",
+          "eintraege": [
+            {
+              "id": "zurueckKonn",
+              "text": "← Deine Konnektoren"
+            }
+          ]
+        },
+        {
+          "art": "titel",
+          "text": "Dorf-Ablage"
+        },
+        {
+          "art": "text",
+          "text": "Dateien suchen und lesen."
+        },
+        {
+          "art": "liste",
+          "eintraege": [
+            {
+              "text": "Konto verbunden",
+              "knopf": {
+                "id": "trennen",
+                "text": "Trennen"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "konnektor-mail-verbunden": {
+      "basis": "anpassungen",
+      "aktiv": [
+        "modusChat",
+        "anpassungen"
+      ],
+      "inhalt": [
+        {
+          "art": "knoepfe",
+          "eintraege": [
+            {
+              "id": "zurueckKonn",
+              "text": "← Deine Konnektoren"
+            }
+          ]
+        },
+        {
+          "art": "titel",
+          "text": "Zwirbel-Mail"
+        },
+        {
+          "art": "text",
+          "text": "Mails suchen, entwerfen und senden."
+        },
+        {
+          "art": "liste",
+          "eintraege": [
+            {
+              "text": "Konto verbunden",
+              "knopf": {
+                "id": "trennen",
+                "text": "Trennen"
+              }
+            }
+          ]
+        }
+      ]
     }
   }
 }

@@ -1,6 +1,6 @@
 # Was das Agentenbüro kann
 
-Stand: Version 0.11, 17.11.2026. In den Worten der Spieler.
+Stand: Version 0.12, 18.11.2026. In den Worten der Spieler.
 
 - Ich übernehme die Zentrale und spiele Aufträge, je 5 bis 10 Minuten pro Runde, jederzeit unterbrechbar.
 - Ich stelle Funksprüche (Prompts) aus Textteilen zusammen, nur durch Antippen, und sehe sofort, was Echo daraus macht.
@@ -20,6 +20,8 @@ Stand: Version 0.11, 17.11.2026. In den Worten der Spieler.
 - Im Einsatzkoffer sehe ich, wie viel Echo gerade dabeihat (Kontext).
 - Im Einsatzschrank liegt, was ich gebaut habe. Mit «In Claude ausprobieren» kopiere ich es und füge es in echt bei Claude ein.
 - Im Lexikon finde ich jeden Begriff mit Spielwort, echtem Wort und Erklärung.
+- Oben im Lexikon steht die Wahlhilfe «Was nehme ich wann?»: für jedes Bauteil, wann es passt, warum, und Beispiele.
+- Ich lerne, einen Anbieter zu prüfen, bevor ich einen Konnektor, Skill oder ein Plugin anbinde, und eine verdächtige Leitung sofort zu trennen.
 - Oben im Lexikon stehen die Anleitungen «So geht es in echt». Dort sehe ich jederzeit wieder, wie ich einen Skill hochlade, einen Konnektor verbinde, einen Subagenten anlege oder ein Plugin und einen Hook einrichte.
 - Ich kann vorher und nachher freiwillig ein paar Fragen beantworten und sehe, was ich dazugelernt habe.
 - Mein Spielstand bleibt auf meinem Gerät. Ich kann ihn als Datei sichern und wieder laden.

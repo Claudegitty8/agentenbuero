@@ -85,6 +85,9 @@ export async function pruefeInhalte(ordner = STANDARD_ORDNER, sprachen = ['de'])
       const lexikon = await lies(ordner, `${sprache}/lexikon.json`, fehler);
       if (!texte || !lexikon) continue;
       // Nachgezeichnete Bildschirme für «In echt».
+      // Wahlhilfe «Was nehme ich wann?» (E-034).
+      const wahlhilfe = await liesWennDa(ordner, `${sprache}/wahlhilfe.json`, fehler);
+      if (wahlhilfe) pruefeWahlhilfe(wahlhilfe, `${sprache}/wahlhilfe.json`, { konzepte: gesehen, texte }, fehler);
       const schirmDatei = await liesWennDa(ordner, `${sprache}/schirme.json`, fehler);
       const schirme = schirmDatei?.schirme ?? {};
       pruefeSchirme(schirme, `${sprache}/schirme.json`, fehler);
@@ -546,6 +549,29 @@ function pruefeEinstellen(aufgabe, name, fehler, schirme) {
     ...zeilen.flatMap((z) => [z.text, z.unter, ...(z.optionen ?? []).map((o) => o.text)]),
     ...Object.values(aufgabe.fehlbilder ?? {}).flatMap((f) => [...(f.texte ?? []), f.hinweis])];
   if (texte.some(zuLang)) fehler.push(`${name}: Ein Text hat mehr als ${MAX_WOERTER} Wörter`);
+}
+
+// Wahlhilfe: jedes Bauteil einmal, mit bekanntem Konzept, kurzen Texten und zwei bis drei Beispielen.
+export function pruefeWahlhilfe(daten, name, { konzepte, texte }, fehler) {
+  if (JSON.stringify(daten).includes('ß')) fehler.push(`${name}: enthält ein scharfes S, bitte «ss» schreiben`);
+  const ids = new Set();
+  for (const eintrag of daten.eintraege ?? []) {
+    const wo = `${name} «${eintrag.id}»`;
+    if (ids.has(eintrag.id)) fehler.push(`${wo}: doppelt`);
+    ids.add(eintrag.id);
+    if (!konzepte.has(eintrag.konzept)) fehler.push(`${wo}: unbekanntes Konzept «${eintrag.konzept}»`);
+    for (const feld of ['bauteil', 'wann', 'warum']) {
+      if (!istText(eintrag[feld]) || zuLang(eintrag[feld])) fehler.push(`${wo}: ${feld} fehlt oder ist zu lang`);
+    }
+    // Spielwort und echtes Wort zusammen (E-013): «Dossier (Skill)».
+    if (!/\(.+\)/.test(eintrag.bauteil ?? '')) fehler.push(`${wo}: bauteil braucht das echte Wort in Klammern`);
+    const beispiele = eintrag.beispiele ?? [];
+    if (beispiele.length < 2 || beispiele.length > 3 || beispiele.some((b) => !istText(b) || zuLang(b))) fehler.push(`${wo}: zwei bis drei kurze Beispiele nötig`);
+  }
+  if (ids.size === 0) fehler.push(`${name}: keine Einträge`);
+  for (const feld of ['wahlhilfeTitel', 'wahlhilfeInfo', 'wahlhilfeWann', 'wahlhilfeWarum', 'wahlhilfeBeispiele', 'wahlhilfeMehr']) {
+    if (!istText(texte.app?.[feld])) fehler.push(`texte.json: ${feld} fehlt (gebraucht für die Wahlhilfe)`);
+  }
 }
 
 // Die nachgezeichneten Bildschirme: Jeder lässt sich auflösen, kennt nur bekannte Bausteine,

@@ -128,6 +128,17 @@ Quellen: https://code.claude.com/docs/en/hooks-guide · https://claude.com/docs/
 
 **Unklar:** Die Hilfeseite https://support.claude.com/en/articles/17740565 kündigt an, dass «Customize» künftig «Plugins» heisst (Einführung ab 29.10.2026). Die App des Besitzers zeigt am 17.11.2026 noch «Anpassungen». Vor Version 1.0 neu prüfen (Backlog).
 
+### Anbieter prüfen (Version 0.12)
+
+Quellen, abgerufen 18.11.2026:
+- Plugins: Ein Plugin in Claude Code kann beliebigen Code mit den Rechten des Benutzers ausführen (Hooks, MCP-Server, Programme im Ordner `bin/`). Der Name eines Marktplatzes sagt, wer den Katalog herausgibt, nicht was jedes Plugin tut. Prüfschritte und Entfernen: https://code.claude.com/docs/en/plugins/security
+- Eigene Konnektoren führen zu Diensten, die Anthropic nicht geprüft hat. Rechte genau ansehen, nur Server vertrauenswürdiger Organisationen verbinden, auf unerwartetes Verhalten achten: https://claude.com/docs/connectors/policies und https://support.claude.com/en/articles/11175166
+- Wer verbindet, gibt Claude Zugriff und möglicherweise das Recht, Daten zu ändern. Nur Dienste verbinden, denen man vertraut und die man braucht: https://support.claude.com/en/articles/11176164
+- Skills können ausführbare Code-Dateien enthalten: https://support.claude.com/de/articles/12512198-benutzerdefinierte-skills-erstellen
+- Skills und Plugins nur aus vertrauenswürdigen Quellen. Automatische Prüfung auf Schadcode nur für Organisationen, keine Garantie: https://support.claude.com/de/articles/15927065-erste-schritte-mit-skill-und-plugin-scanning
+- **Annahme:** Die Reihenfolge «stoppen, trennen, nachsehen, informieren» ist eine eigene Ableitung aus «Auftrag sofort stoppen» (Faktendatei, prompt-injection) und «trennen» (Hilfeseite Konnektoren), keine offizielle Liste.
+- **Nicht geprüft:** «Trennen» auf der Detailseite eines gewöhnlichen Konnektors. Gesehen nur bei «GitHub-Integration» (Foto des Besitzers).
+
 ## Fehlerprüfung des Konzepts
 
 **Wie geprüft:** In jeder Runde zuerst ein Prüfskript (`werkzeuge/pruefe_vorschlag.py`): kein scharfes S, 21 Konzepte fortlaufend und richtig auf die Kapitel verteilt, jede Tabellenzeile vollständig, Verweise «Konzept N» passen zum Namen, gleiche Konzeptzahl überall, keine Namen aus Entwurf 1 ausserhalb von der Änderungsliste des Vorschlags, Entscheide fortlaufend, nur https-Links, keine Doppelnamen bei Kapiteln und Bereichen, jedes Spielwort wird auch benutzt. Danach das Dokument von Hand gelesen und jede Fachaussage mit der Quelle aus dieser Sitzung verglichen. Ein neu gefundener Fehlertyp wurde ins Skript aufgenommen und mit einer Gegenprobe getestet (der alte Fehler wird erkannt).

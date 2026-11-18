@@ -39,7 +39,7 @@ Bewusst übernommen aus dem KI-Studio: fünf Schritte pro Konzept (Probieren, Ah
 
 ## Kernkonzepte und «Mechanik ist das Konzept»
 
-21 Kernkonzepte in 6 Kapiteln, dazu die Schlussmission. Seit Version 0.10 kommen 4 Runden «In echt» dazu (Tabelle am Schluss dieses Abschnitts).
+21 Kernkonzepte in 6 Kapiteln, dazu die Schlussmission. Seit Version 0.10 kommen Runden «In echt» dazu, seit 0.12 fünf (Tabelle am Schluss dieses Abschnitts). Seit 0.12 steht im Lexikon auch die Wahlhilfe «Was nehme ich wann?» (E-034).
 
 Übungsformen wie beim KI-Studio: **Zusammenstecken** (Teile antippen), **Vorhersagen** (eine Antwort ist richtig, jede hat eine Erklärung), **Sortieren** (Schritte in die richtige Reihenfolge). Seit Version 0.10 dazu (E-030): **Durchklicken** (in nachgezeichneten Bildschirmen der Claude-App die richtige Stelle antippen, jeder Fehltipp wird sofort erklärt), **Einstellen im Bild** (Schalter und Rechte so einstellen, wie es die Aufgabe verlangt) und **Bilderstrecke** (der ganze Weg zum Nachlesen, als Beispiel, als gezeigte Lösung und als Probefahrt im Einsatzschrank).
 
@@ -96,7 +96,7 @@ Bewusst übernommen aus dem KI-Studio: fünf Schritte pro Konzept (Probieren, Ah
 
 ### In echt (Version 0.10, E-031)
 
-Je eine Runde am Ende eines Kapitels, vor der Mischrunde. Die Nummern hier hängen an den bisherigen 21 an. In LEHRPLAN.md laufen alle 25 durch, dort sind es 8, 11, 22 und 25. Die Bildschirme sind nach Bildschirmfotos der deutschen Desktop-App des Besitzers nachgezeichnet (17.11.2026). Was dort nicht zu sehen war, stammt aus den deutschen Hilfeseiten und steht in RECHERCHE.md als «nicht geprüft».
+Je eine Runde am Ende eines Kapitels, vor der Mischrunde. Die Nummern hier hängen an den bisherigen 21 an. In LEHRPLAN.md laufen alle 26 durch, dort sind es 8, 11, 12 (Anbieter prüfen), 23 und 26. Die Bildschirme sind nach Bildschirmfotos der deutschen Desktop-App des Besitzers nachgezeichnet (17.11.2026). Was dort nicht zu sehen war, stammt aus den deutschen Hilfeseiten und steht in RECHERCHE.md als «nicht geprüft».
 
 | Nr | Konzept | Auftrag | Was man in echt tut | Fehltipp: was passiert | Merkbild | Übungsform |
 |---|---|---|---|---|---|---|
@@ -104,6 +104,7 @@ Je eine Runde am Ende eines Kapitels, vor der Mischrunde. Die Nummern hier häng
 | 9a | In echt: Konnektor verbinden | Stammtisch | Anpassungen, Konnektoren, Karte «+», «Verbinden», beim Dienst anmelden. Rechte pro Werkzeug: Lesen erlauben, Senden und Löschen mit Genehmigung oder blockiert. Im Chat unter «+», «Konnektoren» nur einschalten, was der Chat braucht. | Falsche Karte: Echo liest Mails, die es nichts angehen. «Mail senden» auf «Immer zulassen»: die Antwort geht an alle Gäste. | Schlüssel nur für die richtigen Türen | Durchklicken, Einstellen im Bild, Vorhersagen |
 | 19a | In echt: Subagent anlegen | Ferienplan | Im Bereich «</> Code» den Ordner wählen und Claude den Subagenten beschreiben: was, wann, welche Werkzeuge. Die Datei in .claude/agents lesen. | «Mach mir einen Agenten» ergibt agent-1 ohne Beschreibung. Ohne Werkzeugliste darf er alles. | Den Feldagenten mit Ausweis ins Büro holen | Durchklicken, Einstellen im Bild, Sortieren mit Bildern, Vorhersagen |
 | 21a | In echt: Hook und Plugin | Hobelbank | Plugins unter Anpassungen, Plugins, «Entdecken», «+». Hooks im Code-Bereich von Claude schreiben lassen, mit Zeitpunkt und enger Regel, dann lesen und testen. | Eine Bitte statt eines Hooks geht unter. Ein zu breiter Hook sichert alles, die Festplatte läuft voll. | Rauchmelder montieren, Kiste ins Regal | Durchklicken, Sortieren mit Bildern, Vorhersagen |
+| 9b | In echt: Anbieter prüfen | Stammtisch | Vor dem Anbinden prüfen, wer es herausgibt, was es darf, was drinsteckt (Skripte, Hooks, Programme) und wie man es entfernt. Verhält sich etwas seltsam: stoppen, trennen, nachsehen, informieren. | Gratis-Plugin aus einem Forum: Die Offerten landen bei einer fremden Adresse. Ein Skill mit Skript schickt Daten weg. | Den Handwerker erst ausweisen lassen | Durchklicken, Vorhersagen, Sortieren |
 
 ### Schlussmission: Operation Dorffest
 Mischrunde über alle Kapitel («Welches Bauteil passt?») und ein ganzes kleines System bauen: Fallakte mit Regeln, Dossier für den Stil, Funkleitung zur Terminstelle, Einsatzplan, Feldagent für die Recherche, Prüfagent mit Kriterien, Sicherheitsprotokoll. Alles kommt als Einsatzpaket in den Einsatzschrank.

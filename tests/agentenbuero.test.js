@@ -84,7 +84,7 @@ test('Agentenbüro: Die Konzept-Runden folgen der Reihenfolge des Lehrplans', ()
   // Ab Version 0.9 ist das Spiel vollständig: jedes Konzept genau einmal, in Lehrplan-Reihenfolge.
   // Version 0.10: 21 Konzepte plus 4 Runden «In echt» (Skill, Konnektor, Subagent, Hook und Plugin).
   assert.deepEqual(spielbar, reihenfolge);
-  assert.equal(lehrplan.konzepte.length, 25);
+  assert.equal(lehrplan.konzepte.length, 26); // Version 0.12: dazu «Anbieter prüfen»
   assert.equal(lehrplan.kapitel.length, 6);
 });
 

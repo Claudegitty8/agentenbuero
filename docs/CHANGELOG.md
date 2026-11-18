@@ -1,5 +1,17 @@
 # Changelog
 
+## Version 0.12 (18.11.2026, noch nicht veröffentlicht)
+
+### Neu
+- Lexikon: Wahlhilfe «Was nehme ich wann?» mit 11 Bauteilen, je wann, warum und zwei bis drei Beispiele. Ein Bauteil erscheint, sobald man sein Konzept kennt (E-034).
+- Neue Runde «In echt: Anbieter prüfen» in «Operation Stammtisch», nach «Konnektor verbinden»: verdächtigen Konnektor trennen (Durchklicken), unbekanntes Plugin, eigener Konnektor, Skill mit Skript (Vorhersagen), Schritte bei einer verdächtigen Leitung (Sortieren). 26 Konzepte (E-035).
+- Einsatzschrank «Schutzregeln für Funkleitungen»: neuer Punkt der Probefahrt «Vor dem Anbinden geprüft». Lexikon-Anleitungen: neu «Einen verdächtigen Konnektor trennen» (12 Anleitungen).
+- 6 neue Aufgaben (2 Durchklicken, 3 Vorhersagen, 1 Sortieren), zusammen 179. 5 neue Bildschirme (41), 1 Lexikon-Eintrag (46), 4 Fakten mit Quelle (24).
+
+### Geändert
+- Kurze Knöpfe in Listenzeilen der Bildschirme brechen nicht mehr mitten im Wort um.
+- Inhaltsprüfung prüft die Wahlhilfe. Tests: 118 (2 neue).
+
 ## Version 0.11 (17.11.2026)
 
 Veröffentlicht am 17.11.2026 auf https://claudegitty8.github.io/agentenbuero/. Die Veröffentlichung lief durch (alle Prüfungen, Hochladen auf GitHub Pages). Die Seite selbst konnte ich danach nicht im Browser öffnen: nicht geprüft.

@@ -265,3 +265,23 @@ test('Inhaltsprüfung: Anleitungen brauchen ein Konzept des Auftrags und Wege zu
     assert.ok(fehler.some((f) => f.includes(erwartet)), `erwartet: ${erwartet}`);
   }
 });
+
+test('Wahlhilfe: offen sind nur Bauteile, deren Konzept man kennt, der Rest wird gezählt', async () => {
+  const { wahlhilfeInhalt } = await import('../spiel/code/logik/anleitungen.js');
+  const eintraege = [{ id: 'a', konzept: 'ziel' }, { id: 'b', konzept: 'hook' }];
+  assert.deepEqual(wahlhilfeInhalt({ lexikon: ['ki', 'ziel'] }, eintraege), { offen: [eintraege[0]], verborgen: 1 });
+  assert.deepEqual(wahlhilfeInhalt(undefined, eintraege), { offen: [], verborgen: 2 });
+  assert.deepEqual(wahlhilfeInhalt({ lexikon: 'kaputt' }, undefined), { offen: [], verborgen: 0 });
+});
+
+test('Inhaltsprüfung: findet Fehler in der Wahlhilfe', async () => {
+  const { pruefeWahlhilfe } = await import('../werkzeuge/pruefe-inhalte.mjs');
+  const fehler = [];
+  pruefeWahlhilfe({ eintraege: [
+    { id: 'a', bauteil: 'Skill', konzept: 'gibtsNicht', wann: 'Immer.', warum: 'Darum.', beispiele: ['Eins'] },
+    { id: 'a', bauteil: 'Dossier (Skill)', konzept: 'ziel', wann: '', warum: 'Strasse ß', beispiele: ['Eins', 'Zwei'] },
+  ] }, 'w', { konzepte: new Set(['ziel']), texte: { app: {} } }, fehler);
+  for (const erwartet of ['doppelt', 'unbekanntes Konzept', 'echte Wort in Klammern', 'zwei bis drei', 'wann fehlt', 'scharfes S', 'wahlhilfeTitel fehlt']) {
+    assert.ok(fehler.some((f) => f.includes(erwartet)), `erwartet: ${erwartet}`);
+  }
+});

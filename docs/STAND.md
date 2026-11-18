@@ -1,6 +1,11 @@
 # Stand
 
-Stand: 17.11.2026 · Version 0.11 · Veröffentlicht: ja, seit 17.11.2026 auf https://claudegitty8.github.io/agentenbuero/ (Code öffentlich auf GitHub)
+Stand: 18.11.2026 · Version 0.12 fertig, noch nicht veröffentlicht · Online ist Version 0.11 auf https://claudegitty8.github.io/agentenbuero/ (Code öffentlich auf GitHub)
+
+## Fertig (Version 0.12, noch nicht veröffentlicht)
+
+- Wahlhilfe «Was nehme ich wann?» im Lexikon (E-034), Runde «In echt: Anbieter prüfen» in Kapitel 3 (E-035). 26 Konzepte, 179 Aufgaben.
+- 118 Tests, Inhaltsprüfung, Browser-Durchspiel stark und schwach bestanden, neue Bildschirme in 320 und 390 px angesehen.
 
 ## Fertig (Version 0.11)
 
@@ -20,11 +25,13 @@ Stand: 17.11.2026 · Version 0.11 · Veröffentlicht: ja, seit 17.11.2026 auf ht
 
 ## Offen
 
+- **Besitzer:** Ja oder Nein zum Veröffentlichen von Version 0.12.
+- **Besitzer:** Für Version 0.13 Bilder oder Computer-Zugriff (siehe Claude-Projekt, AGENTENBUERO-STAND.md).
 - **Besitzer:** Online-Seite kurz ansehen: unten «Version 0.11», im Lexikon oben «So geht es in echt». Die Veröffentlichung lief durch, die Seite selbst ist von mir nicht geprüft (kein Browser verfügbar).
 - Online geprüft am 17.11.2026 (Version 0.10): Seite zeigt Version 0.10, 25 Konzepte, 36 Bildschirme, Durchklicken funktioniert, keine Fehler in der Konsole.
 - Stellen «nicht geprüft» in RECHERCHE.md (Fenster nach «+» bei einem Konnektor, Rechte pro Werkzeug, Konnektoren im Chat, Ergebnis im Code-Bereich) bei Gelegenheit mit der App vergleichen.
 - **Am eigenen Handy testen** (Besitzer): Link öffnen, einen Auftrag spielen, auf den Home-Bildschirm legen. Checkliste in `VEROEFFENTLICHEN.md`.
-- Entscheide bestätigen: E-010, E-014 bis E-020, E-022 bis E-027, E-029, E-032, neu E-033.
+- Entscheide bestätigen: E-010, E-014 bis E-020, E-022 bis E-027, E-029, E-032, E-033.
 - Testrunde mit 3 Erwachsenen (Claude-Nutzer ohne Informatik), danach Version 1.0.
 - Vor breitem Teilen: Kontakt-E-Mail, Hinweise prüfen.
 

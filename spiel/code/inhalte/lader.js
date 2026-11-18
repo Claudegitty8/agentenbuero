@@ -11,7 +11,7 @@ async function ladeJson(pfad) {
 }
 
 export async function ladeInhalte(sprache = 'de') {
-  const [regeln, lehrplan, einrichtung, texte, lexikon, umfrage, schirme, ...auftraege] = await Promise.all([
+  const [regeln, lehrplan, einrichtung, texte, lexikon, umfrage, schirme, wahlhilfe, ...auftraege] = await Promise.all([
     ladeJson('regeln.json'),
     ladeJson('lehrplan.json'),
     ladeJson('einrichtung.json'),
@@ -19,7 +19,8 @@ export async function ladeInhalte(sprache = 'de') {
     ladeJson(`${sprache}/lexikon.json`),
     ladeJson(`${sprache}/umfrage.json`),
     ladeJson(`${sprache}/schirme.json`), // nachgezeichnete Bildschirme für «In echt»
+    ladeJson(`${sprache}/wahlhilfe.json`), // «Was nehme ich wann?» im Lexikon
     ...AUFTRAEGE.map((id) => ladeJson(`${sprache}/auftraege/${id}.json`)),
   ]);
-  return { regeln, lehrplan, texte, lexikon, auftraege, einrichtung: einrichtung.dinge, umfrage: umfrage.fragen, schirme: schirme.schirme };
+  return { regeln, lehrplan, texte, lexikon, auftraege, einrichtung: einrichtung.dinge, umfrage: umfrage.fragen, schirme: schirme.schirme, wahlhilfe: wahlhilfe.eintraege };
 }

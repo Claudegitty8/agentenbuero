@@ -1,6 +1,6 @@
 # Backlog
 
-Stand: 17.11.2026 (Version 0.11). Muss = für Version 1.0 nötig. Soll = wichtig, aber nicht zwingend. Kann = gute Idee für später.
+Stand: 18.11.2026 (Version 0.12). Muss = für Version 1.0 nötig. Soll = wichtig, aber nicht zwingend. Kann = gute Idee für später.
 
 ## Muss
 - Kontakt-E-Mail und Prüfung der Hinweise vor breitem Teilen.
@@ -10,6 +10,7 @@ Stand: 17.11.2026 (Version 0.11). Muss = für Version 1.0 nötig. Soll = wichtig
 - Veröffentlichen auf GitHub Pages und Test auf echten Handys.
 
 ## Soll
+- Version 0.13 (bestätigt, braucht Bilder oder Computer-Zugriff): Runden «In echt» zu Projekt und CLAUDE.md, Modi und Zurückspulen, Geplant und von unterwegs, Chrome, Artefakte und Modellwahl. Danach Wahlhilfe und «Welches Bauteil passt?» um diese Funktionen erweitern.
 - Leiste mit fünf Bereichen unten (Zentrale, Aufträge, Einsatzschrank, Lexikon, Einstellungen) statt Knöpfe in der Zentrale (E-019).
 - Eigener zuletzt gebauter Funkspruch im Einsatzschrank, neben der Vorlage (E-020, braucht ein neues Feld im Spielstand mit Umwandlung).
 - Rückmeldung nach Herkunft unterscheiden (gemeistert oder nachgeholt), Lehre aus dem KI-Studio.

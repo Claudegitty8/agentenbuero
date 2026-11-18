@@ -1,6 +1,6 @@
 # Architektur: Lernspiel «Agentenbüro»
 
-**Zusätze im Agentenbüro (Version 0.1 bis 0.11, 17.11.2026):**
+**Zusätze im Agentenbüro (Version 0.1 bis 0.12, 18.11.2026):**
 - Die Technik ist aus dem KI-Studio (Version 0.17) übernommen. Kiwi heisst Echo, das Studio heisst Zentrale, Kiwis Tisch heisst Einsatzkoffer (Felder `fenster` und `tokensUeber` wie bisher).
 - **Einsatzschrank** (E-016): Ein Auftrag kann das Feld `schrank` mit `titel`, `vorlage` (ein echter Prompt, höchstens 200 Wörter) und `wo` (wo man ihn bei Claude einfügt) tragen. `spiel/code/logik/schrank.js` (`schrankInhalt`) liefert die freigeschalteten Bauteile, `spiel/code/oberflaeche/schrank.js` zeigt sie mit Kopierknopf. Die Inhaltsprüfung prüft Felder und Texte.
 - **Testvorlage** (E-015): `tests/vorlage/` enthält die Inhalte des KI-Studios. Die übernommenen Tests laufen damit. `tests/agentenbuero.test.js` prüft die eigenen Inhalte.
@@ -16,6 +16,7 @@
   - **Sortieren mit Bild:** Ein Schritt einer `reihe` kann `schirm` und `ziel` tragen. Er zeigt dann einen kleinen Ausschnitt um die Stelle.
   - **Probefahrt** (E-029): `schrank.probefahrt` mit `aufgabe` (eine Aufgabe zum Durchklicken aus demselben Auftrag) und `punkte` (zwei bis sechs, je `id` und `text`). Abgehakte Punkte stehen im Spielstand unter `probefahrt.<auftrag>` (`hakeAb` in `logik/schrank.js`, Umwandlung in `wandleUm`).
 - **Anleitungen im Lexikon** (Version 0.11, E-033): Ein Auftrag kann `anleitungen` tragen: `{ konzept, wege: [{ aufgabe, titel }] }`, die Aufgaben zum Durchklicken oder Einstellen. `spiel/code/logik/anleitungen.js` (`anleitungenInhalt`) sagt, welche Themen offen sind (Konzept im Lexikon oder Auftrag erledigt). `oberflaeche/lexikon.js` zeigt sie oben im Lexikon, mit `baueStrecke` oder `baueEinstellen` (`nurBild`).
+- **Wahlhilfe** (Version 0.12, E-034): `spiel/inhalte/de/wahlhilfe.json` mit `eintraege` (je `id`, `bauteil` mit echtem Wort in Klammern, `konzept`, `wann`, `warum`, `beispiele`). `wahlhilfeInhalt` in `logik/anleitungen.js` trennt offene und noch verborgene Einträge, `oberflaeche/lexikon.js` zeigt sie oben im Lexikon. Geladen in `lader.js` als `inhalte.wahlhilfe`.
 - **Neuer Auftrag:** JSON in `spiel/inhalte/de/auftraege/`, Kennung in `AUFTRAEGE` in `spiel/code/inhalte/lader.js` eintragen, `npm run pruefen`, Browser-Durchspiel, Lehrplan neu erzeugen.
 
 Der folgende Text stammt aus dem KI-Studio und gilt weiter, soweit oben nichts anderes steht. Zahlen wie «24 Konzepte» betreffen dort das KI-Studio.

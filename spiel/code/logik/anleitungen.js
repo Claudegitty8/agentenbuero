@@ -20,3 +20,12 @@ export function anleitungenInhalt(stand, auftraege) {
         .map((weg) => ({ titel: weg.titel, aufgabe: auftrag.aufgaben[weg.aufgabe] })),
     }));
 }
+
+// Wahlhilfe «Was nehme ich wann?» (E-034): pro Bauteil wann, warum und Beispiele.
+// Ein Eintrag ist offen, sobald sein Konzept im Lexikon steht. Die übrigen werden nur gezählt.
+export function wahlhilfeInhalt(stand, eintraege) {
+  const lexikon = new Set(Array.isArray(stand?.lexikon) ? stand.lexikon : []);
+  const liste = Array.isArray(eintraege) ? eintraege : [];
+  const offen = liste.filter((eintrag) => lexikon.has(eintrag.konzept));
+  return { offen, verborgen: liste.length - offen.length };
+}

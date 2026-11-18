@@ -18,6 +18,10 @@
       "aufgabe": "ke-a",
       "punkte": [
         {
+          "id": "pruefen",
+          "text": "Vor dem Anbinden geprüft: Wer gibt es heraus, was darf es, was steckt drin?"
+        },
+        {
           "id": "noetig",
           "text": "Nur Konnektoren verbunden, die eine Aufgabe wirklich braucht."
         },
@@ -114,6 +118,30 @@
         "ke-d",
         "ke-e",
         "ke-f"
+      ]
+    },
+    {
+      "id": "r-anbieter",
+      "art": "konzept",
+      "konzept": "anbieterEcht",
+      "probieren": {
+        "aufgabe": "ap-a"
+      },
+      "beispiel": {
+        "aufgabe": "ap-a"
+      },
+      "luecke": {
+        "aufgabe": "ap-b",
+        "vorgabe": [
+          "anpassungen",
+          "reiterKonnektoren"
+        ]
+      },
+      "frei": [
+        "ap-c",
+        "ap-d",
+        "ap-e",
+        "ap-f"
       ]
     },
     {
@@ -2148,6 +2176,388 @@
       "loesung": [
         "eigene"
       ]
+    },
+    "ap-a": {
+      "typ": "klick",
+      "wunsch": "Die Dorf-Ablage wollte heute alle Reservationen an eine fremde Adresse schicken. Das ist nicht normal. Bitte sofort weg damit.",
+      "frage": "Trenne für Frau Gisler die Dorf-Ablage. Tippe dich durch.",
+      "schritte": [
+        {
+          "schirm": "app",
+          "ziel": "anpassungen",
+          "text": "Tippe links auf «{ziel}».",
+          "falsch": {
+            "plus": "chatStatt"
+          },
+          "sonst": "daneben1"
+        },
+        {
+          "schirm": "skills-entdecken",
+          "ziel": "reiterKonnektoren",
+          "text": "Wechsle oben in den Reiter «{ziel}».",
+          "falsch": {
+            "hinzufuegen": "skillStatt",
+            "plusKarte1": "skillStatt",
+            "plusKarte2": "skillStatt",
+            "ausprobieren1": "skillStatt",
+            "ausprobieren2": "skillStatt",
+            "reiterPlugins": "pluginStatt"
+          },
+          "sonst": "daneben2"
+        },
+        {
+          "schirm": "konnektoren-entdecken",
+          "ziel": "meine",
+          "text": "Tippe oben auf «{ziel}».",
+          "falsch": {
+            "plusKalender": "neuVerbinden",
+            "plusMail": "neuVerbinden",
+            "plusAblage": "neuVerbinden",
+            "hinzufuegen": "neuVerbinden"
+          },
+          "sonst": "daneben3"
+        },
+        {
+          "schirm": "konnektoren-meine-drei",
+          "ziel": "konnAblage",
+          "text": "Öffne «{ziel}».",
+          "falsch": {
+            "konnKalender": "falscheLeitung",
+            "konnMail": "falscheLeitung"
+          },
+          "sonst": "daneben3"
+        },
+        {
+          "schirm": "konnektor-ablage-verbunden",
+          "ziel": "trennen",
+          "text": "Tippe auf «{ziel}».",
+          "falsch": {
+            "zurueckKonn": "nurZurueck"
+          },
+          "sonst": "daneben3"
+        }
+      ],
+      "nachher": "konnektoren-meine-ohne-ablage",
+      "erfolg": [
+        "Getrennt. Die Dorf-Ablage kommt nicht mehr an Frau Gislers Daten.",
+        "Geschafft. Seltsames Verhalten, sofort getrennt: genau richtig."
+      ],
+      "fehlbilder": {
+        "chatStatt": {
+          "texte": [
+            "Echo schaltet die Leitung nur in diesem Chat aus. Verbunden bleibt sie, im nächsten Chat ist sie wieder da.",
+            "Nur für diesen Chat aus. Die Leitung selbst steht noch."
+          ],
+          "hinweis": "Ganz trennen geht unter «Anpassungen», Reiter «Konnektoren», «Meine»."
+        },
+        "daneben1": {
+          "texte": [
+            "Hier trennst du keine Leitung.",
+            "Echo sucht am falschen Ort."
+          ],
+          "hinweis": "Konnektoren findest du links unter «Anpassungen»."
+        },
+        "skillStatt": {
+          "texte": [
+            "Echo öffnet die Skills. Die verdächtige Leitung bleibt verbunden.",
+            "Hier gibt es Anleitungen, aber keine Leitungen."
+          ],
+          "hinweis": "Wechsle oben in den Reiter «Konnektoren»."
+        },
+        "pluginStatt": {
+          "texte": [
+            "Echo öffnet die Plugins. Die verdächtige Leitung bleibt verbunden.",
+            "Ein Paket statt der Leitung."
+          ],
+          "hinweis": "Wechsle oben in den Reiter «Konnektoren»."
+        },
+        "daneben2": {
+          "texte": [
+            "Hier passiert nichts mit der Leitung.",
+            "Echo sucht, trennt aber nichts."
+          ],
+          "hinweis": "Wechsle oben in den Reiter «Konnektoren»."
+        },
+        "neuVerbinden": {
+          "texte": [
+            "Echo verbindet noch eine Leitung, statt die verdächtige zu trennen.",
+            "Jetzt sind es mehr Leitungen, nicht weniger."
+          ],
+          "hinweis": "Deine verbundenen Leitungen stehen unter «Meine»."
+        },
+        "daneben3": {
+          "texte": [
+            "Hier wird nichts getrennt.",
+            "Echo blättert, die Leitung steht noch."
+          ],
+          "hinweis": "Unter «Meine» die Leitung öffnen, dann «Trennen»."
+        },
+        "falscheLeitung": {
+          "texte": [
+            "Echo öffnet die falsche Leitung. Die verdächtige bleibt verbunden.",
+            "Falsche Tür: Die Leitung, um die es geht, steht noch."
+          ],
+          "hinweis": "Öffne genau die Leitung, die sich seltsam verhält."
+        },
+        "nurZurueck": {
+          "texte": [
+            "Echo geht zurück zur Liste. Getrennt ist nichts.",
+            "Zurück, aber die Leitung ist noch verbunden."
+          ],
+          "hinweis": "Tippe auf «Trennen»."
+        }
+      }
+    },
+    "ap-b": {
+      "typ": "klick",
+      "wunsch": "Bei Zwirbel-Mail soll es eine Datenpanne gegeben haben. Trenn die Leitung, bis alles geklärt ist.",
+      "frage": "Trenne Zwirbel-Mail. Die ersten Schritte sind gemacht.",
+      "schritte": [
+        {
+          "schirm": "app",
+          "ziel": "anpassungen",
+          "text": "Tippe links auf «{ziel}».",
+          "falsch": {
+            "plus": "chatStatt"
+          },
+          "sonst": "daneben1"
+        },
+        {
+          "schirm": "skills-entdecken",
+          "ziel": "reiterKonnektoren",
+          "text": "Wechsle oben in den Reiter «{ziel}».",
+          "falsch": {
+            "hinzufuegen": "skillStatt",
+            "plusKarte1": "skillStatt",
+            "plusKarte2": "skillStatt",
+            "ausprobieren1": "skillStatt",
+            "ausprobieren2": "skillStatt",
+            "reiterPlugins": "pluginStatt"
+          },
+          "sonst": "daneben2"
+        },
+        {
+          "schirm": "konnektoren-entdecken",
+          "ziel": "meine",
+          "text": "Tippe oben auf «{ziel}».",
+          "falsch": {
+            "plusKalender": "neuVerbinden",
+            "plusMail": "neuVerbinden",
+            "plusAblage": "neuVerbinden",
+            "hinzufuegen": "neuVerbinden"
+          },
+          "sonst": "daneben3"
+        },
+        {
+          "schirm": "konnektoren-meine-drei",
+          "ziel": "konnMail",
+          "text": "Öffne «{ziel}».",
+          "falsch": {
+            "konnKalender": "falscheLeitung",
+            "konnAblage": "falscheLeitung"
+          },
+          "sonst": "daneben3"
+        },
+        {
+          "schirm": "konnektor-mail-verbunden",
+          "ziel": "trennen",
+          "text": "Tippe auf «{ziel}».",
+          "falsch": {
+            "zurueckKonn": "nurZurueck"
+          },
+          "sonst": "daneben3"
+        }
+      ],
+      "nachher": "konnektoren-meine-ohne-mail",
+      "erfolg": [
+        "Getrennt. Verbinden kannst du später wieder, wenn alles geklärt ist.",
+        "Geschafft. Lieber einmal zu früh getrennt."
+      ],
+      "fehlbilder": {
+        "chatStatt": {
+          "texte": [
+            "Echo schaltet die Leitung nur in diesem Chat aus. Verbunden bleibt sie, im nächsten Chat ist sie wieder da.",
+            "Nur für diesen Chat aus. Die Leitung selbst steht noch."
+          ],
+          "hinweis": "Ganz trennen geht unter «Anpassungen», Reiter «Konnektoren», «Meine»."
+        },
+        "daneben1": {
+          "texte": [
+            "Hier trennst du keine Leitung.",
+            "Echo sucht am falschen Ort."
+          ],
+          "hinweis": "Konnektoren findest du links unter «Anpassungen»."
+        },
+        "skillStatt": {
+          "texte": [
+            "Echo öffnet die Skills. Die verdächtige Leitung bleibt verbunden.",
+            "Hier gibt es Anleitungen, aber keine Leitungen."
+          ],
+          "hinweis": "Wechsle oben in den Reiter «Konnektoren»."
+        },
+        "pluginStatt": {
+          "texte": [
+            "Echo öffnet die Plugins. Die verdächtige Leitung bleibt verbunden.",
+            "Ein Paket statt der Leitung."
+          ],
+          "hinweis": "Wechsle oben in den Reiter «Konnektoren»."
+        },
+        "daneben2": {
+          "texte": [
+            "Hier passiert nichts mit der Leitung.",
+            "Echo sucht, trennt aber nichts."
+          ],
+          "hinweis": "Wechsle oben in den Reiter «Konnektoren»."
+        },
+        "neuVerbinden": {
+          "texte": [
+            "Echo verbindet noch eine Leitung, statt die verdächtige zu trennen.",
+            "Jetzt sind es mehr Leitungen, nicht weniger."
+          ],
+          "hinweis": "Deine verbundenen Leitungen stehen unter «Meine»."
+        },
+        "daneben3": {
+          "texte": [
+            "Hier wird nichts getrennt.",
+            "Echo blättert, die Leitung steht noch."
+          ],
+          "hinweis": "Unter «Meine» die Leitung öffnen, dann «Trennen»."
+        },
+        "falscheLeitung": {
+          "texte": [
+            "Echo öffnet die falsche Leitung. Die verdächtige bleibt verbunden.",
+            "Falsche Tür: Die Leitung, um die es geht, steht noch."
+          ],
+          "hinweis": "Öffne genau die Leitung, die sich seltsam verhält."
+        },
+        "nurZurueck": {
+          "texte": [
+            "Echo geht zurück zur Liste. Getrennt ist nichts.",
+            "Zurück, aber die Leitung ist noch verbunden."
+          ],
+          "hinweis": "Tippe auf «Trennen»."
+        }
+      }
+    },
+    "ap-c": {
+      "typ": "wahl",
+      "wunsch": "Im Forum empfehlen alle ein Gratis-Plugin «Offerten-Turbo». Niemand weiss, wer es gemacht hat. Soll ich?",
+      "frage": "Das Plugin kommt von einem Unbekannten und bringt Hooks und ein eigenes Programm mit. Was tust du?",
+      "optionen": [
+        {
+          "id": "warten",
+          "text": "Nicht installieren, bis klar ist, wer es herausgibt und was die Hooks tun.",
+          "richtig": true,
+          "hinweis": "Genau. Ein Plugin kann Programme mit deinen Rechten auf deinem Computer ausführen."
+        },
+        {
+          "id": "bewertung",
+          "text": "Installieren, die Bewertungen im Forum sind gut.",
+          "hinweis": "Gute Bewertungen sagen nichts darüber, was der Code wirklich tut."
+        },
+        {
+          "id": "marktplatz",
+          "text": "Installieren, es steht ja in einem Marktplatz.",
+          "hinweis": "Der Name eines Marktplatzes sagt, wer den Katalog herausgibt, nicht was jedes Plugin darin tut."
+        }
+      ],
+      "echo": "Echo lässt das Plugin liegen und fragt zuerst: Wer steht dahinter, und was tun die Hooks?",
+      "loesung": [
+        "warten"
+      ]
+    },
+    "ap-d": {
+      "typ": "wahl",
+      "wunsch": "Mein Getränkelieferant hat mir eine Adresse für einen eigenen Konnektor geschickt. Ist das wie die anderen aus dem Verzeichnis?",
+      "frage": "Was ist bei einem eigenen Konnektor (Adresse vom Lieferanten) anders als bei einem aus dem Verzeichnis?",
+      "optionen": [
+        {
+          "id": "ungeprueft",
+          "text": "Anthropic hat ihn nicht geprüft. Frau Gisler muss dem Lieferanten selbst vertrauen.",
+          "richtig": true,
+          "hinweis": "Genau. Eigene Konnektoren führen zu Diensten, die Anthropic nicht geprüft hat. Rechte genau ansehen."
+        },
+        {
+          "id": "sicherer",
+          "text": "Er ist sicherer, weil er extra für sie gemacht ist.",
+          "hinweis": "Nein. «Extra gemacht» heisst nicht geprüft. Vertrauen musst du dem, der ihn betreibt."
+        },
+        {
+          "id": "nurlesen",
+          "text": "Eigene Konnektoren dürfen nur lesen, nie etwas ändern.",
+          "hinweis": "Nein. Was er darf, hängt an deinen Rechten im Dienst und an den Einstellungen pro Werkzeug."
+        }
+      ],
+      "echo": "Echo fragt nach: Wer betreibt den Server, was darf er, und braucht es ihn wirklich?",
+      "loesung": [
+        "ungeprueft"
+      ]
+    },
+    "ap-e": {
+      "typ": "wahl",
+      "wunsch": "Ich habe im Internet einen Skill für Rezepte gefunden. Darin liegt neben SKILL.md eine Datei, die Daten an eine fremde Adresse schickt.",
+      "frage": "Ein Skill enthält ein Skript, das Daten an eine fremde Adresse schickt. Was heisst das?",
+      "optionen": [
+        {
+          "id": "finger",
+          "text": "Finger weg: Ein Skript im Skill kann Daten nach aussen schicken.",
+          "richtig": true,
+          "hinweis": "Genau. Ein Skill kann neben der Anleitung auch Programmcode enthalten. Schau hinein, bevor du ihn hochlädst."
+        },
+        {
+          "id": "nurtext",
+          "text": "Unbedenklich, Skills sind ja nur Text.",
+          "hinweis": "Nicht ganz. Ein Skill kann Code-Dateien enthalten, die Claude ausführt."
+        },
+        {
+          "id": "beschreibung",
+          "text": "Unbedenklich, wenn die Beschreibung gut klingt.",
+          "hinweis": "Die Beschreibung sagt, wann der Skill gebraucht wird. Was die Dateien tun, sagt sie nicht."
+        }
+      ],
+      "echo": "Echo lädt den Skill nicht hoch. Ein Skript, das Daten wegschickt, gehört nicht in Frau Gislers Küche.",
+      "loesung": [
+        "finger"
+      ]
+    },
+    "ap-f": {
+      "typ": "reihe",
+      "wunsch": "Was mache ich, wenn sich eine Leitung plötzlich seltsam verhält?",
+      "frage": "Bring die Schritte bei einer verdächtigen Leitung in die richtige Reihenfolge.",
+      "schritte": [
+        {
+          "id": "informieren",
+          "text": "Betroffene informieren und Passwörter ändern"
+        },
+        {
+          "id": "stoppen",
+          "text": "Den laufenden Auftrag sofort stoppen"
+        },
+        {
+          "id": "nachsehen",
+          "text": "Nachsehen, was gesendet oder geändert wurde"
+        },
+        {
+          "id": "trennen",
+          "text": "Die Leitung trennen",
+          "schirm": "konnektor-ablage-verbunden",
+          "ziel": "trennen"
+        }
+      ],
+      "loesung": [
+        "stoppen",
+        "trennen",
+        "nachsehen",
+        "informieren"
+      ],
+      "echo": "Stoppen, trennen, nachsehen, informieren. Der Schaden bleibt klein.",
+      "daneben": {
+        "texte": [
+          "Echo sieht zuerst in Ruhe nach. Derweil schickt die Leitung weiter Daten weg.",
+          "Frau Gisler informiert alle, aber die Leitung ist noch offen."
+        ],
+        "hinweis": "Zuerst stoppen und trennen. Dann nachsehen und informieren."
+      }
     }
   },
   "anleitungen": {
@@ -2164,6 +2574,10 @@
       {
         "aufgabe": "ke-e",
         "titel": "Einen Konnektor nur in einem Chat ausschalten"
+      },
+      {
+        "aufgabe": "ap-a",
+        "titel": "Einen verdächtigen Konnektor trennen"
       }
     ]
   }

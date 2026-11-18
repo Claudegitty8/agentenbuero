@@ -120,6 +120,30 @@
       "aussage": "Plugins holt man in der Claude-App unter Anpassen, Plugins aus dem Verzeichnis. Die deutsche Desktop-App zeigt dort die Reiter «Meine» und «Entdecken» (Bildschirmfoto des Besitzers).",
       "quelle": "https://support.claude.com/en/articles/13837440",
       "geprueft": "2026-11-17"
+    },
+    {
+      "id": "plugin-sicherheit",
+      "aussage": "Ein Plugin in Claude Code kann beliebigen Code mit den Rechten des Benutzers ausführen. Der Name eines Marktplatzes sagt, wer den Katalog herausgibt, nicht was jedes Plugin darin tut. Darum vor dem Installieren prüfen.",
+      "quelle": "https://code.claude.com/docs/en/plugins/security",
+      "geprueft": "2026-11-18"
+    },
+    {
+      "id": "eigene-konnektoren",
+      "aussage": "Eigene Konnektoren verbinden mit Diensten, die Anthropic nicht geprüft hat. Rechte genau ansehen, nur Server von vertrauenswürdigen Organisationen verbinden, auf unerwartetes Verhalten achten.",
+      "quelle": "https://claude.com/docs/connectors/policies",
+      "geprueft": "2026-11-18"
+    },
+    {
+      "id": "skill-code",
+      "aussage": "Skills können neben der Anleitung ausführbare Code-Dateien enthalten.",
+      "quelle": "https://support.claude.com/de/articles/12512198-benutzerdefinierte-skills-erstellen",
+      "geprueft": "2026-11-18"
+    },
+    {
+      "id": "skill-scan",
+      "aussage": "Skills und Plugins nur aus vertrauenswürdigen Quellen installieren. Eine automatische Prüfung auf Schadcode gibt es für Organisationen, sie ist keine Garantie.",
+      "quelle": "https://support.claude.com/de/articles/15927065-erste-schritte-mit-skill-und-plugin-scanning",
+      "geprueft": "2026-11-18"
     }
   ]
 }

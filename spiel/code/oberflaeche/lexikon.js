@@ -3,10 +3,26 @@ import { el, fuelle, knopf, punkte, leiste } from './bausteine.js';
 import { erfolge, neuerFortschritt } from '../logik/meisterschaft.js';
 import { wendeSchriftAn } from './schrift.js';
 import { wandleUm, pruefeLauf, sprungStatus, springeZuAuftrag } from '../logik/extras.js';
-import { anleitungenInhalt } from '../logik/anleitungen.js';
+import { anleitungenInhalt, wahlhilfeInhalt } from '../logik/anleitungen.js';
 import { baueStrecke } from './klick.js';
 import { baueEinstellen } from './einstellen.js';
 import { loesungVon } from '../logik/bewertung.js';
+
+// «Was nehme ich wann?» (E-034): pro Bauteil zum Aufklappen, wann es passt, warum, Beispiele.
+function wahlhilfe(app, t) {
+  const { offen, verborgen } = wahlhilfeInhalt(app.stand, app.inhalte.wahlhilfe);
+  if (offen.length === 0) return null;
+  return el('section', { klasse: 'karte wahlhilfe' },
+    el('h2', { text: t.wahlhilfeTitel }),
+    el('p', { klasse: 'klein', text: t.wahlhilfeInfo }),
+    offen.map((eintrag) => el('details', { klasse: 'anleitung' },
+      el('summary', { text: eintrag.bauteil }),
+      el('p', {}, el('strong', { text: `${t.wahlhilfeWann}: ` }), el('span', { text: eintrag.wann })),
+      el('p', {}, el('strong', { text: `${t.wahlhilfeWarum}: ` }), el('span', { text: eintrag.warum })),
+      el('p', {}, el('strong', { text: `${t.wahlhilfeBeispiele}:` })),
+      el('ul', { klasse: 'wahlhilfe-beispiele' }, eintrag.beispiele.map((b) => el('li', { text: b }))))),
+    verborgen > 0 ? el('p', { klasse: 'klein', text: fuelle(t.wahlhilfeMehr, { anzahl: verborgen }) }) : null);
+}
 
 // «So geht es in echt» (E-033): die Wege durch die echte Claude-App, jederzeit zum Nachschlagen.
 // Durchklicken erscheint als Bilderstrecke, Einstellen als fertig eingestelltes Bild.
@@ -42,7 +58,7 @@ export function zeigeLexikon(wurzel, app, nav) {
 
   wurzel.append(
     leiste(t, nav, t.lexikonTitel),
-    ...[anleitungen(app, t)].filter(Boolean),
+    ...[wahlhilfe(app, t), anleitungen(app, t)].filter(Boolean),
     ...app.stand.lexikon.map((id) => {
       const eintrag = lexikon[id];
       const kern = eintrag.kern ? texte.konzepte[eintrag.kern] : null;

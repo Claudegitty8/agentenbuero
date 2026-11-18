@@ -1,6 +1,6 @@
 # Lehrplan
 
-Stand: 17.11.2026 · Version 0.10. Aus den Inhaltsdateien erzeugt mit `node werkzeuge/lehrplan-doku.mjs`. Die Tabelle «Mechanik ist das Konzept» steht in `KONZEPT.md`.
+Stand: 18.11.2026 · Version 0.12. Aus den Inhaltsdateien erzeugt mit `node werkzeuge/lehrplan-doku.mjs`. Die Tabelle «Mechanik ist das Konzept» steht in `KONZEPT.md`.
 
 ## Übersicht
 
@@ -17,20 +17,21 @@ Stand: 17.11.2026 · Version 0.10. Aus den Inhaltsdateien erzeugt mit `node werk
 | 9 | Leitung mit passender Freigabe | 3 Die Funkleitungen | Ziel, Leser, Grund | Eine Vollmacht: nur für das, was nötig ist. | ja |
 | 10 | Abgefangene Nachrichten | 3 Die Funkleitungen | Material trennen und belegen, Leitung mit passender Freigabe | Der Briefträger befolgt keine Briefe. | ja |
 | 11 | In echt: Konnektor verbinden | 3 Die Funkleitungen | Leitung mit passender Freigabe | Der Funkleitung einen Schlüssel geben, aber nur für die richtigen Türen. | ja |
-| 12 | Die Einsatzschleife | 4 Der Einsatz | Ziel, Leser, Grund | Kochen mit Abschmecken. | ja |
-| 13 | Plan vorlegen lassen | 4 Der Einsatz | Die Einsatzschleife | Zuerst die Wanderkarte, dann los. | ja |
-| 14 | Feste Kette oder freier Einsatz | 4 Der Einsatz | Die Einsatzschleife | Fliessband oder Handwerker. | ja |
-| 15 | Haltepunkte und Verantwortung | 4 Der Einsatz | Leitung mit passender Freigabe | Notbremse und Unterschrift. | ja |
-| 16 | Koffer frisch halten | 4 Der Einsatz | Die Einsatzschleife | Logbuch und aufgeräumter Arbeitstisch. | ja |
-| 17 | Wann ein Feldagent? | 5 Agenten im Feld | Koffer frisch halten | Den Praktikanten in die Bibliothek schicken. | ja |
-| 18 | Einsatzprofil | 5 Agenten im Feld | Wann ein Feldagent?, Das Deckblatt | Stellenbeschrieb und Schlüsselbund. | ja |
-| 19 | Einsatzbefehl und Lagebericht | 5 Agenten im Feld | Wann ein Feldagent? | Ein Laufzettel. | ja |
-| 20 | Aufteilen | 5 Agenten im Feld | Wann ein Feldagent? | Zügeln mit Freunden: Jeder nimmt ein Zimmer. | ja |
-| 21 | Zweiter Blick | 5 Agenten im Feld | Wann ein Feldagent?, Die Einsatzschleife | Das Vier-Augen-Prinzip. | ja |
-| 22 | In echt: Subagent anlegen | 5 Agenten im Feld | Einsatzprofil | Den Feldagenten mit Ausweis und Schlüsselbund ins Büro holen. | ja |
-| 23 | Sicherheitsprotokoll | 6 Die Technikabteilung | Haltepunkte und Verantwortung | Ein Rauchmelder statt «denk dran». | ja |
-| 24 | Einsatzpaket | 6 Die Technikabteilung | Das Deckblatt, Leitung mit passender Freigabe, Einsatzprofil | Eine beschriftete Umzugskiste. | ja |
-| 25 | In echt: Hook und Plugin | 6 Die Technikabteilung | Sicherheitsprotokoll, Einsatzpaket | Den Rauchmelder montieren und die fertige Kiste ins Regal stellen. | ja |
+| 12 | In echt: Anbieter prüfen | 3 Die Funkleitungen | Abgefangene Nachrichten, In echt: Konnektor verbinden | Den Handwerker erst ausweisen lassen, bevor er den Hausschlüssel bekommt. | ja |
+| 13 | Die Einsatzschleife | 4 Der Einsatz | Ziel, Leser, Grund | Kochen mit Abschmecken. | ja |
+| 14 | Plan vorlegen lassen | 4 Der Einsatz | Die Einsatzschleife | Zuerst die Wanderkarte, dann los. | ja |
+| 15 | Feste Kette oder freier Einsatz | 4 Der Einsatz | Die Einsatzschleife | Fliessband oder Handwerker. | ja |
+| 16 | Haltepunkte und Verantwortung | 4 Der Einsatz | Leitung mit passender Freigabe | Notbremse und Unterschrift. | ja |
+| 17 | Koffer frisch halten | 4 Der Einsatz | Die Einsatzschleife | Logbuch und aufgeräumter Arbeitstisch. | ja |
+| 18 | Wann ein Feldagent? | 5 Agenten im Feld | Koffer frisch halten | Den Praktikanten in die Bibliothek schicken. | ja |
+| 19 | Einsatzprofil | 5 Agenten im Feld | Wann ein Feldagent?, Das Deckblatt | Stellenbeschrieb und Schlüsselbund. | ja |
+| 20 | Einsatzbefehl und Lagebericht | 5 Agenten im Feld | Wann ein Feldagent? | Ein Laufzettel. | ja |
+| 21 | Aufteilen | 5 Agenten im Feld | Wann ein Feldagent? | Zügeln mit Freunden: Jeder nimmt ein Zimmer. | ja |
+| 22 | Zweiter Blick | 5 Agenten im Feld | Wann ein Feldagent?, Die Einsatzschleife | Das Vier-Augen-Prinzip. | ja |
+| 23 | In echt: Subagent anlegen | 5 Agenten im Feld | Einsatzprofil | Den Feldagenten mit Ausweis und Schlüsselbund ins Büro holen. | ja |
+| 24 | Sicherheitsprotokoll | 6 Die Technikabteilung | Haltepunkte und Verantwortung | Ein Rauchmelder statt «denk dran». | ja |
+| 25 | Einsatzpaket | 6 Die Technikabteilung | Das Deckblatt, Leitung mit passender Freigabe, Einsatzprofil | Eine beschriftete Umzugskiste. | ja |
+| 26 | In echt: Hook und Plugin | 6 Die Technikabteilung | Sicherheitsprotokoll, Einsatzpaket | Den Rauchmelder montieren und die fertige Kiste ins Regal stellen. | ja |
 
 ## Aufträge
 
@@ -38,7 +39,7 @@ Stand: 17.11.2026 · Version 0.10. Aus den Inhaltsdateien erzeugt mit `node werk
 |---|---|---|---|---|---|---|
 | 1 | Operation Nussgipfel | 1 Der Funkspruch | Frau Brunner, Bäckerei Brunner | 4 | 20 | Funkspruch: Mitteilung an Stammkunden |
 | 2 | Operation Notenständer | 2 Das Archiv | Herr Imhof, Musikverein Zwirbelwil | 6 | 32 | Dossier (Skill): Protokoll im Vereinsstil |
-| 3 | Operation Stammtisch | 3 Die Funkleitungen | Frau Gisler, Gasthof Ochsen | 4 | 20 | Fallakte: Schutzregeln für Funkleitungen |
+| 3 | Operation Stammtisch | 3 Die Funkleitungen | Frau Gisler, Gasthof Ochsen | 5 | 26 | Fallakte: Schutzregeln für Funkleitungen |
 | 4 | Operation Generalversammlung | 4 Der Einsatz | Herr Fässler, Gewerbeverein Zwirbelwil | 6 | 32 | Einsatzbefehl für grosse Aufträge |
 | 5 | Operation Ferienplan | 5 Agenten im Feld | Familie Meier | 7 | 38 | Einsatzprofil (Subagent): Reise-Rechercheur |
 | 6 | Operation Hobelbank | 6 Die Technikabteilung | Herr Odermatt, Schreinerei Odermatt | 4 | 20 | Bauplan: Sicherheitsprotokoll und Einsatzpaket |
@@ -455,6 +456,35 @@ Auftraggeber: Frau Gisler, Gasthof Ochsen. Wunsch: «Das Telefon klingelt pausen
   - Nein. Was Frau Gisler im Dienst nicht sieht, sieht Claude auch nicht.
   - Nein. Nach dem Verbinden sieht Claude, was Frau Gisler sieht. Die Rechte pro Werkzeug regeln, was Claude tun darf.
 
+### In echt: Anbieter prüfen
+
+- **Lernziel:** Wer gibt es heraus? Was will es dürfen? Was steckt drin? Wie werde ich es wieder los?
+- **Merkbild:** Den Handwerker erst ausweisen lassen, bevor er den Hausschlüssel bekommt.
+- **Aha:** Ein eigener Konnektor, ein fremder Skill oder ein Plugin kommt nicht von selbst von Anthropic. Prüf zuerst, wer es herausgibt. Ein Plugin kann Programme mit deinen Rechten ausführen, ein Skill kann Code enthalten. Schau hinein, bevor du es einschaltest. Gib nur die nötigen Rechte. Verhält es sich seltsam: stoppen und sofort trennen.
+- **Lexikon:** Anbieter prüfen (vet a provider)
+- **Probieren und Beispiel:** ap-a, Durchklicken
+- **Lücke:** ap-b (schon getippt: anpassungen, reiterKonnektoren)
+- **Frei:**
+  - ap-c, Vorhersagen: «Im Forum empfehlen alle ein Gratis-Plugin «Offerten-Turbo». Niemand weiss, wer es gemacht hat. Soll ich?»
+  - ap-d, Vorhersagen: «Mein Getränkelieferant hat mir eine Adresse für einen eigenen Konnektor geschickt. Ist das wie die anderen aus dem Verzeichnis?»
+  - ap-e, Vorhersagen: «Ich habe im Internet einen Skill für Rezepte gefunden. Darin liegt neben SKILL.md eine Datei, die Daten an eine fremde Adresse schickt.»
+  - ap-f, Sortieren: «Was mache ich, wenn sich eine Leitung plötzlich seltsam verhält?»
+- **Typische Fehler und was Echo dann tut (Hinweise):**
+  - Ganz trennen geht unter «Anpassungen», Reiter «Konnektoren», «Meine».
+  - Konnektoren findest du links unter «Anpassungen».
+  - Wechsle oben in den Reiter «Konnektoren».
+  - Deine verbundenen Leitungen stehen unter «Meine».
+  - Unter «Meine» die Leitung öffnen, dann «Trennen».
+  - Öffne genau die Leitung, die sich seltsam verhält.
+  - Tippe auf «Trennen».
+  - Gute Bewertungen sagen nichts darüber, was der Code wirklich tut.
+  - Der Name eines Marktplatzes sagt, wer den Katalog herausgibt, nicht was jedes Plugin darin tut.
+  - Nein. «Extra gemacht» heisst nicht geprüft. Vertrauen musst du dem, der ihn betreibt.
+  - Nein. Was er darf, hängt an deinen Rechten im Dienst und an den Einstellungen pro Werkzeug.
+  - Nicht ganz. Ein Skill kann Code-Dateien enthalten, die Claude ausführt.
+  - Die Beschreibung sagt, wann der Skill gebraucht wird. Was die Dateien tun, sagt sie nicht.
+  - Zuerst stoppen und trennen. Dann nachsehen und informieren.
+
 ### Mischrunde «Alles zusammen»
 
 - x-a, Zusammenstecken: «Plane mit Echo den Metzgete-Abend: freie Tische nachsehen und die Einladung an die Stammgäste vorbereiten. Versendet wird erst nach Okay.»
@@ -463,6 +493,7 @@ Auftraggeber: Frau Gisler, Gasthof Ochsen. Wunsch: «Das Telefon klingelt pausen
 **Einsatzschrank:** Fallakte: Schutzregeln für Funkleitungen. Füge den Text in die Projektanweisung deines Projekts ein. Stell bei jedem Konnektor die Werkzeuge ein: Lesen nach Bedarf, Senden und Löschen auf «Genehmigung erforderlich» oder «Blockiert».
 
 **Probefahrt** (Weg aus ke-a):
+- Vor dem Anbinden geprüft: Wer gibt es heraus, was darf es, was steckt drin?
 - Nur Konnektoren verbunden, die eine Aufgabe wirklich braucht.
 - Rechte angesehen: Lesen erlaubt, Senden und Löschen mit Genehmigung oder blockiert.
 - Im Chat unter «+», «Konnektoren» nur eingeschaltet, was dieser Chat braucht.

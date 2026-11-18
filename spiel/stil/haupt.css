@@ -536,3 +536,11 @@ summary:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid
 .anleitung[open] > summary::before { content: '▾'; }
 .anleitung[open] > summary { font-weight: 600; margin-bottom: 0.5rem; }
 .anleitung .werkbank { padding: 0; border: 0; }
+
+/* Wahlhilfe «Was nehme ich wann?» (E-034) */
+.wahlhilfe .anleitung p { margin: 0.2rem 0; }
+.wahlhilfe-beispiele { margin: 0 0 0.5rem; padding-left: 1.2rem; }
+/* Kurze Knöpfe in Listenzeilen (zum Beispiel «Trennen») nicht trennen, die Zeile daneben bricht um. */
+.schirm-zeile .schirm-knopf { white-space: nowrap; hyphens: manual; flex: none; }
+.schirm-zeile { flex-wrap: wrap; }
+.schirm-zeile .schirm-zeile-text { flex: 1 1 5rem; min-width: 0; }

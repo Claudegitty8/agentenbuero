@@ -326,5 +326,13 @@
     "erklaerung": "Plugins holst du unter Anpassungen, Plugins. Hooks lässt du Claude im Code-Bereich schreiben und liest sie vor dem Ja.",
     "quatsch": "Herr Odermatt sagte zu allem Ja. Ein Hook löschte danach bei jedem Start die Notizen.",
     "genauer": "Hooks und Subagenten wirken dort, wo Claude selbständig an Dateien arbeitet, zum Beispiel im Code-Bereich."
+  },
+  "anbieterEcht": {
+    "begriff": "Anbieter prüfen",
+    "englisch": "vet a provider",
+    "kern": "anbieterEcht",
+    "erklaerung": "Vor dem Anbinden prüfen, wer einen Konnektor, Skill oder ein Plugin herausgibt, welche Rechte es will, was drinsteckt und wie man es wieder entfernt.",
+    "quatsch": "Herr Odermatt installierte ein Gratis-Plugin aus einem Forum. Seine Offerten landeten danach bei einer fremden Adresse.",
+    "genauer": "Eine automatische Prüfung auf Schadcode gibt es nur für Firmenkonten, und auch sie ist keine Garantie."
   }
 }
