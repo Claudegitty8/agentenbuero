@@ -1,8 +1,8 @@
 # Stand
 
-Stand: 18.11.2026 · Version 0.12 fertig, noch nicht veröffentlicht · Online ist Version 0.11 auf https://claudegitty8.github.io/agentenbuero/ (Code öffentlich auf GitHub)
+Stand: 18.11.2026 · Version 0.12 · Veröffentlicht: ja, seit 18.11.2026 auf https://claudegitty8.github.io/agentenbuero/ (Code öffentlich auf GitHub)
 
-## Fertig (Version 0.12, noch nicht veröffentlicht)
+## Fertig (Version 0.12)
 
 - Wahlhilfe «Was nehme ich wann?» im Lexikon (E-034), Runde «In echt: Anbieter prüfen» in Kapitel 3 (E-035). 26 Konzepte, 179 Aufgaben.
 - 118 Tests, Inhaltsprüfung, Browser-Durchspiel stark und schwach bestanden, neue Bildschirme in 320 und 390 px angesehen.
@@ -25,7 +25,7 @@ Stand: 18.11.2026 · Version 0.12 fertig, noch nicht veröffentlicht · Online i
 
 ## Offen
 
-- **Besitzer:** Ja oder Nein zum Veröffentlichen von Version 0.12.
+- **Besitzer:** Online-Seite 0.12 ansehen (unten «Version 0.12», im Lexikon oben die Wahlhilfe). Veröffentlichung lief durch, die Seite selbst ist nicht geprüft.
 - **Besitzer:** Für Version 0.13 Bilder oder Computer-Zugriff (siehe Claude-Projekt, AGENTENBUERO-STAND.md).
 - **Besitzer:** Online-Seite kurz ansehen: unten «Version 0.11», im Lexikon oben «So geht es in echt». Die Veröffentlichung lief durch, die Seite selbst ist von mir nicht geprüft (kein Browser verfügbar).
 - Online geprüft am 17.11.2026 (Version 0.10): Seite zeigt Version 0.10, 25 Konzepte, 36 Bildschirme, Durchklicken funktioniert, keine Fehler in der Konsole.

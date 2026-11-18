@@ -1,6 +1,8 @@
 # Changelog
 
-## Version 0.12 (18.11.2026, noch nicht veröffentlicht)
+## Version 0.12 (18.11.2026)
+
+Veröffentlicht am 18.11.2026 auf https://claudegitty8.github.io/agentenbuero/ (Veröffentlichung mit allen Prüfungen durchgelaufen, Online-Seite selbst nicht geprüft).
 
 ### Neu
 - Lexikon: Wahlhilfe «Was nehme ich wann?» mit 11 Bauteilen, je wann, warum und zwei bis drei Beispiele. Ein Bauteil erscheint, sobald man sein Konzept kennt (E-034).
